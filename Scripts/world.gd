@@ -5,6 +5,7 @@ extends Node3D
 @onready var beginText = $ingameText/Timer
 @onready var doorText = $doorText/door
 var doorOpen = false
+var canOpenDoor = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -14,11 +15,11 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	
-	if Input.is_action_just_pressed("OpenDoor") and !doorOpen:
+	if (Input.is_action_just_pressed("OpenDoor") and !doorOpen) and canOpenDoor:
 		animation.play("DoorOpen")
 		doorOpenSound.play()
 		doorOpen = !doorOpen
-	elif Input.is_action_just_pressed("OpenDoor") and doorOpen:
+	elif (Input.is_action_just_pressed("OpenDoor") and doorOpen) and canOpenDoor:
 		animation.play_backwards("DoorOpen")
 		doorOpen = !doorOpen
 	
@@ -47,6 +48,9 @@ func _on_e_begin_text_body_entered(body):
 
 
 func _on_e_show_door_interactive_body_entered(body):
+	canOpenDoor = true
 	doorText.show()
+	
 func _on_e_show_door_interactive_body_exited(body):
 	doorText.hide()
+	canOpenDoor = false
