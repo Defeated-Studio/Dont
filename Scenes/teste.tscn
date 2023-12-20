@@ -1,7 +1,7 @@
-[gd_scene load_steps=27 format=3 uid="uid://b3mtgog05gg4t"]
+[gd_scene load_steps=33 format=3 uid="uid://b3mtgog05gg4t"]
 
 [ext_resource type="PackedScene" uid="uid://bnc528scgy74q" path="res://Scenes/character.tscn" id="1_1i5q3"]
-[ext_resource type="Script" path="res://Scripts/teste.gd" id="1_eighr"]
+[ext_resource type="Script" path="res://Scripts/world.gd" id="1_jhkki"]
 [ext_resource type="PackedScene" uid="uid://cdi6l5l23fsaf" path="res://Models/old_couch.glb" id="3_mn463"]
 [ext_resource type="Texture2D" uid="uid://cacksjooxeqdx" path="res://Materials/wood_planks_diff_2k.jpg" id="4_dehut"]
 [ext_resource type="PackedScene" uid="uid://qudpx7qe0dtg" path="res://Models/fancy_victorian_square_picture_frame.glb" id="5_bu366"]
@@ -11,9 +11,18 @@
 [ext_resource type="PackedScene" uid="uid://bqcconlqdvyc3" path="res://Models/modern_ceiling_lamp.glb" id="9_gi00w"]
 [ext_resource type="PackedScene" uid="uid://cyjkyi5hf2vwx" path="res://Models/antique_chandelier.glb" id="10_tw5j8"]
 [ext_resource type="PackedScene" uid="uid://643weak2cche" path="res://Models/bed.glb" id="11_e8ajb"]
+[ext_resource type="Script" path="res://Scripts/textScript.gd" id="12_huqci"]
+[ext_resource type="Script" path="res://Scripts/doorText.gd" id="13_jbb0e"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_outxi"]
+
+[sub_resource type="Sky" id="Sky_lfql4"]
+sky_material = SubResource("PanoramaSkyMaterial_outxi")
 
 [sub_resource type="Environment" id="Environment_ig37q"]
-background_mode = 1
+background_mode = 2
+background_color = Color(1, 1, 1, 1)
+sky = SubResource("Sky_lfql4")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_88fij"]
 albedo_texture = ExtResource("4_dehut")
@@ -163,8 +172,14 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_4uh4a"]
 size = Vector3(1.71859, 1.50686, 1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_mdfea"]
+size = Vector3(1, 1, 1.28699)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_si1bx"]
+size = Vector3(3.82929, 0.638292, 1.82556)
+
 [node name="World" type="Node3D"]
-script = ExtResource("1_eighr")
+script = ExtResource("1_jhkki")
 
 [node name="Node3D" parent="." instance=ExtResource("1_1i5q3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.558255, 8.20827, 3.02988)
@@ -360,7 +375,7 @@ stream = ExtResource("8_lixon")
 volume_db = -13.333
 
 [node name="E_OpenDoorSlow" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.4478, 8.86516, 1.98057)
+transform = Transform3D(1, 0, 0, 0, 0.732627, 0, 0, 0, 1, -12.4478, 8.86516, 1.98057)
 collision_layer = 16
 collision_mask = 16
 
@@ -394,4 +409,61 @@ visible = false
 use_collision = true
 size = Vector3(2.45203, 0.513586, 1.2933)
 
+[node name="ingameText" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("12_huqci")
+
+[node name="gameText" type="Label" parent="ingameText"]
+layout_mode = 0
+offset_right = 1148.0
+offset_bottom = 618.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Timer" type="Timer" parent="ingameText"]
+wait_time = 3.0
+
+[node name="E_BeginText" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.97003, 8.64821, -7.85078)
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="E_BeginText"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.61772, 0.104427, 0.0156589)
+shape = SubResource("BoxShape3D_mdfea")
+
+[node name="E_ShowDoorInteractive" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.76379, -8.7484)
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="E_ShowDoorInteractive"]
+transform = Transform3D(0.868185, 0, 0, 0, 1, 0, 0, 0, 1, -2.83102, -0.157523, 0.920499)
+shape = SubResource("BoxShape3D_si1bx")
+
+[node name="doorText" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("13_jbb0e")
+
+[node name="door" type="Label" parent="doorText"]
+layout_mode = 0
+offset_left = -4.0
+offset_top = 100.0
+offset_right = 1148.0
+offset_bottom = 748.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="body_entered" from="E_OpenDoorSlow" to="." method="_on_e_open_door_slow_body_entered"]
+[connection signal="timeout" from="ingameText/Timer" to="ingameText" method="_on_timer_timeout"]
+[connection signal="body_entered" from="E_BeginText" to="." method="_on_e_begin_text_body_entered"]
+[connection signal="body_entered" from="E_ShowDoorInteractive" to="." method="_on_e_show_door_interactive_body_entered"]
+[connection signal="body_exited" from="E_ShowDoorInteractive" to="." method="_on_e_show_door_interactive_body_exited"]

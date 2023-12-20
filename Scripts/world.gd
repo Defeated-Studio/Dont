@@ -2,13 +2,15 @@ extends Node3D
 
 @onready var animation = $door/DoorAnimation
 @onready var doorOpenSound = $door/A_DoorOpen
+@onready var beginText = $ingameText/Timer
+@onready var doorText = $doorText/door
 var doorOpen = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
-
+	pass
+	
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	
@@ -27,7 +29,6 @@ func _process(delta):
 
 
 
-
 func _on_e_open_door_slow_body_entered(body):
 	if doorOpen:
 		animation.play_backwards("DoorOpenSlow")
@@ -38,3 +39,14 @@ func _on_e_open_door_slow_body_entered(body):
 
 	doorOpenSound.play()
 	get_node("E_OpenDoorSlow").queue_free()
+
+
+func _on_e_begin_text_body_entered(body):
+	beginText.start()
+	get_node("E_BeginText").queue_free()
+
+
+func _on_e_show_door_interactive_body_entered(body):
+	doorText.show()
+func _on_e_show_door_interactive_body_exited(body):
+	doorText.hide()
