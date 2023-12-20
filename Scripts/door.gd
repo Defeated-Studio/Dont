@@ -14,12 +14,12 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if (Input.is_action_just_pressed("OpenDoor") and !doorOpen) and canOpenDoor:
+	if (Input.is_action_just_pressed("Action") and !doorOpen) and canOpenDoor:
 		animation.play("DoorOpen")
 		doorOpenSound.play()
 		setdoorOpen(!doorOpen)
 		doorText.hide()
-	elif (Input.is_action_just_pressed("OpenDoor") and doorOpen) and canOpenDoor:
+	elif (Input.is_action_just_pressed("Action") and doorOpen) and canOpenDoor:
 		animation.play_backwards("DoorOpen")
 		setdoorOpen(!doorOpen)
 		doorText.hide()

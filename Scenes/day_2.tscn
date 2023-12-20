@@ -1,0 +1,119 @@
+[gd_scene load_steps=9 format=3 uid="uid://clukbumoxlq6c"]
+
+[ext_resource type="PackedScene" uid="uid://b3mtgog05gg4t" path="res://Scenes/world.tscn" id="1_o04js"]
+[ext_resource type="Script" path="res://Scripts/day_2.gd" id="2_1kah1"]
+[ext_resource type="Script" path="res://Scripts/textScriptday_2.gd" id="3_l1usb"]
+
+[sub_resource type="Environment" id="Environment_1qa7l"]
+background_mode = 1
+background_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Animation" id="Animation_tgcd5"]
+resource_name = "MoveFrame"
+length = 2.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-5.18483, -0.25, 0, 0.25, 0, -6.26546, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 2)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(10.1014, -0.25, 0, 0.25, 0, 10.1014, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 2)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(4.29005, -0.25, 0, 0.25, 0, 4.29005, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 2)
+}
+
+[sub_resource type="Animation" id="Animation_4e4mu"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-5.18483, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(10.1014, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(4.29005, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_d8t7j"]
+_data = {
+"MoveFrame": SubResource("Animation_tgcd5"),
+"RESET": SubResource("Animation_4e4mu")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b6ckn"]
+size = Vector3(1, 1.00722, 1)
+
+[node name="day_2" instance=ExtResource("1_o04js")]
+script = ExtResource("2_1kah1")
+
+[node name="ingameText" parent="." index="0"]
+script = ExtResource("3_l1usb")
+
+[node name="Timer" parent="ingameText" index="1"]
+wait_time = 0.8
+
+[node name="Node3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.590205, 8.08171, 2.6369)
+
+[node name="WorldEnvironment" parent="environment" index="0"]
+environment = SubResource("Environment_1qa7l")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="womanFrame" index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_d8t7j")
+}
+
+[node name="E_MoveFrame" type="Area3D" parent="." index="13"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="E_MoveFrame" index="0"]
+transform = Transform3D(3.38, 0, 0, 0, 3.38, 0, 0, 0, 3.38, -6.54618, 10.191, -8.2668)
+shape = SubResource("BoxShape3D_b6ckn")
+
+[connection signal="body_entered" from="E_MoveFrame" to="." method="_on_e_move_frame_body_entered"]

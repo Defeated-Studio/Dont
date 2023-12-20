@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://b3mtgog05gg4t"]
+[gd_scene load_steps=33 format=3 uid="uid://b3mtgog05gg4t"]
 
 [ext_resource type="Script" path="res://Scripts/world.gd" id="1_jkio5"]
 [ext_resource type="PackedScene" uid="uid://bnc528scgy74q" path="res://Scenes/character.tscn" id="2_brn3y"]
@@ -14,6 +14,11 @@
 [ext_resource type="PackedScene" uid="uid://643weak2cche" path="res://Models/bed.glb" id="11_cgo0p"]
 [ext_resource type="Script" path="res://Scripts/textScript.gd" id="12_xsev3"]
 [ext_resource type="Shader" path="res://Shaders/grain.gdshader" id="14_3qea7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s6dcx"]
+shader = ExtResource("14_3qea7")
+shader_parameter/grain_amount = 0.05
+shader_parameter/grain_size = 1.0
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_outxi"]
 
@@ -92,7 +97,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_x3meo"]
 resource_name = "DoorOpenSlow"
-length = 2.5
+length = 3.5
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -113,7 +118,7 @@ tracks/1/loop_wrap = true
 tracks/1/keys = {
 "handle_modes": PackedInt32Array(0, 0),
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1.59698, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 2.5)
+"times": PackedFloat32Array(0, 3.5)
 }
 tracks/2/type = "bezier"
 tracks/2/imported = false
@@ -170,22 +175,35 @@ _data = {
 "RESET": SubResource("Animation_uqerf")
 }
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_4uh4a"]
-size = Vector3(1.71859, 1.50686, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_mdfea"]
-size = Vector3(1, 1, 1.28699)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_si1bx"]
 size = Vector3(3.82929, 0.638292, 2.41803)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_s6dcx"]
-shader = ExtResource("14_3qea7")
-shader_parameter/grain_amount = 0.05
-shader_parameter/grain_size = 1.0
-
 [node name="World" type="Node3D"]
 script = ExtResource("1_jkio5")
+
+[node name="ingameText" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("12_xsev3")
+
+[node name="gameText" type="Label" parent="ingameText"]
+layout_mode = 0
+offset_right = 1148.0
+offset_bottom = 618.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Timer" type="Timer" parent="ingameText"]
+wait_time = 3.0
+
+[node name="GrainFilter" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_s6dcx")
+offset_right = 1151.0
+offset_bottom = 645.0
 
 [node name="Node3D" parent="." instance=ExtResource("2_brn3y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.558255, 8.20827, 3.02988)
@@ -396,15 +414,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.46013)
 stream = ExtResource("8_veu26")
 volume_db = -13.333
 
-[node name="E_OpenDoorSlow" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.732627, 0, 0, 0, 1, -12.4478, 8.86516, 1.98057)
-collision_layer = 16
-collision_mask = 16
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="E_OpenDoorSlow"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0763655, 0.200584, 0.0118024)
-shape = SubResource("BoxShape3D_4uh4a")
-
 [node name="modern_ceiling_lamp" parent="." instance=ExtResource("9_1y1li")]
 transform = Transform3D(0.009, 0, 0, 0, 0.009, 0, 0, 0, 0.009, 1.53177, 12.061, -3.52158)
 
@@ -431,50 +440,15 @@ visible = false
 use_collision = true
 size = Vector3(2.45203, 0.513586, 1.2933)
 
-[node name="ingameText" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("12_xsev3")
-
-[node name="gameText" type="Label" parent="ingameText"]
-layout_mode = 0
-offset_right = 1148.0
-offset_bottom = 618.0
-theme_override_colors/font_color = Color(1, 1, 0, 1)
-theme_override_font_sizes/font_size = 20
-horizontal_alignment = 1
-vertical_alignment = 2
-
-[node name="Timer" type="Timer" parent="ingameText"]
-wait_time = 3.0
-
-[node name="E_BeginText" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.97003, 8.64821, -7.85078)
-collision_layer = 16
-collision_mask = 16
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="E_BeginText"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.61772, 0.104427, 0.0156589)
-shape = SubResource("BoxShape3D_mdfea")
-
 [node name="E_ShowDoorInteractive" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.76379, -8.7484)
 collision_layer = 16
 collision_mask = 16
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="E_ShowDoorInteractive"]
-transform = Transform3D(0.868185, 0, 0, 0, 1, 0, 0, 0, 1, -2.83102, -0.157523, 0.920499)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.83102, -0.157523, 0.920499)
 shape = SubResource("BoxShape3D_si1bx")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_s6dcx")
-offset_right = 1151.0
-offset_bottom = 645.0
-
-[connection signal="body_entered" from="E_OpenDoorSlow" to="." method="_on_e_open_door_slow_body_entered"]
 [connection signal="timeout" from="ingameText/Timer" to="ingameText" method="_on_timer_timeout"]
-[connection signal="body_entered" from="E_BeginText" to="." method="_on_e_begin_text_body_entered"]
 [connection signal="body_entered" from="E_ShowDoorInteractive" to="." method="_on_e_show_door_interactive_body_entered"]
 [connection signal="body_exited" from="E_ShowDoorInteractive" to="." method="_on_e_show_door_interactive_body_exited"]
