@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://b3mtgog05gg4t"]
+[gd_scene load_steps=35 format=3 uid="uid://b3mtgog05gg4t"]
 
 [ext_resource type="PackedScene" uid="uid://bnc528scgy74q" path="res://Scenes/character.tscn" id="1_1i5q3"]
 [ext_resource type="Script" path="res://Scripts/world.gd" id="1_jhkki"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://643weak2cche" path="res://Models/bed.glb" id="11_e8ajb"]
 [ext_resource type="Script" path="res://Scripts/textScript.gd" id="12_huqci"]
 [ext_resource type="Script" path="res://Scripts/doorText.gd" id="13_jbb0e"]
+[ext_resource type="Shader" path="res://Shaders/grain.gdshader" id="14_iaiee"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_outxi"]
 
@@ -177,6 +178,11 @@ size = Vector3(1, 1, 1.28699)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_si1bx"]
 size = Vector3(3.82929, 0.638292, 1.82556)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s6dcx"]
+shader = ExtResource("14_iaiee")
+shader_parameter/grain_amount = 0.05
+shader_parameter/grain_size = 1.0
 
 [node name="World" type="Node3D"]
 script = ExtResource("1_jhkki")
@@ -461,6 +467,11 @@ offset_right = 1148.0
 offset_bottom = 748.0
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_s6dcx")
+offset_right = 1151.0
+offset_bottom = 645.0
 
 [connection signal="body_entered" from="E_OpenDoorSlow" to="." method="_on_e_open_door_slow_body_entered"]
 [connection signal="timeout" from="ingameText/Timer" to="ingameText" method="_on_timer_timeout"]
