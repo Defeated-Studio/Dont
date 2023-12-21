@@ -12,9 +12,7 @@ func _ready():
 	queue_text("This house is not what i expected")
 	queue_text("They told me it was gonna be empty")
 	queue_text("I can't believe i'm gonna have to stay here for the next 3 months")
-	queue_text("Maybe i should take a look around the house")
-	queue_text("")
-	queue_text("WHAT?")
+	queue_text("Maybe i should go to sleep")
 	queue_text("")
 	show_text()
 

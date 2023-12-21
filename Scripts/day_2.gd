@@ -3,6 +3,7 @@ extends Node3D
 @onready var beginText = $ingameText/Timer
 @onready var bedroomDoor = $bedroomDoor
 @onready var frameAnimation = $womanFrame/AnimationPlayer
+@onready var livingRoomDoor = $livingRoomDoor
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -25,4 +26,11 @@ func _on_e_move_frame_body_entered(body):
 	frameAnimation.play("MoveFrame")
 	get_node("E_MoveFrame").queue_free()
 	beginText.start()
-	
+
+# isso tem que ficar dentro de door.gd se pa, toda porta vai ter esse evento
+func _on_e_show_door_interactive_living_room_body_entered(body):
+	livingRoomDoor.setcanOpenDoor(true)
+
+
+func _on_e_show_door_interactive_living_room_body_exited(body):
+	livingRoomDoor.setcanOpenDoor(false)

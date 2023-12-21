@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://xdhp0cfb3kex"]
+
+[ext_resource type="Texture2D" uid="uid://dv8aeubucgjqv" path="res://Materials/brown_mud_leaves_01_diff_1k.jpg" id="1_8cmfn"]
+[ext_resource type="Texture2D" uid="uid://cegsamuboubms" path="res://Materials/brown_mud_leaves_01_rough_1k.jpg" id="2_saela"]
+
+[resource]
+albedo_texture = ExtResource("1_8cmfn")
+roughness_texture = ExtResource("2_saela")
+uv1_triplanar = true

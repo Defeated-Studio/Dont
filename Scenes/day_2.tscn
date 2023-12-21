@@ -1,12 +1,33 @@
-[gd_scene load_steps=9 format=3 uid="uid://clukbumoxlq6c"]
+[gd_scene load_steps=35 format=3 uid="uid://clukbumoxlq6c"]
 
 [ext_resource type="PackedScene" uid="uid://b3mtgog05gg4t" path="res://Scenes/world.tscn" id="1_o04js"]
 [ext_resource type="Script" path="res://Scripts/day_2.gd" id="2_1kah1"]
 [ext_resource type="Script" path="res://Scripts/textScriptday_2.gd" id="3_l1usb"]
+[ext_resource type="Texture2D" uid="uid://ca4kgkhvhao12" path="res://Materials/kloofendal_48d_partly_cloudy_puresky_2k.hdr" id="4_vk2ga"]
+[ext_resource type="Script" path="res://Scripts/door.gd" id="5_ir8d1"]
+[ext_resource type="PackedScene" uid="uid://cuvqsaqnggsne" path="res://Models/wooden_door.glb" id="5_w7ink"]
+[ext_resource type="AudioStream" uid="uid://wbk6sw7klfg8" path="res://Sounds/doorOpen.wav" id="7_4murq"]
+[ext_resource type="Material" uid="uid://xdhp0cfb3kex" path="res://Materials/grass.tres" id="8_ltr34"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/scatter.gd" id="9_md4u1"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/stack/modifier_stack.gd" id="10_aufi8"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/create_inside_random.gd" id="11_afwlt"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/randomize_transforms.gd" id="12_xo52a"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/relax.gd" id="13_5neau"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/project_on_geometry.gd" id="14_886ej"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/scatter_item.gd" id="15_mf3f1"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/scatter_shape.gd" id="16_xk02r"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/shapes/box_shape.gd" id="17_n2tyy"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_yuwl3"]
+panorama = ExtResource("4_vk2ga")
+
+[sub_resource type="Sky" id="Sky_k7sg5"]
+sky_material = SubResource("PanoramaSkyMaterial_yuwl3")
 
 [sub_resource type="Environment" id="Environment_1qa7l"]
-background_mode = 1
-background_color = Color(1, 1, 1, 1)
+background_color = Color(0.231373, 0.231373, 0.231373, 1)
+background_energy_multiplier = 0.58
+sky = SubResource("Sky_k7sg5")
 
 [sub_resource type="Animation" id="Animation_tgcd5"]
 resource_name = "MoveFrame"
@@ -87,8 +108,144 @@ _data = {
 "RESET": SubResource("Animation_4e4mu")
 }
 
+[sub_resource type="Animation" id="Animation_gon4n"]
+resource_name = "DoorOpen"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1.52032, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="Animation" id="Animation_q0idb"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lm0b4"]
+_data = {
+"DoorOpen": SubResource("Animation_gon4n"),
+"RESET": SubResource("Animation_q0idb")
+}
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_b6ckn"]
 size = Vector3(1, 1.00722, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l1w3v"]
+
+[sub_resource type="Resource" id="Resource_ijen0"]
+script = ExtResource("11_afwlt")
+amount = 1500
+enabled = true
+override_global_seed = false
+custom_seed = 0
+restrict_height = true
+reference_frame = 1
+
+[sub_resource type="Resource" id="Resource_53foj"]
+script = ExtResource("12_xo52a")
+position = Vector3(0.15, 0.15, 0.15)
+rotation = Vector3(1, 360, 1)
+scale = Vector3(0.1, 0.1, 0.1)
+enabled = true
+override_global_seed = false
+custom_seed = 0
+restrict_height = false
+reference_frame = 2
+
+[sub_resource type="Resource" id="Resource_6tkme"]
+script = ExtResource("13_5neau")
+iterations = 3
+offset_step = 0.2
+consecutive_step_multiplier = 0.75
+use_computeshader = true
+enabled = true
+override_global_seed = false
+custom_seed = 0
+restrict_height = true
+reference_frame = 0
+
+[sub_resource type="Resource" id="Resource_l64o4"]
+script = ExtResource("14_886ej")
+ray_direction = Vector3(0, -1, 0)
+ray_length = 5.0
+ray_offset = 5.0
+remove_points_on_miss = false
+align_with_collision_normal = true
+max_slope = 90.0
+collision_mask = 17
+exclude_mask = 0
+enabled = true
+override_global_seed = false
+custom_seed = 0
+restrict_height = false
+reference_frame = 0
+
+[sub_resource type="Resource" id="Resource_wer4k"]
+script = ExtResource("10_aufi8")
+stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_ijen0"), SubResource("Resource_53foj"), SubResource("Resource_6tkme"), SubResource("Resource_l64o4")])
+
+[sub_resource type="Resource" id="Resource_ehbp7"]
+script = ExtResource("17_n2tyy")
+size = Vector3(74.5, 1, 55.793)
 
 [node name="day_2" instance=ExtResource("1_o04js")]
 script = ExtResource("2_1kah1")
@@ -110,10 +267,100 @@ libraries = {
 "": SubResource("AnimationLibrary_d8t7j")
 }
 
-[node name="E_MoveFrame" type="Area3D" parent="." index="13"]
+[node name="livingRoomDoor" type="CSGBox3D" parent="room/backwall16" index="0"]
+transform = Transform3D(0.0113096, 0, -0.999936, 0, 1, 0, 0.999936, 0, 0.0113096, 3.36633, -0.130732, -0.0078392)
+operation = 2
+use_collision = true
+size = Vector3(0.103028, 2.52306, 1.63312)
+
+[node name="livingRoomDoor" type="StaticBody3D" parent="." index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.0362, 5.83634, -11.4492)
+script = ExtResource("5_ir8d1")
+
+[node name="doorText" type="Control" parent="livingRoomDoor" index="0"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="doorLabel" type="Label" parent="livingRoomDoor/doorText" index="0"]
+layout_mode = 0
+offset_left = -4.0
+offset_top = 100.0
+offset_right = 1148.0
+offset_bottom = 748.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="wooden_door" parent="livingRoomDoor" index="1" instance=ExtResource("5_w7ink")]
+transform = Transform3D(-0.499993, 0, -0.00213629, 0, 0.4, 0, 0.00267036, 0, -0.399994, 0.792432, -1.47413, 0.133415)
+
+[node name="livingRoomDoorCols" type="CSGBox3D" parent="livingRoomDoor/wooden_door" index="1"]
+transform = Transform3D(0.0106812, 0, 1.99997, 0, 2.5, 0, -2.49996, 0, 0.0133515, -0.00995636, 3.22468, -0.168495)
+visible = false
+use_collision = true
+size = Vector3(0.103028, 2.72, 1.65)
+
+[node name="DoorAnimation" type="AnimationPlayer" parent="livingRoomDoor" index="2"]
+libraries = {
+"": SubResource("AnimationLibrary_lm0b4")
+}
+
+[node name="A_DoorOpen" type="AudioStreamPlayer3D" parent="livingRoomDoor" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.36489, -0.136229, 0.467075)
+stream = ExtResource("7_4murq")
+volume_db = -13.333
+
+[node name="E_MoveFrame" type="Area3D" parent="." index="14"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="E_MoveFrame" index="0"]
 transform = Transform3D(3.38, 0, 0, 0, 3.38, 0, 0, 0, 3.38, -6.54618, 10.191, -8.2668)
 shape = SubResource("BoxShape3D_b6ckn")
 
+[node name="E_ShowDoorInteractiveLivingRoom" type="Area3D" parent="." index="15"]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="E_ShowDoorInteractiveLivingRoom" index="0"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -12.3048, 5.54152, -11.357)
+shape = SubResource("BoxShape3D_l1w3v")
+
+[node name="floor" type="CSGBox3D" parent="." index="16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.4369, 4.30399, -41.4681)
+material_override = ExtResource("8_ltr34")
+use_collision = true
+size = Vector3(75.4363, 0.1, 59.7187)
+
+[node name="nature" type="Node3D" parent="." index="17"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.246, 5.40426, -23.2543)
+script = ExtResource("9_md4u1")
+global_seed = 12
+modifier_stack = SubResource("Resource_wer4k")
+Performance/use_chunks = true
+Performance/chunk_dimensions = Vector3(15, 15, 15)
+
+[node name="bush" type="Node3D" parent="nature" index="0"]
+script = ExtResource("15_mf3f1")
+source_scale_multiplier = 1.2
+path = "res://addons/proton_scatter/demos/assets/bush.tscn"
+
+[node name="tree" type="Node3D" parent="nature" index="1"]
+script = ExtResource("15_mf3f1")
+proportion = 50
+source_scale_multiplier = 3.0
+path = "res://addons/proton_scatter/demos/assets/pine_tree.tscn"
+
+[node name="rock" type="Node3D" parent="nature" index="2"]
+script = ExtResource("15_mf3f1")
+proportion = 20
+source_scale_multiplier = 1.3
+path = "res://addons/proton_scatter/demos/assets/small_rock.tscn"
+
+[node name="ScatterShape" type="Node3D" parent="nature" index="3"]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 2.20146, -0.88273, -18.0237)
+script = ExtResource("16_xk02r")
+shape = SubResource("Resource_ehbp7")
+
 [connection signal="body_entered" from="E_MoveFrame" to="." method="_on_e_move_frame_body_entered"]
+[connection signal="body_entered" from="E_ShowDoorInteractiveLivingRoom" to="." method="_on_e_show_door_interactive_living_room_body_entered"]
+[connection signal="body_exited" from="E_ShowDoorInteractiveLivingRoom" to="." method="_on_e_show_door_interactive_living_room_body_exited"]
