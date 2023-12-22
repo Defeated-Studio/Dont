@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://clienf7eye2ff"]
+
+[ext_resource type="Script" path="res://Scripts/microphone.gd" id="1_0whp0"]
+
+[sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_i23p3"]
+
+[node name="Microphone" type="Node2D"]
+script = ExtResource("1_0whp0")
+
+[node name="AudioStreamRecord" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamMicrophone_i23p3")
+volume_db = 15.0
+autoplay = true
+bus = &"Record"

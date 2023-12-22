@@ -10,10 +10,15 @@ config_version=5
 
 [application]
 
-config/name="BasicMovement"
+config/name="teste3d"
 run/main_scene="res://Scenes/day_1.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
+
+[audio]
+
+buses/default_bus_layout="res://Sounds/default_bus_layout.tres"
+driver/enable_input=true
 
 [editor_plugins]
 

@@ -4,13 +4,23 @@ extends Node3D
 @onready var bedroomDoor = $bedroomDoor
 @onready var frameAnimation = $womanFrame/AnimationPlayer
 @onready var livingRoomDoor = $livingRoomDoor
+@onready var flashlight = $Node3D/Camera3D/hand/SpotLight3D
+var flashlightOn = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	flashlight.hide()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if Input.is_action_just_pressed("Flashlight") and flashlightOn:
+		flashlight.hide()
+		flashlightOn = !flashlightOn
+	elif Input.is_action_just_pressed("Flashlight") and !flashlightOn:
+		flashlight.show()
+		flashlightOn = !flashlightOn
+
+
 	if Input.is_action_pressed("Quit"):
 		get_tree().root.propagate_notification(NOTIFICATION_WM_CLOSE_REQUEST)
 		get_tree().quit()

@@ -26,8 +26,11 @@ sky_material = SubResource("PanoramaSkyMaterial_yuwl3")
 
 [sub_resource type="Environment" id="Environment_1qa7l"]
 background_color = Color(0.231373, 0.231373, 0.231373, 1)
-background_energy_multiplier = 0.58
+background_energy_multiplier = 0.0
 sky = SubResource("Sky_k7sg5")
+volumetric_fog_albedo = Color(0.658824, 0.658824, 0.658824, 1)
+volumetric_fog_length = 100.0
+volumetric_fog_detail_spread = 4.09812
 
 [sub_resource type="Animation" id="Animation_tgcd5"]
 resource_name = "MoveFrame"
@@ -191,7 +194,7 @@ size = Vector3(1, 1.00722, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_l1w3v"]
 
-[sub_resource type="Resource" id="Resource_ijen0"]
+[sub_resource type="Resource" id="Resource_qgfgb"]
 script = ExtResource("11_afwlt")
 amount = 1500
 enabled = true
@@ -200,7 +203,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 1
 
-[sub_resource type="Resource" id="Resource_53foj"]
+[sub_resource type="Resource" id="Resource_nv548"]
 script = ExtResource("12_xo52a")
 position = Vector3(0.15, 0.15, 0.15)
 rotation = Vector3(1, 360, 1)
@@ -211,7 +214,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_6tkme"]
+[sub_resource type="Resource" id="Resource_dmipe"]
 script = ExtResource("13_5neau")
 iterations = 3
 offset_step = 0.2
@@ -223,7 +226,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_l64o4"]
+[sub_resource type="Resource" id="Resource_i2mtv"]
 script = ExtResource("14_886ej")
 ray_direction = Vector3(0, -1, 0)
 ray_length = 5.0
@@ -239,9 +242,9 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_wer4k"]
+[sub_resource type="Resource" id="Resource_25g6l"]
 script = ExtResource("10_aufi8")
-stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_ijen0"), SubResource("Resource_53foj"), SubResource("Resource_6tkme"), SubResource("Resource_l64o4")])
+stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_qgfgb"), SubResource("Resource_nv548"), SubResource("Resource_dmipe"), SubResource("Resource_i2mtv")])
 
 [sub_resource type="Resource" id="Resource_ehbp7"]
 script = ExtResource("17_n2tyy")
@@ -335,7 +338,7 @@ size = Vector3(75.4363, 0.1, 59.7187)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.246, 5.40426, -23.2543)
 script = ExtResource("9_md4u1")
 global_seed = 12
-modifier_stack = SubResource("Resource_wer4k")
+modifier_stack = SubResource("Resource_25g6l")
 Performance/use_chunks = true
 Performance/chunk_dimensions = Vector3(15, 15, 15)
 

@@ -25,6 +25,8 @@ func _physics_process(delta):
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir = Input.get_vector("Left", "Right", "Forward", "Backwards")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	
+	
 	var current_speed = SPEED
 	if Input.is_action_pressed("Crouch"):
 		current_speed = CROUCH_SPEED
@@ -58,7 +60,6 @@ func _input(event):
 		$Camera3D.rotation.x -= event.relative.y / 1000 * sensitivity
 		rotation.x = clamp(rotation.x, PI/-2, PI/2)
 		$Camera3D.rotation.x = clamp($Camera3D.rotation.x, -2, 2)
-
 
 func _on_animation_player_animation_finished(anim_name):
 	finishedAnimation = true

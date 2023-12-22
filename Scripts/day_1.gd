@@ -4,7 +4,6 @@ extends Node3D
 @onready var characText = $ingameText/gameText
 @onready var bedroomDoor = $bedroomDoor
 @onready var sleepText = $sleepLabel
-
 var canSleep = false
 
 # Called when the node enters the scene tree for the first time.

@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://bnc528scgy74q"]
+[gd_scene load_steps=10 format=3 uid="uid://bnc528scgy74q"]
 
 [ext_resource type="Script" path="res://Scripts/character.gd" id="1_ms0cu"]
+[ext_resource type="Texture2D" uid="uid://ben2cjidngk5u" path="res://Materials/cookie.jpg" id="2_eu1s4"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ts258"]
 
@@ -177,6 +178,17 @@ shape = SubResource("CapsuleShape3D_gxskg")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.78, -0.1)
+
+[node name="hand" type="Node3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.306922, -0.552652, 0.1)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Camera3D/hand"]
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 0.0504413, 0.486251, 0)
+light_volumetric_fog_energy = 16.0
+light_projector = ExtResource("2_eu1s4")
+shadow_enabled = true
+spot_range = 72.865
+spot_angle = 23.74
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
