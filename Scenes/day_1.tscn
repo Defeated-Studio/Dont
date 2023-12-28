@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dqnoofif8rxky"]
+[gd_scene load_steps=7 format=3 uid="uid://dqnoofif8rxky"]
 
 [ext_resource type="PackedScene" uid="uid://b3mtgog05gg4t" path="res://Scenes/world.tscn" id="1_t0ccx"]
 [ext_resource type="Script" path="res://Scripts/day_1.gd" id="2_bjh18"]
+[ext_resource type="PackedScene" uid="uid://clienf7eye2ff" path="res://Scenes/microphone.tscn" id="3_gap6c"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_upss0"]
 
@@ -12,16 +13,24 @@
 [node name="day_1" instance=ExtResource("1_t0ccx")]
 script = ExtResource("2_bjh18")
 
-[node name="Node3D" parent="." index="2"]
+[node name="sleepLabel" type="Label" parent="." index="0"]
+offset_left = -2.0
+offset_top = 170.0
+offset_right = 1144.0
+offset_bottom = 680.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Node3D" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.9488, 4.24465, 3.25338)
 
-[node name="E_BeginText" type="Area3D" parent="." index="13"]
+[node name="E_BeginText" type="Area3D" parent="." index="14"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="E_BeginText" index="0"]
 transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, -3.73636, 8.81337, -7.81804)
 shape = SubResource("BoxShape3D_upss0")
 
-[node name="E_OpenDoorSlow" type="Area3D" parent="." index="14"]
+[node name="E_OpenDoorSlow" type="Area3D" parent="." index="15"]
 collision_layer = 16
 collision_mask = 16
 
@@ -29,7 +38,7 @@ collision_mask = 16
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -12.4821, 8.67318, 1.48803)
 shape = SubResource("BoxShape3D_7cfxe")
 
-[node name="E_Sleep" type="Area3D" parent="." index="15"]
+[node name="E_Sleep" type="Area3D" parent="." index="16"]
 collision_layer = 16
 collision_mask = 16
 
@@ -37,13 +46,7 @@ collision_mask = 16
 transform = Transform3D(3.01, 0, 0, 0, 3.01, 0, 0, 0, 3.01, -1.07127, 8.24152, 1.99543)
 shape = SubResource("BoxShape3D_kqbkr")
 
-[node name="sleepLabel" type="Label" parent="." index="16"]
-offset_left = -2.0
-offset_top = 170.0
-offset_right = 1144.0
-offset_bottom = 680.0
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Microphone" parent="." index="17" instance=ExtResource("3_gap6c")]
 
 [connection signal="body_entered" from="E_BeginText" to="." method="_on_e_begin_text_body_entered"]
 [connection signal="body_entered" from="E_OpenDoorSlow" to="." method="_on_e_open_door_slow_body_entered"]

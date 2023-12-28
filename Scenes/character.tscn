@@ -187,7 +187,7 @@ transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 
 light_volumetric_fog_energy = 16.0
 light_projector = ExtResource("2_eu1s4")
 shadow_enabled = true
-spot_range = 72.865
+spot_range = 7.798
 spot_angle = 23.74
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
