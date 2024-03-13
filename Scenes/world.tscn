@@ -26,8 +26,8 @@ shader_parameter/grain_size = 1.0
 sky_material = SubResource("PanoramaSkyMaterial_outxi")
 
 [sub_resource type="Environment" id="Environment_ig37q"]
-background_mode = 2
 background_color = Color(1, 1, 1, 1)
+background_energy_multiplier = 0.0
 sky = SubResource("Sky_lfql4")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_88fij"]
@@ -80,7 +80,7 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1.59691, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -1.597, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 1)
 }
 tracks/2/type = "bezier"
@@ -117,7 +117,7 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1.59698, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -1.597, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 3.5)
 }
 tracks/2/type = "bezier"
@@ -206,9 +206,12 @@ offset_right = 1151.0
 offset_bottom = 645.0
 
 [node name="Node3D" parent="." instance=ExtResource("2_brn3y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.558255, 8.20827, 3.02988)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.558255, 8.01354, 1.23965)
 collision_layer = 17
 collision_mask = 17
+
+[node name="SpotLight3D" parent="Node3D/Camera3D/hand" index="0"]
+visible = false
 
 [node name="environment" type="Node3D" parent="."]
 
@@ -298,6 +301,12 @@ use_collision = true
 size = Vector3(15.7456, 4.42471, 0.054661)
 material = SubResource("StandardMaterial3D_s8cki")
 
+[node name="backwall18" type="CSGBox3D" parent="room"]
+transform = Transform3D(-0.999936, 0, 0.0113096, 0, 1, 0, -0.0113096, 0, -0.999936, 2.40723, 5.73969, -11.2192)
+use_collision = true
+size = Vector3(6.90932, 4.42471, 0.054661)
+material = SubResource("StandardMaterial3D_s8cki")
+
 [node name="backwall17" type="CSGBox3D" parent="room"]
 transform = Transform3D(-0.999936, 0, 0.0113096, 0, 1, 0, -0.0113096, 0, -0.999936, -8.88288, 5.73969, 4.32292)
 use_collision = true
@@ -326,6 +335,12 @@ material = SubResource("StandardMaterial3D_s8cki")
 transform = Transform3D(-0.999793, 0, 0.0203841, 0, 1, 0, -0.0203841, 0, -0.999793, -12.5317, 10.0805, -11.4296)
 use_collision = true
 size = Vector3(2.35197, 4.56053, 0.054661)
+material = SubResource("StandardMaterial3D_s8cki")
+
+[node name="backwall19" type="CSGBox3D" parent="room"]
+transform = Transform3D(-0.999793, 0, 0.0203841, 0, 1, 0, -0.0203841, 0, -0.999793, -15.2324, 10.0805, -11.4331)
+use_collision = true
+size = Vector3(3.02598, 4.56053, 0.054661)
 material = SubResource("StandardMaterial3D_s8cki")
 
 [node name="backwall10" type="CSGBox3D" parent="room"]
@@ -423,6 +438,15 @@ light_energy = 1.03
 omni_range = 9.565
 omni_attenuation = 0.965935
 
+[node name="modern_ceiling_lamp2" parent="." instance=ExtResource("9_1y1li")]
+transform = Transform3D(0.009, 0, 0, 0, 0.009, 0, 0, 0, 0.009, -8.24017, 8.33786, -3.42746)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="modern_ceiling_lamp2"]
+transform = Transform3D(111.111, 0, 0, 0, 111.111, 0, 0, 0, 111.111, -0.529785, -101.887, 2.39804)
+light_energy = 1.03
+omni_range = 9.565
+omni_attenuation = 0.965935
+
 [node name="antique_chandelier" parent="." instance=ExtResource("10_nk3gg")]
 transform = Transform3D(0.002, 0, 0, 0, 0.002, 0, 0, 0, 0.002, -7.77503, 10.1778, -2.57493)
 
@@ -452,3 +476,5 @@ shape = SubResource("BoxShape3D_si1bx")
 [connection signal="timeout" from="ingameText/Timer" to="ingameText" method="_on_timer_timeout"]
 [connection signal="body_entered" from="E_ShowDoorInteractive" to="." method="_on_e_show_door_interactive_body_entered"]
 [connection signal="body_exited" from="E_ShowDoorInteractive" to="." method="_on_e_show_door_interactive_body_exited"]
+
+[editable path="Node3D"]

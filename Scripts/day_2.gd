@@ -6,6 +6,7 @@ extends Node3D
 @onready var livingRoomDoor = $livingRoomDoor
 @onready var flashlight = $Node3D/Camera3D/hand/SpotLight3D
 var flashlightOn = false
+@onready var player = $Node3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

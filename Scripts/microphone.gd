@@ -27,8 +27,6 @@ func _process(delta):
 	if MicrophoneInputPeakVolume > UPPER_BOUND:
 		MicrophoneInputPeakVolume = UPPER_BOUND
 	var linear_sample = MicrophoneInputPeakVolume
-	if counter % 10 == 0:
-		print(MicrophoneInputPeakVolume)
 	samples.push_front(linear_sample)
 	counter += 1
 	if samples.size() > SMOOTHNESS:

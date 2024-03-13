@@ -1,9 +1,10 @@
-[gd_scene load_steps=35 format=3 uid="uid://clukbumoxlq6c"]
+[gd_scene load_steps=38 format=3 uid="uid://clukbumoxlq6c"]
 
 [ext_resource type="PackedScene" uid="uid://b3mtgog05gg4t" path="res://Scenes/world.tscn" id="1_o04js"]
 [ext_resource type="Script" path="res://Scripts/day_2.gd" id="2_1kah1"]
 [ext_resource type="Script" path="res://Scripts/textScriptday_2.gd" id="3_l1usb"]
 [ext_resource type="Texture2D" uid="uid://ca4kgkhvhao12" path="res://Materials/kloofendal_48d_partly_cloudy_puresky_2k.hdr" id="4_vk2ga"]
+[ext_resource type="Texture2D" uid="uid://cacksjooxeqdx" path="res://Materials/wood_planks_diff_2k.jpg" id="5_63o3w"]
 [ext_resource type="Script" path="res://Scripts/door.gd" id="5_ir8d1"]
 [ext_resource type="PackedScene" uid="uid://cuvqsaqnggsne" path="res://Models/wooden_door.glb" id="5_w7ink"]
 [ext_resource type="AudioStream" uid="uid://wbk6sw7klfg8" path="res://Sounds/doorOpen.wav" id="7_4murq"]
@@ -17,6 +18,7 @@
 [ext_resource type="Script" path="res://addons/proton_scatter/src/scatter_item.gd" id="15_mf3f1"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/scatter_shape.gd" id="16_xk02r"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/shapes/box_shape.gd" id="17_n2tyy"]
+[ext_resource type="PackedScene" uid="uid://cmx8vdenr2334" path="res://Models/library_stairs.glb" id="18_jxf0n"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_yuwl3"]
 panorama = ExtResource("4_vk2ga")
@@ -25,6 +27,7 @@ panorama = ExtResource("4_vk2ga")
 sky_material = SubResource("PanoramaSkyMaterial_yuwl3")
 
 [sub_resource type="Environment" id="Environment_1qa7l"]
+background_mode = 2
 background_color = Color(0.231373, 0.231373, 0.231373, 1)
 background_energy_multiplier = 0.0
 sky = SubResource("Sky_k7sg5")
@@ -111,8 +114,13 @@ _data = {
 "RESET": SubResource("Animation_4e4mu")
 }
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cknmw"]
+albedo_texture = ExtResource("5_63o3w")
+anisotropy_enabled = true
+
 [sub_resource type="Animation" id="Animation_gon4n"]
 resource_name = "DoorOpen"
+length = 2.5
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -122,7 +130,7 @@ tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 0),
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1)
+"times": PackedFloat32Array(0, 2.5)
 }
 tracks/1/type = "bezier"
 tracks/1/imported = false
@@ -132,8 +140,8 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1.52032, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1)
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -1.52, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 2.5)
 }
 tracks/2/type = "bezier"
 tracks/2/imported = false
@@ -144,7 +152,7 @@ tracks/2/loop_wrap = true
 tracks/2/keys = {
 "handle_modes": PackedInt32Array(0, 0),
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1)
+"times": PackedFloat32Array(0, 2.5)
 }
 
 [sub_resource type="Animation" id="Animation_q0idb"]
@@ -193,8 +201,9 @@ _data = {
 size = Vector3(1, 1.00722, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_l1w3v"]
+size = Vector3(1, 1, 1.59574)
 
-[sub_resource type="Resource" id="Resource_rwyc8"]
+[sub_resource type="Resource" id="Resource_cpdnt"]
 script = ExtResource("11_afwlt")
 amount = 1500
 enabled = true
@@ -203,7 +212,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 1
 
-[sub_resource type="Resource" id="Resource_87gvj"]
+[sub_resource type="Resource" id="Resource_xyi0u"]
 script = ExtResource("12_xo52a")
 position = Vector3(0.15, 0.15, 0.15)
 rotation = Vector3(1, 360, 1)
@@ -214,7 +223,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_n6kqs"]
+[sub_resource type="Resource" id="Resource_xvno0"]
 script = ExtResource("13_5neau")
 iterations = 3
 offset_step = 0.2
@@ -226,7 +235,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_07w87"]
+[sub_resource type="Resource" id="Resource_aqibw"]
 script = ExtResource("14_886ej")
 ray_direction = Vector3(0, -1, 0)
 ray_length = 5.0
@@ -242,9 +251,9 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_y2jsk"]
+[sub_resource type="Resource" id="Resource_refig"]
 script = ExtResource("10_aufi8")
-stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_rwyc8"), SubResource("Resource_87gvj"), SubResource("Resource_n6kqs"), SubResource("Resource_07w87")])
+stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_cpdnt"), SubResource("Resource_xyi0u"), SubResource("Resource_xvno0"), SubResource("Resource_aqibw")])
 
 [sub_resource type="Resource" id="Resource_ehbp7"]
 script = ExtResource("17_n2tyy")
@@ -260,21 +269,40 @@ script = ExtResource("3_l1usb")
 wait_time = 0.8
 
 [node name="Node3D" parent="." index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.590205, 8.08171, 2.6369)
+transform = Transform3D(-0.999999, 0, -8.74227e-08, 0, 1, 0, 8.74227e-08, 0, -0.999999, -11.3834, 4.32323, -29.9922)
+
+[node name="Camera3D" parent="Node3D" index="3"]
+transform = Transform3D(1, 0, -7.10543e-15, 0, 1, 0, 7.10543e-15, 0, 1, 0, 1.78, -0.1)
 
 [node name="WorldEnvironment" parent="environment" index="0"]
 environment = SubResource("Environment_1qa7l")
+
+[node name="old_couch" parent="." index="4"]
+transform = Transform3D(-0.0149933, 0.000443555, -7.36204e-05, 0.000437143, 0.014955, 0.0010754, 0.000105199, 0.00107277, -0.0149612, -7.43672, 4.35895, 2.91668)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="womanFrame" index="1"]
 libraries = {
 "": SubResource("AnimationLibrary_d8t7j")
 }
 
+[node name="floor2" parent="room" index="1"]
+transform = Transform3D(1.12507, 0, 0, 0, 1, 0, 0, 0, 1, -7.2149, 7.92049, -3.503)
+
 [node name="livingRoomDoor" type="CSGBox3D" parent="room/backwall16" index="0"]
 transform = Transform3D(0.0113096, 0, -0.999936, 0, 1, 0, 0.999936, 0, 0.0113096, 3.36633, -0.130732, -0.0078392)
 operation = 2
 use_collision = true
 size = Vector3(0.103028, 2.52306, 1.63312)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="room" index="25"]
+transform = Transform3D(1.46012, 0, 0, 0, 1.46012, 0, 0, 0, 2.50133, -12.7713, 7.92, -0.713589)
+size = Vector3(1, 0.002, 1.63388)
+material = SubResource("StandardMaterial3D_cknmw")
+
+[node name="stairs" parent="room" index="27"]
+transform = Transform3D(-0.0282248, 0.00562077, -1.42068, 0.599389, 1.86332, -0.00226208, 1.88311, -0.593002, -0.0205738, -13.4826, 6.43693, 0.340444)
+visible = false
+polygon = PackedVector2Array(0.110841, -1.10753, -3.75221, 0.106475, -1.08002, 1.24435)
 
 [node name="livingRoomDoor" type="StaticBody3D" parent="." index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.0362, 5.83634, -11.4492)
@@ -290,13 +318,13 @@ offset_bottom = 40.0
 layout_mode = 0
 offset_left = -4.0
 offset_top = 100.0
-offset_right = 1148.0
-offset_bottom = 748.0
+offset_right = 1676.0
+offset_bottom = 1650.0
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="wooden_door" parent="livingRoomDoor" index="1" instance=ExtResource("5_w7ink")]
-transform = Transform3D(-0.499993, 0, -0.00213629, 0, 0.4, 0, 0.00267036, 0, -0.399994, 0.792432, -1.47413, 0.133415)
+transform = Transform3D(-0.520963, 0, -0.00213677, 0, 0.406534, 0, 0.00278235, 0, -0.400084, 0.792432, -1.47413, 0.133415)
 
 [node name="livingRoomDoorCols" type="CSGBox3D" parent="livingRoomDoor/wooden_door" index="1"]
 transform = Transform3D(0.0106812, 0, 1.99997, 0, 2.5, 0, -2.49996, 0, 0.0133515, -0.00995636, 3.22468, -0.168495)
@@ -314,13 +342,44 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.36489, -0.136229, 0.467075)
 stream = ExtResource("7_4murq")
 volume_db = -13.333
 
-[node name="E_MoveFrame" type="Area3D" parent="." index="14"]
+[node name="wooden_door2" parent="." index="9" instance=ExtResource("5_w7ink")]
+transform = Transform3D(-0.499993, 0, -0.00213629, 0, 0.4, 0, 0.00267036, 0, -0.399994, -10.4522, 4.34868, 4.11969)
+
+[node name="livingRoomDoorCols" type="CSGBox3D" parent="wooden_door2" index="1"]
+transform = Transform3D(0.0106812, 0, 1.99997, 0, 2.5, 0, -2.49996, 0, 0.0133515, -0.00995636, 3.22468, -0.168495)
+visible = false
+use_collision = true
+size = Vector3(0.103028, 2.72, 1.65)
+
+[node name="wooden_door3" parent="." index="10" instance=ExtResource("5_w7ink")]
+transform = Transform3D(-0.00267034, 0, 0.399994, 0, 0.4, 0, -0.499993, 0, -0.00213627, -13.4345, 4.34868, -7.8916)
+
+[node name="livingRoomDoorCols" type="CSGBox3D" parent="wooden_door3" index="1"]
+transform = Transform3D(0.0106812, 0, 1.99997, 0, 2.5, 0, -2.49996, 0, 0.0133515, -0.00995636, 3.22468, -0.168495)
+visible = false
+use_collision = true
+size = Vector3(0.103028, 2.72, 1.65)
+
+[node name="doorLabel" parent="bedroomDoor/doorText" index="0"]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 1680.0
+offset_bottom = 1550.0
+
+[node name="OmniLight3D" parent="modern_ceiling_lamp" index="1"]
+omni_range = 6.209
+
+[node name="OmniLight3D" parent="antique_chandelier" index="1"]
+visible = false
+omni_range = 5.517
+
+[node name="E_MoveFrame" type="Area3D" parent="." index="16"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="E_MoveFrame" index="0"]
 transform = Transform3D(3.38, 0, 0, 0, 3.38, 0, 0, 0, 3.38, -6.54618, 10.191, -8.2668)
 shape = SubResource("BoxShape3D_b6ckn")
 
-[node name="E_ShowDoorInteractiveLivingRoom" type="Area3D" parent="." index="15"]
+[node name="E_ShowDoorInteractiveLivingRoom" type="Area3D" parent="." index="17"]
 collision_layer = 16
 collision_mask = 16
 
@@ -328,17 +387,17 @@ collision_mask = 16
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -12.3048, 5.54152, -11.357)
 shape = SubResource("BoxShape3D_l1w3v")
 
-[node name="floor" type="CSGBox3D" parent="." index="16"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.4369, 4.30399, -41.4681)
+[node name="floor" type="CSGBox3D" parent="." index="18"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.4369, 4.1672, -41.4681)
 material_override = ExtResource("8_ltr34")
 use_collision = true
-size = Vector3(75.4363, 0.1, 59.7187)
+size = Vector3(75.436, 0.08, 113.249)
 
-[node name="nature" type="Node3D" parent="." index="17"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.246, 5.40426, -23.2543)
+[node name="nature" type="Node3D" parent="." index="19"]
+transform = Transform3D(1.00187, 0, 0, 0, 1.00187, 0, 0, 0, 1.35848, -14.3686, 5.86723, -26.1386)
 script = ExtResource("9_md4u1")
-global_seed = 12
-modifier_stack = SubResource("Resource_y2jsk")
+global_seed = 2
+modifier_stack = SubResource("Resource_refig")
 Performance/use_chunks = true
 Performance/chunk_dimensions = Vector3(15, 15, 15)
 
@@ -364,6 +423,23 @@ transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 2.20146,
 script = ExtResource("16_xk02r")
 shape = SubResource("Resource_ehbp7")
 
+[node name="Stairs" type="Node3D" parent="." index="20"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0533104, 0, 0)
+
+[node name="library_stairs2" parent="Stairs" index="0" instance=ExtResource("18_jxf0n")]
+transform = Transform3D(-2.23409, 0, 8.74228e-08, 0, 1, 0, -1.95311e-07, 0, -1, -12.0717, 4.93429, -5.11614)
+
+[node name="library_stairs3" parent="Stairs" index="1" instance=ExtResource("18_jxf0n")]
+transform = Transform3D(-2.23409, 0, 8.74228e-08, 0, 1, 0, -1.95311e-07, 0, -1, -12.0717, 5.92357, -4.06204)
+
+[node name="library_stairs4" parent="Stairs" index="2" instance=ExtResource("18_jxf0n")]
+transform = Transform3D(-2.23409, 0, 8.74228e-08, 0, 1, 0, -1.95311e-07, 0, -1, -12.0717, 6.90537, -3.01975)
+
+[node name="library_stairs" parent="Stairs" index="3" instance=ExtResource("18_jxf0n")]
+transform = Transform3D(-2.23409, 0, 8.74228e-08, 0, 1, 0, -1.95311e-07, 0, -1, -12.0717, 3.94786, -6.16)
+
 [connection signal="body_entered" from="E_MoveFrame" to="." method="_on_e_move_frame_body_entered"]
 [connection signal="body_entered" from="E_ShowDoorInteractiveLivingRoom" to="." method="_on_e_show_door_interactive_living_room_body_entered"]
 [connection signal="body_exited" from="E_ShowDoorInteractiveLivingRoom" to="." method="_on_e_show_door_interactive_living_room_body_exited"]
+
+[editable path="Node3D"]

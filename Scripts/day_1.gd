@@ -5,22 +5,28 @@ extends Node3D
 @onready var bedroomDoor = $bedroomDoor
 @onready var sleepText = $sleepLabel
 @onready var mic = $Microphone
+@onready var flashlight = $Node3D/Camera3D/hand/SpotLight3D
+@onready var player = $Node3D/AnimationPlayer2
 var canSleep = false
+var canshowText = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	mic.hide()
+	flashlight.hide()
+	
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if Input.is_action_just_pressed("StandUp"):
+		player.play("StandUp")
+	
 	if Input.is_action_pressed("Quit"):
 		get_tree().root.propagate_notification(NOTIFICATION_WM_CLOSE_REQUEST)
 		get_tree().quit()
 		
 	if Input.is_action_just_pressed("Action") and canSleep:
-		var path = get_tree().current_scene.scene_file_path
-		var next_day = path.to_int() + 1
-		var next_level_path = "res://Scenes/day_" + str(next_day) + ".tscn"
+		var next_level_path = "res://Scenes/under_the_bed" + ".tscn"
 		get_tree().change_scene_to_file(next_level_path)
 
 func _on_e_show_door_interactive_body_entered(body):
@@ -49,11 +55,13 @@ func _on_e_open_door_slow_body_entered(body):
 
 
 func _on_e_sleep_body_entered(body):
-	sleepText.show()
-	sleepText.text = "[E] Sleep"
-	canSleep = true
+	if canshowText:
+		sleepText.show()
+		sleepText.text = "[E] to Hide"
+		canSleep = true
 
 
 func _on_e_sleep_body_exited(body):
 	sleepText.hide()
 	canSleep = false
+	canshowText = true

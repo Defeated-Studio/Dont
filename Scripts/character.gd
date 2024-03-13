@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 
-const SPEED = 5.0
+const SPEED = 3.0
 const JUMP_VELOCITY = 4.5
 const CROUCH_SPEED = 2.0
 const SPRINT_SPEED = 8.0
@@ -18,8 +18,8 @@ func _ready():
 
 func _physics_process(delta):
 	# Add the gravity.
-	if not is_on_floor():
-		velocity.y -= gravity * delta
+	#if not is_on_floor():
+	#	velocity.y -= gravity * delta
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
