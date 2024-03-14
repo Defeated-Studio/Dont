@@ -1,14 +1,16 @@
-[gd_scene load_steps=13 format=3 uid="uid://cvpnjyuh3b3k0"]
+[gd_scene load_steps=15 format=3 uid="uid://cvpnjyuh3b3k0"]
 
 [ext_resource type="PackedScene" uid="uid://clukbumoxlq6c" path="res://Scenes/day_2.tscn" id="1_q47kp"]
 [ext_resource type="Script" path="res://Scenes/under_the_bed.gd" id="2_g41yh"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/stack/modifier_stack.gd" id="2_hjcd5"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/create_inside_random.gd" id="3_aeqh2"]
+[ext_resource type="PackedScene" uid="uid://tf3f3gr1vnbo" path="res://Models/old_closet.glb" id="3_rwjqq"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/randomize_transforms.gd" id="4_82ltq"]
+[ext_resource type="PackedScene" uid="uid://djcmrmoh7xc3g" path="res://Models/persian_rug.glb" id="4_jj75o"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/relax.gd" id="5_dpmjh"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/project_on_geometry.gd" id="6_3yjvr"]
 
-[sub_resource type="Resource" id="Resource_os6je"]
+[sub_resource type="Resource" id="Resource_acy0l"]
 script = ExtResource("3_aeqh2")
 amount = 1500
 enabled = true
@@ -17,7 +19,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 1
 
-[sub_resource type="Resource" id="Resource_3smse"]
+[sub_resource type="Resource" id="Resource_5emva"]
 script = ExtResource("4_82ltq")
 position = Vector3(0.15, 0.15, 0.15)
 rotation = Vector3(1, 360, 1)
@@ -28,7 +30,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_2g2dc"]
+[sub_resource type="Resource" id="Resource_sqjtd"]
 script = ExtResource("5_dpmjh")
 iterations = 3
 offset_step = 0.2
@@ -40,7 +42,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_onmgh"]
+[sub_resource type="Resource" id="Resource_bkfxt"]
 script = ExtResource("6_3yjvr")
 ray_direction = Vector3(0, -1, 0)
 ray_length = 5.0
@@ -56,9 +58,9 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_4w0yu"]
+[sub_resource type="Resource" id="Resource_pjh0s"]
 script = ExtResource("2_hjcd5")
-stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_os6je"), SubResource("Resource_3smse"), SubResource("Resource_2g2dc"), SubResource("Resource_onmgh")])
+stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_acy0l"), SubResource("Resource_5emva"), SubResource("Resource_sqjtd"), SubResource("Resource_bkfxt")])
 
 [node name="under_the_bed" instance=ExtResource("1_q47kp")]
 script = ExtResource("2_g41yh")
@@ -70,12 +72,18 @@ transform = Transform3D(0.999999, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, 0.9999
 transform = Transform3D(1, 0, -2.13163e-14, 0, 1, 3.55271e-15, 2.13163e-14, -3.55271e-15, 1, 0, 1.00403, 0)
 
 [node name="Camera3D" parent="Node3D" index="3"]
-transform = Transform3D(1, 0, 5.82645e-13, 0, 1, 0, -5.82645e-13, 0, 1, 0, 1.38627, -0.290795)
+transform = Transform3D(1, 0, 4.83169e-13, 0, 1, 0, -4.83169e-13, 0, 1, 0, 1.23947, -0.336671)
+
+[node name="old_closet" parent="room/floor" index="0" instance=ExtResource("3_rwjqq")]
+transform = Transform3D(-1.5, 0, -2.26494e-07, 0, 1.5, 0, 2.26494e-07, 0, -1.5, 0.528392, -0.116, -7.11704)
+
+[node name="persian_rug" parent="room/floor" index="1" instance=ExtResource("4_jj75o")]
+transform = Transform3D(-4.37114e-10, 0, 0.01, 0, 0.01, 0, -0.01, 0, -4.37114e-10, -0.192317, 0.0109911, 1.99888)
 
 [node name="OmniLight3D" parent="modern_ceiling_lamp" index="1"]
 omni_range = 10.713
 
 [node name="nature" parent="." index="19"]
-modifier_stack = SubResource("Resource_4w0yu")
+modifier_stack = SubResource("Resource_pjh0s")
 
 [editable path="Node3D"]
