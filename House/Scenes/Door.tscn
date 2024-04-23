@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://4wt0nosut0yj"]
 
-[ext_resource type="Script" path="res://House/Scripts/doorScript.gd" id="1_8e388"]
+[ext_resource type="Script" path="res://House/Scripts/DoorScript.gd" id="1_8e388"]
 [ext_resource type="Texture2D" uid="uid://cyoyg8ccxrqs4" path="res://House/Models/Doors_0.webp" id="2_55hno"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wnquo"]

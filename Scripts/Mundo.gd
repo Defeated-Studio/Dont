@@ -9,7 +9,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	$FPS.set_text("FPS %d" % Engine.get_frames_per_second())
+	$FPSCounter.set_text("FPS %d" % Engine.get_frames_per_second())
 
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
