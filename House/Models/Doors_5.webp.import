@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://bcbw4xexuohjk"
+path.s3tc="res://.godot/imported/Doors_5.webp-cf0cb074b32a93c70253083b16379e72.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "108deef65c4af7ead960656630ee4315"
+}
+
+[deps]
+
+source_file="res://House/Models/Doors_5.webp"
+dest_files=["res://.godot/imported/Doors_5.webp-cf0cb074b32a93c70253083b16379e72.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=1
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=1
+roughness/src_normal="res://House/Models/Doors_5.webp"
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

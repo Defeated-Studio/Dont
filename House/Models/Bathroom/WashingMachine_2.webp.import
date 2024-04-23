@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://bhe7cpm2iv3ct"
+path.s3tc="res://.godot/imported/WashingMachine_2.webp-4ff67050c17e80c7b5f760772ec4e6c0.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "621e3ba32fe9195d58a197448e99b078"
+}
+
+[deps]
+
+source_file="res://House/Models/Bathroom/WashingMachine_2.webp"
+dest_files=["res://.godot/imported/WashingMachine_2.webp-4ff67050c17e80c7b5f760772ec4e6c0.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=1
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=1
+roughness/src_normal="res://House/Models/Bathroom/WashingMachine_2.webp"
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

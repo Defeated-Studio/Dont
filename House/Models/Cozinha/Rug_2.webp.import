@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://bj3j23oogh8da"
+path.s3tc="res://.godot/imported/Rug_2.webp-f80d26e336b7a91f717b6b8fc1c16f37.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "648433eb972798fe01e2d4a1d30e1be9"
+}
+
+[deps]
+
+source_file="res://House/Models/Cozinha/Rug_2.webp"
+dest_files=["res://.godot/imported/Rug_2.webp-f80d26e336b7a91f717b6b8fc1c16f37.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=1
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=1
+roughness/src_normal="res://House/Models/Cozinha/Rug_2.webp"
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

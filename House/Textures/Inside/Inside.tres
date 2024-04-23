@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://ci8tpe45fspt8"]
+
+[ext_resource type="Texture2D" uid="uid://bjv8684uiixry" path="res://House/Textures/Inside/grey_plaster_diff_1k.png" id="1_g0jb5"]
+[ext_resource type="Texture2D" uid="uid://bvyi22muv6maq" path="res://House/Textures/Inside/grey_plaster_nor_gl_1k.png" id="2_3e8uc"]
+[ext_resource type="Texture2D" uid="uid://hk86ud10vgu7" path="res://House/Textures/Inside/grey_plaster_rough_1k.png" id="3_24sgy"]
+
+[resource]
+albedo_texture = ExtResource("1_g0jb5")
+roughness_texture = ExtResource("3_24sgy")
+normal_enabled = true
+normal_texture = ExtResource("2_3e8uc")
+uv1_scale = Vector3(2, 2, 2)

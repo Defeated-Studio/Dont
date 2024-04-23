@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://bovsx2jhdji2h"
+path.s3tc="res://.godot/imported/WallLamp_2.png-5ccf4f06e1dee50716cda0d7f8ce096d.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "a2f40708d7f86535605c8506bc03cc82"
+}
+
+[deps]
+
+source_file="res://House/Models/Outside/WallLamp_2.png"
+dest_files=["res://.godot/imported/WallLamp_2.png-5ccf4f06e1dee50716cda0d7f8ce096d.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=1
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=1
+roughness/src_normal="res://House/Models/Outside/WallLamp_2.png"
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://c7p1ok024kb3b"
+path.s3tc="res://.godot/imported/Curtain1_3.webp-a81a28d84f8a9d7a8a701a6b47cf2fb8.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "f534ce63c99d0b662fe66660e2bfca0b"
+}
+
+[deps]
+
+source_file="res://House/Models/Curtain1_3.webp"
+dest_files=["res://.godot/imported/Curtain1_3.webp-a81a28d84f8a9d7a8a701a6b47cf2fb8.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

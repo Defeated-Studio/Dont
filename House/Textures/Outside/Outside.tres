@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://c7d4mmlw1wks3"]
+
+[ext_resource type="Texture2D" uid="uid://cgikrfa4r6uu6" path="res://House/Textures/Outside/white_plaster_02_diff_1k.png" id="1_cl22j"]
+[ext_resource type="Texture2D" uid="uid://b26poct2fwp5r" path="res://House/Textures/Outside/white_plaster_02_nor_gl_1k.png" id="2_bg2bl"]
+[ext_resource type="Texture2D" uid="uid://dpjq7w53mgc7c" path="res://House/Textures/Outside/white_plaster_02_rough_1k.png" id="3_7tyxv"]
+
+[resource]
+albedo_texture = ExtResource("1_cl22j")
+roughness_texture = ExtResource("3_7tyxv")
+normal_enabled = true
+normal_texture = ExtResource("2_bg2bl")
+uv1_scale = Vector3(15, 15, 15)

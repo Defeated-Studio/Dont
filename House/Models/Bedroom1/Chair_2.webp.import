@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://uuf8th03v42"
+path.s3tc="res://.godot/imported/Chair_2.webp-90c8cd386afe35b006b4d6f38f1d687e.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "db31c0f2136b06d6307558f3b2c5b7a5"
+}
+
+[deps]
+
+source_file="res://House/Models/Bedroom1/Chair_2.webp"
+dest_files=["res://.godot/imported/Chair_2.webp-90c8cd386afe35b006b4d6f38f1d687e.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=1
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=1
+roughness/src_normal="res://House/Models/Bedroom1/Chair_2.webp"
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

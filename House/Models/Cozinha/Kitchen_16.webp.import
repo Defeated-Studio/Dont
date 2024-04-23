@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://duv0k0cjq1bq8"
+path.s3tc="res://.godot/imported/Kitchen_16.webp-4a7c16979adb4467ece534711f01146d.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "621cfbb4a8cdcddcf5127e5ad85c26d6"
+}
+
+[deps]
+
+source_file="res://House/Models/Cozinha/Kitchen_16.webp"
+dest_files=["res://.godot/imported/Kitchen_16.webp-4a7c16979adb4467ece534711f01146d.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=8
+roughness/src_normal="res://House/Models/Cozinha/Kitchen_17.webp"
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0
