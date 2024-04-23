@@ -52,9 +52,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_gassy")
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_gbo3e"]
-points = PackedVector3Array(-0.0324952, -0.064716, -5.33963, -0.0324952, 1.99555, -5.33963, -0.0324952, -0.064716, -0.266365, 0.284522, -0.064716, -5.33963, -0.0324952, 1.99555, -0.266365, 0.284522, -0.064716, -0.266365, -0.191035, 1.83697, -2.72404, 0.284522, 1.99555, -5.33963, 0.284522, 1.99555, -0.266365, 0.443124, 1.36144, -2.64458, -0.191035, 1.36144, -2.64458, 0.443124, 1.83697, -2.72404, 0.443124, 1.36144, -2.72404, -0.191035, 1.36144, -2.72404)
-
 [sub_resource type="Animation" id="Animation_s5pxr"]
 resource_name = "OpenDoorAni"
 tracks/0/type = "value"
@@ -93,6 +90,9 @@ _data = {
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wcd6m"]
 size = Vector3(2.36902, 2.583, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2gppr"]
+size = Vector3(0.352921, 2.59338, 3.91217)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_mdr0t"]
 _surfaces = [{
@@ -140,10 +140,6 @@ transform = Transform3D(1, 0, 3.81165e-21, 0, 1, 8.52651e-14, 4.02341e-21, -8.52
 mesh = SubResource("ArrayMesh_hcsjx")
 skeleton = NodePath("")
 
-[node name="Collision" type="CollisionShape3D" parent="Door"]
-transform = Transform3D(1, 0, 0, 0, 1, 1.06581e-14, 4.23516e-22, -1.06581e-14, 1, 0, 0, 0)
-shape = SubResource("ConvexPolygonShape3D_gbo3e")
-
 [node name="DoorAnimation" type="AnimationPlayer" parent="Door"]
 libraries = {
 "": SubResource("AnimationLibrary_4sum3")
@@ -161,12 +157,17 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="DoorEvent" type="Area3D" parent="Door"]
+transform = Transform3D(1, 0, 2.11758e-22, 0, 1, 3.55271e-15, 2.11758e-22, -3.55271e-15, 1, 0, 0, 0)
 collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Door/DoorEvent"]
 transform = Transform3D(1, 0, 9.14796e-20, 0, 1, 1.86162e-12, 8.87267e-20, -1.86162e-12, 1, 0.11806, 1.05646, -4.602)
 shape = SubResource("BoxShape3D_wcd6m")
+
+[node name="Colission" type="CollisionShape3D" parent="Door"]
+transform = Transform3D(1, 0, 1.83383e-19, 0, 1, 3.74101e-12, 1.783e-19, -3.74101e-12, 1, 0.0982895, 1.06326, -2.01373)
+shape = SubResource("BoxShape3D_2gppr")
 
 [node name="DoorFrame" type="Node3D" parent="."]
 transform = Transform3D(-3.45703e-07, 1, 4.37114e-08, -1, -3.45703e-07, -4.37114e-08, -4.37114e-08, -4.37114e-08, 1, 2.00879, -0.679375, -4.93451)
