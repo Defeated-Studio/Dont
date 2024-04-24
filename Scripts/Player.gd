@@ -4,6 +4,7 @@ var speed
 const WALK_SPEED = 2.0
 const SPRINT_SPEED = 8.0
 const SENSITIVITY = 0.002
+const CROUCH_SPEED = 1.2
 
 #bob variables
 const BOB_FREQ = 5
@@ -15,9 +16,12 @@ const BASE_FOV = 60.0
 const FOV_CHANGE = 1.5
 
 var gravity = 9.8
+var crouched = false
+var finishedCrouchAnimation = true
 
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
+@onready var crouch_animation = $CrouchAnimation
 
 
 func _ready():
@@ -36,11 +40,25 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 	
-	# Handle Sprint.
-	if Input.is_action_pressed("sprint"):
-		speed = SPRINT_SPEED
+	if crouched:
+		speed = CROUCH_SPEED
 	else:
 		speed = WALK_SPEED
+	# Handle Sprint And Crouching.
+	if Input.is_action_pressed("sprint") and !crouched:
+		speed = SPRINT_SPEED
+	elif Input.is_action_pressed("crouch"):
+		if !crouched and finishedCrouchAnimation:
+			finishedCrouchAnimation = false
+			crouched = true
+			crouch_animation.play("Crouch")
+	else:
+		if crouched and finishedCrouchAnimation:
+			finishedCrouchAnimation = false
+			crouch_animation.play("Uncrouch")
+			crouched = false
+
+
 
 	# Get the input direction and handle the movement/deceleration.
 	var input_dir = Input.get_vector("a", "d", "w", "s")
@@ -69,3 +87,7 @@ func _headbob(time) -> Vector3:
 	pos.y = sin(time * BOB_FREQ) * BOB_AMP
 	pos.x = cos(time * BOB_FREQ / 2) * BOB_AMP
 	return pos
+
+
+func _on_crouch_animation_animation_finished(anim_name):
+	finishedCrouchAnimation = true
