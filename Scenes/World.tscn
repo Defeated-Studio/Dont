@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://di7nwdbe4ogl"]
+[gd_scene load_steps=11 format=3 uid="uid://bonk8egsbphsi"]
 
 [ext_resource type="Script" path="res://Scripts/Mundo.gd" id="1_5u8qh"]
 [ext_resource type="PackedScene" uid="uid://dobytd4rsv0er" path="res://House/House.tscn" id="2_8svwb"]
