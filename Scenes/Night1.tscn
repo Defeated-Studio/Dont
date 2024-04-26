@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://syu2pf7jl5jl"]
+
+[ext_resource type="PackedScene" uid="uid://bonk8egsbphsi" path="res://Scenes/World.tscn" id="1_dexbp"]
+[ext_resource type="Script" path="res://Scripts/QuestControl.gd" id="2_orvvq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6nx4e"]
+size = Vector3(1.83899, 1.70105, 2.59155)
+
+[node name="World" instance=ExtResource("1_dexbp")]
+
+[node name="QuestControl" type="Control" parent="." index="5"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_orvvq")
+
+[node name="QuestText" type="Label" parent="QuestControl" index="0"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -599.0
+offset_bottom = 23.0
+grow_horizontal = 0
+horizontal_alignment = 2
+
+[node name="Area3D" type="Area3D" parent="." index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.88413, 0.768342, 10.5447)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.02746, 0.350525, -0.216365)
+shape = SubResource("BoxShape3D_6nx4e")
+
+[connection signal="body_entered" from="Area3D" to="QuestControl" method="_on_area_3d_body_entered"]

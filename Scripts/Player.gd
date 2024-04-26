@@ -1,10 +1,10 @@
 extends CharacterBody3D
 
 var speed
-const WALK_SPEED = 2.0
-const SPRINT_SPEED = 8.0
-const SENSITIVITY = 0.002
-const CROUCH_SPEED = 1.2
+var gravity = 9.8
+const WALK_SPEED = 2.5
+const SPRINT_SPEED = 5.0
+const SENSITIVITY = 0.2
 
 #bob variables
 const BOB_FREQ = 5
@@ -15,36 +15,54 @@ var t_bob = 0.0
 const BASE_FOV = 60.0
 const FOV_CHANGE = 1.5
 
-var gravity = 9.8
+#crouch variables
 var crouched = false
 var finishedCrouchAnimation = true
+const CROUCH_SPEED = 1.5
 
+var finishedFlashlightAnimation = false
+
+var direction = Vector3.ZERO
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
 @onready var crouch_animation = $CrouchAnimation
-
+@onready var hand = $Hand
+@onready var flashlight = $Hand/Flashlight
+@onready var flashlight_animation = $FlashlightAnimation
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 
-func _unhandled_input(event):
+func _input(event):
 	if event is InputEventMouseMotion:
-		head.rotate_y(-event.relative.x * SENSITIVITY)
-		camera.rotate_x(-event.relative.y * SENSITIVITY)
-		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-80), deg_to_rad(60))
+		rotate_y(deg_to_rad(-event.relative.x*SENSITIVITY))
+		head.rotate_x(deg_to_rad(-event.relative.y*SENSITIVITY))
+		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-60), deg_to_rad(60))
 
 
 func _physics_process(delta):
+	if Input.is_action_just_pressed("flashlight"):
+		if flashlight.visible:
+			flashlight.hide()
+			flashlight_animation.play(("hide"))			
+		else:
+			flashlight.show()
+			flashlight_animation.play(("show"))
+						
+	
+	make_flashlight_follow(delta)
+	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
-	
+		
+	# Handle Sprint And Crouching.
 	if crouched:
 		speed = CROUCH_SPEED
 	else:
 		speed = WALK_SPEED
-	# Handle Sprint And Crouching.
+	
 	if Input.is_action_pressed("sprint") and !crouched:
 		speed = SPRINT_SPEED
 	elif Input.is_action_pressed("crouch"):
@@ -58,17 +76,15 @@ func _physics_process(delta):
 			crouch_animation.play("Uncrouch")
 			crouched = false
 
-
-
 	# Get the input direction and handle the movement/deceleration.
 	var input_dir = Input.get_vector("a", "d", "w", "s")
-	var direction = (head.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	direction = lerp(direction,(transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized(), delta * speed)
 	if direction:
 		velocity.x = direction.x * speed
 		velocity.z = direction.z * speed
 	else:
-		velocity.x = lerp(velocity.x, direction.x * speed, delta * 7.0)
-		velocity.z = lerp(velocity.z, direction.z * speed, delta * 7.0)
+		velocity.x = move_toward(velocity.x, 0, speed)
+		velocity.z = move_toward(velocity.z, 0, speed)
 	
 	# Head bob
 	t_bob += delta * velocity.length() * float(is_on_floor())
@@ -91,3 +107,8 @@ func _headbob(time) -> Vector3:
 
 func _on_crouch_animation_animation_finished(anim_name):
 	finishedCrouchAnimation = true
+	
+func make_flashlight_follow(delta):
+	hand.rotation.y = head.rotation.y
+	hand.rotation.x = head.rotation.x
+

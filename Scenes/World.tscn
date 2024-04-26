@@ -23,7 +23,7 @@ sky_material = SubResource("PanoramaSkyMaterial_4ifls")
 
 [sub_resource type="Environment" id="Environment_kf7d3"]
 background_mode = 2
-background_energy_multiplier = 1.03
+background_energy_multiplier = 0.05
 sky = SubResource("Sky_clk0i")
 
 [node name="World" type="Node3D"]
@@ -42,6 +42,7 @@ skeleton = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.0819926, 2)
 
 [node name="Player" parent="." instance=ExtResource("3_btjh2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.48725, 0.0770997, 12.4848)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_kf7d3")
