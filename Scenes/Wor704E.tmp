@@ -11,12 +11,8 @@
 shader = ExtResource("1_ysvic")
 shader_parameter/enabled = true
 shader_parameter/dithering = true
-shader_parameter/colors = 18
+shader_parameter/colors = 12
 shader_parameter/dither_size = 1
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_uvpwe"]
-shader = ExtResource("5_q51fq")
-shader_parameter/pixel_size = 2.0
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ikmhl"]
 points = PackedVector3Array(25.3919, 0.396748, 25.3919, -25.3919, -0.396748, -25.3919, -25.3919, 0.396748, -25.3919, 25.3919, -0.396748, -25.3919, -25.3919, -0.396748, 25.3919, -25.3919, 0.396748, 25.3919, 25.3919, 0.396748, -25.3919, 25.3919, -0.396748, 25.3919)
@@ -39,6 +35,10 @@ background_mode = 2
 background_energy_multiplier = 0.05
 sky = SubResource("Sky_clk0i")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uvpwe"]
+shader = ExtResource("5_q51fq")
+shader_parameter/pixel_size = 2.0
+
 [node name="World" type="SubViewportContainer"]
 material = SubResource("ShaderMaterial_4xe8w")
 anchors_preset = 15
@@ -48,23 +48,10 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="SubViewport" type="SubViewport" parent="."]
-handle_input_locally = false
 size = Vector2i(1366, 768)
-render_target_update_mode = 4
 
 [node name="Node3D" type="Node3D" parent="SubViewport"]
 script = ExtResource("1_5u8qh")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="SubViewport/Node3D"]
-visible = false
-
-[node name="Pixelate" type="ColorRect" parent="SubViewport/Node3D/CanvasLayer"]
-material = SubResource("ShaderMaterial_uvpwe")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="Ground" type="StaticBody3D" parent="SubViewport/Node3D"]
 
@@ -88,3 +75,14 @@ environment = SubResource("Environment_kf7d3")
 offset_right = 145.0
 offset_bottom = 23.0
 text = "fps"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Pixelate" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_uvpwe")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
