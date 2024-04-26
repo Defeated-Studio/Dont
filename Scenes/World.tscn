@@ -1,22 +1,17 @@
-[gd_scene load_steps=15 format=3 uid="uid://bonk8egsbphsi"]
+[gd_scene load_steps=13 format=3 uid="uid://bonk8egsbphsi"]
 
 [ext_resource type="Script" path="res://Scripts/Mundo.gd" id="1_5u8qh"]
 [ext_resource type="Shader" path="res://Shaders/World2.gdshader" id="1_ysvic"]
 [ext_resource type="PackedScene" uid="uid://dobytd4rsv0er" path="res://House/House.tscn" id="2_8svwb"]
 [ext_resource type="PackedScene" uid="uid://cxsva7okbm5ol" path="res://Scenes/Player.tscn" id="3_btjh2"]
 [ext_resource type="Texture2D" uid="uid://7ov7anefv7vd" path="res://HDRI/night.exr" id="4_c8sla"]
-[ext_resource type="Shader" path="res://Shaders/World.gdshader" id="5_q51fq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4xe8w"]
 shader = ExtResource("1_ysvic")
 shader_parameter/enabled = true
 shader_parameter/dithering = true
-shader_parameter/colors = 18
+shader_parameter/colors = 16
 shader_parameter/dither_size = 1
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_uvpwe"]
-shader = ExtResource("5_q51fq")
-shader_parameter/pixel_size = 2.0
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ikmhl"]
 points = PackedVector3Array(25.3919, 0.396748, 25.3919, -25.3919, -0.396748, -25.3919, -25.3919, 0.396748, -25.3919, 25.3919, -0.396748, -25.3919, -25.3919, -0.396748, 25.3919, -25.3919, 0.396748, 25.3919, 25.3919, 0.396748, -25.3919, 25.3919, -0.396748, 25.3919)
@@ -39,7 +34,7 @@ background_mode = 2
 background_energy_multiplier = 0.05
 sky = SubResource("Sky_clk0i")
 
-[node name="World" type="SubViewportContainer"]
+[node name="WorldView" type="SubViewportContainer"]
 material = SubResource("ShaderMaterial_4xe8w")
 anchors_preset = 15
 anchor_right = 1.0
@@ -52,39 +47,29 @@ handle_input_locally = false
 size = Vector2i(1366, 768)
 render_target_update_mode = 4
 
-[node name="Node3D" type="Node3D" parent="SubViewport"]
+[node name="World" type="Node3D" parent="SubViewport"]
 script = ExtResource("1_5u8qh")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="SubViewport/Node3D"]
-visible = false
+[node name="Ground" type="StaticBody3D" parent="SubViewport/World"]
 
-[node name="Pixelate" type="ColorRect" parent="SubViewport/Node3D/CanvasLayer"]
-material = SubResource("ShaderMaterial_uvpwe")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Ground" type="StaticBody3D" parent="SubViewport/Node3D"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewport/Node3D/Ground"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewport/World/Ground"]
 shape = SubResource("ConvexPolygonShape3D_ikmhl")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewport/Node3D/Ground"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewport/World/Ground"]
 mesh = SubResource("PlaneMesh_o4aha")
 skeleton = NodePath("../../../..")
 
-[node name="House" parent="SubViewport/Node3D" instance=ExtResource("2_8svwb")]
+[node name="House" parent="SubViewport/World" instance=ExtResource("2_8svwb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.0819926, 2)
 
-[node name="Player" parent="SubViewport/Node3D" instance=ExtResource("3_btjh2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.48725, 0.0770997, 12.4848)
+[node name="Player" parent="SubViewport/World" instance=ExtResource("3_btjh2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.48725, 0.639103, 12.4848)
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewport/Node3D"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewport/World"]
 environment = SubResource("Environment_kf7d3")
 
-[node name="FPSCounter" type="Label" parent="SubViewport/Node3D"]
+[node name="FPSCounter" type="Label" parent="SubViewport/World"]
+visible = false
 offset_right = 145.0
 offset_bottom = 23.0
 text = "fps"

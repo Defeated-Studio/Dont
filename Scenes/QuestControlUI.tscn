@@ -1,0 +1,70 @@
+[gd_scene load_steps=6 format=3 uid="uid://c5io532rrd1i6"]
+
+[ext_resource type="Script" path="res://Scripts/QuestControl.gd" id="1_f66sj"]
+
+[sub_resource type="SystemFont" id="SystemFont_6ed6o"]
+
+[sub_resource type="Animation" id="Animation_tk4b3"]
+resource_name = "show"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("QuestText:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_s2ois"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("QuestText:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o4upf"]
+_data = {
+"RESET": SubResource("Animation_s2ois"),
+"show": SubResource("Animation_tk4b3")
+}
+
+[node name="QuestControl" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_f66sj")
+
+[node name="QuestText" type="Label" parent="."]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 20.0
+offset_right = 20.0
+offset_bottom = 66.0
+grow_horizontal = 2
+theme_override_fonts/font = SubResource("SystemFont_6ed6o")
+theme_override_font_sizes/font_size = 20
+vertical_alignment = 1
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="QuestTextAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_o4upf")
+}

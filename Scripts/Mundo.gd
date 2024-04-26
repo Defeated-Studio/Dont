@@ -8,7 +8,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	$FPSCounter.set_text("FPS %d" % Engine.get_frames_per_second())
+	#$FPSCounter.set_text("FPS: %d" % Engine.get_frames_per_second())
+	pass
 
 
 func _input(event):
