@@ -29,24 +29,24 @@ func _process(delta):
 		toClean -= 1
 		if toClean == 0:
 			await get_tree().create_timer(1.5).timeout
-			showDialogue("I think i'm done, i need to throw it away now")
+			showDialogue("Acho que terminei, preciso jogar isso fora")
 			trash.set_deferred("disabled", false) 
 	
 	if Input.is_action_just_pressed("interact") and canThrowAway:
 		quest_control.finishQuest()
 		get_node("TrashCan").queue_free()
 		await get_tree().create_timer(1.0).timeout
-		showDialogue("This house doesn't seem right")
+		showDialogue("Essa casa não parece certa")
 
 func _on_trigger_clean_house_task_body_entered(body):
 	if quest_control.questActive == 1:
-		showDialogue("This house is a mess, i think i should clean it")
+		showDialogue("Essa casa tá uma bagunça, preciso limpar isso")
 		activateCollisions()
 		get_node("TriggerCleanHouseTask").queue_free()
 		await get_tree().create_timer(3.0).timeout
 		quest_control.startQuest()
 	else:
-		showDialogue("Maybe i should turn the power back on first")
+		showDialogue("se pa preciso ligar o gerador")
 
 
 func activateCollisions():

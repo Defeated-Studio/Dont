@@ -7,7 +7,7 @@ extends Control
 
 @export var questActive = 0
 
-var questsText = ["Fix Generator", "Clean the House"]
+var questsText = ["Arrume o Gerador", "Limpe a Casa"]
 
 # Começar tasks instantaneamente para testes
 func _ready():
