@@ -1,19 +1,15 @@
-extends Node3D
+extends StaticBody3D
 
-
+@onready var Toilet = $Object_3
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#Engine.max_fps = 144
 	pass
-
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	#$FPSCounter.set_text("FPS: %d" % Engine.get_frames_per_second())
 	pass
 
-
-func _input(event):
-	if event.is_action_pressed("ui_cancel"):
-		get_tree().quit()
+func cleanToilet():
+	Toilet.get_active_material(0).albedo_color = Color(0.05, 0.14, 0.41, 1)
