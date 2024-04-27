@@ -1,5 +1,7 @@
 extends Node3D
 
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#Engine.max_fps = 144
@@ -15,4 +17,3 @@ func _process(delta):
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
 		get_tree().quit()
-

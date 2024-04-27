@@ -1,9 +1,9 @@
 [gd_scene load_steps=18 format=3 uid="uid://cxsva7okbm5ol"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_vcq62"]
-[ext_resource type="Texture2D" uid="uid://di4k7n2omabg3" path="res://Models/Flashlight_0.png" id="2_tvdg6"]
-[ext_resource type="Texture2D" uid="uid://mlkt478tq6ro" path="res://Models/Flashlight_1.png" id="3_ksxms"]
-[ext_resource type="Texture2D" uid="uid://dunkqjrducynx" path="res://Models/Flashlight_2.png" id="4_ej1ok"]
+[ext_resource type="Texture2D" uid="uid://domxi6jvbuon" path="res://Models/Flashlight_0.png" id="2_tvdg6"]
+[ext_resource type="Texture2D" uid="uid://depx8bh3f8o7j" path="res://Models/Flashlight_1.png" id="3_ksxms"]
+[ext_resource type="Texture2D" uid="uid://v3m5a54hcitu" path="res://Models/Flashlight_2.png" id="4_ej1ok"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_k458q"]
 radius = 0.2
@@ -119,7 +119,7 @@ _data = {
 
 [sub_resource type="Animation" id="Animation_7rbk8"]
 resource_name = "Crouch"
-length = 0.8
+length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -150,7 +150,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_h7jrb"]
 resource_name = "Uncrouch"
-length = 0.8
+length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true

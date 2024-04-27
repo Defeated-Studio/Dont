@@ -33,7 +33,7 @@ func _physics_process(delta):
 			i.hide()
 		await get_tree().create_timer(0.3).timeout
 		
-		for i in res:	
+		for i in res:
 			i.show()
 		await get_tree().create_timer(0.3).timeout	
 		
@@ -41,7 +41,7 @@ func _physics_process(delta):
 			i.hide()
 		await get_tree().create_timer(0.2).timeout
 		
-		for i in res:	
+		for i in res:
 			i.show()
 		quest_control.finishQuest()
 
