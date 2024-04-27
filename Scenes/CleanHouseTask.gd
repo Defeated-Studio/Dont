@@ -40,10 +40,11 @@ func _process(delta):
 
 func _on_trigger_clean_house_task_body_entered(body):
 	if quest_control.questActive == 1:
-		quest_control.startQuest()		
 		showDialogue("This house is a mess, i think i should clean it")
 		activateCollisions()
 		get_node("TriggerCleanHouseTask").queue_free()
+		await get_tree().create_timer(3.0).timeout
+		quest_control.startQuest()
 	else:
 		showDialogue("Maybe i should turn the power back on first")
 
