@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bonk8egsbphsi" path="res://Scenes/World.tscn" id="1_dexbp"]
 [ext_resource type="PackedScene" uid="uid://c5io532rrd1i6" path="res://Scenes/QuestControlUI.tscn" id="2_xuli7"]
 [ext_resource type="Script" path="res://Scripts/GeneratorTask.gd" id="3_0rlj4"]
-[ext_resource type="Script" path="res://Scenes/CleanHouseTask.gd" id="4_o8g44"]
+[ext_resource type="Script" path="res://Scripts/CleanHouseTask.gd" id="4_o8g44"]
 [ext_resource type="Texture2D" uid="uid://c5fophsrke1nq" path="res://House/Models/soda_can_0.png" id="5_qbsrj"]
 [ext_resource type="PackedScene" uid="uid://c8xs6ctym0laa" path="res://House/Models/pizza.glb" id="6_x05fs"]
 [ext_resource type="Texture2D" uid="uid://cgpytmkxuptnv" path="res://House/Models/dirty_plate_0.jpg" id="7_6mmov"]
@@ -242,30 +242,7 @@ grow_horizontal = 2
 grow_vertical = 0
 horizontal_alignment = 1
 
-[node name="DialogueText" type="Control" parent="SubViewport/World" index="8"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="DialogueText" type="Label" parent="SubViewport/World/DialogueText" index="0"]
-modulate = Color(1, 1, 0, 1)
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 640.0
-offset_right = 1326.0
-offset_bottom = 690.0
-grow_horizontal = 2
-grow_vertical = 0
-horizontal_alignment = 1
-
-[node name="DialogueTimer" type="Timer" parent="SubViewport/World/DialogueText" index="1"]
-one_shot = true
-
-[node name="GeneratorTask" type="Node3D" parent="SubViewport/World" index="9"]
+[node name="GeneratorTask" type="Node3D" parent="SubViewport/World" index="8"]
 script = ExtResource("3_0rlj4")
 
 [node name="GeneratorArea" type="Area3D" parent="SubViewport/World/GeneratorTask" index="0"]
@@ -277,7 +254,7 @@ collision_mask = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.182617, 0, -0.35376)
 shape = SubResource("BoxShape3D_32aba")
 
-[node name="CleanHouseTask" type="Node3D" parent="SubViewport/World" index="10"]
+[node name="CleanHouseTask" type="Node3D" parent="SubViewport/World" index="9"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.29965, 1.30064, 2.20655)
 script = ExtResource("4_o8g44")
 
@@ -425,7 +402,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.46712, -0.129333, -0.380702
 shape = SubResource("BoxShape3D_gqtgm")
 disabled = true
 
-[connection signal="timeout" from="SubViewport/World/DialogueText/DialogueTimer" to="SubViewport/World/CleanHouseTask" method="_on_dialogue_timer_timeout"]
 [connection signal="body_entered" from="SubViewport/World/GeneratorTask/GeneratorArea" to="SubViewport/World/GeneratorTask" method="_on_generator_area_body_entered"]
 [connection signal="body_exited" from="SubViewport/World/GeneratorTask/GeneratorArea" to="SubViewport/World/GeneratorTask" method="_on_generator_area_body_exited"]
 [connection signal="body_entered" from="SubViewport/World/CleanHouseTask/TriggerCleanHouseTask" to="SubViewport/World/CleanHouseTask" method="_on_trigger_clean_house_task_body_entered"]

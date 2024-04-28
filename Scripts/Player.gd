@@ -111,4 +111,3 @@ func _on_crouch_animation_animation_finished(anim_name):
 func make_flashlight_follow(delta):
 	hand.rotation.y = head.rotation.y
 	hand.rotation.x = head.rotation.x
-
