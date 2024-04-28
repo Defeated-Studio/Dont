@@ -1,0 +1,227 @@
+[gd_scene load_steps=6 format=3 uid="uid://bv6ycnt38m4we"]
+
+[ext_resource type="Texture2D" uid="uid://b0cwfegd4sfcm" path="res://Scenes/Mobile/cara.png" id="2_bebch"]
+[ext_resource type="Texture2D" uid="uid://vpt5pbo7myjo" path="res://Scenes/Mobile/mobile.png" id="2_linb7"]
+[ext_resource type="Texture2D" uid="uid://78bopv1ed2vo" path="res://Scenes/Mobile/eu.png" id="4_2wopj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_mltmj"]
+line_spacing = 0.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_s6f55"]
+font_size = 36
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -543.75
+offset_top = -41.25
+offset_right = 1412.25
+offset_bottom = 978.75
+texture = ExtResource("2_linb7")
+expand_mode = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 0
+offset_left = 208.25
+offset_top = 267.75
+offset_right = 659.25
+offset_bottom = 677.75
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PlaceHolder" type="Label" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+
+[node name="MessageOne" type="Label" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 1
+text = "  Lorem ipsum dolor
+  sit amet, consectet
+  ur adipiscing elit"
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/MessageOne"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = -427.0
+offset_top = -284.0
+offset_right = 626.0
+offset_bottom = 363.0
+texture = ExtResource("2_bebch")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PlaceHolder2" type="Label" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+
+[node name="MessageTwo" type="Label" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+text = "                                                  
+                                                    Lorem ipsum dolor
+sit amet, consectet
+ur adipiscing elit"
+horizontal_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/MessageTwo"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = -277.0
+offset_top = -248.0
+offset_right = 867.0
+offset_bottom = 380.0
+texture = ExtResource("4_2wopj")
+expand_mode = 1
+
+[node name="PlaceHolder3" type="Label" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+
+[node name="MessageThree" type="Label" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 1
+text = "  Lorem ipsum dolor
+  sit amet, consectet
+  ur adipiscing elit"
+
+[node name="TextureRect2" type="TextureRect" parent="ScrollContainer/VBoxContainer/MessageThree"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = -431.0
+offset_top = -286.0
+offset_right = 622.0
+offset_bottom = 361.0
+texture = ExtResource("2_bebch")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PlaceHolder4" type="Label" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+
+[node name="MessageFour" type="Label" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+text = "                                                   Lorem ipsum dolor
+                                                   sit amet, consectet
+                                                   ur adipiscing elit"
+label_settings = SubResource("LabelSettings_mltmj")
+
+[node name="TextureRect2" type="TextureRect" parent="ScrollContainer/VBoxContainer/MessageFour"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = -279.0
+offset_top = -275.0
+offset_right = 865.0
+offset_bottom = 353.0
+texture = ExtResource("4_2wopj")
+expand_mode = 1
+
+[node name="PlaceHolder5" type="Label" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+
+[node name="MessageFive" type="Label" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "  Lorem ipsum dolor
+  sit amet, consectet
+  ur adipiscing elit"
+
+[node name="TextureRect3" type="TextureRect" parent="ScrollContainer/VBoxContainer/MessageFive"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = -428.0
+offset_top = -288.0
+offset_right = 625.0
+offset_bottom = 359.0
+texture = ExtResource("2_bebch")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PlaceHolder6" type="Label" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+
+[node name="MessageSix" type="Label" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+text = "                                                  
+                                                    Lorem ipsum dolor
+sit amet, consectet
+ur adipiscing elit"
+horizontal_alignment = 2
+
+[node name="TextureRect2" type="TextureRect" parent="ScrollContainer/VBoxContainer/MessageSix"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = -277.0
+offset_top = -249.0
+offset_right = 867.0
+offset_bottom = 379.0
+texture = ExtResource("4_2wopj")
+expand_mode = 1
+
+[node name="PlaceHolder7" type="Label" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+
+[node name="MessageSeven" type="Label" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "  Lorem ipsum dolor
+  bixa
+  ur adipiscing elit
+
+"
+
+[node name="TextureRect4" type="TextureRect" parent="ScrollContainer/VBoxContainer/MessageSeven"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = -432.0
+offset_top = -286.0
+offset_right = 621.0
+offset_bottom = 361.0
+texture = ExtResource("2_bebch")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 0
+offset_left = 208.25
+offset_top = 168.75
+offset_right = 659.25
+offset_bottom = 267.75
+
+[node name="Label" type="Label" parent="CenterContainer"]
+layout_mode = 2
+text = "Messages > Mom"
+label_settings = SubResource("LabelSettings_s6f55")
+
+[node name="LineEdit" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 218.25
+offset_top = 699.75
+offset_right = 651.25
+offset_bottom = 748.75
+placeholder_text = "Message"
+max_length = 20
+clear_button_enabled = true
+deselect_on_focus_loss_enabled = false
