@@ -30,10 +30,10 @@ expand_mode = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 layout_mode = 0
-offset_left = 208.25
-offset_top = 267.75
-offset_right = 659.25
-offset_bottom = 677.75
+offset_left = 208.0
+offset_top = 268.0
+offset_right = 659.0
+offset_bottom = 675.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
 layout_mode = 2
@@ -48,9 +48,9 @@ size_flags_vertical = 1
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 1
-text = "  Lorem ipsum dolor
-  sit amet, consectet
-  ur adipiscing elit"
+text = "    Lorem ipsum dolor
+    sit amet, consectet
+    ur adipiscing elit"
 
 [node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/MessageOne"]
 show_behind_parent = true
@@ -95,9 +95,9 @@ size_flags_vertical = 1
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 1
-text = "  Lorem ipsum dolor
-  sit amet, consectet
-  ur adipiscing elit"
+text = "    Lorem ipsum dolor
+    sit amet, consectet
+    ur adipiscing elit"
 
 [node name="TextureRect2" type="TextureRect" parent="ScrollContainer/VBoxContainer/MessageThree"]
 show_behind_parent = true
@@ -140,9 +140,9 @@ size_flags_vertical = 1
 [node name="MessageFive" type="Label" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 1
-text = "  Lorem ipsum dolor
-  sit amet, consectet
-  ur adipiscing elit"
+text = "    Lorem ipsum dolor
+    sit amet, consectet
+    ur adipiscing elit"
 
 [node name="TextureRect3" type="TextureRect" parent="ScrollContainer/VBoxContainer/MessageFive"]
 show_behind_parent = true
@@ -186,9 +186,9 @@ size_flags_vertical = 1
 [node name="MessageSeven" type="Label" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 1
-text = "  Lorem ipsum dolor
-  bixa
-  ur adipiscing elit
+text = "    Lorem ipsum dolor
+    bixa
+    ur adipiscing elit
 
 "
 
@@ -199,6 +199,50 @@ offset_left = -432.0
 offset_top = -286.0
 offset_right = 621.0
 offset_bottom = 361.0
+texture = ExtResource("2_bebch")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PlaceHolder8" type="Label" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+
+[node name="MessageEight" type="Label" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "  filho vc é gay
+
+"
+
+[node name="TextureRect4" type="TextureRect" parent="ScrollContainer/VBoxContainer/MessageEight"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = -464.25
+offset_top = -164.0
+offset_right = 582.75
+offset_bottom = 191.0
+texture = ExtResource("2_bebch")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PlaceHolder9" type="Label" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+
+[node name="MessageNine" type="Label" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "   responde
+
+"
+
+[node name="TextureRect4" type="TextureRect" parent="ScrollContainer/VBoxContainer/MessageNine"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = -468.0
+offset_top = -152.75
+offset_right = 579.0
+offset_bottom = 180.25
 texture = ExtResource("2_bebch")
 expand_mode = 1
 stretch_mode = 5
