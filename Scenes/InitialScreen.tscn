@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://co7tsrq574r11"]
+[gd_scene load_steps=10 format=3 uid="uid://co7tsrq574r11"]
 
 [ext_resource type="Script" path="res://Scripts/InitialScreen.gd" id="1_difgm"]
 
@@ -79,7 +79,7 @@ tracks/5/keys = {
 
 [sub_resource type="Animation" id="Animation_7xujv"]
 resource_name = "fade_in_first"
-length = 6.0
+length = 11.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -87,7 +87,7 @@ tracks/0/path = NodePath("Label:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(1, 2),
+"times": PackedFloat32Array(1, 2.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -99,7 +99,7 @@ tracks/1/path = NodePath("Label2:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(2.5, 4),
+"times": PackedFloat32Array(4, 6),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -111,7 +111,7 @@ tracks/2/path = NodePath("Label3:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(4.5, 6),
+"times": PackedFloat32Array(7.5, 9.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -119,7 +119,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_rhie6"]
 resource_name = "fade_in_sec"
-length = 4.0
+length = 4.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -127,7 +127,7 @@ tracks/0/path = NodePath("Label4:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.5, 1.5),
+"times": PackedFloat32Array(0.5, 2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -139,7 +139,47 @@ tracks/1/path = NodePath("Label5:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(2, 4),
+"times": PackedFloat32Array(3, 4.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ptael"]
+resource_name = "fade_in_third"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(3.5, 5.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Label3:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(7.5, 9),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -233,6 +273,7 @@ _data = {
 "RESET": SubResource("Animation_x68ho"),
 "fade_in_first": SubResource("Animation_7xujv"),
 "fade_in_sec": SubResource("Animation_rhie6"),
+"fade_in_third": SubResource("Animation_ptael"),
 "fade_out_first": SubResource("Animation_poym2"),
 "fade_out_screen": SubResource("Animation_mrrk8"),
 "fade_out_sec": SubResource("Animation_wuvup")
@@ -243,25 +284,26 @@ script = ExtResource("1_difgm")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1366.0
+offset_bottom = 768.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Label" type="Label" parent="Control"]
 modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(800, 200)
 layout_direction = 2
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 263.0
-offset_top = 139.0
-offset_right = 1063.0
-offset_bottom = 289.0
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 221.0
+offset_top = 49.0
+offset_right = -345.0
+offset_bottom = 249.0
 grow_horizontal = 2
-grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_font_sizes/font_size = 24
 text = "Enfrentando dificuldades financeiras e desesperado por um lugar para morar, Jake, um jovem de vinte e poucos anos, se depara com uma oferta irresistível"
@@ -271,17 +313,17 @@ autowrap_mode = 2
 
 [node name="Label2" type="Label" parent="Control"]
 modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(800, 200)
 layout_direction = 2
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = 14
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = 263.0
-offset_top = 289.0
-offset_right = 1063.0
-offset_bottom = 439.0
+offset_left = 221.0
+offset_top = -135.0
+offset_right = -345.0
+offset_bottom = 65.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 0, 1)
@@ -293,19 +335,19 @@ autowrap_mode = 2
 
 [node name="Label3" type="Label" parent="Control"]
 modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(800, 200)
 layout_direction = 2
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 263.0
-offset_top = 449.0
-offset_right = 1063.0
-offset_bottom = 599.0
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 221.0
+offset_top = -319.0
+offset_right = -345.0
+offset_bottom = -119.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_font_sizes/font_size = 24
 text = "Sem hesitar, ele se agarra à oportunidade, adquirindo a propriedade sem sequer visitá-la pessoalmente.
@@ -316,19 +358,16 @@ autowrap_mode = 2
 
 [node name="Label4" type="Label" parent="Control"]
 modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(800, 100)
 layout_direction = 2
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 363.0
-offset_top = 214.0
-offset_right = 963.0
-offset_bottom = 364.0
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 221.0
+offset_top = 249.0
+offset_right = -345.0
+offset_bottom = 349.0
 grow_horizontal = 2
-grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_font_sizes/font_size = 24
 text = "A sua decisão impulsiva pode ter consequências não conhecidas por ele ainda"
@@ -338,17 +377,17 @@ autowrap_mode = 2
 
 [node name="Label5" type="Label" parent="Control"]
 modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(800, 100)
 layout_direction = 2
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = 14
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = 363.0
-offset_top = 364.0
-offset_right = 963.0
-offset_bottom = 514.0
+offset_left = 221.0
+offset_top = -35.0
+offset_right = -345.0
+offset_bottom = 65.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 0, 1)
@@ -361,9 +400,9 @@ autowrap_mode = 2
 [node name="BackGround" type="ColorRect" parent="Control"]
 show_behind_parent = true
 layout_mode = 0
-offset_right = 1366.0
-offset_bottom = 768.0
-color = Color(0.0807833, 0.0807833, 0.0807833, 1)
+offset_right = 1242.0
+offset_bottom = 698.0
+color = Color(0.0872012, 0.0783676, 0.0793847, 1)
 
 [node name="ToFadeScreen" type="ColorRect" parent="Control"]
 modulate = Color(1, 1, 1, 0)
@@ -376,3 +415,26 @@ color = Color(0, 0, 0, 1)
 libraries = {
 "": SubResource("AnimationLibrary_du2ll")
 }
+
+[node name="Timer" type="Timer" parent="Control"]
+wait_time = 3.0
+one_shot = true
+
+[node name="Label6" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1022.0
+offset_top = -115.0
+offset_right = -144.0
+offset_bottom = -92.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 15
+text = "[Qualquer Tecla] Próximo"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[connection signal="timeout" from="Control/Timer" to="." method="_on_timer_timeout"]
