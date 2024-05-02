@@ -1,0 +1,90 @@
+[gd_scene load_steps=16 format=3 uid="uid://bonk8egsbphsi"]
+
+[ext_resource type="Script" path="res://Scripts/Mundo.gd" id="1_5u8qh"]
+[ext_resource type="Shader" path="res://Shaders/World2.gdshader" id="1_ysvic"]
+[ext_resource type="PackedScene" uid="uid://dobytd4rsv0er" path="res://House/House.tscn" id="2_8svwb"]
+[ext_resource type="PackedScene" uid="uid://cxsva7okbm5ol" path="res://Scenes/Player.tscn" id="3_btjh2"]
+[ext_resource type="Texture2D" uid="uid://7ov7anefv7vd" path="res://HDRI/night.exr" id="4_c8sla"]
+[ext_resource type="PackedScene" uid="uid://ptr0cc31jxbp" path="res://Scenes/Mobile/messages.tscn" id="7_0r5p1"]
+[ext_resource type="PackedScene" uid="uid://bgv7m4vwt5y22" path="res://Scenes/Mobile/mom.tscn" id="7_f6sei"]
+[ext_resource type="PackedScene" uid="uid://d1ricr538us6a" path="res://Scenes/Mobile/bob.tscn" id="8_qhtc8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4xe8w"]
+shader = ExtResource("1_ysvic")
+shader_parameter/enabled = true
+shader_parameter/dithering = true
+shader_parameter/colors = 16
+shader_parameter/dither_size = 1
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ikmhl"]
+points = PackedVector3Array(25.3919, 0.396748, 25.3919, -25.3919, -0.396748, -25.3919, -25.3919, 0.396748, -25.3919, 25.3919, -0.396748, -25.3919, -25.3919, -0.396748, 25.3919, -25.3919, 0.396748, 25.3919, 25.3919, 0.396748, -25.3919, 25.3919, -0.396748, 25.3919)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_termh"]
+albedo_color = Color(0, 0.141176, 0.0705882, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_o4aha"]
+material = SubResource("StandardMaterial3D_termh")
+size = Vector2(50, 50)
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_4ifls"]
+panorama = ExtResource("4_c8sla")
+
+[sub_resource type="Sky" id="Sky_clk0i"]
+sky_material = SubResource("PanoramaSkyMaterial_4ifls")
+
+[sub_resource type="Environment" id="Environment_kf7d3"]
+background_mode = 2
+background_energy_multiplier = 0.05
+sky = SubResource("Sky_clk0i")
+
+[node name="WorldView" type="SubViewportContainer"]
+material = SubResource("ShaderMaterial_4xe8w")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="."]
+handle_input_locally = false
+size = Vector2i(1366, 768)
+render_target_update_mode = 4
+
+[node name="World" type="Node3D" parent="SubViewport"]
+script = ExtResource("1_5u8qh")
+
+[node name="Ground" type="StaticBody3D" parent="SubViewport/World"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewport/World/Ground"]
+shape = SubResource("ConvexPolygonShape3D_ikmhl")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewport/World/Ground"]
+mesh = SubResource("PlaneMesh_o4aha")
+skeleton = NodePath("../../../..")
+
+[node name="House" parent="SubViewport/World" instance=ExtResource("2_8svwb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.0819926, 2)
+
+[node name="Player" parent="SubViewport/World" instance=ExtResource("3_btjh2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.48725, 0.639103, 12.4848)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewport/World"]
+environment = SubResource("Environment_kf7d3")
+
+[node name="FPSCounter" type="Label" parent="SubViewport/World"]
+visible = false
+offset_right = 145.0
+offset_bottom = 23.0
+text = "fps"
+
+[node name="MomChat" parent="." instance=ExtResource("7_f6sei")]
+visible = false
+layout_mode = 2
+
+[node name="MessagesApp" parent="." instance=ExtResource("7_0r5p1")]
+visible = false
+layout_mode = 2
+
+[node name="BobChat" parent="." instance=ExtResource("8_qhtc8")]
+visible = false
+layout_mode = 2
