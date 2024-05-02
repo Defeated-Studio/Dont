@@ -1,0 +1,93 @@
+[gd_scene load_steps=6 format=3 uid="uid://ptr0cc31jxbp"]
+
+[ext_resource type="Script" path="res://Scenes/Mobile/messages.gd" id="1_3ha1o"]
+[ext_resource type="Texture2D" uid="uid://c7ottxhrdctq2" path="res://Scenes/Mobile/messages.png" id="1_6a3vw"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_tyeyn"]
+font_size = 35
+font_color = Color(1, 1, 1, 0.741176)
+
+[sub_resource type="LabelSettings" id="LabelSettings_4kp8y"]
+font_size = 27
+font_color = Color(1, 1, 1, 0.741176)
+
+[sub_resource type="LabelSettings" id="LabelSettings_4tw7s"]
+font_size = 20
+font_color = Color(1, 1, 1, 0.466667)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3ha1o")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1006.0
+offset_top = 320.0
+offset_right = 1458.0
+offset_bottom = 961.0
+scale = Vector2(0.65, 0.625)
+texture = ExtResource("1_6a3vw")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="TextureRect"]
+layout_mode = 0
+offset_left = 5.0
+offset_right = 448.0
+offset_bottom = 105.0
+
+[node name="Label" type="Label" parent="TextureRect/CenterContainer"]
+layout_mode = 2
+text = "Mensagens"
+label_settings = SubResource("LabelSettings_tyeyn")
+
+[node name="Mom" type="Label" parent="TextureRect"]
+layout_mode = 0
+offset_left = 167.5
+offset_top = 235.0
+offset_right = 219.5
+offset_bottom = 270.0
+text = "Mãe"
+label_settings = SubResource("LabelSettings_4kp8y")
+
+[node name="Mom2" type="Label" parent="TextureRect"]
+layout_mode = 0
+offset_left = 167.5
+offset_top = 400.0
+offset_right = 219.5
+offset_bottom = 435.0
+text = "BOB"
+label_settings = SubResource("LabelSettings_4kp8y")
+
+[node name="Search" type="Label" parent="TextureRect"]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 131.25
+offset_right = 140.0
+offset_bottom = 159.25
+text = "Pesquisar"
+label_settings = SubResource("LabelSettings_4tw7s")
+
+[node name="MomButton" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 1011.0
+offset_top = 432.0
+offset_right = 1158.0
+offset_bottom = 528.0
+
+[node name="BobButton" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 1011.0
+offset_top = 538.0
+offset_right = 1160.0
+offset_bottom = 626.0
+
+[connection signal="pressed" from="MomButton" to="." method="_on_mom_button_pressed"]
+[connection signal="pressed" from="BobButton" to="." method="_on_bob_button_pressed"]
