@@ -203,7 +203,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.37866, 0)
 
 [node name="FlashlightModel" type="Node3D" parent="Head"]
 transform = Transform3D(-0.0980808, -0.00308231, 0.0192523, -0.00314107, 0.0999507, 0, -0.0192428, -0.000604729, -0.0981293, -0.441099, -0.332425, -0.359933)
-visible = false
 
 [node name="Object_2" type="MeshInstance3D" parent="Head/FlashlightModel"]
 transform = Transform3D(1, 0, 3.72529e-09, 1.30385e-08, -3.72529e-09, 1, 1.49012e-08, -1, 0, 0, 0, 0)

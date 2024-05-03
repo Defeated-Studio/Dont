@@ -30,8 +30,10 @@ var direction = Vector3.ZERO
 @onready var hand = $Hand
 @onready var flashlight = $Hand/Flashlight
 @onready var flashlight_animation = $FlashlightAnimation
+@onready var flashlight_model = $Head/FlashlightModel
 
 func _ready():
+	flashlight_model.hide()
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 
@@ -45,9 +47,10 @@ func _input(event):
 func _physics_process(delta):
 	if Input.is_action_just_pressed("flashlight"):
 		if flashlight.visible:
-			flashlight.hide()
-			flashlight_animation.play(("hide"))			
+			flashlight_animation.play(("hide"))		
+			flashlight.hide()	
 		else:
+			flashlight_model.show()
 			flashlight.show()
 			flashlight_animation.play(("show"))
 						

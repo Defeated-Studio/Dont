@@ -135,6 +135,8 @@ offset_right = 440.0
 offset_bottom = 495.0
 
 [node name="Mom" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
 offset_left = 1006.0
 offset_top = 320.0
 offset_right = 1458.0
@@ -192,9 +194,9 @@ text = "⠀Oi filho, como está indo
 [node name="TextureRect" type="TextureRect" parent="Mom/ScrollContainer/VBoxContainer/FourthMessage"]
 show_behind_parent = true
 layout_mode = 0
-offset_left = 0.635
+offset_left = 6.78882
 offset_top = -17.86
-offset_right = 238.635
+offset_right = 244.789
 offset_bottom = 122.14
 scale = Vector2(0.85, 0.605)
 texture = ExtResource("3_ytnvq")
@@ -258,9 +260,9 @@ text = "⠀Jake, pensou bem nessa mudança?"
 [node name="TextureRect" type="TextureRect" parent="Mom/ScrollContainer/VBoxContainer/SeventhMessage"]
 show_behind_parent = true
 layout_mode = 0
-offset_left = 0.635
+offset_left = 6.78894
 offset_top = -17.86
-offset_right = 238.635
+offset_right = 244.789
 offset_bottom = 122.14
 scale = Vector2(1.215, 0.43)
 texture = ExtResource("3_ytnvq")
@@ -349,9 +351,9 @@ text = "⠀Ando com pressentimento ruim,
 [node name="TextureRect" type="TextureRect" parent="Mom/ScrollContainer/VBoxContainer/TenthMessage"]
 show_behind_parent = true
 layout_mode = 0
-offset_left = 0.635
+offset_left = 6.7888
 offset_top = -21.02
-offset_right = 238.635
+offset_right = 244.789
 offset_bottom = 118.98
 scale = Vector2(1.125, 0.675)
 texture = ExtResource("3_ytnvq")
@@ -371,9 +373,9 @@ text = "⠀Por favor."
 [node name="TextureRect" type="TextureRect" parent="Mom/ScrollContainer/VBoxContainer/EleventhMessage"]
 show_behind_parent = true
 layout_mode = 0
-offset_left = 0.635
+offset_left = 6.78882
 offset_top = -17.86
-offset_right = 238.635
+offset_right = 244.789
 offset_bottom = 122.14
 scale = Vector2(0.405, 0.43)
 texture = ExtResource("3_ytnvq")
@@ -417,9 +419,9 @@ text = "⠀Tudo bem filho, não esquece de
 [node name="TextureRect" type="TextureRect" parent="Mom/ScrollContainer/VBoxContainer/SixteenthMessage"]
 show_behind_parent = true
 layout_mode = 0
-offset_left = 0.635
+offset_left = 6.7888
 offset_top = -21.02
-offset_right = 238.635
+offset_right = 244.789
 offset_bottom = 118.98
 scale = Vector2(1.125, 0.675)
 texture = ExtResource("3_ytnvq")
@@ -441,9 +443,9 @@ text = "   Eu te amo.
 [node name="TextureRect" type="TextureRect" parent="Mom/ScrollContainer/VBoxContainer/EleventhMessage2"]
 show_behind_parent = true
 layout_mode = 0
-offset_left = 0.635
-offset_top = -17.86
-offset_right = 238.635
+offset_left = 6.78882
+offset_top = -17.8601
+offset_right = 244.789
 offset_bottom = 122.14
 scale = Vector2(0.435, 0.43)
 texture = ExtResource("3_ytnvq")
@@ -461,7 +463,7 @@ text = "<"
 flat = true
 
 [node name="Bob" type="TextureRect" parent="."]
-visible = false
+layout_mode = 0
 offset_left = 1006.0
 offset_top = 320.0
 offset_right = 1458.0
@@ -584,9 +586,9 @@ text = "⠀Está disponível sim."
 [node name="TextureRect" type="TextureRect" parent="Bob/ScrollContainer/VBoxContainer/Message4"]
 show_behind_parent = true
 layout_mode = 0
-offset_left = 0.635
+offset_left = 5.25037
 offset_top = -17.86
-offset_right = 238.635
+offset_right = 243.25
 offset_bottom = 122.14
 scale = Vector2(0.73, 0.43)
 texture = ExtResource("3_ytnvq")
@@ -651,9 +653,9 @@ text = "⠀Nenhum."
 [node name="TextureRect" type="TextureRect" parent="Bob/ScrollContainer/VBoxContainer/Message7"]
 show_behind_parent = true
 layout_mode = 0
-offset_left = 0.635
+offset_left = 5.25049
 offset_top = -17.86
-offset_right = 238.635
+offset_right = 243.25
 offset_bottom = 122.14
 scale = Vector2(0.41, 0.43)
 texture = ExtResource("3_ytnvq")
@@ -720,9 +722,9 @@ text = "⠀Não, a área é tranquila, esses
 [node name="TextureRect" type="TextureRect" parent="Bob/ScrollContainer/VBoxContainer/Message10"]
 show_behind_parent = true
 layout_mode = 0
-offset_left = 0.635
+offset_left = 5.25036
 offset_top = -21.02
-offset_right = 238.635
+offset_right = 243.25
 offset_bottom = 118.98
 scale = Vector2(1.07, 0.675)
 texture = ExtResource("3_ytnvq")
@@ -742,9 +744,9 @@ text = "⠀Fique tranquilo."
 [node name="TextureRect" type="TextureRect" parent="Bob/ScrollContainer/VBoxContainer/Message11"]
 show_behind_parent = true
 layout_mode = 0
-offset_left = 0.635
-offset_top = -17.86
-offset_right = 238.635
+offset_left = 5.25037
+offset_top = -17.8601
+offset_right = 243.25
 offset_bottom = 122.14
 scale = Vector2(0.61, 0.43)
 texture = ExtResource("3_ytnvq")
@@ -832,9 +834,9 @@ text = "⠀Ótimo."
 [node name="TextureRect" type="TextureRect" parent="Bob/ScrollContainer/VBoxContainer/Message15"]
 show_behind_parent = true
 layout_mode = 0
-offset_left = 0.635
-offset_top = -17.86
-offset_right = 238.635
+offset_left = 5.25024
+offset_top = -17.8601
+offset_right = 243.25
 offset_bottom = 122.14
 scale = Vector2(0.33, 0.43)
 texture = ExtResource("3_ytnvq")
@@ -855,9 +857,9 @@ text = "⠀Não irei conseguir estar na casa
 [node name="TextureRect" type="TextureRect" parent="Bob/ScrollContainer/VBoxContainer/Message16"]
 show_behind_parent = true
 layout_mode = 0
-offset_left = 0.635
+offset_left = 5.25035
 offset_top = -21.02
-offset_right = 238.635
+offset_right = 243.25
 offset_bottom = 118.98
 scale = Vector2(1.125, 0.675)
 texture = ExtResource("3_ytnvq")
@@ -879,9 +881,9 @@ text = "⠀Então quando você chegar ligue
 [node name="TextureRect" type="TextureRect" parent="Bob/ScrollContainer/VBoxContainer/Message17"]
 show_behind_parent = true
 layout_mode = 0
-offset_left = 0.635
+offset_left = 5.25035
 offset_top = -21.02
-offset_right = 238.635
+offset_right = 243.25
 offset_bottom = 118.98
 scale = Vector2(1.125, 0.825)
 texture = ExtResource("3_ytnvq")
@@ -901,9 +903,9 @@ text = "⠀Ela deve estar em cima do gerador."
 [node name="TextureRect" type="TextureRect" parent="Bob/ScrollContainer/VBoxContainer/Message18"]
 show_behind_parent = true
 layout_mode = 0
-offset_left = 0.635
-offset_top = -17.86
-offset_right = 238.635
+offset_left = 5.25037
+offset_top = -17.8601
+offset_right = 243.25
 offset_bottom = 122.14
 scale = Vector2(1.225, 0.43)
 texture = ExtResource("3_ytnvq")
@@ -924,9 +926,9 @@ text = "⠀E o gerador fica na rua na parte
 [node name="TextureRect" type="TextureRect" parent="Bob/ScrollContainer/VBoxContainer/Message19"]
 show_behind_parent = true
 layout_mode = 0
-offset_left = 0.635
+offset_left = 5.25035
 offset_top = -17.86
-offset_right = 238.635
+offset_right = 243.25
 offset_bottom = 122.14
 scale = Vector2(1.12, 0.61)
 texture = ExtResource("3_ytnvq")
@@ -970,9 +972,9 @@ text = "⠀Não, a vizinhança é tranquila."
 [node name="TextureRect" type="TextureRect" parent="Bob/ScrollContainer/VBoxContainer/Message21"]
 show_behind_parent = true
 layout_mode = 0
-offset_left = 0.635
-offset_top = -17.86
-offset_right = 238.635
+offset_left = 5.25036
+offset_top = -17.8601
+offset_right = 243.25
 offset_bottom = 122.14
 scale = Vector2(1.06, 0.43)
 texture = ExtResource("3_ytnvq")
@@ -1095,6 +1097,7 @@ text = "⠀"
 label_settings = SubResource("LabelSettings_3wdud")
 
 [node name="BackButtonBob" type="Button" parent="Bob"]
+layout_mode = 0
 offset_left = 9.23077
 offset_top = 25.6
 offset_right = 54.2308
