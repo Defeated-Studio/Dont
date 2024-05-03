@@ -32,7 +32,7 @@ sky_material = SubResource("PanoramaSkyMaterial_4ifls")
 
 [sub_resource type="Environment" id="Environment_kf7d3"]
 background_mode = 2
-background_energy_multiplier = 2.0
+background_energy_multiplier = 0.25
 sky = SubResource("Sky_clk0i")
 
 [node name="WorldView" type="SubViewportContainer"]

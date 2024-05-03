@@ -1,12 +1,12 @@
 [gd_scene load_steps=15 format=3 uid="uid://dsbkf1co3qjwj"]
 
-[ext_resource type="Texture2D" uid="uid://bpoghis7q20ml" path="res://Models/Paper_0.png" id="1_80tvu"]
+[ext_resource type="Texture2D" uid="uid://c3w3ldcr4sahc" path="res://Models/Paper_0.png" id="1_80tvu"]
 [ext_resource type="Script" path="res://Scripts/Paper.gd" id="1_vmcsi"]
 [ext_resource type="Shader" path="res://Shaders/Paper.gdshader" id="2_86pup"]
-[ext_resource type="Texture2D" uid="uid://d1cjpyvjiqylt" path="res://Models/Paper_1.png" id="2_xpalx"]
-[ext_resource type="Texture2D" uid="uid://bvtncd17p6is" path="res://Models/Paper_2.png" id="3_0puwf"]
-[ext_resource type="Texture2D" uid="uid://cyg2o6f133h06" path="res://Texture/Paper.png" id="5_j2hh6"]
-[ext_resource type="FontFile" uid="uid://dmy3mg0f2sp6u" path="res://Fonts/White Colors.ttf" id="6_jknfg"]
+[ext_resource type="Texture2D" uid="uid://c0bqy2jiocvo4" path="res://Models/Paper_1.png" id="2_xpalx"]
+[ext_resource type="Texture2D" uid="uid://dctu21g7hpy8n" path="res://Models/Paper_2.png" id="3_0puwf"]
+[ext_resource type="Texture2D" uid="uid://c6ovmplaej7nm" path="res://Texture/Paper.png" id="5_j2hh6"]
+[ext_resource type="FontFile" uid="uid://drqen5q2nrjxh" path="res://Fonts/White Colors.ttf" id="6_jknfg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_85u0j"]
 render_priority = 0

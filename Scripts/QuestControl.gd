@@ -7,7 +7,7 @@ extends Control
 
 @export var questActive = 0
 
-var questsText = ["Arrume o Gerador", "Limpe a Casa", "Vá dormir"]
+var questsText = ["Arrume o Gerador", "Limpe a Casa", "Chame o Bob", "Vá dormir"]
 
 # Começar tasks instantaneamente para testes
 func _ready():
@@ -20,7 +20,8 @@ func _ready():
 func finishQuest():
 	quest_text_animation.play_backwards("show")
 	questActive += 1
-		
+
+
 func startQuest():
 	quest_text.text = questsText[questActive]
 	quest_text_animation.play("show")

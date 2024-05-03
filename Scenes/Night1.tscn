@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://syu2pf7jl5jl"]
+[gd_scene load_steps=35 format=3 uid="uid://syu2pf7jl5jl"]
 
 [ext_resource type="PackedScene" uid="uid://bonk8egsbphsi" path="res://Scenes/World.tscn" id="1_dexbp"]
 [ext_resource type="PackedScene" uid="uid://c5io532rrd1i6" path="res://Scenes/QuestControlUI.tscn" id="2_xuli7"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://w0i8fnfcdlwm" path="res://House/Models/cereal_box.glb" id="10_rp5fx"]
 [ext_resource type="PackedScene" uid="uid://dsbkf1co3qjwj" path="res://Scenes/Paper/Paper.tscn" id="11_qts8l"]
 [ext_resource type="Script" path="res://Scripts/SleepTask.gd" id="12_i34te"]
+[ext_resource type="Script" path="res://Scripts/MessageBobTask.gd" id="13_pqd3f"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_32aba"]
 size = Vector3(1.99219, 1, 1.70752)
@@ -199,6 +200,9 @@ size = Vector3(0.853813, 0.741333, 0.901031)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ew158"]
 size = Vector3(1.62878, 0.716309, 1.69434)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tne48"]
+size = Vector3(1.67322, 2.13721, 1)
 
 [node name="World" instance=ExtResource("1_dexbp")]
 
@@ -428,6 +432,15 @@ collision_mask = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.04843, 4.8215, 0.347168)
 shape = SubResource("BoxShape3D_ew158")
 
+[node name="TriggerSleepTask" type="Area3D" parent="SubViewport/World/SleepTask" index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewport/World/SleepTask/TriggerSleepTask" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.41454, 2.21771, 4.63356)
+shape = SubResource("BoxShape3D_tne48")
+
+[node name="MessageBobTask" type="Node3D" parent="SubViewport/World" index="11"]
+script = ExtResource("13_pqd3f")
+
 [connection signal="body_entered" from="SubViewport/World/GeneratorTask/GeneratorArea" to="SubViewport/World/GeneratorTask" method="_on_generator_area_body_entered"]
 [connection signal="body_exited" from="SubViewport/World/GeneratorTask/GeneratorArea" to="SubViewport/World/GeneratorTask" method="_on_generator_area_body_exited"]
 [connection signal="body_entered" from="SubViewport/World/CleanHouseTask/TriggerCleanHouseTask" to="SubViewport/World/CleanHouseTask" method="_on_trigger_clean_house_task_body_entered"]
@@ -447,5 +460,6 @@ shape = SubResource("BoxShape3D_ew158")
 [connection signal="body_exited" from="SubViewport/World/CleanHouseTask/TrashCan" to="SubViewport/World/CleanHouseTask" method="_on_trash_can_body_exited"]
 [connection signal="body_entered" from="SubViewport/World/SleepTask/BedArea" to="SubViewport/World/SleepTask" method="_on_bed_area_body_entered"]
 [connection signal="body_exited" from="SubViewport/World/SleepTask/BedArea" to="SubViewport/World/SleepTask" method="_on_bed_area_body_exited"]
+[connection signal="body_entered" from="SubViewport/World/SleepTask/TriggerSleepTask" to="SubViewport/World/SleepTask" method="_on_trigger_sleep_task_body_entered"]
 
 [editable path="SubViewport/World/QuestControl"]

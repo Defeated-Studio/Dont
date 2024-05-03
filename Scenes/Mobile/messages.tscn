@@ -70,6 +70,7 @@ grow_vertical = 2
 script = ExtResource("1_3ha1o")
 
 [node name="Messages" type="TextureRect" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 1006.0
 offset_top = 320.0
@@ -135,6 +136,7 @@ offset_right = 440.0
 offset_bottom = 495.0
 
 [node name="Mom" type="TextureRect" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 1006.0
 offset_top = 320.0
@@ -463,7 +465,6 @@ text = "<"
 flat = true
 
 [node name="Bob" type="TextureRect" parent="."]
-visible = false
 layout_mode = 0
 offset_left = 1006.0
 offset_top = 320.0
@@ -1027,7 +1028,6 @@ text = "cara a casa não tem nada haver⠀
 com as fotos"
 
 [node name="TextureRect" type="TextureRect" parent="Bob/ScrollContainer/VBoxContainer/Message23"]
-visible = false
 show_behind_parent = true
 layout_mode = 0
 offset_left = -13.25
@@ -1069,7 +1069,6 @@ size_flags_horizontal = 8
 text = "o que aconteceu?⠀"
 
 [node name="TextureRect" type="TextureRect" parent="Bob/ScrollContainer/VBoxContainer/Message24"]
-visible = false
 show_behind_parent = true
 layout_mode = 0
 offset_left = -13.25
