@@ -1,10 +1,10 @@
 [gd_scene load_steps=22 format=3 uid="uid://ptr0cc31jxbp"]
 
 [ext_resource type="Script" path="res://Scenes/Mobile/messages.gd" id="1_3ha1o"]
-[ext_resource type="Texture2D" uid="uid://bygu7qarctdyb" path="res://Scenes/Mobile/messages.png" id="1_6a3vw"]
-[ext_resource type="Texture2D" uid="uid://d4lj7as3tb7dh" path="res://Scenes/Mobile/cara.png" id="3_ytnvq"]
-[ext_resource type="Texture2D" uid="uid://b6m31jco0r6uo" path="res://Scenes/Mobile/eu.png" id="4_h2hf2"]
-[ext_resource type="Texture2D" uid="uid://c48vw5eu1s405" path="res://Scenes/Mobile/mobile.png" id="5_18nkp"]
+[ext_resource type="Texture2D" uid="uid://c7ottxhrdctq2" path="res://Scenes/Mobile/messages.png" id="1_6a3vw"]
+[ext_resource type="Texture2D" uid="uid://b0cwfegd4sfcm" path="res://Scenes/Mobile/cara.png" id="3_ytnvq"]
+[ext_resource type="Texture2D" uid="uid://78bopv1ed2vo" path="res://Scenes/Mobile/eu.png" id="4_h2hf2"]
+[ext_resource type="Texture2D" uid="uid://b0nkaopnfng33" path="res://Scenes/Mobile/mobile.png" id="5_18nkp"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_tyeyn"]
 font_size = 35
@@ -135,7 +135,6 @@ offset_right = 440.0
 offset_bottom = 495.0
 
 [node name="Mom" type="TextureRect" parent="."]
-visible = false
 layout_mode = 0
 offset_left = 1006.0
 offset_top = 320.0
@@ -167,6 +166,7 @@ placeholder_text = "Mensagem"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Mom"]
 layout_mode = 0
+offset_left = 3.0
 offset_top = 108.0
 offset_right = 440.0
 offset_bottom = 541.0
@@ -188,8 +188,8 @@ layout_mode = 2
 [node name="FourthMessage" type="Label" parent="Mom/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
-text = "⠀Oi filho, como está indo
-   a mudança?"
+text = "⠀ Oi filho, como está indo
+    a mudança?"
 
 [node name="TextureRect" type="TextureRect" parent="Mom/ScrollContainer/VBoxContainer/FourthMessage"]
 show_behind_parent = true
@@ -255,7 +255,7 @@ label_settings = SubResource("LabelSettings_h0s4y")
 [node name="SeventhMessage" type="Label" parent="Mom/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
-text = "⠀Jake, pensou bem nessa mudança?"
+text = "⠀ Jake, pensou bem nessa mudança?"
 
 [node name="TextureRect" type="TextureRect" parent="Mom/ScrollContainer/VBoxContainer/SeventhMessage"]
 show_behind_parent = true
@@ -345,8 +345,8 @@ label_settings = SubResource("LabelSettings_d8lxg")
 [node name="TenthMessage" type="Label" parent="Mom/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
-text = "⠀Ando com pressentimento ruim,
-   peço que repense essa decisão"
+text = "⠀ Ando com pressentimento ruim,
+    peço que repense essa decisão"
 
 [node name="TextureRect" type="TextureRect" parent="Mom/ScrollContainer/VBoxContainer/TenthMessage"]
 show_behind_parent = true
@@ -368,7 +368,7 @@ label_settings = SubResource("LabelSettings_d8lxg")
 [node name="EleventhMessage" type="Label" parent="Mom/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
-text = "⠀Por favor."
+text = "⠀ Por favor."
 
 [node name="TextureRect" type="TextureRect" parent="Mom/ScrollContainer/VBoxContainer/EleventhMessage"]
 show_behind_parent = true
@@ -413,8 +413,8 @@ label_settings = SubResource("LabelSettings_d8lxg")
 [node name="SixteenthMessage" type="Label" parent="Mom/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
-text = "⠀Tudo bem filho, não esquece de
-   manter contato"
+text = "⠀ Tudo bem filho, não esquece de
+    manter contato"
 
 [node name="TextureRect" type="TextureRect" parent="Mom/ScrollContainer/VBoxContainer/SixteenthMessage"]
 show_behind_parent = true
@@ -436,7 +436,7 @@ label_settings = SubResource("LabelSettings_d8lxg")
 [node name="EleventhMessage2" type="Label" parent="Mom/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
-text = "   Eu te amo.
+text = "    Eu te amo.
 
 "
 
@@ -463,6 +463,7 @@ text = "<"
 flat = true
 
 [node name="Bob" type="TextureRect" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 1006.0
 offset_top = 320.0
@@ -494,9 +495,10 @@ placeholder_text = "Message"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Bob"]
 layout_mode = 0
+offset_left = 3.0
 offset_top = 108.0
 offset_right = 440.0
-offset_bottom = 539.0
+offset_bottom = 542.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Bob/ScrollContainer"]
 layout_mode = 2
@@ -716,8 +718,8 @@ label_settings = SubResource("LabelSettings_pv1w7")
 [node name="Message10" type="Label" parent="Bob/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
-text = "⠀Não, a área é tranquila, esses
-⠀rumores não são verdadeiros."
+text = "⠀ Não, a área é tranquila, esses
+⠀ rumores não são verdadeiros."
 
 [node name="TextureRect" type="TextureRect" parent="Bob/ScrollContainer/VBoxContainer/Message10"]
 show_behind_parent = true
@@ -739,7 +741,7 @@ label_settings = SubResource("LabelSettings_pv1w7")
 [node name="Message11" type="Label" parent="Bob/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
-text = "⠀Fique tranquilo."
+text = "⠀ Fique tranquilo."
 
 [node name="TextureRect" type="TextureRect" parent="Bob/ScrollContainer/VBoxContainer/Message11"]
 show_behind_parent = true
@@ -829,7 +831,7 @@ label_settings = SubResource("LabelSettings_pv1w7")
 [node name="Message15" type="Label" parent="Bob/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
-text = "⠀Ótimo."
+text = "⠀ Ótimo."
 
 [node name="TextureRect" type="TextureRect" parent="Bob/ScrollContainer/VBoxContainer/Message15"]
 show_behind_parent = true
@@ -851,8 +853,8 @@ label_settings = SubResource("LabelSettings_pv1w7")
 [node name="Message16" type="Label" parent="Bob/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
-text = "⠀Não irei conseguir estar na casa
-⠀amanhã."
+text = "⠀ Não irei conseguir estar na casa
+⠀ amanhã."
 
 [node name="TextureRect" type="TextureRect" parent="Bob/ScrollContainer/VBoxContainer/Message16"]
 show_behind_parent = true
@@ -874,9 +876,9 @@ label_settings = SubResource("LabelSettings_pv1w7")
 [node name="Message17" type="Label" parent="Bob/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
-text = "⠀Então quando você chegar ligue
-⠀o gerador e pegue a chave da 
-⠀casa."
+text = "⠀ Então quando você chegar ligue
+⠀ o gerador e pegue a chave da 
+⠀ casa."
 
 [node name="TextureRect" type="TextureRect" parent="Bob/ScrollContainer/VBoxContainer/Message17"]
 show_behind_parent = true
@@ -898,7 +900,7 @@ label_settings = SubResource("LabelSettings_pv1w7")
 [node name="Message18" type="Label" parent="Bob/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
-text = "⠀Ela deve estar em cima do gerador."
+text = "⠀ Ela deve estar em cima do gerador."
 
 [node name="TextureRect" type="TextureRect" parent="Bob/ScrollContainer/VBoxContainer/Message18"]
 show_behind_parent = true
@@ -920,8 +922,8 @@ label_settings = SubResource("LabelSettings_pv1w7")
 [node name="Message19" type="Label" parent="Bob/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
-text = "⠀E o gerador fica na rua na parte 
-⠀de trás da casa."
+text = "⠀ E o gerador fica na rua na parte 
+⠀ de trás da casa."
 
 [node name="TextureRect" type="TextureRect" parent="Bob/ScrollContainer/VBoxContainer/Message19"]
 show_behind_parent = true
@@ -967,7 +969,7 @@ label_settings = SubResource("LabelSettings_pv1w7")
 [node name="Message21" type="Label" parent="Bob/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
-text = "⠀Não, a vizinhança é tranquila."
+text = "⠀ Não, a vizinhança é tranquila."
 
 [node name="TextureRect" type="TextureRect" parent="Bob/ScrollContainer/VBoxContainer/Message21"]
 show_behind_parent = true
@@ -1025,6 +1027,7 @@ text = "cara a casa não tem nada haver⠀
 com as fotos"
 
 [node name="TextureRect" type="TextureRect" parent="Bob/ScrollContainer/VBoxContainer/Message23"]
+visible = false
 show_behind_parent = true
 layout_mode = 0
 offset_left = -13.25
@@ -1066,6 +1069,7 @@ size_flags_horizontal = 8
 text = "o que aconteceu?⠀"
 
 [node name="TextureRect" type="TextureRect" parent="Bob/ScrollContainer/VBoxContainer/Message24"]
+visible = false
 show_behind_parent = true
 layout_mode = 0
 offset_left = -13.25
