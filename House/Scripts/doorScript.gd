@@ -33,9 +33,9 @@ func setcanOpenDoor(value):
 	
 	if value:
 		if doorOpen:
-			doorText.text = "[E] Close door"
+			doorText.text = "[E] Fechar Porta"
 		else:
-			doorText.text = "[E] Open door"
+			doorText.text = "[E] Abrir Porta"
 		doorText.show()
 	else:
 		doorText.hide()

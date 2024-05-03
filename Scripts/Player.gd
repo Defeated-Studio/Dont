@@ -1,5 +1,6 @@
 extends CharacterBody3D
 
+var canMove = true
 var speed
 var gravity = 9.8
 const WALK_SPEED = 2.2
@@ -35,7 +36,7 @@ func _ready():
 
 
 func _input(event):
-	if event is InputEventMouseMotion:
+	if event is InputEventMouseMotion and canMove:
 		rotate_y(deg_to_rad(-event.relative.x*SENSITIVITY))
 		head.rotate_x(deg_to_rad(-event.relative.y*SENSITIVITY))
 		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-60), deg_to_rad(60))
@@ -50,22 +51,24 @@ func _physics_process(delta):
 			flashlight.show()
 			flashlight_animation.play(("show"))
 						
-	
 	make_flashlight_follow(delta)
 	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 		
-	# Handle Sprint And Crouching.
-	if crouched:
-		speed = CROUCH_SPEED
+	if !canMove:
+		speed = 0
 	else:
-		speed = WALK_SPEED
+		if crouched:
+			speed = CROUCH_SPEED
+		else:
+			speed = WALK_SPEED
 	
-	if Input.is_action_pressed("sprint") and !crouched:
-		speed = SPRINT_SPEED
-	elif Input.is_action_pressed("crouch"):
+		if Input.is_action_pressed("sprint") and !crouched:
+			speed = SPRINT_SPEED
+		
+	if Input.is_action_pressed("crouch"):
 		if !crouched and finishedCrouchAnimation:
 			finishedCrouchAnimation = false
 			crouched = true

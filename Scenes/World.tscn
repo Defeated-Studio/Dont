@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bonk8egsbphsi"]
+[gd_scene load_steps=14 format=3 uid="uid://bonk8egsbphsi"]
 
 [ext_resource type="Script" path="res://Scripts/Mundo.gd" id="1_5u8qh"]
 [ext_resource type="Shader" path="res://Shaders/World2.gdshader" id="1_ysvic"]
@@ -6,8 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://cxsva7okbm5ol" path="res://Scenes/Player.tscn" id="3_btjh2"]
 [ext_resource type="Texture2D" uid="uid://7ov7anefv7vd" path="res://HDRI/night.exr" id="4_c8sla"]
 [ext_resource type="PackedScene" uid="uid://ptr0cc31jxbp" path="res://Scenes/Mobile/messages.tscn" id="7_0r5p1"]
-[ext_resource type="PackedScene" uid="uid://bgv7m4vwt5y22" path="res://Scenes/Mobile/mom.tscn" id="7_f6sei"]
-[ext_resource type="PackedScene" uid="uid://d1ricr538us6a" path="res://Scenes/Mobile/bob.tscn" id="8_qhtc8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4xe8w"]
 shader = ExtResource("1_ysvic")
@@ -34,7 +32,7 @@ sky_material = SubResource("PanoramaSkyMaterial_4ifls")
 
 [sub_resource type="Environment" id="Environment_kf7d3"]
 background_mode = 2
-background_energy_multiplier = 0.05
+background_energy_multiplier = 2.0
 sky = SubResource("Sky_clk0i")
 
 [node name="WorldView" type="SubViewportContainer"]
@@ -77,14 +75,6 @@ offset_right = 145.0
 offset_bottom = 23.0
 text = "fps"
 
-[node name="MomChat" parent="." instance=ExtResource("7_f6sei")]
-visible = false
-layout_mode = 2
-
 [node name="MessagesApp" parent="." instance=ExtResource("7_0r5p1")]
-visible = false
-layout_mode = 2
-
-[node name="BobChat" parent="." instance=ExtResource("8_qhtc8")]
 visible = false
 layout_mode = 2

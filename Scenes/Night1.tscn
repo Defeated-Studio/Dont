@@ -1,15 +1,17 @@
-[gd_scene load_steps=30 format=3 uid="uid://syu2pf7jl5jl"]
+[gd_scene load_steps=33 format=3 uid="uid://syu2pf7jl5jl"]
 
 [ext_resource type="PackedScene" uid="uid://bonk8egsbphsi" path="res://Scenes/World.tscn" id="1_dexbp"]
 [ext_resource type="PackedScene" uid="uid://c5io532rrd1i6" path="res://Scenes/QuestControlUI.tscn" id="2_xuli7"]
 [ext_resource type="Script" path="res://Scripts/GeneratorTask.gd" id="3_0rlj4"]
 [ext_resource type="Script" path="res://Scripts/CleanHouseTask.gd" id="4_o8g44"]
-[ext_resource type="Texture2D" uid="uid://c5fophsrke1nq" path="res://House/Models/soda_can_0.png" id="5_qbsrj"]
-[ext_resource type="PackedScene" uid="uid://c8xs6ctym0laa" path="res://House/Models/pizza.glb" id="6_x05fs"]
-[ext_resource type="Texture2D" uid="uid://cgpytmkxuptnv" path="res://House/Models/dirty_plate_0.jpg" id="7_6mmov"]
-[ext_resource type="Texture2D" uid="uid://v2uehxlh5jks" path="res://House/Models/dirty_plate_1.png" id="8_r0gs8"]
-[ext_resource type="Texture2D" uid="uid://cx8kx0cx417pa" path="res://House/Models/dirty_plate_2.png" id="9_h0c42"]
-[ext_resource type="PackedScene" uid="uid://w0i8fnfcdlwm" path="res://House/Models/cereal_box.glb" id="10_rp5fx"]
+[ext_resource type="Texture2D" uid="uid://dr33g86xbf5c5" path="res://House/Models/soda_can_0.png" id="5_qbsrj"]
+[ext_resource type="PackedScene" uid="uid://n2kah2e0ch0b" path="res://House/Models/pizza.glb" id="6_x05fs"]
+[ext_resource type="Texture2D" uid="uid://ddd5xgc8tbtb2" path="res://House/Models/dirty_plate_0.jpg" id="7_6mmov"]
+[ext_resource type="Texture2D" uid="uid://bntblfbdmd23o" path="res://House/Models/dirty_plate_1.png" id="8_r0gs8"]
+[ext_resource type="Texture2D" uid="uid://bu0xssqk28rcn" path="res://House/Models/dirty_plate_2.png" id="9_h0c42"]
+[ext_resource type="PackedScene" uid="uid://bginy2tbi4blv" path="res://House/Models/cereal_box.glb" id="10_rp5fx"]
+[ext_resource type="PackedScene" uid="uid://dsbkf1co3qjwj" path="res://Scenes/Paper/Paper.tscn" id="11_qts8l"]
+[ext_resource type="Script" path="res://Scripts/SleepTask.gd" id="12_i34te"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_32aba"]
 size = Vector3(1.99219, 1, 1.70752)
@@ -195,7 +197,13 @@ size = Vector3(0.364136, 0.774902, 0.335815)
 [sub_resource type="BoxShape3D" id="BoxShape3D_gqtgm"]
 size = Vector3(0.853813, 0.741333, 0.901031)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_ew158"]
+size = Vector3(1.62878, 0.716309, 1.69434)
+
 [node name="World" instance=ExtResource("1_dexbp")]
+
+[node name="Player" parent="SubViewport/World" index="2"]
+unique_name_in_owner = true
 
 [node name="FPSCounter" parent="SubViewport/World" index="4"]
 visible = true
@@ -211,6 +219,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="InteractText" type="Label" parent="SubViewport/World/InteractText" index="0"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 1
 anchors_preset = 12
@@ -402,6 +411,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.46712, -0.129333, -0.380702
 shape = SubResource("BoxShape3D_gqtgm")
 disabled = true
 
+[node name="Paper1" parent="SubViewport/World/CleanHouseTask" index="8" instance=ExtResource("11_qts8l")]
+transform = Transform3D(0.000584827, 0, -0.00496568, 0, 0.005, 0, 0.00496568, 0, 0.000584827, 0.240611, 2.92411, 1.17289)
+visible = false
+id = 1
+text = "Não sei quem vai encontrar isso, mas preciso escrever. Talvez assim as coisas fiquem mais claras pra mim também.  Me mudei pra essa casa há algumas semanas. Sempre quis um lugar afastado, tranquilo, onde pudesse relaxar. Mas parece que não foi uma boa ideia. Sinto que estou sendo observada o tempo todo. Não sei explicar, mas é como se alguém ou algo estivesse me vigiando.  A cidade não gosta de falar sobre essas coisas. Parece que todo mundo sabe, mas ninguém quer comentar. Fico com a sensação de que há algo sinistro escondido por aqui. Se você encontrou este relato, fique atento. Confie no seu instinto."
+
+[node name="SleepTask" type="Node3D" parent="SubViewport/World" index="10"]
+script = ExtResource("12_i34te")
+
+[node name="BedArea" type="Area3D" parent="SubViewport/World/SleepTask" index="0"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewport/World/SleepTask/BedArea" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.04843, 4.8215, 0.347168)
+shape = SubResource("BoxShape3D_ew158")
+
 [connection signal="body_entered" from="SubViewport/World/GeneratorTask/GeneratorArea" to="SubViewport/World/GeneratorTask" method="_on_generator_area_body_entered"]
 [connection signal="body_exited" from="SubViewport/World/GeneratorTask/GeneratorArea" to="SubViewport/World/GeneratorTask" method="_on_generator_area_body_exited"]
 [connection signal="body_entered" from="SubViewport/World/CleanHouseTask/TriggerCleanHouseTask" to="SubViewport/World/CleanHouseTask" method="_on_trigger_clean_house_task_body_entered"]
@@ -419,5 +445,7 @@ disabled = true
 [connection signal="body_exited" from="SubViewport/World/CleanHouseTask/CleanToilet" to="SubViewport/World/CleanHouseTask" method="_on_clean_exited"]
 [connection signal="body_entered" from="SubViewport/World/CleanHouseTask/TrashCan" to="SubViewport/World/CleanHouseTask" method="_on_trash_can_body_entered"]
 [connection signal="body_exited" from="SubViewport/World/CleanHouseTask/TrashCan" to="SubViewport/World/CleanHouseTask" method="_on_trash_can_body_exited"]
+[connection signal="body_entered" from="SubViewport/World/SleepTask/BedArea" to="SubViewport/World/SleepTask" method="_on_bed_area_body_entered"]
+[connection signal="body_exited" from="SubViewport/World/SleepTask/BedArea" to="SubViewport/World/SleepTask" method="_on_bed_area_body_exited"]
 
 [editable path="SubViewport/World/QuestControl"]

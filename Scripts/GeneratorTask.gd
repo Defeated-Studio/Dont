@@ -1,8 +1,8 @@
 extends Node3D
 
 @onready var quest_control = $"../QuestControl"
-@onready var interact_text = $"../InteractText/InteractText"
 @onready var house = $"../House"
+@onready var interact_text = %InteractText
 
 var canPowerOn = false
 
@@ -22,6 +22,9 @@ func findByClass(node: Node, className : String, result : Array):
 	
 func _physics_process(delta):
 	if Input.is_action_just_pressed("interact") and canPowerOn:
+		canPowerOn = false
+		interact_text.hide()
+	
 		var res = []
 		findByClass(house, "OmniLight3D", res)
 		
@@ -49,7 +52,7 @@ func _on_generator_area_body_entered(body):
 	if quest_control.questActive == 0:
 		canPowerOn = true
 		interact_text.show()
-		interact_text.text = "[E] Power On"
+		interact_text.text = "[E] Ligar"
 
 func _on_generator_area_body_exited(body):
 	canPowerOn = false

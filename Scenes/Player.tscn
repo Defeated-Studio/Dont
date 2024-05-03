@@ -1,9 +1,9 @@
 [gd_scene load_steps=19 format=3 uid="uid://cxsva7okbm5ol"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_vcq62"]
-[ext_resource type="Texture2D" uid="uid://domxi6jvbuon" path="res://Models/Flashlight_0.png" id="2_tvdg6"]
-[ext_resource type="Texture2D" uid="uid://depx8bh3f8o7j" path="res://Models/Flashlight_1.png" id="3_ksxms"]
-[ext_resource type="Texture2D" uid="uid://v3m5a54hcitu" path="res://Models/Flashlight_2.png" id="4_ej1ok"]
+[ext_resource type="Texture2D" uid="uid://di4k7n2omabg3" path="res://Models/Flashlight_0.png" id="2_tvdg6"]
+[ext_resource type="Texture2D" uid="uid://mlkt478tq6ro" path="res://Models/Flashlight_1.png" id="3_ksxms"]
+[ext_resource type="Texture2D" uid="uid://dunkqjrducynx" path="res://Models/Flashlight_2.png" id="4_ej1ok"]
 [ext_resource type="Script" path="res://Scripts/PlayerDialogue.gd" id="5_x3jtm"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_k458q"]
@@ -203,6 +203,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.37866, 0)
 
 [node name="FlashlightModel" type="Node3D" parent="Head"]
 transform = Transform3D(-0.0980808, -0.00308231, 0.0192523, -0.00314107, 0.0999507, 0, -0.0192428, -0.000604729, -0.0981293, -0.441099, -0.332425, -0.359933)
+visible = false
 
 [node name="Object_2" type="MeshInstance3D" parent="Head/FlashlightModel"]
 transform = Transform3D(1, 0, 3.72529e-09, 1.30385e-08, -3.72529e-09, 1, 1.49012e-08, -1, 0, 0, 0, 0)

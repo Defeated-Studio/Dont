@@ -7,11 +7,11 @@ extends Control
 
 @export var questActive = 0
 
-var questsText = ["Arrume o Gerador", "Limpe a Casa"]
+var questsText = ["Arrume o Gerador", "Limpe a Casa", "Vá dormir"]
 
 # Começar tasks instantaneamente para testes
 func _ready():
-	tutorial_text.text = "[F] Flashlight"
+	tutorial_text.text = "[F] Lanterna"
 	tutorial_text.show()
 	await get_tree().create_timer(5).timeout
 	tutorial_text.hide()
