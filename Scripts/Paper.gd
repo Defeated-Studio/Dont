@@ -47,4 +47,5 @@ func _on_close_button_pressed():
 		player_dialogue_text.queueDialogue("Talvez ela só estivesse imaginando coisas.")
 		player_dialogue_text.queueDialogue("Talvez eu dê uma olhada na casa amanhã, ver se encontro mais alguma coisa.") 
 		player_dialogue_text.queueDialogue("Mas agora... nossa, eu tô cansado demais pra pensar nisso. Preciso limpar isso e dormir um pouco.") 
+		player_dialogue_text.timeBetweenText = 4
 		player_dialogue_text.showDialogue()

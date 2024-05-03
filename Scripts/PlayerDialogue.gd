@@ -4,6 +4,7 @@ extends Control
 @onready var dialogue_timer = $DialogueTimer
 
 var text_queue = []
+var timeBetweenText = 3
 
 func queueDialogue(text):
 	text_queue.push_back(text)
@@ -11,7 +12,7 @@ func queueDialogue(text):
 func showDialogue():
 	dialogue_text.text = text_queue.pop_front()
 	dialogue_text.show()
-	dialogue_timer.start(3)
+	dialogue_timer.start(timeBetweenText)
 
 func _on_dialogue_timer_timeout():
 	if !text_queue.is_empty():
