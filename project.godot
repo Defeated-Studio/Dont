@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Don't"
-run/main_scene="res://Scenes/Night1.tscn"
+run/main_scene="res://Scenes/Screens/MainMenu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -21,7 +21,6 @@ window/size/viewport_width=1366
 window/size/viewport_height=768
 window/size/mode=3
 window/stretch/mode="canvas_items"
-window/stretch/scale=1.1
 window/vsync/vsync_mode=0
 
 [input]

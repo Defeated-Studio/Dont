@@ -1,0 +1,46 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3jho5x0s5tdg"]
+
+[ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1_ohjbk"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ohjbk")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1366.0
+offset_bottom = 768.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 150.0
+offset_right = 1366.0
+offset_bottom = 261.0
+theme_override_font_sizes/font_size = 40
+text = "Don't"
+horizontal_alignment = 1
+
+[node name="NewGame" type="Button" parent="."]
+offset_left = 524.0
+offset_top = 388.0
+offset_right = 842.0
+offset_bottom = 468.0
+text = "Novo Jogo"
+
+[node name="Quit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 524.0
+offset_top = 492.0
+offset_right = 842.0
+offset_bottom = 572.0
+text = "Sair"
+
+[connection signal="pressed" from="NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
