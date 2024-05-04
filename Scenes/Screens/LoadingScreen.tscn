@@ -1,0 +1,88 @@
+[gd_scene load_steps=9 format=3 uid="uid://do34y4r5bdc6j"]
+
+[ext_resource type="Script" path="res://Scripts/LoadingScreen.gd" id="1_aj7a2"]
+[ext_resource type="FontFile" uid="uid://b1vymeh36eknt" path="res://Fonts/Cinzel-Bold.ttf" id="2_hkbvc"]
+[ext_resource type="Texture2D" uid="uid://e0alu2i81423" path="res://Texture/defeated_opaque_50px.png" id="3_5th6f"]
+[ext_resource type="Texture2D" uid="uid://c786kyfeask07" path="res://Texture/defeated_white_50px.png" id="4_syagl"]
+[ext_resource type="Texture2D" uid="uid://b0a4tpn7d1mfb" path="res://Texture/Dont-not-full.png" id="5_d3c8w"]
+[ext_resource type="Texture2D" uid="uid://l6kurhsl100e" path="res://Texture/Dont-full.png" id="6_mc4si"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ekfce"]
+bg_color = Color(0.443137, 0.470588, 0.501961, 0.572549)
+border_color = Color(0.443137, 0.470588, 0.501961, 1)
+border_blend = true
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fyleg"]
+bg_color = Color(0.443137, 0.470588, 0.501961, 1)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_aj7a2")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1366.0
+offset_bottom = 768.0
+color = Color(0, 0, 0, 1)
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 421.0
+offset_top = 419.0
+offset_right = 821.0
+offset_bottom = 449.0
+theme_override_styles/background = SubResource("StyleBoxFlat_ekfce")
+theme_override_styles/fill = SubResource("StyleBoxFlat_fyleg")
+rounded = true
+
+[node name="Label" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 429.0
+offset_top = 252.0
+offset_right = 813.0
+offset_bottom = 415.0
+theme_override_colors/font_color = Color(0.443137, 0.470588, 0.501961, 1)
+theme_override_fonts/font = ExtResource("2_hkbvc")
+theme_override_font_sizes/font_size = 120
+text = "Don't"
+
+[node name="LogoBar" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_left = 1172.0
+offset_top = 628.0
+offset_right = 1222.0
+offset_bottom = 678.0
+rounded = true
+fill_mode = 5
+texture_under = ExtResource("3_5th6f")
+texture_progress = ExtResource("4_syagl")
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1151.0
+offset_top = 648.0
+offset_right = 1172.0
+offset_bottom = 668.0
+theme_override_font_sizes/font_size = 8
+text = "0%
+"
+
+[node name="DontBar" type="TextureProgressBar" parent="."]
+visible = false
+custom_minimum_size = Vector2(400, 200)
+layout_mode = 0
+offset_left = 421.0
+offset_top = 249.0
+offset_right = 821.0
+offset_bottom = 449.0
+rounded = true
+texture_under = ExtResource("5_d3c8w")
+texture_progress = ExtResource("6_mc4si")

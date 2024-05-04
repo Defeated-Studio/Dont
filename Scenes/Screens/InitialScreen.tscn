@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://co7tsrq574r11"]
 
-[ext_resource type="Script" path="res://Scripts/InitialScreen.gd" id="1_difgm"]
+[ext_resource type="Script" path="res://Scripts/InitialScreen.gd" id="1_jbgwg"]
 
 [sub_resource type="Animation" id="Animation_x68ho"]
 length = 0.001
@@ -75,6 +75,18 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Label6:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_7xujv"]
@@ -267,6 +279,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Label6:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_du2ll"]
 _data = {
@@ -280,7 +304,7 @@ _data = {
 }
 
 [node name="Initial Screen" type="Node2D"]
-script = ExtResource("1_difgm")
+script = ExtResource("1_jbgwg")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -304,7 +328,7 @@ offset_top = 49.0
 offset_right = -345.0
 offset_bottom = 249.0
 grow_horizontal = 2
-theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_color = Color(0.713726, 0.654902, 0.160784, 1)
 theme_override_font_sizes/font_size = 24
 text = "Enfrentando dificuldades financeiras e desesperado por um lugar para morar, Jake, um jovem de vinte e poucos anos, se depara com uma oferta irresistível"
 horizontal_alignment = 1
@@ -326,7 +350,7 @@ offset_right = -345.0
 offset_bottom = 65.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_color = Color(0.713726, 0.654902, 0.160784, 1)
 theme_override_font_sizes/font_size = 24
 text = "Uma casa aparentemente elegante, situada nas montanhas dos Apalaches, a um preço surpreendentemente acessível."
 horizontal_alignment = 1
@@ -348,7 +372,7 @@ offset_right = -345.0
 offset_bottom = -119.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_color = Color(0.713726, 0.654902, 0.160784, 1)
 theme_override_font_sizes/font_size = 24
 text = "Sem hesitar, ele se agarra à oportunidade, adquirindo a propriedade sem sequer visitá-la pessoalmente.
 "
@@ -368,7 +392,7 @@ offset_top = 249.0
 offset_right = -345.0
 offset_bottom = 349.0
 grow_horizontal = 2
-theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_color = Color(0.713726, 0.654902, 0.160784, 1)
 theme_override_font_sizes/font_size = 24
 text = "A sua decisão impulsiva pode ter consequências não conhecidas por ele ainda"
 horizontal_alignment = 1
@@ -390,7 +414,7 @@ offset_right = -345.0
 offset_bottom = 65.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_color = Color(0.713726, 0.654902, 0.160784, 1)
 theme_override_font_sizes/font_size = 24
 text = "O conduzindo não a um novo começo, mas a um pesadelo que está apenas começando."
 horizontal_alignment = 1
@@ -432,6 +456,7 @@ offset_right = -144.0
 offset_bottom = -92.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_colors/font_color = Color(0.662452, 0.662452, 0.662452, 1)
 theme_override_font_sizes/font_size = 15
 text = "[Qualquer Tecla] Próximo"
 horizontal_alignment = 2

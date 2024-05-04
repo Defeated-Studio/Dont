@@ -1,7 +1,6 @@
 extends Node2D
 # 1242 698
 
-#@onready var initial_screen = $"."
 @onready var animation_player = $Control/AnimationPlayer
 @onready var label = $Control/Label
 @onready var label_2 = $Control/Label2
@@ -25,10 +24,9 @@ func _on_animation_finished(anim_name):
 		elif anim_next == 2:
 			animation_player.play("fade_in_sec")
 	elif anim_name == "fade_out_sec":
-		label_6.text = "Carregando..."
 		animation_player.play("fade_out_screen")
 	elif anim_name == "fade_out_screen":
-		_load_main_game()
+		_load_screen()
 	elif (anim_name == "fade_in_first" || anim_name == "fade_in_sec" || anim_name == "fade_in_third") && timer_flag == 1:
 		timer.start()
 	
@@ -50,13 +48,13 @@ func _process(delta):
 			animation_player.play("fade_out_sec")
 			timer_flag = 1
 
-func _load_main_game():
-	var pscene = load("res://Scenes/Night1.tscn")
+func _load_screen():
+	var pscene = load("res://Scenes/Screens/LoadingScreen.tscn")
 	get_tree().change_scene_to_packed(pscene)
 
 func _on_timer_timeout():
 	if anim_next == 0 || anim_next == 1:
 		animation_player.play("fade_out_first")
 	elif anim_next == 2:
-		label_6.text = "Carregando..."
+		label_6.text = ""
 		animation_player.play("fade_out_screen")
