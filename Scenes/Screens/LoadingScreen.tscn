@@ -1,11 +1,11 @@
 [gd_scene load_steps=9 format=3 uid="uid://do34y4r5bdc6j"]
 
 [ext_resource type="Script" path="res://Scripts/LoadingScreen.gd" id="1_aj7a2"]
-[ext_resource type="FontFile" uid="uid://dx05xccu4q56q" path="res://Fonts/Cinzel-Bold.ttf" id="2_hkbvc"]
-[ext_resource type="Texture2D" uid="uid://y634kqd7it66" path="res://Texture/defeated_opaque_50px.png" id="3_5th6f"]
-[ext_resource type="Texture2D" uid="uid://3wb1q1g3nxow" path="res://Texture/defeated_white_50px.png" id="4_syagl"]
-[ext_resource type="Texture2D" uid="uid://758n7wautdaf" path="res://Texture/Dont-not-full.png" id="5_d3c8w"]
-[ext_resource type="Texture2D" uid="uid://be6keuus3rgon" path="res://Texture/Dont-full.png" id="6_mc4si"]
+[ext_resource type="FontFile" uid="uid://cxdcng7dslxny" path="res://Fonts/Cinzel-Bold.ttf" id="2_hkbvc"]
+[ext_resource type="Texture2D" uid="uid://3ceviksnr3te" path="res://Texture/defeated_opaque_50px.png" id="3_5th6f"]
+[ext_resource type="Texture2D" uid="uid://b2pa10fnclihi" path="res://Texture/defeated_white_50px.png" id="4_syagl"]
+[ext_resource type="Texture2D" uid="uid://y283ahva85p6" path="res://Texture/Dont-not-full.png" id="5_d3c8w"]
+[ext_resource type="Texture2D" uid="uid://fjjhpfnqnyj7" path="res://Texture/Dont-full.png" id="6_mc4si"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ekfce"]
 bg_color = Color(0.443137, 0.470588, 0.501961, 0.572549)
@@ -86,3 +86,22 @@ offset_bottom = 449.0
 rounded = true
 texture_under = ExtResource("5_d3c8w")
 texture_progress = ExtResource("6_mc4si")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 0
+offset_right = 1366.0
+offset_bottom = 768.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_hkbvc")
+text = "The oldest and strongest emotion of mankind is fear, and the oldest and strongest kind of fear is fear of the unknown."
+
+[node name="Label2" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_hkbvc")
+text = "-H. P. Lovecraft"
+horizontal_alignment = 1
