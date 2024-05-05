@@ -1,5 +1,4 @@
 extends Node2D
-# 1242 698
 
 @onready var animation_player = $Control/AnimationPlayer
 @onready var label = $Control/Label

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://d3jho5x0s5tdg"]
+[gd_scene load_steps=3 format=3 uid="uid://d3jho5x0s5tdg"]
 
 [ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1_ohjbk"]
+[ext_resource type="FontFile" uid="uid://b1vymeh36eknt" path="res://Fonts/Cinzel-Bold.ttf" id="2_3d6mk"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -23,15 +24,19 @@ offset_left = 2.0
 offset_top = 150.0
 offset_right = 1366.0
 offset_bottom = 261.0
-theme_override_font_sizes/font_size = 40
+theme_override_colors/font_color = Color(0.443137, 0.470588, 0.501961, 1)
+theme_override_fonts/font = ExtResource("2_3d6mk")
+theme_override_font_sizes/font_size = 100
 text = "Don't"
 horizontal_alignment = 1
 
 [node name="NewGame" type="Button" parent="."]
+layout_mode = 0
 offset_left = 524.0
 offset_top = 388.0
 offset_right = 842.0
 offset_bottom = 468.0
+theme_override_colors/font_color = Color(0.443137, 0.470588, 0.501961, 1)
 text = "Novo Jogo"
 
 [node name="Quit" type="Button" parent="."]
@@ -40,6 +45,7 @@ offset_left = 524.0
 offset_top = 492.0
 offset_right = 842.0
 offset_bottom = 572.0
+theme_override_colors/font_color = Color(0.443137, 0.470588, 0.501961, 1)
 text = "Sair"
 
 [connection signal="pressed" from="NewGame" to="." method="_on_new_game_pressed"]
