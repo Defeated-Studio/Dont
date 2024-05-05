@@ -29,7 +29,8 @@ func _on_animation_finished(anim_name):
 	elif (anim_name == "fade_in_first" || anim_name == "fade_in_sec" || anim_name == "fade_in_third") && timer_flag == 1:
 		timer.start()
 	
-	flag = 1
+	if anim_name != "fade_out_sec":
+		flag = 1
 
 func _change_labels():
 	label.text = "Após quase não encontrar viagens de ônibus disponíveis para o lugar e enfrentar uma exaustiva viagem, Jake se depara com algo que não fora lhe dito no momento da compra."
@@ -46,6 +47,7 @@ func _process(delta):
 		elif anim_next == 2:
 			animation_player.play("fade_out_sec")
 			timer_flag = 1
+			flag = 0
 
 func _load_screen():
 	var pscene = load("res://Scenes/Screens/LoadingScreen.tscn")
