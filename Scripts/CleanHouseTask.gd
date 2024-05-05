@@ -15,6 +15,7 @@ extends Node3D
 @onready var trash = $TrashCan/Trash
 
 @onready var paper1 = $Paper1
+@onready var paper_collision = $Paper1/InteractArea/CollisionShape3D
 
 var questEnabled = false
 var canClean = false
@@ -48,6 +49,7 @@ func _process(delta):
 func _on_trigger_clean_house_task_body_entered(body):
 	if quest_control.questActive == 1:
 		paper1.show()
+		paper_collision.set_deferred("disabled", false)
 		player_dialogue.queueDialogue("essa casa tá uma bagunça, preciso limpar isso.")
 		player_dialogue.showDialogue()
 		activateCollisions()

@@ -69,6 +69,9 @@ size = Vector3(254.464, 155.097, 200.65)
 diffuse_texture = ExtResource("5_j2hh6")
 
 [sub_resource type="FontFile" id="FontFile_654p2"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
 cache/0/16/0/ascent = 0.0
 cache/0/16/0/descent = 0.0
 cache/0/16/0/underline_position = 0.0
@@ -123,6 +126,7 @@ collision_mask = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.6017, 72.5486, 11.5154)
 shape = SubResource("BoxShape3D_ie5bl")
+disabled = true
 
 [node name="UI" type="Control" parent="."]
 visible = false
