@@ -20,7 +20,7 @@ extends Node3D
 var questEnabled = false
 var canClean = false
 var currentNode
-var toClean = 1
+var toClean = 6
 var canThrowAway = false
 
 func _process(delta):
