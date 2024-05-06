@@ -30,6 +30,7 @@ var sitDown = false
 var doneEating = false
 var canThrow = false
 var showTvDialogue = true
+var canClickAgain = true
 var eatCount = 3
 var playerStandupPos
 var playerViewPos
@@ -52,6 +53,7 @@ func _process(delta):
 		if Input.is_action_just_pressed("interact"):
 			interact_text.hide()
 			sitDown = false
+			player.canCrouch = true
 			player.canMove = true
 			player.global_position = playerStandupPos
 			player_view.position.y = playerViewPos
@@ -63,7 +65,8 @@ func _process(delta):
 		quest_control.finishQuest()
 		get_node("TrashArea").queue_free()
 
-	if Input.is_action_just_pressed("LeftMouseButton") and sitDown and !doneEating:
+	if Input.is_action_just_pressed("LeftMouseButton") and sitDown and !doneEating and canClickAgain:
+		canClickAgain = false
 		player.canCrouch = false
 		eatCount -= 1
 		interact_text.hide()
@@ -83,10 +86,10 @@ func _process(delta):
 			dialogue_text.showDialogue()
 			await get_tree().create_timer(4.2).timeout
 			doneEating = true
-			player.canCrouch = true
 		else:
 			interact_text.text = "[MB1] Comer"
 			interact_text.show()
+		canClickAgain = true
 
 	if Input.is_action_just_pressed("interact") and canSitDown:
 		if showTvDialogue:
@@ -107,15 +110,15 @@ func _process(delta):
 
 	if Input.is_action_just_pressed("interact") and canTurnTv:
 		if !TvOn:
+			video_mesh.show()
+			video.play()
+			TvOn = !TvOn
 			if showTvDialogue:
 				await get_tree().create_timer(0.7).timeout
 				dialogue_text.timeBetweenText = 3
 				dialogue_text.queueDialogue("sem sinal, claro")
 				dialogue_text.showDialogue()
 				showTvDialogue = false
-			video_mesh.show()
-			video.play()
-			TvOn = !TvOn
 		else:
 			video_mesh.hide()
 			video.stop()
