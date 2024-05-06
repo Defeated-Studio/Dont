@@ -23,6 +23,7 @@ func _ready():
 func _process(delta):
 	if Input.is_action_just_pressed("interact") and canPickUp:
 		player.canMove = false
+		player.canMoveCamera = false
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		ui.show()
 		
@@ -39,6 +40,7 @@ func _on_interact_area_body_exited(body):
 func _on_close_button_pressed():
 	self.queue_free()
 	player.canMove = true
+	player.canMoveCamera = true
 	ui.hide()
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	

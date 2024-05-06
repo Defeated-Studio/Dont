@@ -20,11 +20,11 @@ extends Node3D
 var questEnabled = false
 var canClean = false
 var currentNode
-var toClean = 6
+var toClean = 1
 var canThrowAway = false
 
 func _process(delta):
-	if Input.is_action_just_pressed("interact") and canClean:	
+	if Input.is_action_just_pressed("interact") and canClean:
 		if currentNode == "CleanToilet":
 			toilet.cleanToilet()
 		get_node(currentNode).queue_free()

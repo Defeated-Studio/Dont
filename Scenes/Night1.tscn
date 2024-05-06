@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://syu2pf7jl5jl"]
+[gd_scene load_steps=42 format=3 uid="uid://syu2pf7jl5jl"]
 
 [ext_resource type="PackedScene" uid="uid://bonk8egsbphsi" path="res://Scenes/World.tscn" id="1_dexbp"]
 [ext_resource type="PackedScene" uid="uid://c5io532rrd1i6" path="res://Scenes/QuestControlUI.tscn" id="2_xuli7"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dsbkf1co3qjwj" path="res://Scenes/Paper/Paper.tscn" id="11_qts8l"]
 [ext_resource type="Script" path="res://Scripts/SleepTask.gd" id="12_i34te"]
 [ext_resource type="Script" path="res://Scripts/MessageBobTask.gd" id="13_pqd3f"]
+[ext_resource type="Script" path="res://Scripts/EatTask.gd" id="14_fv2x2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_32aba"]
 size = Vector3(1.99219, 1, 1.70752)
@@ -203,6 +204,24 @@ size = Vector3(1.62878, 0.716309, 1.69434)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tne48"]
 size = Vector3(1.67322, 2.13721, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_if303"]
+size = Vector3(3.07782, 1.03601, 1.14941)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_djrav"]
+size = Vector3(0.131104, 0.683838, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nvyq3"]
+size = Vector3(0.211731, 0.912331, 0.226456)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3650x"]
+size = Vector3(0.789001, 1, 0.337158)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mthhy"]
+size = Vector3(0.664917, 0.723877, 0.27832)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mkh6p"]
+size = Vector3(0.774048, 0.428223, 0.907776)
 
 [node name="World" instance=ExtResource("1_dexbp")]
 
@@ -444,9 +463,66 @@ shape = SubResource("BoxShape3D_tne48")
 [node name="MessageBobTask" type="Node3D" parent="SubViewport/World" index="11"]
 script = ExtResource("13_pqd3f")
 
+[node name="EatTask" type="Node3D" parent="SubViewport/World" index="12"]
+script = ExtResource("14_fv2x2")
+
+[node name="TriggerEatTask" type="Area3D" parent="SubViewport/World/EatTask" index="0"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewport/World/EatTask/TriggerEatTask" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.71844, 4.76195, -1.65048)
+shape = SubResource("BoxShape3D_if303")
+
+[node name="GetFood" type="Area3D" parent="SubViewport/World/EatTask" index="1"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="GetFoodCol" type="CollisionShape3D" parent="SubViewport/World/EatTask/GetFood" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.22487, 1.4106, -0.205822)
+shape = SubResource("BoxShape3D_djrav")
+disabled = true
+
+[node name="Microwave" type="Area3D" parent="SubViewport/World/EatTask" index="2"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="MicrowaveCol" type="CollisionShape3D" parent="SubViewport/World/EatTask/Microwave" index="0"]
+transform = Transform3D(0.999948, -0.0102275, 0, 0.0102275, 0.999948, 0, 0, 0, 1, 7.11367, 1.41333, -1.37951)
+shape = SubResource("BoxShape3D_nvyq3")
+disabled = true
+
+[node name="TvArea" type="Area3D" parent="SubViewport/World/EatTask" index="3"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="TvCol" type="CollisionShape3D" parent="SubViewport/World/EatTask/TvArea" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.31556, 0.929063, 2.59097)
+shape = SubResource("BoxShape3D_3650x")
+disabled = true
+
+[node name="SofaArea" type="Area3D" parent="SubViewport/World/EatTask" index="4"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="SofaCol" type="CollisionShape3D" parent="SubViewport/World/EatTask/SofaArea" index="0"]
+transform = Transform3D(0.999893, -0.0146079, 0, 0.0146079, 0.999893, 0, 0, 0, 1, -0.781715, 1.21909, 4.8533)
+shape = SubResource("BoxShape3D_mthhy")
+disabled = true
+
+[node name="TrashArea" type="Area3D" parent="SubViewport/World/EatTask" index="5"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="TrashCol" type="CollisionShape3D" parent="SubViewport/World/EatTask/TrashArea" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.71055, 1.32316, 1.81987)
+shape = SubResource("BoxShape3D_mkh6p")
+disabled = true
+
 [connection signal="body_entered" from="SubViewport/World/GeneratorTask/GeneratorArea" to="SubViewport/World/GeneratorTask" method="_on_generator_area_body_entered"]
 [connection signal="body_exited" from="SubViewport/World/GeneratorTask/GeneratorArea" to="SubViewport/World/GeneratorTask" method="_on_generator_area_body_exited"]
 [connection signal="body_entered" from="SubViewport/World/CleanHouseTask/TriggerCleanHouseTask" to="SubViewport/World/CleanHouseTask" method="_on_trigger_clean_house_task_body_entered"]
+[connection signal="body_exited" from="SubViewport/World/CleanHouseTask/TriggerCleanHouseTask" to="SubViewport/World/EatTask" method="_on_trigger_clean_house_task_body_exited"]
 [connection signal="body_entered" from="SubViewport/World/CleanHouseTask/CleanSodas" to="SubViewport/World/CleanHouseTask" method="_on_clean_entered" binds= ["CleanSodas"]]
 [connection signal="body_exited" from="SubViewport/World/CleanHouseTask/CleanSodas" to="SubViewport/World/CleanHouseTask" method="_on_clean_exited"]
 [connection signal="body_entered" from="SubViewport/World/CleanHouseTask/CleanPizza" to="SubViewport/World/CleanHouseTask" method="_on_clean_entered" binds= ["CleanPizza"]]
@@ -464,5 +540,16 @@ script = ExtResource("13_pqd3f")
 [connection signal="body_entered" from="SubViewport/World/SleepTask/BedArea" to="SubViewport/World/SleepTask" method="_on_bed_area_body_entered"]
 [connection signal="body_exited" from="SubViewport/World/SleepTask/BedArea" to="SubViewport/World/SleepTask" method="_on_bed_area_body_exited"]
 [connection signal="body_entered" from="SubViewport/World/SleepTask/TriggerSleepTask" to="SubViewport/World/SleepTask" method="_on_trigger_sleep_task_body_entered"]
+[connection signal="body_entered" from="SubViewport/World/EatTask/TriggerEatTask" to="SubViewport/World/EatTask" method="_on_trigger_eat_task_body_entered"]
+[connection signal="body_entered" from="SubViewport/World/EatTask/GetFood" to="SubViewport/World/EatTask" method="_on_get_food_body_entered"]
+[connection signal="body_exited" from="SubViewport/World/EatTask/GetFood" to="SubViewport/World/EatTask" method="_on_get_food_body_exited"]
+[connection signal="body_entered" from="SubViewport/World/EatTask/Microwave" to="SubViewport/World/EatTask" method="_on_microwave_body_entered"]
+[connection signal="body_exited" from="SubViewport/World/EatTask/Microwave" to="SubViewport/World/EatTask" method="_on_microwave_body_exited"]
+[connection signal="body_entered" from="SubViewport/World/EatTask/TvArea" to="SubViewport/World/EatTask" method="_on_tv_area_body_entered"]
+[connection signal="body_exited" from="SubViewport/World/EatTask/TvArea" to="SubViewport/World/EatTask" method="_on_tv_area_body_exited"]
+[connection signal="body_entered" from="SubViewport/World/EatTask/SofaArea" to="SubViewport/World/EatTask" method="_on_sofa_area_body_entered"]
+[connection signal="body_exited" from="SubViewport/World/EatTask/SofaArea" to="SubViewport/World/EatTask" method="_on_sofa_area_body_exited"]
+[connection signal="body_entered" from="SubViewport/World/EatTask/TrashArea" to="SubViewport/World/EatTask" method="_on_trash_area_body_entered"]
+[connection signal="body_exited" from="SubViewport/World/EatTask/TrashArea" to="SubViewport/World/EatTask" method="_on_trash_area_body_exited"]
 
 [editable path="SubViewport/World/QuestControl"]

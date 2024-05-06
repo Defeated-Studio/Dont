@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://d3jho5x0s5tdg"]
 
 [ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1_ohjbk"]
-[ext_resource type="FontFile" uid="uid://b1vymeh36eknt" path="res://Fonts/Cinzel-Bold.ttf" id="2_3d6mk"]
+[ext_resource type="FontFile" uid="uid://cxdcng7dslxny" path="res://Fonts/Cinzel-Bold.ttf" id="2_3d6mk"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
