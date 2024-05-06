@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://4wt0nosut0yj"]
+[gd_scene load_steps=16 format=3 uid="uid://4wt0nosut0yj"]
 
 [ext_resource type="Script" path="res://House/Scripts/DoorScript.gd" id="1_8e388"]
 [ext_resource type="Texture2D" uid="uid://cyoyg8ccxrqs4" path="res://House/Models/Doors_0.webp" id="2_55hno"]
+[ext_resource type="AudioStream" uid="uid://cqqq1nx6in6sv" path="res://House/SFX/doorSlam.wav" id="3_0sgor"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wnquo"]
 resource_name = "material"
@@ -82,10 +83,27 @@ tracks/0/keys = {
 "values": [Vector3(-1.06581e-14, -1.48231e-21, 7.10543e-15)]
 }
 
+[sub_resource type="Animation" id="Animation_mhl1b"]
+resource_name = "ShutDoor"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(5.53355e-08, -4.21376e-08, 1.83996), Vector3(0, 0, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4sum3"]
 _data = {
 "OpenDoorAni": SubResource("Animation_s5pxr"),
-"RESET": SubResource("Animation_5rjth")
+"RESET": SubResource("Animation_5rjth"),
+"ShutDoor": SubResource("Animation_mhl1b")
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wcd6m"]
@@ -176,6 +194,10 @@ transform = Transform3D(-3.45703e-07, 1, 4.37114e-08, -1, -3.45703e-07, -4.37114
 transform = Transform3D(-4.37114e-08, -1, -1.69407e-21, 1, -4.37114e-08, 0, 0, 1.69407e-21, 1, -1.73237, -1.97088, -0.423586)
 mesh = SubResource("ArrayMesh_lf240")
 skeleton = NodePath("")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_0sgor")
+volume_db = 10.0
 
 [connection signal="body_entered" from="Door/DoorEvent" to="." method="_on_door_event_body_entered"]
 [connection signal="body_exited" from="Door/DoorEvent" to="." method="_on_door_event_body_exited"]

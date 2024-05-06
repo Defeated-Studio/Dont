@@ -206,6 +206,9 @@ size = Vector3(1.67322, 2.13721, 1)
 
 [node name="World" instance=ExtResource("1_dexbp")]
 
+[node name="SubViewport" parent="." index="0"]
+audio_listener_enable_3d = true
+
 [node name="Player" parent="SubViewport/World" index="2"]
 unique_name_in_owner = true
 

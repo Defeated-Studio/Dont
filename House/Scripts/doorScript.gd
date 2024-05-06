@@ -3,9 +3,11 @@ extends Node3D
 #@onready var doorOpenSound = $A_DoorOpen
 @onready var doorText = $Door/DoorText
 @onready var animation = $Door/DoorAnimation
+@onready var doorShutSound = $AudioStreamPlayer3D
 
 var doorOpen = false
 var canOpenDoor = false
+var shutDoor = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -20,9 +22,16 @@ func _process(delta):
 		setdoorOpen(!doorOpen)
 		doorText.hide()
 	elif (Input.is_action_just_pressed("interact") and doorOpen) and canOpenDoor:
-		animation.play_backwards("OpenDoorAni")
-		setdoorOpen(!doorOpen)
-		doorText.hide()
+		if shutDoor and self.name == "FrontDoor":
+			animation.play("ShutDoor")
+			setdoorOpen(!doorOpen)
+			doorText.hide()
+			shutDoor = false
+			doorShutSound.play()
+		else:
+			animation.play_backwards("OpenDoorAni")
+			setdoorOpen(!doorOpen)
+			doorText.hide()
 	
 func setdoorOpen(value):
 	doorOpen = value
