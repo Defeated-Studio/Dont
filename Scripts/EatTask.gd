@@ -7,11 +7,12 @@ extends Node3D
 @onready var can_food = $"../Player/Head/CanFood"
 @onready var can_food_opened = $"../Player/Head/CanFood/RootNode/canBody/topOpen"
 @onready var can_food_closed = $"../Player/Head/CanFood/RootNode/canBody/topClosed"
+@onready var EatAnimation = $"../Player/Head/CanFood/CanFoodAnimation"
 @onready var microwave_col = $Microwave/MicrowaveCol
 @onready var microwave_light = $"../House/MicrowaveLight"
 @onready var tv_col = $TvArea/TvCol
 @onready var video_mesh = $"../House/LivingRoom/TV/VideoMesh"
-@onready var video = $"../House/LivingRoom/TV/SubViewport/VideoStreamPlayer"
+@onready var video = $"../House/LivingRoom/TV/SubViewport/SubViewportContainer/VideoStreamPlayer"
 @onready var viewport = $"../House/LivingRoom/TV/SubViewport"
 @onready var sofa_col = $SofaArea/SofaCol
 @onready var pos = $"../House/Position3D"
@@ -69,6 +70,7 @@ func _process(delta):
 		canClickAgain = false
 		player.canCrouch = false
 		eatCount -= 1
+		EatAnimation.play("Eating")
 		interact_text.hide()
 		if eatCount == 1:
 			await get_tree().create_timer(0.7).timeout

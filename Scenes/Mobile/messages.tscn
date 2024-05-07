@@ -1,10 +1,10 @@
 [gd_scene load_steps=22 format=3 uid="uid://ptr0cc31jxbp"]
 
 [ext_resource type="Script" path="res://Scenes/Mobile/messages.gd" id="1_3ha1o"]
-[ext_resource type="Texture2D" uid="uid://bygu7qarctdyb" path="res://Scenes/Mobile/messages.png" id="1_6a3vw"]
-[ext_resource type="Texture2D" uid="uid://d4lj7as3tb7dh" path="res://Scenes/Mobile/cara.png" id="3_ytnvq"]
-[ext_resource type="Texture2D" uid="uid://b6m31jco0r6uo" path="res://Scenes/Mobile/eu.png" id="4_h2hf2"]
-[ext_resource type="Texture2D" uid="uid://c48vw5eu1s405" path="res://Scenes/Mobile/mobile.png" id="5_18nkp"]
+[ext_resource type="Texture2D" uid="uid://c7ottxhrdctq2" path="res://Scenes/Mobile/messages.png" id="1_6a3vw"]
+[ext_resource type="Texture2D" uid="uid://b0cwfegd4sfcm" path="res://Scenes/Mobile/cara.png" id="3_ytnvq"]
+[ext_resource type="Texture2D" uid="uid://78bopv1ed2vo" path="res://Scenes/Mobile/eu.png" id="4_h2hf2"]
+[ext_resource type="Texture2D" uid="uid://b0nkaopnfng33" path="res://Scenes/Mobile/mobile.png" id="5_18nkp"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_tyeyn"]
 font_size = 35
@@ -70,12 +70,11 @@ grow_vertical = 2
 script = ExtResource("1_3ha1o")
 
 [node name="Messages" type="TextureRect" parent="."]
-visible = false
 layout_mode = 0
-offset_left = 1006.0
-offset_top = 320.0
-offset_right = 1458.0
-offset_bottom = 961.0
+offset_left = 1051.0
+offset_top = 350.0
+offset_right = 1503.0
+offset_bottom = 991.0
 scale = Vector2(0.65, 0.625)
 texture = ExtResource("1_6a3vw")
 expand_mode = 1
@@ -135,13 +134,23 @@ offset_top = 349.0
 offset_right = 440.0
 offset_bottom = 495.0
 
+[node name="BackButton" type="Button" parent="Messages"]
+layout_mode = 0
+offset_left = 9.23071
+offset_top = 25.6
+offset_right = 54.2307
+offset_bottom = 87.6
+theme_override_font_sizes/font_size = 25
+text = "<"
+flat = true
+
 [node name="Mom" type="TextureRect" parent="."]
 visible = false
 layout_mode = 0
-offset_left = 1006.0
-offset_top = 320.0
-offset_right = 1458.0
-offset_bottom = 961.0
+offset_left = 1051.0
+offset_top = 350.0
+offset_right = 1503.0
+offset_bottom = 991.0
 scale = Vector2(0.65, 0.625)
 texture = SubResource("CompressedTexture2D_q0ing")
 expand_mode = 1
@@ -465,11 +474,12 @@ text = "<"
 flat = true
 
 [node name="Bob" type="TextureRect" parent="."]
+visible = false
 layout_mode = 0
-offset_left = 1006.0
-offset_top = 320.0
-offset_right = 1458.0
-offset_bottom = 961.0
+offset_left = 1051.0
+offset_top = 350.0
+offset_right = 1503.0
+offset_bottom = 991.0
 scale = Vector2(0.65, 0.625)
 texture = ExtResource("5_18nkp")
 expand_mode = 1
@@ -1111,5 +1121,6 @@ flat = true
 
 [connection signal="pressed" from="Messages/MomButton" to="." method="_on_mom_button_pressed"]
 [connection signal="pressed" from="Messages/BobButton" to="." method="_on_bob_button_pressed"]
+[connection signal="pressed" from="Messages/BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="Mom/BackButtonMom" to="." method="_on_back_button_mom_pressed"]
 [connection signal="pressed" from="Bob/BackButtonBob" to="." method="_on_back_button_mom_pressed"]

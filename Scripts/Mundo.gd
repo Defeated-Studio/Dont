@@ -13,6 +13,12 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	$FPSCounter.set_text("FPS: %d" % Engine.get_frames_per_second())
+	if messages_app.backButtonSignal:
+		messages_app.hide()
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		player.canMove = true
+		messages_app.backButtonSignal = false
+	
 	if Input.is_action_just_pressed("Mobile"):
 		if messages_app.visible:
 			messages_app.hide()

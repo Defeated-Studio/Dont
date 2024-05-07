@@ -5,6 +5,7 @@ extends Control
 @onready var messages = $Messages
 
 var inBobWindow = false
+var backButtonSignal = false
 
 func showMobile():
 	messages.show()
@@ -27,3 +28,7 @@ func _on_back_button_mom_pressed():
 	mom.hide()
 	bob.hide()
 	inBobWindow = false
+
+
+func _on_back_button_pressed():
+	backButtonSignal = true
