@@ -14,6 +14,7 @@ extends Node3D
 @onready var video_mesh = $"../House/LivingRoom/TV/VideoMesh"
 @onready var video = $"../House/LivingRoom/TV/SubViewport/SubViewportContainer/VideoStreamPlayer"
 @onready var viewport = $"../House/LivingRoom/TV/SubViewport"
+@onready var tv_audio = $"../House/LivingRoom/TV/TvSound"
 @onready var sofa_col = $SofaArea/SofaCol
 @onready var pos = $"../House/Position3D"
 @onready var player = $"../Player"
@@ -115,6 +116,7 @@ func _process(delta):
 
 	if Input.is_action_just_pressed("interact") and canTurnTv:
 		if !TvOn:
+			tv_audio.play()
 			video_mesh.show()
 			video.play()
 			TvOn = !TvOn
@@ -125,6 +127,7 @@ func _process(delta):
 				dialogue_text.showDialogue()
 				showTvDialogue = false
 		else:
+			tv_audio.stop()
 			video_mesh.hide()
 			video.stop()
 			TvOn = !TvOn
