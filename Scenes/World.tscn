@@ -34,6 +34,9 @@ sky_material = SubResource("PanoramaSkyMaterial_4ifls")
 background_mode = 2
 background_energy_multiplier = 0.25
 sky = SubResource("Sky_clk0i")
+ssil_enabled = true
+ssil_intensity = 0.8
+ssil_sharpness = 0.6
 
 [node name="WorldView" type="SubViewportContainer"]
 material = SubResource("ShaderMaterial_4xe8w")

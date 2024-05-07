@@ -499,7 +499,6 @@ collision_mask = 2
 [node name="TvCol" type="CollisionShape3D" parent="SubViewport/World/EatTask/TvArea" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.31556, 0.929063, 2.59097)
 shape = SubResource("BoxShape3D_3650x")
-disabled = true
 
 [node name="SofaArea" type="Area3D" parent="SubViewport/World/EatTask" index="4"]
 collision_layer = 2
