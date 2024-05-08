@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://bgv7m4vwt5y22"]
 
-[ext_resource type="Texture2D" uid="uid://b0cwfegd4sfcm" path="res://Scenes/Mobile/cara.png" id="2_0hegb"]
-[ext_resource type="Texture2D" uid="uid://78bopv1ed2vo" path="res://Scenes/Mobile/eu.png" id="3_y85wf"]
+[ext_resource type="Texture2D" uid="uid://dceok5g3lmlrg" path="res://Scenes/Mobile/cara.png" id="2_0hegb"]
+[ext_resource type="Texture2D" uid="uid://62f1chuxa6ai" path="res://Scenes/Mobile/eu.png" id="3_y85wf"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_esvqp"]
 load_path = "res://.godot/imported/mobile.png-62cfe79b7acc88664139c78a64efed53.ctex"

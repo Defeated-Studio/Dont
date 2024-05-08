@@ -1,19 +1,20 @@
-[gd_scene load_steps=42 format=3 uid="uid://syu2pf7jl5jl"]
+[gd_scene load_steps=43 format=3 uid="uid://syu2pf7jl5jl"]
 
 [ext_resource type="PackedScene" uid="uid://bonk8egsbphsi" path="res://Scenes/World.tscn" id="1_dexbp"]
 [ext_resource type="PackedScene" uid="uid://c5io532rrd1i6" path="res://Scenes/QuestControlUI.tscn" id="2_xuli7"]
 [ext_resource type="Script" path="res://Scripts/GeneratorTask.gd" id="3_0rlj4"]
 [ext_resource type="Script" path="res://Scripts/CleanHouseTask.gd" id="4_o8g44"]
-[ext_resource type="Texture2D" uid="uid://c5fophsrke1nq" path="res://House/Models/soda_can_0.png" id="5_qbsrj"]
-[ext_resource type="PackedScene" uid="uid://c8xs6ctym0laa" path="res://House/Models/pizza.glb" id="6_x05fs"]
-[ext_resource type="Texture2D" uid="uid://cgpytmkxuptnv" path="res://House/Models/dirty_plate_0.jpg" id="7_6mmov"]
-[ext_resource type="Texture2D" uid="uid://v2uehxlh5jks" path="res://House/Models/dirty_plate_1.png" id="8_r0gs8"]
-[ext_resource type="Texture2D" uid="uid://cx8kx0cx417pa" path="res://House/Models/dirty_plate_2.png" id="9_h0c42"]
-[ext_resource type="PackedScene" uid="uid://w0i8fnfcdlwm" path="res://House/Models/cereal_box.glb" id="10_rp5fx"]
+[ext_resource type="Texture2D" uid="uid://d2dbf7ikwxmin" path="res://House/Models/soda_can_0.png" id="5_qbsrj"]
+[ext_resource type="PackedScene" uid="uid://dpc8475e573ji" path="res://House/Models/pizza.glb" id="6_x05fs"]
+[ext_resource type="Texture2D" uid="uid://b17gwg8rfdav6" path="res://House/Models/dirty_plate_0.jpg" id="7_6mmov"]
+[ext_resource type="Texture2D" uid="uid://rqr804ofer5o" path="res://House/Models/dirty_plate_1.png" id="8_r0gs8"]
+[ext_resource type="Texture2D" uid="uid://c051l58tmrv4n" path="res://House/Models/dirty_plate_2.png" id="9_h0c42"]
+[ext_resource type="PackedScene" uid="uid://1ss2ybqen67g" path="res://House/Models/cereal_box.glb" id="10_rp5fx"]
 [ext_resource type="PackedScene" uid="uid://dsbkf1co3qjwj" path="res://Scenes/Paper/Paper.tscn" id="11_qts8l"]
 [ext_resource type="Script" path="res://Scripts/SleepTask.gd" id="12_i34te"]
 [ext_resource type="Script" path="res://Scripts/MessageBobTask.gd" id="13_pqd3f"]
 [ext_resource type="Script" path="res://Scripts/EatTask.gd" id="14_fv2x2"]
+[ext_resource type="PackedScene" uid="uid://bu428plfcgs2f" path="res://Scenes/Diary.tscn" id="15_v7u6l"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_32aba"]
 size = Vector3(1.99219, 1, 1.70752)
@@ -518,6 +519,10 @@ collision_mask = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.71055, 1.32316, 1.81987)
 shape = SubResource("BoxShape3D_mkh6p")
 disabled = true
+
+[node name="Diary" parent="." index="2" instance=ExtResource("15_v7u6l")]
+visible = false
+layout_mode = 2
 
 [connection signal="body_entered" from="SubViewport/World/GeneratorTask/GeneratorArea" to="SubViewport/World/GeneratorTask" method="_on_generator_area_body_entered"]
 [connection signal="body_exited" from="SubViewport/World/GeneratorTask/GeneratorArea" to="SubViewport/World/GeneratorTask" method="_on_generator_area_body_exited"]
