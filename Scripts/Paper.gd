@@ -8,6 +8,7 @@ var canPickUp = false
 @onready var interact_text = %InteractText
 @onready var player = %Player
 @onready var player_dialogue_text = %Player/DialogueText
+@onready var paper_model = $PaperModel
 
 @onready var ui = $UI
 @onready var text_ui = $UI/Text
@@ -24,7 +25,9 @@ func _process(delta):
 	if Input.is_action_just_pressed("interact") and canPickUp:
 		player.canMove = false
 		player.canMoveCamera = false
+		paper_model.hide()
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		
 		ui.show()
 		
 
