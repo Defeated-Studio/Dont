@@ -150,8 +150,10 @@ shadow_mesh = SubResource("ArrayMesh_mdr0t")
 transform = Transform3D(-1.74846e-08, 0.4, 1.74846e-08, 0, -1.74846e-08, 0.4, 0.4, 1.74846e-08, 7.64274e-16, -0.438233, 2.87784, 4.41177)
 script = ExtResource("1_8e388")
 
-[node name="Door" type="StaticBody3D" parent="."]
+[node name="Door" type="StaticBody3D" parent="." groups=["InteractGroup"]]
 transform = Transform3D(1, -7.10543e-15, -1.48231e-21, 7.10543e-15, 1, 1.06581e-14, 1.48231e-21, -1.06581e-14, 1, 0, 0, 0)
+collision_layer = 5
+collision_mask = 5
 
 [node name="Door" type="MeshInstance3D" parent="Door"]
 transform = Transform3D(1, 0, 3.81165e-21, 0, 1, 8.52651e-14, 4.02341e-21, -8.52651e-14, 1, -0.0906134, 0.0573606, -0.0589395)

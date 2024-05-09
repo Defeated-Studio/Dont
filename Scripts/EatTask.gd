@@ -4,11 +4,14 @@ extends Node3D
 @onready var quest_control = $"../QuestControl"
 @onready var dialogue_text = $"../Player/DialogueText"
 @onready var get_food_col = $GetFood/GetFoodCol
+@onready var ray_cast_kitchen_col = $GetFood/RayCastKitchen/RayCastKitchenCol
 @onready var can_food = $"../Player/Head/CanFood"
 @onready var can_food_opened = $"../Player/Head/CanFood/RootNode/canBody/topOpen"
 @onready var can_food_closed = $"../Player/Head/CanFood/RootNode/canBody/topClosed"
+@onready var interact_ray = $"../Player/Head/InteractRay"
 @onready var EatAnimation = $"../Player/Head/CanFood/CanFoodAnimation"
 @onready var microwave_col = $Microwave/MicrowaveCol
+@onready var ray_cast_microwave_col = $Microwave/MicrowaveRaycast/CollisionShape3D
 @onready var microwave_light = $"../House/MicrowaveLight"
 @onready var tv_col = $TvArea/TvCol
 @onready var video_mesh = $"../House/LivingRoom/TV/VideoMesh"
@@ -16,11 +19,13 @@ extends Node3D
 @onready var viewport = $"../House/LivingRoom/TV/SubViewport"
 @onready var tv_audio = $"../House/LivingRoom/TV/TvSound"
 @onready var sofa_col = $SofaArea/SofaCol
+@onready var ray_cast_sofa_col = $SofaArea/RayCastSofa/CollisionShape3D
 @onready var pos = $"../House/Position3D"
 @onready var player = $"../Player"
 @onready var player_view = $"../Player/Head"
 @onready var BedroomDoor = $"../House/Bedroom1/Bedroom1Door"
 @onready var trash_col = $TrashArea/TrashCol
+@onready var ray_cast_trash_col = $TrashArea/TrashRayCast/CollisionShape3D
 
 var canPickup = false
 var canMicrowave = false
@@ -64,8 +69,9 @@ func _process(delta):
 			player_view.position.y = playerViewPos
 			doneEating = false
 			trash_col.set_deferred("disabled", false)
+			ray_cast_trash_col.set_deferred("disabled", false)
 			
-	if Input.is_action_just_pressed("interact") and canThrow:
+	if (Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")) and canThrow:
 		can_food.hide()
 		quest_control.finishQuest()
 		get_node("TrashArea").queue_free()
@@ -97,7 +103,7 @@ func _process(delta):
 			interact_text.show()
 		canClickAgain = true
 
-	if Input.is_action_just_pressed("interact") and canSitDown:
+	if (Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")) and canSitDown:
 		if showTvDialogue:
 			dialogue_text.timeBetweenText = 2
 			dialogue_text.queueDialogue("preciso ligar a tv antes")
@@ -114,7 +120,8 @@ func _process(delta):
 			interact_text.text = "[MB1] Comer"
 			interact_text.show()
 
-	if Input.is_action_just_pressed("interact") and canTurnTv:
+	if ((Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")) 
+		and canTurnTv and interact_ray.canInteractRay):
 		if !TvOn:
 			tv_audio.play()
 			video_mesh.show()
@@ -131,20 +138,24 @@ func _process(delta):
 			video_mesh.hide()
 			video.stop()
 			TvOn = !TvOn
-	if Input.is_action_just_pressed("interact") and canPickup:
+			
+	if (Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")) and canPickup:
 		can_food.show()
 		get_node("GetFood").queue_free()
 		microwave_col.set_deferred("disabled", false)
-		
-	if Input.is_action_just_pressed("interact") and canMicrowave:
+		ray_cast_microwave_col.set_deferred("disabled", false)
+
+	if (Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")) and canMicrowave:
 		if MicrowaveDone:
 			can_food.show()
 			get_node("Microwave").queue_free()
 			tv_col.set_deferred("disabled", false)
 			sofa_col.set_deferred("disabled", false)
+			ray_cast_sofa_col.set_deferred("disabled", false)
 			dialogue_text.timeBetweenText = 3
 			dialogue_text.queueDialogue("eu gosto de comer enquanto assisto tv")
 			dialogue_text.showDialogue()
+			ray_cast_microwave_col.set_deferred("disabled", true)
 		else:
 			can_food.hide()
 			microwave_col.set_deferred("disabled", true)
@@ -170,6 +181,7 @@ func _on_trigger_eat_task_body_entered(body):
 
 func activateCollisions():
 	get_food_col.set_deferred("disabled", false)
+	ray_cast_kitchen_col.set_deferred("disabled", false)
 
 func _on_get_food_body_entered(body):
 	interact_text.text = "[E] Pegar"

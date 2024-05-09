@@ -1,15 +1,15 @@
-[gd_scene load_steps=43 format=3 uid="uid://syu2pf7jl5jl"]
+[gd_scene load_steps=54 format=3 uid="uid://syu2pf7jl5jl"]
 
 [ext_resource type="PackedScene" uid="uid://bonk8egsbphsi" path="res://Scenes/World.tscn" id="1_dexbp"]
 [ext_resource type="PackedScene" uid="uid://c5io532rrd1i6" path="res://Scenes/QuestControlUI.tscn" id="2_xuli7"]
 [ext_resource type="Script" path="res://Scripts/GeneratorTask.gd" id="3_0rlj4"]
 [ext_resource type="Script" path="res://Scripts/CleanHouseTask.gd" id="4_o8g44"]
-[ext_resource type="Texture2D" uid="uid://d2dbf7ikwxmin" path="res://House/Models/soda_can_0.png" id="5_qbsrj"]
-[ext_resource type="PackedScene" uid="uid://dpc8475e573ji" path="res://House/Models/pizza.glb" id="6_x05fs"]
-[ext_resource type="Texture2D" uid="uid://b17gwg8rfdav6" path="res://House/Models/dirty_plate_0.jpg" id="7_6mmov"]
-[ext_resource type="Texture2D" uid="uid://rqr804ofer5o" path="res://House/Models/dirty_plate_1.png" id="8_r0gs8"]
-[ext_resource type="Texture2D" uid="uid://c051l58tmrv4n" path="res://House/Models/dirty_plate_2.png" id="9_h0c42"]
-[ext_resource type="PackedScene" uid="uid://1ss2ybqen67g" path="res://House/Models/cereal_box.glb" id="10_rp5fx"]
+[ext_resource type="Texture2D" uid="uid://c5fophsrke1nq" path="res://House/Models/soda_can_0.png" id="5_qbsrj"]
+[ext_resource type="PackedScene" uid="uid://c8xs6ctym0laa" path="res://House/Models/pizza.glb" id="6_x05fs"]
+[ext_resource type="Texture2D" uid="uid://cgpytmkxuptnv" path="res://House/Models/dirty_plate_0.jpg" id="7_6mmov"]
+[ext_resource type="Texture2D" uid="uid://v2uehxlh5jks" path="res://House/Models/dirty_plate_1.png" id="8_r0gs8"]
+[ext_resource type="Texture2D" uid="uid://cx8kx0cx417pa" path="res://House/Models/dirty_plate_2.png" id="9_h0c42"]
+[ext_resource type="PackedScene" uid="uid://w0i8fnfcdlwm" path="res://House/Models/cereal_box.glb" id="10_rp5fx"]
 [ext_resource type="PackedScene" uid="uid://dsbkf1co3qjwj" path="res://Scenes/Paper/Paper.tscn" id="11_qts8l"]
 [ext_resource type="Script" path="res://Scripts/SleepTask.gd" id="12_i34te"]
 [ext_resource type="Script" path="res://Scripts/MessageBobTask.gd" id="13_pqd3f"]
@@ -100,6 +100,12 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_3n2rw")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_8d3ix"]
+size = Vector3(1, 0.603027, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2k18f"]
+size = Vector3(0.343437, 0.0648727, 0.381474)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_kgdct"]
 size = Vector3(0.442719, 1, 0.590088)
 
@@ -154,6 +160,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_6pie7")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_y1jvw"]
+size = Vector3(0.963318, 0.146927, 1.16479)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_2gcau"]
 size = Vector3(0.61145, 1, 0.721741)
 
@@ -191,14 +200,26 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_fjkr0")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_8jxpt"]
+size = Vector3(0.776398, 0.139976, 1.13605)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_26xl1"]
 size = Vector3(0.353271, 1, 0.563477)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7w67m"]
+size = Vector3(1.02942, 0.328128, 1.22314)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_86ow1"]
 size = Vector3(0.364136, 0.774902, 0.335815)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_3ojgl"]
+size = Vector3(0.540649, 1.03101, 0.828186)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_gqtgm"]
 size = Vector3(0.853813, 0.741333, 0.901031)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fq0v7"]
+size = Vector3(1.19434, 1.12695, 1.16748)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ew158"]
 size = Vector3(1.62878, 0.716309, 1.69434)
@@ -212,8 +233,14 @@ size = Vector3(3.07782, 1.03601, 1.14941)
 [sub_resource type="BoxShape3D" id="BoxShape3D_djrav"]
 size = Vector3(0.131104, 0.683838, 1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_6bsbg"]
+size = Vector3(0.376831, 0.821411, 1.76227)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_nvyq3"]
 size = Vector3(0.211731, 0.912331, 0.226456)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_26qwg"]
+size = Vector3(0.68457, 0.391083, 0.427002)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3650x"]
 size = Vector3(0.789001, 1, 0.337158)
@@ -221,8 +248,14 @@ size = Vector3(0.789001, 1, 0.337158)
 [sub_resource type="BoxShape3D" id="BoxShape3D_mthhy"]
 size = Vector3(0.664917, 0.723877, 0.27832)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_e84q8"]
+size = Vector3(1.01553, 0.740356, 0.860596)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_mkh6p"]
 size = Vector3(0.774048, 0.428223, 0.907776)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yhu5n"]
+size = Vector3(0.730347, 0.791626, 0.708618)
 
 [node name="World" instance=ExtResource("1_dexbp")]
 
@@ -302,141 +335,197 @@ collision_mask = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0409, 1.13928, 0)
 shape = SubResource("BoxShape3D_q8idq")
 
-[node name="CleanSodas" type="Area3D" parent="SubViewport/World/CleanHouseTask" index="1"]
+[node name="CleanSodas" type="StaticBody3D" parent="SubViewport/World/CleanHouseTask" index="1" groups=["InteractGroup"]]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CleanSodas" type="Area3D" parent="SubViewport/World/CleanHouseTask/CleanSodas" index="0"]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CleanSodas" type="CollisionShape3D" parent="SubViewport/World/CleanHouseTask/CleanSodas" index="0"]
+[node name="CleanSodas" type="CollisionShape3D" parent="SubViewport/World/CleanHouseTask/CleanSodas/CleanSodas" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.00524, 0.0200861, 1.44195)
 shape = SubResource("BoxShape3D_rq0ri")
 disabled = true
 
-[node name="Sodas" type="Node3D" parent="SubViewport/World/CleanHouseTask/CleanSodas" index="1"]
+[node name="Sodas" type="Node3D" parent="SubViewport/World/CleanHouseTask/CleanSodas/CleanSodas" index="1"]
 transform = Transform3D(-2.18557e-09, 0, 0.05, 0, 0.05, 0, -0.05, 0, -2.18557e-09, -2.21203, 0.0390737, 1.56497)
 
-[node name="SemiCrushedSoda" type="Node3D" parent="SubViewport/World/CleanHouseTask/CleanSodas/Sodas" index="0"]
+[node name="SemiCrushedSoda" type="Node3D" parent="SubViewport/World/CleanHouseTask/CleanSodas/CleanSodas/Sodas" index="0"]
 transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, 0, 0, 0)
 
-[node name="Object_6" type="MeshInstance3D" parent="SubViewport/World/CleanHouseTask/CleanSodas/Sodas/SemiCrushedSoda" index="0"]
+[node name="Object_6" type="MeshInstance3D" parent="SubViewport/World/CleanHouseTask/CleanSodas/CleanSodas/Sodas/SemiCrushedSoda" index="0"]
 transform = Transform3D(0.685295, 0.482963, -0.545085, -0.482963, -0.258819, -0.836516, -0.545085, 0.836516, 0.0558857, -0.146782, -0.558047, 0.0340385)
 mesh = SubResource("ArrayMesh_d52th")
 skeleton = NodePath("")
 
-[node name="CrushedSoda" type="Node3D" parent="SubViewport/World/CleanHouseTask/CleanSodas/Sodas" index="1"]
+[node name="CrushedSoda" type="Node3D" parent="SubViewport/World/CleanHouseTask/CleanSodas/CleanSodas/Sodas" index="1"]
 
-[node name="Object_8" type="MeshInstance3D" parent="SubViewport/World/CleanHouseTask/CleanSodas/Sodas/CrushedSoda" index="0"]
+[node name="Object_8" type="MeshInstance3D" parent="SubViewport/World/CleanHouseTask/CleanSodas/CleanSodas/Sodas/CrushedSoda" index="0"]
 transform = Transform3D(1, 0, -4.37114e-08, 0, 1, 0, 4.37114e-08, 0, 1, 2.82838, -0.646926, -0.0140839)
 mesh = SubResource("ArrayMesh_ixm86")
 skeleton = NodePath("")
 
-[node name="CrushedSoda2" type="Node3D" parent="SubViewport/World/CleanHouseTask/CleanSodas/Sodas" index="2"]
+[node name="CrushedSoda2" type="Node3D" parent="SubViewport/World/CleanHouseTask/CleanSodas/CleanSodas/Sodas" index="2"]
 transform = Transform3D(1, 0, 3.55271e-15, 0, 1, 0, -3.55271e-15, 0, 1, -1.43322, 0, -1.6348)
 
-[node name="Object_8" type="MeshInstance3D" parent="SubViewport/World/CleanHouseTask/CleanSodas/Sodas/CrushedSoda2" index="0"]
+[node name="Object_8" type="MeshInstance3D" parent="SubViewport/World/CleanHouseTask/CleanSodas/CleanSodas/Sodas/CrushedSoda2" index="0"]
 transform = Transform3D(-3.55271e-15, 0, 1, 0, 1, 0, -1, 0, -3.55271e-15, 2.82838, -0.646926, -0.0140839)
 mesh = SubResource("ArrayMesh_ixm86")
 skeleton = NodePath("")
 
-[node name="CleanPizza" type="Area3D" parent="SubViewport/World/CleanHouseTask" index="2"]
+[node name="SodasCol" type="CollisionShape3D" parent="SubViewport/World/CleanHouseTask/CleanSodas" index="1"]
+transform = Transform3D(0.22, 0, 0, 0, 0.22, 0, 0, 0, 0.22, -2.23463, 0.043667, 1.49145)
+shape = SubResource("BoxShape3D_8d3ix")
+
+[node name="CleanPizza" type="StaticBody3D" parent="SubViewport/World/CleanHouseTask" index="2" groups=["InteractGroup"]]
+collision_layer = 4
+collision_mask = 4
+
+[node name="RayCol" type="CollisionShape3D" parent="SubViewport/World/CleanHouseTask/CleanPizza" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.33846, 0.410841, -2.16669)
+shape = SubResource("BoxShape3D_2k18f")
+
+[node name="CleanPizza" type="Area3D" parent="SubViewport/World/CleanHouseTask/CleanPizza" index="1"]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CleanPizza" type="CollisionShape3D" parent="SubViewport/World/CleanHouseTask/CleanPizza" index="0"]
+[node name="CleanPizza" type="CollisionShape3D" parent="SubViewport/World/CleanHouseTask/CleanPizza/CleanPizza" index="0"]
 transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -1.05027, 0, -1.88272)
 shape = SubResource("BoxShape3D_kgdct")
 disabled = true
 
-[node name="Pizza" parent="SubViewport/World/CleanHouseTask/CleanPizza" index="1" instance=ExtResource("6_x05fs")]
+[node name="Pizza" parent="SubViewport/World/CleanHouseTask/CleanPizza/CleanPizza" index="1" instance=ExtResource("6_x05fs")]
 transform = Transform3D(0.001, 0, 0, 0, 0.001, 0, 0, 0, 0.001, -1.38515, 0.355818, -1.67043)
 
-[node name="CleanLivingRoomPlates" type="Area3D" parent="SubViewport/World/CleanHouseTask" index="3"]
+[node name="CleanLivingRoomPlates" type="StaticBody3D" parent="SubViewport/World/CleanHouseTask" index="3" groups=["InteractGroup"]]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CleanLivingRoomPlates" type="Area3D" parent="SubViewport/World/CleanHouseTask/CleanLivingRoomPlates" index="0"]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CleanLivingRoomPlates" type="CollisionShape3D" parent="SubViewport/World/CleanHouseTask/CleanLivingRoomPlates" index="0"]
+[node name="CleanLivingRoomPlates" type="CollisionShape3D" parent="SubViewport/World/CleanHouseTask/CleanLivingRoomPlates/CleanLivingRoomPlates" index="0"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3.22928, 0, -2.97889)
 shape = SubResource("BoxShape3D_11ntr")
 disabled = true
 
-[node name="DirtyPlate2" type="Node3D" parent="SubViewport/World/CleanHouseTask/CleanLivingRoomPlates" index="1"]
+[node name="DirtyPlate2" type="Node3D" parent="SubViewport/World/CleanHouseTask/CleanLivingRoomPlates/CleanLivingRoomPlates" index="1"]
 transform = Transform3D(0.002, 0, 0, 0, 0.002, 0, 0, 0, 0.002, -3.09482, 0.359696, -2.74729)
 
-[node name="defaultMaterial" type="MeshInstance3D" parent="SubViewport/World/CleanHouseTask/CleanLivingRoomPlates/DirtyPlate2" index="0"]
+[node name="defaultMaterial" type="MeshInstance3D" parent="SubViewport/World/CleanHouseTask/CleanLivingRoomPlates/CleanLivingRoomPlates/DirtyPlate2" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, -4.37114e-08, 0, 4.37114e-08, 1, 0, 8, 0)
 mesh = SubResource("ArrayMesh_rlu8j")
 skeleton = NodePath("")
 
-[node name="defaultMaterial2" type="MeshInstance3D" parent="SubViewport/World/CleanHouseTask/CleanLivingRoomPlates/DirtyPlate2" index="1"]
+[node name="defaultMaterial2" type="MeshInstance3D" parent="SubViewport/World/CleanHouseTask/CleanLivingRoomPlates/CleanLivingRoomPlates/DirtyPlate2" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, -4.37114e-08, 0, 4.37114e-08, 1, 0, 13.8616, 32.3854)
 mesh = SubResource("ArrayMesh_rlu8j")
 skeleton = NodePath("")
 
-[node name="defaultMaterial3" type="MeshInstance3D" parent="SubViewport/World/CleanHouseTask/CleanLivingRoomPlates/DirtyPlate2" index="2"]
+[node name="defaultMaterial3" type="MeshInstance3D" parent="SubViewport/World/CleanHouseTask/CleanLivingRoomPlates/CleanLivingRoomPlates/DirtyPlate2" index="2"]
 transform = Transform3D(0.655, 0, 0, 0, 0.655, -2.8631e-08, 0, 2.8631e-08, 0.655, -23.634, 20.0635, 33.4669)
 mesh = SubResource("ArrayMesh_rlu8j")
 skeleton = NodePath("")
 
-[node name="CleanKitchenPlates" type="Area3D" parent="SubViewport/World/CleanHouseTask" index="4"]
+[node name="LivingRoomPlatesCol" type="CollisionShape3D" parent="SubViewport/World/CleanHouseTask/CleanLivingRoomPlates" index="1"]
+transform = Transform3D(0.29, 0, 0, 0, 0.29, 0, 0, 0, 0.29, -3.08861, 0.391593, -2.73119)
+shape = SubResource("BoxShape3D_y1jvw")
+
+[node name="CleanKitchenPlates" type="StaticBody3D" parent="SubViewport/World/CleanHouseTask" index="4" groups=["InteractGroup"]]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CleanKitchenPlates" type="Area3D" parent="SubViewport/World/CleanHouseTask/CleanKitchenPlates" index="0"]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CleanKitchenPlates" type="CollisionShape3D" parent="SubViewport/World/CleanHouseTask/CleanKitchenPlates" index="0"]
+[node name="CleanKitchenPlates" type="CollisionShape3D" parent="SubViewport/World/CleanHouseTask/CleanKitchenPlates/CleanKitchenPlates" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.73106, 0, 2.3074)
 shape = SubResource("BoxShape3D_2gcau")
 disabled = true
 
-[node name="DirtyPlate" type="Node3D" parent="SubViewport/World/CleanHouseTask/CleanKitchenPlates" index="1"]
+[node name="DirtyPlate" type="Node3D" parent="SubViewport/World/CleanHouseTask/CleanKitchenPlates/CleanKitchenPlates" index="1"]
 transform = Transform3D(0.002, 0, 0, 0, 0.002, 0, 0, 0, 0.002, 4.95214, 0.400071, 2.16845)
 
-[node name="defaultMaterial" type="MeshInstance3D" parent="SubViewport/World/CleanHouseTask/CleanKitchenPlates/DirtyPlate" index="0"]
+[node name="defaultMaterial" type="MeshInstance3D" parent="SubViewport/World/CleanHouseTask/CleanKitchenPlates/CleanKitchenPlates/DirtyPlate" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, -4.37114e-08, 0, 4.37114e-08, 1, 0, 8, 0)
 mesh = SubResource("ArrayMesh_iwut6")
 skeleton = NodePath("")
 
-[node name="defaultMaterial2" type="MeshInstance3D" parent="SubViewport/World/CleanHouseTask/CleanKitchenPlates/DirtyPlate" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, -4.37114e-08, 0, 4.37114e-08, 1, 0, 13.8616, 32.3854)
+[node name="defaultMaterial2" type="MeshInstance3D" parent="SubViewport/World/CleanHouseTask/CleanKitchenPlates/CleanKitchenPlates/DirtyPlate" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, -4.37114e-08, 0, 4.37114e-08, 1, 0, 13.8616, 32.3855)
 mesh = SubResource("ArrayMesh_iwut6")
 skeleton = NodePath("")
 
-[node name="defaultMaterial4" type="MeshInstance3D" parent="SubViewport/World/CleanHouseTask/CleanKitchenPlates/DirtyPlate" index="2"]
+[node name="defaultMaterial4" type="MeshInstance3D" parent="SubViewport/World/CleanHouseTask/CleanKitchenPlates/CleanKitchenPlates/DirtyPlate" index="2"]
 transform = Transform3D(1, 0, 0, 0, 0.978821, -0.204718, 0, 0.204718, 0.978821, 42.5493, 18.3071, 126.665)
 mesh = SubResource("ArrayMesh_iwut6")
 skeleton = NodePath("")
 
-[node name="defaultMaterial3" type="MeshInstance3D" parent="SubViewport/World/CleanHouseTask/CleanKitchenPlates/DirtyPlate" index="3"]
+[node name="defaultMaterial3" type="MeshInstance3D" parent="SubViewport/World/CleanHouseTask/CleanKitchenPlates/CleanKitchenPlates/DirtyPlate" index="3"]
 transform = Transform3D(0.655, 0, 0, 0, 0.655, -2.8631e-08, 0, 2.8631e-08, 0.655, -23.634, 20.0635, 33.4669)
 mesh = SubResource("ArrayMesh_iwut6")
 skeleton = NodePath("")
 
-[node name="CleanCereal" type="Area3D" parent="SubViewport/World/CleanHouseTask" index="5"]
+[node name="KitchenPlatesCol" type="CollisionShape3D" parent="SubViewport/World/CleanHouseTask/CleanKitchenPlates" index="1"]
+transform = Transform3D(0.525, 0, 0, 0, 0.525, 0, 0, 0, 0.525, 4.98999, 0.435299, 2.29923)
+shape = SubResource("BoxShape3D_8jxpt")
+
+[node name="CleanCereal" type="StaticBody3D" parent="SubViewport/World/CleanHouseTask" index="5" groups=["InteractGroup"]]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CleanCereal" type="Area3D" parent="SubViewport/World/CleanHouseTask/CleanCereal" index="0"]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CleanCereal" type="CollisionShape3D" parent="SubViewport/World/CleanHouseTask/CleanCereal" index="0"]
+[node name="CleanCereal" type="CollisionShape3D" parent="SubViewport/World/CleanHouseTask/CleanCereal/CleanCereal" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.323364, 3.40707, -0.0249474)
 shape = SubResource("BoxShape3D_26xl1")
 disabled = true
 
-[node name="CerealBox" parent="SubViewport/World/CleanHouseTask/CleanCereal" index="1" instance=ExtResource("10_rp5fx")]
+[node name="CerealBox" parent="SubViewport/World/CleanHouseTask/CleanCereal/CleanCereal" index="1" instance=ExtResource("10_rp5fx")]
 transform = Transform3D(0.866025, 0.5, -2.18557e-08, -4.37114e-08, 1.19422e-07, 1, 0.5, -0.866025, 1.25278e-07, -0.607508, 3.84057, 0.228899)
 
-[node name="CleanToilet" type="Area3D" parent="SubViewport/World/CleanHouseTask" index="6"]
+[node name="CerealCol" type="CollisionShape3D" parent="SubViewport/World/CleanHouseTask/CleanCereal" index="1"]
+transform = Transform3D(0.355, 0, 0, 0, 0.355, 0, 0, 0, 0.355, -0.525972, 3.83093, 0.0863862)
+shape = SubResource("BoxShape3D_7w67m")
+
+[node name="CleanToilet" type="StaticBody3D" parent="SubViewport/World/CleanHouseTask" index="6" groups=["InteractGroup"]]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CleanToilet" type="Area3D" parent="SubViewport/World/CleanHouseTask/CleanToilet" index="0"]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CleanToilet" type="CollisionShape3D" parent="SubViewport/World/CleanHouseTask/CleanToilet" index="0"]
+[node name="CleanToilet" type="CollisionShape3D" parent="SubViewport/World/CleanHouseTask/CleanToilet/CleanToilet" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.76133, 3.1393, 1.60251)
 shape = SubResource("BoxShape3D_86ow1")
 disabled = true
 
-[node name="TrashCan" type="Area3D" parent="SubViewport/World/CleanHouseTask" index="7"]
+[node name="ToiletCol" type="CollisionShape3D" parent="SubViewport/World/CleanHouseTask/CleanToilet" index="1"]
+transform = Transform3D(0.58, 0, 0, 0, 0.58, 0, 0, 0, 0.58, -2.77845, 3.29056, 1.30334)
+shape = SubResource("BoxShape3D_3ojgl")
+
+[node name="TrashCan" type="StaticBody3D" parent="SubViewport/World/CleanHouseTask" index="7" groups=["InteractGroup"]]
+collision_layer = 4
+collision_mask = 4
+
+[node name="TrashCan" type="Area3D" parent="SubViewport/World/CleanHouseTask/TrashCan" index="0"]
 collision_layer = 2
 collision_mask = 2
 
-[node name="Trash" type="CollisionShape3D" parent="SubViewport/World/CleanHouseTask/TrashCan" index="0"]
+[node name="Trash" type="CollisionShape3D" parent="SubViewport/World/CleanHouseTask/TrashCan/TrashCan" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.46712, -0.129333, -0.380702)
 shape = SubResource("BoxShape3D_gqtgm")
 disabled = true
+
+[node name="TrashCanCol" type="CollisionShape3D" parent="SubViewport/World/CleanHouseTask/TrashCan" index="1"]
+transform = Transform3D(0.42, 0, 0, 0, 0.42, 0, 0, 0, 0.42, 3.35724, -0.0245488, -0.334626)
+shape = SubResource("BoxShape3D_fq0v7")
 
 [node name="Paper1" parent="SubViewport/World/CleanHouseTask" index="8" instance=ExtResource("11_qts8l")]
 transform = Transform3D(0.000584827, 0, -0.00496568, 0, 0.005, 0, 0.00496568, 0, 0.000584827, 0.240611, 2.92411, 1.17289)
@@ -448,8 +537,8 @@ text = "Não sei quem vai encontrar isso, mas preciso escrever. Talvez assim as 
 script = ExtResource("12_i34te")
 
 [node name="BedArea" type="Area3D" parent="SubViewport/World/SleepTask" index="0"]
-collision_layer = 2
-collision_mask = 2
+collision_layer = 6
+collision_mask = 6
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewport/World/SleepTask/BedArea" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.04843, 4.8215, 0.347168)
@@ -484,6 +573,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.22487, 1.4106, -0.205822)
 shape = SubResource("BoxShape3D_djrav")
 disabled = true
 
+[node name="RayCastKitchen" type="StaticBody3D" parent="SubViewport/World/EatTask/GetFood" index="1" groups=["InteractGroup"]]
+collision_layer = 4
+collision_mask = 4
+
+[node name="RayCastKitchenCol" type="CollisionShape3D" parent="SubViewport/World/EatTask/GetFood/RayCastKitchen" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.4581, 1.29646, -0.573851)
+shape = SubResource("BoxShape3D_6bsbg")
+disabled = true
+
 [node name="Microwave" type="Area3D" parent="SubViewport/World/EatTask" index="2"]
 collision_layer = 2
 collision_mask = 2
@@ -491,6 +589,15 @@ collision_mask = 2
 [node name="MicrowaveCol" type="CollisionShape3D" parent="SubViewport/World/EatTask/Microwave" index="0"]
 transform = Transform3D(0.999948, -0.0102275, 0, 0.0102275, 0.999948, 0, 0, 0, 1, 7.11367, 1.41333, -1.37951)
 shape = SubResource("BoxShape3D_nvyq3")
+disabled = true
+
+[node name="MicrowaveRaycast" type="StaticBody3D" parent="SubViewport/World/EatTask/Microwave" index="1" groups=["InteractGroup"]]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewport/World/EatTask/Microwave/MicrowaveRaycast" index="0"]
+transform = Transform3D(0.812592, 0, -0.582832, 0, 1, 0, 0.582832, 0, 0.812592, 7.63831, 2.00473, -1.9281)
+shape = SubResource("BoxShape3D_26qwg")
 disabled = true
 
 [node name="TvArea" type="Area3D" parent="SubViewport/World/EatTask" index="3"]
@@ -511,6 +618,15 @@ transform = Transform3D(0.999893, -0.0146079, 0, 0.0146079, 0.999893, 0, 0, 0, 1
 shape = SubResource("BoxShape3D_mthhy")
 disabled = true
 
+[node name="RayCastSofa" type="StaticBody3D" parent="SubViewport/World/EatTask/SofaArea" index="1" groups=["InteractGroup"]]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewport/World/EatTask/SofaArea/RayCastSofa" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.780542, 1.37525, 5.36706)
+shape = SubResource("BoxShape3D_e84q8")
+disabled = true
+
 [node name="TrashArea" type="Area3D" parent="SubViewport/World/EatTask" index="5"]
 collision_layer = 2
 collision_mask = 2
@@ -518,6 +634,15 @@ collision_mask = 2
 [node name="TrashCol" type="CollisionShape3D" parent="SubViewport/World/EatTask/TrashArea" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.71055, 1.32316, 1.81987)
 shape = SubResource("BoxShape3D_mkh6p")
+disabled = true
+
+[node name="TrashRayCast" type="StaticBody3D" parent="SubViewport/World/EatTask/TrashArea" index="1" groups=["InteractGroup"]]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewport/World/EatTask/TrashArea/TrashRayCast" index="0"]
+transform = Transform3D(0.79, 0, 0, 0, 0.79, 0, 0, 0, 0.79, 4.60343, 1.189, 1.84915)
+shape = SubResource("BoxShape3D_yhu5n")
 disabled = true
 
 [node name="Diary" parent="." index="2" instance=ExtResource("15_v7u6l")]
@@ -528,20 +653,20 @@ layout_mode = 2
 [connection signal="body_exited" from="SubViewport/World/GeneratorTask/GeneratorArea" to="SubViewport/World/GeneratorTask" method="_on_generator_area_body_exited"]
 [connection signal="body_entered" from="SubViewport/World/CleanHouseTask/TriggerCleanHouseTask" to="SubViewport/World/CleanHouseTask" method="_on_trigger_clean_house_task_body_entered"]
 [connection signal="body_exited" from="SubViewport/World/CleanHouseTask/TriggerCleanHouseTask" to="SubViewport/World/EatTask" method="_on_trigger_clean_house_task_body_exited"]
-[connection signal="body_entered" from="SubViewport/World/CleanHouseTask/CleanSodas" to="SubViewport/World/CleanHouseTask" method="_on_clean_entered" binds= ["CleanSodas"]]
-[connection signal="body_exited" from="SubViewport/World/CleanHouseTask/CleanSodas" to="SubViewport/World/CleanHouseTask" method="_on_clean_exited"]
-[connection signal="body_entered" from="SubViewport/World/CleanHouseTask/CleanPizza" to="SubViewport/World/CleanHouseTask" method="_on_clean_entered" binds= ["CleanPizza"]]
-[connection signal="body_exited" from="SubViewport/World/CleanHouseTask/CleanPizza" to="SubViewport/World/CleanHouseTask" method="_on_clean_exited"]
-[connection signal="body_entered" from="SubViewport/World/CleanHouseTask/CleanLivingRoomPlates" to="SubViewport/World/CleanHouseTask" method="_on_clean_entered" binds= ["CleanLivingRoomPlates"]]
-[connection signal="body_exited" from="SubViewport/World/CleanHouseTask/CleanLivingRoomPlates" to="SubViewport/World/CleanHouseTask" method="_on_clean_exited"]
-[connection signal="body_entered" from="SubViewport/World/CleanHouseTask/CleanKitchenPlates" to="SubViewport/World/CleanHouseTask" method="_on_clean_entered" binds= ["CleanKitchenPlates"]]
-[connection signal="body_exited" from="SubViewport/World/CleanHouseTask/CleanKitchenPlates" to="SubViewport/World/CleanHouseTask" method="_on_clean_exited"]
-[connection signal="body_entered" from="SubViewport/World/CleanHouseTask/CleanCereal" to="SubViewport/World/CleanHouseTask" method="_on_clean_entered" binds= ["CleanCereal"]]
-[connection signal="body_exited" from="SubViewport/World/CleanHouseTask/CleanCereal" to="SubViewport/World/CleanHouseTask" method="_on_clean_exited"]
-[connection signal="body_entered" from="SubViewport/World/CleanHouseTask/CleanToilet" to="SubViewport/World/CleanHouseTask" method="_on_clean_entered" binds= ["CleanToilet"]]
-[connection signal="body_exited" from="SubViewport/World/CleanHouseTask/CleanToilet" to="SubViewport/World/CleanHouseTask" method="_on_clean_exited"]
-[connection signal="body_entered" from="SubViewport/World/CleanHouseTask/TrashCan" to="SubViewport/World/CleanHouseTask" method="_on_trash_can_body_entered"]
-[connection signal="body_exited" from="SubViewport/World/CleanHouseTask/TrashCan" to="SubViewport/World/CleanHouseTask" method="_on_trash_can_body_exited"]
+[connection signal="body_entered" from="SubViewport/World/CleanHouseTask/CleanSodas/CleanSodas" to="SubViewport/World/CleanHouseTask" method="_on_clean_entered" binds= ["CleanSodas"]]
+[connection signal="body_exited" from="SubViewport/World/CleanHouseTask/CleanSodas/CleanSodas" to="SubViewport/World/CleanHouseTask" method="_on_clean_exited"]
+[connection signal="body_entered" from="SubViewport/World/CleanHouseTask/CleanPizza/CleanPizza" to="SubViewport/World/CleanHouseTask" method="_on_clean_entered" binds= ["CleanPizza"]]
+[connection signal="body_exited" from="SubViewport/World/CleanHouseTask/CleanPizza/CleanPizza" to="SubViewport/World/CleanHouseTask" method="_on_clean_exited"]
+[connection signal="body_entered" from="SubViewport/World/CleanHouseTask/CleanLivingRoomPlates/CleanLivingRoomPlates" to="SubViewport/World/CleanHouseTask" method="_on_clean_entered" binds= ["CleanLivingRoomPlates"]]
+[connection signal="body_exited" from="SubViewport/World/CleanHouseTask/CleanLivingRoomPlates/CleanLivingRoomPlates" to="SubViewport/World/CleanHouseTask" method="_on_clean_exited"]
+[connection signal="body_entered" from="SubViewport/World/CleanHouseTask/CleanKitchenPlates/CleanKitchenPlates" to="SubViewport/World/CleanHouseTask" method="_on_clean_entered" binds= ["CleanKitchenPlates"]]
+[connection signal="body_exited" from="SubViewport/World/CleanHouseTask/CleanKitchenPlates/CleanKitchenPlates" to="SubViewport/World/CleanHouseTask" method="_on_clean_exited"]
+[connection signal="body_entered" from="SubViewport/World/CleanHouseTask/CleanCereal/CleanCereal" to="SubViewport/World/CleanHouseTask" method="_on_clean_entered" binds= ["CleanCereal"]]
+[connection signal="body_exited" from="SubViewport/World/CleanHouseTask/CleanCereal/CleanCereal" to="SubViewport/World/CleanHouseTask" method="_on_clean_exited"]
+[connection signal="body_entered" from="SubViewport/World/CleanHouseTask/CleanToilet/CleanToilet" to="SubViewport/World/CleanHouseTask" method="_on_clean_entered" binds= ["CleanToilet"]]
+[connection signal="body_exited" from="SubViewport/World/CleanHouseTask/CleanToilet/CleanToilet" to="SubViewport/World/CleanHouseTask" method="_on_clean_exited"]
+[connection signal="body_entered" from="SubViewport/World/CleanHouseTask/TrashCan/TrashCan" to="SubViewport/World/CleanHouseTask" method="_on_trash_can_body_entered"]
+[connection signal="body_exited" from="SubViewport/World/CleanHouseTask/TrashCan/TrashCan" to="SubViewport/World/CleanHouseTask" method="_on_trash_can_body_exited"]
 [connection signal="body_entered" from="SubViewport/World/SleepTask/BedArea" to="SubViewport/World/SleepTask" method="_on_bed_area_body_entered"]
 [connection signal="body_exited" from="SubViewport/World/SleepTask/BedArea" to="SubViewport/World/SleepTask" method="_on_bed_area_body_exited"]
 [connection signal="body_entered" from="SubViewport/World/SleepTask/TriggerSleepTask" to="SubViewport/World/SleepTask" method="_on_trigger_sleep_task_body_entered"]

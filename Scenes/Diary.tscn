@@ -1,10 +1,10 @@
 [gd_scene load_steps=12 format=3 uid="uid://bu428plfcgs2f"]
 
-[ext_resource type="Texture2D" uid="uid://c4ypypgdka1we" path="res://Texture/Diario.png" id="1_0etr3"]
+[ext_resource type="Texture2D" uid="uid://bmon2bq03pdt4" path="res://Texture/Diario.png" id="1_0etr3"]
 [ext_resource type="Script" path="res://Scripts/Diary.gd" id="1_4lx5f"]
 [ext_resource type="Script" path="res://Scripts/Pages.gd" id="3_4alfo"]
 [ext_resource type="Script" path="res://Scripts/Papers.gd" id="4_atrii"]
-[ext_resource type="Texture2D" uid="uid://bj6duw5pk5h5l" path="res://Texture/Paper_for_diary.png" id="5_pjl4s"]
+[ext_resource type="Texture2D" uid="uid://dtn5qjgbyue27" path="res://Texture/Paper_for_diary.png" id="5_pjl4s"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vvfae"]
 bg_color = Color(0.45098, 0.305882, 0.0980392, 0.913725)

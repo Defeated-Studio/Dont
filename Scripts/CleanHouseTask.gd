@@ -6,16 +6,16 @@ extends Node3D
 @onready var interact_text = $"../InteractText/InteractText"
 
 @onready var toilet = $"../House/Bathroom2/Toilet"
-@onready var clean_sodas = $CleanSodas/CleanSodas
-@onready var clean_pizza = $CleanPizza/CleanPizza
-@onready var clean_living_room_plates = $CleanLivingRoomPlates/CleanLivingRoomPlates
-@onready var clean_kitchen_plates = $CleanKitchenPlates/CleanKitchenPlates
-@onready var clean_cereal = $CleanCereal/CleanCereal
-@onready var clean_toilet = $CleanToilet/CleanToilet
-@onready var trash = $TrashCan/Trash
+@onready var clean_sodas = $CleanSodas/CleanSodas/CleanSodas
+@onready var clean_pizza = $CleanPizza/CleanPizza/CleanPizza
+@onready var clean_living_room_plates = $CleanLivingRoomPlates/CleanLivingRoomPlates/CleanLivingRoomPlates
+@onready var clean_kitchen_plates = $CleanKitchenPlates/CleanKitchenPlates/CleanKitchenPlates
+@onready var clean_cereal = $CleanCereal/CleanCereal/CleanCereal
+@onready var clean_toilet = $CleanToilet/CleanToilet/CleanToilet
+@onready var trash = $TrashCan/TrashCan/Trash
 
 @onready var paper1 = $Paper1
-@onready var paper_collision = $Paper1/InteractArea/CollisionShape3D
+@onready var paper_collision = $Paper1/RayCast/InteractArea/CollisionShape3D
 
 var questEnabled = false
 var canClean = false
@@ -24,7 +24,7 @@ var toClean = 6
 var canThrowAway = false
 
 func _process(delta):
-	if Input.is_action_just_pressed("interact") and canClean:
+	if (Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")) and canClean:
 		if currentNode == "CleanToilet":
 			toilet.cleanToilet()
 		get_node(currentNode).queue_free()
@@ -35,7 +35,7 @@ func _process(delta):
 			player_dialogue.showDialogue()
 			trash.set_deferred("disabled", false) 
 	
-	if Input.is_action_just_pressed("interact") and canThrowAway:
+	if (Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")) and canThrowAway:
 		quest_control.finishQuest()
 		get_node("TrashCan").queue_free()
 		await get_tree().create_timer(1.0).timeout
