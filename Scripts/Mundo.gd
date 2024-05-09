@@ -5,6 +5,9 @@ extends Node3D
 @onready var player = %Player
 @onready var diary = $"../../Diary"
 
+var canOpenMobile = true
+var canOpenDiary = true
+
 func _ready():
 	#Engine.max_fps = 144
 	pass
@@ -18,7 +21,7 @@ func _process(delta):
 		player.canMove = true
 		messages_app.backButtonSignal = false
 	
-	if Input.is_action_just_pressed("Mobile") and !diary.visible:
+	if Input.is_action_just_pressed("Mobile") and !diary.visible and canOpenMobile:
 		if messages_app.visible:
 			messages_app.hide()
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -28,7 +31,7 @@ func _process(delta):
 			messages_app.show()
 			messages_app.showMobile()
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	elif Input.is_action_just_pressed("Diary") and !messages_app.visible:
+	elif Input.is_action_just_pressed("Diary") and !messages_app.visible and canOpenDiary:
 		if diary.visible:
 			diary.hide()
 			diary.reset_diary()

@@ -26,6 +26,7 @@ extends Node3D
 @onready var BedroomDoor = $"../House/Bedroom1/Bedroom1Door"
 @onready var trash_col = $TrashArea/TrashCol
 @onready var ray_cast_trash_col = $TrashArea/TrashRayCast/CollisionShape3D
+@onready var world = $".."
 
 var canPickup = false
 var canMicrowave = false
@@ -65,6 +66,8 @@ func _process(delta):
 			sitDown = false
 			player.canCrouch = true
 			player.canMove = true
+			world.canOpenMobile = true
+			world.canOpenDiary = true
 			player.global_position = playerStandupPos
 			player_view.position.y = playerViewPos
 			doneEating = false
@@ -78,7 +81,6 @@ func _process(delta):
 
 	if Input.is_action_just_pressed("LeftMouseButton") and sitDown and !doneEating and canClickAgain:
 		canClickAgain = false
-		player.canCrouch = false
 		eatCount -= 1
 		EatAnimation.play("Eating")
 		interact_text.hide()
@@ -115,6 +117,9 @@ func _process(delta):
 			playerViewPos = player_view.position.y
 			player_view.position.y = 0.6
 			player.canMove = false
+			player.canCrouch = false
+			world.canOpenMobile = false
+			world.canOpenDiary = false
 			sitDown = true
 			await get_tree().create_timer(0.5).timeout
 			interact_text.text = "[MB1] Comer"

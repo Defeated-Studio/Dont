@@ -29,6 +29,8 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if finishedTexting:
+		if interact_text.visible:
+			interact_text.hide()
 		finishedTexting = false
 		await get_tree().create_timer(0.5).timeout
 		player_dialogue.timeBetweenText = 2
@@ -40,6 +42,7 @@ func _process(delta):
 	if max_scroll_length != scrollbar.max_value: 
 		max_scroll_length = scrollbar.max_value
 		scrollbarValue.scroll_vertical = max_scroll_length
+	
 	
 	if quest_control.questActive == 2:
 		if canShow:
