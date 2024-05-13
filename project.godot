@@ -23,6 +23,10 @@ window/size/mode=3
 window/stretch/mode="canvas_items"
 window/vsync/vsync_mode=0
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/proton_scatter/plugin.cfg", "res://addons/terrain_3d/plugin.cfg")
+
 [input]
 
 w={

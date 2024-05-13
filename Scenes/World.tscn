@@ -1,11 +1,24 @@
-[gd_scene load_steps=14 format=3 uid="uid://bonk8egsbphsi"]
+[gd_scene load_steps=32 format=3 uid="uid://bonk8egsbphsi"]
 
 [ext_resource type="Script" path="res://Scripts/Mundo.gd" id="1_5u8qh"]
 [ext_resource type="Shader" path="res://Shaders/World2.gdshader" id="1_ysvic"]
 [ext_resource type="PackedScene" uid="uid://dobytd4rsv0er" path="res://House/House.tscn" id="2_8svwb"]
 [ext_resource type="PackedScene" uid="uid://cxsva7okbm5ol" path="res://Scenes/Player.tscn" id="3_btjh2"]
 [ext_resource type="Texture2D" uid="uid://7ov7anefv7vd" path="res://HDRI/night.exr" id="4_c8sla"]
+[ext_resource type="Terrain3DStorage" uid="uid://bwnbu8p65s8k1" path="res://Texture/terrainStorage.res" id="6_tctqa"]
 [ext_resource type="PackedScene" uid="uid://ptr0cc31jxbp" path="res://Scenes/Mobile/messages.tscn" id="7_0r5p1"]
+[ext_resource type="Terrain3DMaterial" uid="uid://w6b3gg83d158" path="res://Texture/terrainMaterial.res" id="7_cvp35"]
+[ext_resource type="Terrain3DTextureList" uid="uid://c5jvgjxo1oqpc" path="res://Texture/terrainTexture.res" id="8_r4xhx"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/scatter.gd" id="9_we0ft"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/stack/modifier_stack.gd" id="10_rhs0g"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/create_inside_random.gd" id="11_wxgki"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/randomize_transforms.gd" id="12_4lsev"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/relax.gd" id="13_v755k"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/project_on_geometry.gd" id="14_uutcr"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/scatter_item.gd" id="15_d4jng"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/project_on_terrain3d.gd" id="15_hp6mn"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/scatter_shape.gd" id="16_atlbf"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/shapes/box_shape.gd" id="17_7lvh5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4xe8w"]
 shader = ExtResource("1_ysvic")
@@ -13,16 +26,6 @@ shader_parameter/enabled = true
 shader_parameter/dithering = true
 shader_parameter/colors = 16
 shader_parameter/dither_size = 1
-
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ikmhl"]
-points = PackedVector3Array(25.3919, 0.396748, 25.3919, -25.3919, -0.396748, -25.3919, -25.3919, 0.396748, -25.3919, 25.3919, -0.396748, -25.3919, -25.3919, -0.396748, 25.3919, -25.3919, 0.396748, 25.3919, 25.3919, 0.396748, -25.3919, 25.3919, -0.396748, 25.3919)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_termh"]
-albedo_color = Color(0, 0.141176, 0.0705882, 1)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_o4aha"]
-material = SubResource("StandardMaterial3D_termh")
-size = Vector2(50, 50)
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_4ifls"]
 panorama = ExtResource("4_c8sla")
@@ -37,6 +40,80 @@ sky = SubResource("Sky_clk0i")
 ssil_enabled = true
 ssil_intensity = 0.8
 ssil_sharpness = 0.6
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.06
+volumetric_fog_albedo = Color(0.494118, 0.494118, 0.494118, 1)
+volumetric_fog_detail_spread = 6.0
+
+[sub_resource type="Resource" id="Resource_5ji6u"]
+script = ExtResource("11_wxgki")
+amount = 1000
+enabled = true
+override_global_seed = false
+custom_seed = 0
+restrict_height = true
+reference_frame = 1
+
+[sub_resource type="Resource" id="Resource_tawa5"]
+script = ExtResource("12_4lsev")
+position = Vector3(0.15, 0.15, 0.15)
+rotation = Vector3(2, 360, 2)
+scale = Vector3(0.1, 0.1, 0.1)
+enabled = true
+override_global_seed = false
+custom_seed = 0
+restrict_height = false
+reference_frame = 2
+
+[sub_resource type="Resource" id="Resource_sj3ci"]
+script = ExtResource("13_v755k")
+iterations = 3
+offset_step = 0.2
+consecutive_step_multiplier = 0.75
+use_computeshader = true
+enabled = true
+override_global_seed = false
+custom_seed = 0
+restrict_height = true
+reference_frame = 0
+
+[sub_resource type="Resource" id="Resource_bf8p5"]
+script = ExtResource("14_uutcr")
+ray_direction = Vector3(0, -1, 0)
+ray_length = 5.0
+ray_offset = 5.0
+remove_points_on_miss = false
+align_with_collision_normal = false
+max_slope = 90.0
+collision_mask = 1
+exclude_mask = 0
+enabled = true
+override_global_seed = false
+custom_seed = 0
+restrict_height = false
+reference_frame = 0
+
+[sub_resource type="Resource" id="Resource_seb6a"]
+script = ExtResource("15_hp6mn")
+terrain_node = NodePath("../Terrain3D")
+align_with_collision_normal = false
+enabled = true
+override_global_seed = false
+custom_seed = 0
+restrict_height = false
+reference_frame = 0
+
+[sub_resource type="Resource" id="Resource_r5aj3"]
+script = ExtResource("10_rhs0g")
+stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_5ji6u"), SubResource("Resource_tawa5"), SubResource("Resource_sj3ci"), SubResource("Resource_bf8p5"), SubResource("Resource_seb6a")])
+
+[sub_resource type="Resource" id="Resource_aogur"]
+script = ExtResource("17_7lvh5")
+size = Vector3(16.644, 11.9201, 15)
+
+[sub_resource type="Resource" id="Resource_fm8yr"]
+script = ExtResource("17_7lvh5")
+size = Vector3(120, 10, 145)
 
 [node name="WorldView" type="SubViewportContainer"]
 material = SubResource("ShaderMaterial_4xe8w")
@@ -54,20 +131,11 @@ render_target_update_mode = 4
 [node name="World" type="Node3D" parent="SubViewport"]
 script = ExtResource("1_5u8qh")
 
-[node name="Ground" type="StaticBody3D" parent="SubViewport/World"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewport/World/Ground"]
-shape = SubResource("ConvexPolygonShape3D_ikmhl")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewport/World/Ground"]
-mesh = SubResource("PlaneMesh_o4aha")
-skeleton = NodePath("../../../..")
-
 [node name="House" parent="SubViewport/World" instance=ExtResource("2_8svwb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.0819926, 2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.225123, 2)
 
 [node name="Player" parent="SubViewport/World" instance=ExtResource("3_btjh2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.48725, 0.639103, 12.4848)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.48725, 0.639103, 59.4992)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewport/World"]
 environment = SubResource("Environment_kf7d3")
@@ -77,6 +145,39 @@ visible = false
 offset_right = 145.0
 offset_bottom = 23.0
 text = "fps"
+
+[node name="Terrain3D" type="Terrain3D" parent="SubViewport/World"]
+storage = ExtResource("6_tctqa")
+material = ExtResource("7_cvp35")
+texture_list = ExtResource("8_r4xhx")
+
+[node name="Nature" type="Node3D" parent="SubViewport/World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.865362)
+script = ExtResource("9_we0ft")
+global_seed = 7
+keep_static_colliders = true
+modifier_stack = SubResource("Resource_r5aj3")
+Performance/use_chunks = true
+Performance/chunk_dimensions = Vector3(15, 15, 15)
+
+[node name="Trees" type="Node3D" parent="SubViewport/World/Nature"]
+script = ExtResource("15_d4jng")
+proportion = 200
+source_scale_multiplier = 3.0
+path = "res://addons/proton_scatter/demos/assets/pine_tree.tscn"
+
+[node name="HouseArea" type="Node3D" parent="SubViewport/World/Nature"]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 2.16745, 5.61763, 0.940838)
+visible = false
+script = ExtResource("16_atlbf")
+negative = true
+shape = SubResource("Resource_aogur")
+
+[node name="NatureArea" type="Node3D" parent="SubViewport/World/Nature"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.95958)
+visible = false
+script = ExtResource("16_atlbf")
+shape = SubResource("Resource_fm8yr")
 
 [node name="MessagesApp" parent="." instance=ExtResource("7_0r5p1")]
 visible = false
