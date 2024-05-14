@@ -45,7 +45,7 @@ volumetric_fog_density = 0.06
 volumetric_fog_albedo = Color(0.494118, 0.494118, 0.494118, 1)
 volumetric_fog_detail_spread = 6.0
 
-[sub_resource type="Resource" id="Resource_5ji6u"]
+[sub_resource type="Resource" id="Resource_3pp0c"]
 script = ExtResource("11_wxgki")
 amount = 1000
 enabled = true
@@ -54,7 +54,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 1
 
-[sub_resource type="Resource" id="Resource_tawa5"]
+[sub_resource type="Resource" id="Resource_b7h8y"]
 script = ExtResource("12_4lsev")
 position = Vector3(0.15, 0.15, 0.15)
 rotation = Vector3(2, 360, 2)
@@ -65,7 +65,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_sj3ci"]
+[sub_resource type="Resource" id="Resource_rw7nk"]
 script = ExtResource("13_v755k")
 iterations = 3
 offset_step = 0.2
@@ -77,7 +77,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_bf8p5"]
+[sub_resource type="Resource" id="Resource_df6ae"]
 script = ExtResource("14_uutcr")
 ray_direction = Vector3(0, -1, 0)
 ray_length = 5.0
@@ -93,7 +93,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_seb6a"]
+[sub_resource type="Resource" id="Resource_jt0om"]
 script = ExtResource("15_hp6mn")
 terrain_node = NodePath("../Terrain3D")
 align_with_collision_normal = false
@@ -103,9 +103,9 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_r5aj3"]
+[sub_resource type="Resource" id="Resource_1bh66"]
 script = ExtResource("10_rhs0g")
-stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_5ji6u"), SubResource("Resource_tawa5"), SubResource("Resource_sj3ci"), SubResource("Resource_bf8p5"), SubResource("Resource_seb6a")])
+stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_3pp0c"), SubResource("Resource_b7h8y"), SubResource("Resource_rw7nk"), SubResource("Resource_df6ae"), SubResource("Resource_jt0om")])
 
 [sub_resource type="Resource" id="Resource_aogur"]
 script = ExtResource("17_7lvh5")
@@ -156,7 +156,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.865362)
 script = ExtResource("9_we0ft")
 global_seed = 7
 keep_static_colliders = true
-modifier_stack = SubResource("Resource_r5aj3")
+modifier_stack = SubResource("Resource_1bh66")
 Performance/use_chunks = true
 Performance/chunk_dimensions = Vector3(15, 15, 15)
 
