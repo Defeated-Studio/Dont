@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://d3jho5x0s5tdg"]
+[gd_scene load_steps=4 format=3 uid="uid://d3jho5x0s5tdg"]
 
 [ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1_ohjbk"]
 [ext_resource type="FontFile" uid="uid://b1vymeh36eknt" path="res://Fonts/Cinzel-Bold.ttf" id="2_3d6mk"]
+[ext_resource type="PackedScene" uid="uid://ceg1jxer4cb5q" path="res://Scenes/Screens/OptionsMenu.tscn" id="3_0cmda"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -18,35 +19,66 @@ offset_right = 1366.0
 offset_bottom = 768.0
 color = Color(0, 0, 0, 1)
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 2.0
-offset_top = 150.0
-offset_right = 1366.0
-offset_bottom = 261.0
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 133
+theme_override_constants/margin_top = 150
+theme_override_constants/margin_right = 133
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 70
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0.443137, 0.470588, 0.501961, 1)
 theme_override_fonts/font = ExtResource("2_3d6mk")
 theme_override_font_sizes/font_size = 100
 text = "Don't"
 horizontal_alignment = 1
 
-[node name="NewGame" type="Button" parent="."]
-layout_mode = 0
-offset_left = 524.0
-offset_top = 388.0
-offset_right = 842.0
-offset_bottom = 468.0
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="NewGame" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(320, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_colors/font_color = Color(0.443137, 0.470588, 0.501961, 1)
+theme_override_fonts/font = ExtResource("2_3d6mk")
 text = "Novo Jogo"
 
-[node name="Quit" type="Button" parent="."]
-layout_mode = 0
-offset_left = 524.0
-offset_top = 492.0
-offset_right = 842.0
-offset_bottom = 572.0
+[node name="Options" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(320, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_colors/font_color = Color(0.443137, 0.470588, 0.501961, 1)
+theme_override_fonts/font = ExtResource("2_3d6mk")
+text = "Opções"
+
+[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(320, 80)
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.443137, 0.470588, 0.501961, 1)
+theme_override_fonts/font = ExtResource("2_3d6mk")
 text = "Sair"
 
-[connection signal="pressed" from="NewGame" to="." method="_on_new_game_pressed"]
-[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
+[node name="OptionsMenu" parent="." instance=ExtResource("3_0cmda")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="exit_options_menu" from="OptionsMenu" to="." method="_on_options_menu_exit_options_menu"]
