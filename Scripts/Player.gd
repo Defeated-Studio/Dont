@@ -5,7 +5,7 @@ var canMoveCamera = true
 var speed
 var gravity = 9.8
 const WALK_SPEED = 2.2
-const SPRINT_SPEED = 4
+const SPRINT_SPEED = 8
 const SENSITIVITY = 0.2
 
 #bob variables
