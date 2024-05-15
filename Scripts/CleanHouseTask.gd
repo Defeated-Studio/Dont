@@ -24,7 +24,7 @@ var toClean = 6
 var canThrowAway = false
 
 func _process(delta):
-	if (Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")) and canClean:
+	if (Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")) and canClean and IsRayCasting.canInteract:
 		if currentNode == "CleanToilet":
 			toilet.cleanToilet()
 		get_node(currentNode).queue_free()
@@ -35,7 +35,7 @@ func _process(delta):
 			player_dialogue.showDialogue()
 			trash.set_deferred("disabled", false) 
 	
-	if (Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")) and canThrowAway:
+	if (Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")) and canThrowAway and IsRayCasting.canInteract:
 		quest_control.finishQuest()
 		get_node("TrashCan").queue_free()
 		await get_tree().create_timer(1.0).timeout

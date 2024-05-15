@@ -11,7 +11,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Input.is_action_just_pressed("interact") and canSleep:
+	if Input.is_action_just_pressed("interact") and canSleep and IsRayCasting.canInteract:
 		quest_control.finishQuest()
 		SceneTransition.change_scene("res://Scenes/Night2.tscn")
 

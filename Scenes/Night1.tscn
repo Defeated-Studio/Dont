@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://syu2pf7jl5jl"]
+[gd_scene load_steps=65 format=3 uid="uid://syu2pf7jl5jl"]
 
 [ext_resource type="PackedScene" uid="uid://bonk8egsbphsi" path="res://Scenes/World.tscn" id="1_dexbp"]
 [ext_resource type="Script" path="res://Scripts/GeneratorTask.gd" id="3_0rlj4"]
@@ -228,6 +228,9 @@ size = Vector3(1.19434, 1.12695, 1.16748)
 [sub_resource type="BoxShape3D" id="BoxShape3D_ew158"]
 size = Vector3(1.62878, 0.716309, 1.69434)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_r8afx"]
+size = Vector3(1.69836, 1, 1.39594)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_tne48"]
 size = Vector3(1.67322, 2.13721, 1)
 
@@ -261,7 +264,7 @@ size = Vector3(0.774048, 0.428223, 0.907776)
 [sub_resource type="BoxShape3D" id="BoxShape3D_yhu5n"]
 size = Vector3(0.730347, 0.791626, 0.708618)
 
-[sub_resource type="Resource" id="Resource_mkndc"]
+[sub_resource type="Resource" id="Resource_adc3a"]
 script = ExtResource("16_wnqum")
 amount = 700
 enabled = true
@@ -270,7 +273,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 1
 
-[sub_resource type="Resource" id="Resource_vc4tt"]
+[sub_resource type="Resource" id="Resource_kfstx"]
 script = ExtResource("17_th5ci")
 position = Vector3(0.15, 0.15, 0.15)
 rotation = Vector3(2, 360, 2)
@@ -281,7 +284,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_cw1si"]
+[sub_resource type="Resource" id="Resource_a6bfp"]
 script = ExtResource("18_vjr1n")
 iterations = 3
 offset_step = 0.2
@@ -293,7 +296,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_ss3s6"]
+[sub_resource type="Resource" id="Resource_1efwo"]
 script = ExtResource("19_nwiio")
 ray_direction = Vector3(0, -1, 0)
 ray_length = 5.0
@@ -309,7 +312,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_35e8w"]
+[sub_resource type="Resource" id="Resource_i3dxk"]
 script = ExtResource("20_4eo5w")
 terrain_node = NodePath("../Terrain3D")
 align_with_collision_normal = false
@@ -319,9 +322,9 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_lexf8"]
+[sub_resource type="Resource" id="Resource_oaab7"]
 script = ExtResource("15_w1mf1")
-stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_mkndc"), SubResource("Resource_vc4tt"), SubResource("Resource_cw1si"), SubResource("Resource_ss3s6"), SubResource("Resource_35e8w")])
+stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_adc3a"), SubResource("Resource_kfstx"), SubResource("Resource_a6bfp"), SubResource("Resource_1efwo"), SubResource("Resource_i3dxk")])
 
 [node name="Night1" instance=ExtResource("1_dexbp")]
 
@@ -381,7 +384,7 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewport/World/GeneratorTask/GeneratorArea" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.182617, 0, -0.35376)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.182617, -0.192277, -0.35376)
 shape = SubResource("BoxShape3D_32aba")
 
 [node name="CleanHouseTask" type="Node3D" parent="SubViewport/World" index="7"]
@@ -602,8 +605,16 @@ collision_layer = 6
 collision_mask = 6
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewport/World/SleepTask/BedArea" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.04843, 4.8215, 0.347168)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.04843, 4.42031, 0.347168)
 shape = SubResource("BoxShape3D_ew158")
+
+[node name="BedRay" type="StaticBody3D" parent="SubViewport/World/SleepTask/BedArea" index="1" groups=["InteractGroup"]]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewport/World/SleepTask/BedArea/BedRay" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.11168, 4.26482, 0.377028)
+shape = SubResource("BoxShape3D_r8afx")
 
 [node name="TriggerSleepTask" type="Area3D" parent="SubViewport/World/SleepTask" index="1"]
 
@@ -622,7 +633,7 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewport/World/EatTask/TriggerEatTask" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.71844, 4.76195, -1.65048)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.71844, 4.57118, -1.65048)
 shape = SubResource("BoxShape3D_if303")
 
 [node name="GetFood" type="Area3D" parent="SubViewport/World/EatTask" index="1"]
@@ -630,7 +641,7 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="GetFoodCol" type="CollisionShape3D" parent="SubViewport/World/EatTask/GetFood" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.22487, 1.4106, -0.205822)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.22487, 1.11189, -0.205822)
 shape = SubResource("BoxShape3D_djrav")
 disabled = true
 
@@ -639,7 +650,7 @@ collision_layer = 4
 collision_mask = 4
 
 [node name="RayCastKitchenCol" type="CollisionShape3D" parent="SubViewport/World/EatTask/GetFood/RayCastKitchen" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.4581, 1.29646, -0.573851)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.4581, 1.08001, -0.573851)
 shape = SubResource("BoxShape3D_6bsbg")
 disabled = true
 
@@ -648,7 +659,7 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="MicrowaveCol" type="CollisionShape3D" parent="SubViewport/World/EatTask/Microwave" index="0"]
-transform = Transform3D(0.999948, -0.0102275, 0, 0.0102275, 0.999948, 0, 0, 0, 1, 7.11367, 1.41333, -1.37951)
+transform = Transform3D(0.999948, -0.0102275, 0, 0.0102275, 0.999948, 0, 0, 0, 1, 7.11367, 1.14545, -1.37951)
 shape = SubResource("BoxShape3D_nvyq3")
 disabled = true
 
@@ -657,7 +668,7 @@ collision_layer = 4
 collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewport/World/EatTask/Microwave/MicrowaveRaycast" index="0"]
-transform = Transform3D(0.812592, 0, -0.582832, 0, 1, 0, 0.582832, 0, 0.812592, 7.63831, 2.00473, -1.9281)
+transform = Transform3D(0.812592, 0, -0.582832, 0, 1, 0, 0.582832, 0, 0.812592, 7.63831, 1.67331, -1.9281)
 shape = SubResource("BoxShape3D_26qwg")
 disabled = true
 
@@ -675,7 +686,7 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="SofaCol" type="CollisionShape3D" parent="SubViewport/World/EatTask/SofaArea" index="0"]
-transform = Transform3D(0.999893, -0.0146079, 0, 0.0146079, 0.999893, 0, 0, 0, 1, -0.781715, 1.21909, 4.8533)
+transform = Transform3D(0.999893, -0.0146079, 0, 0.0146079, 0.999893, 0, 0, 0, 1, -0.781715, 1.09394, 4.8533)
 shape = SubResource("BoxShape3D_mthhy")
 disabled = true
 
@@ -684,7 +695,7 @@ collision_layer = 4
 collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewport/World/EatTask/SofaArea/RayCastSofa" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.780542, 1.37525, 5.36706)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.780542, 1.14354, 5.36706)
 shape = SubResource("BoxShape3D_e84q8")
 disabled = true
 
@@ -693,7 +704,7 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="TrashCol" type="CollisionShape3D" parent="SubViewport/World/EatTask/TrashArea" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.71055, 1.32316, 1.81987)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.71055, 0.765588, 1.81987)
 shape = SubResource("BoxShape3D_mkh6p")
 disabled = true
 
@@ -702,7 +713,7 @@ collision_layer = 4
 collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewport/World/EatTask/TrashArea/TrashRayCast" index="0"]
-transform = Transform3D(0.79, 0, 0, 0, 0.79, 0, 0, 0, 0.79, 4.60343, 1.189, 1.84915)
+transform = Transform3D(0.79, 0, 0, 0, 0.79, 0, 0, 0, 0.79, 4.60343, 0.944608, 1.84915)
 shape = SubResource("BoxShape3D_yhu5n")
 disabled = true
 
@@ -710,7 +721,7 @@ disabled = true
 visible = true
 
 [node name="Nature" parent="SubViewport/World" index="13"]
-modifier_stack = SubResource("Resource_lexf8")
+modifier_stack = SubResource("Resource_oaab7")
 
 [connection signal="body_entered" from="SubViewport/World/GeneratorTask/GeneratorArea" to="SubViewport/World/GeneratorTask" method="_on_generator_area_body_entered"]
 [connection signal="body_exited" from="SubViewport/World/GeneratorTask/GeneratorArea" to="SubViewport/World/GeneratorTask" method="_on_generator_area_body_exited"]

@@ -22,7 +22,7 @@ func findByClass(node: Node, className : String, result : Array):
 		findByClass(child, className, result)
 	
 func _physics_process(delta):
-	if (Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")) and canPowerOn:
+	if (Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")) and canPowerOn and IsRayCasting.canInteract:
 		canPowerOn = false
 		interact_text.hide()
 	

@@ -74,7 +74,7 @@ func _process(delta):
 			trash_col.set_deferred("disabled", false)
 			ray_cast_trash_col.set_deferred("disabled", false)
 			
-	if (Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")) and canThrow:
+	if (Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")) and canThrow and IsRayCasting.canInteract:
 		can_food.hide()
 		quest_control.finishQuest()
 		get_node("TrashArea").queue_free()
@@ -105,7 +105,7 @@ func _process(delta):
 			interact_text.show()
 		canClickAgain = true
 
-	if (Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")) and canSitDown:
+	if (Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")) and canSitDown and IsRayCasting.canInteract:
 		if showTvDialogue:
 			dialogue_text.timeBetweenText = 2
 			dialogue_text.queueDialogue("preciso ligar a tv antes")
@@ -126,7 +126,7 @@ func _process(delta):
 			interact_text.show()
 
 	if ((Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")) 
-		and canTurnTv and interact_ray.canInteractRay):
+		and canTurnTv and IsRayCasting.canInteract):
 		if !TvOn:
 			tv_audio.play()
 			video_mesh.show()
@@ -144,13 +144,13 @@ func _process(delta):
 			video.stop()
 			TvOn = !TvOn
 			
-	if (Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")) and canPickup:
+	if (Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")) and canPickup and IsRayCasting.canInteract:
 		can_food.show()
 		get_node("GetFood").queue_free()
 		microwave_col.set_deferred("disabled", false)
 		ray_cast_microwave_col.set_deferred("disabled", false)
 
-	if (Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")) and canMicrowave:
+	if (Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")) and canMicrowave and IsRayCasting.canInteract:
 		if MicrowaveDone:
 			can_food.show()
 			get_node("Microwave").queue_free()

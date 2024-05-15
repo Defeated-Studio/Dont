@@ -16,12 +16,12 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if ((Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")) and !doorOpen) and canOpenDoor:
+	if ((Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")) and !doorOpen) and canOpenDoor and IsRayCasting.canInteract:
 		animation.play("OpenDoorAni")
 		#doorOpenSound.play()
 		setdoorOpen(!doorOpen)
 		doorText.hide()
-	elif ((Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")) and doorOpen) and canOpenDoor:
+	elif ((Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")) and doorOpen) and canOpenDoor and IsRayCasting.canInteract:
 		if shutDoor and self.name == "FrontDoor":
 			animation.play("ShutDoor")
 			setdoorOpen(!doorOpen)
