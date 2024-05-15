@@ -229,7 +229,7 @@ size = Vector3(1.19434, 1.12695, 1.16748)
 size = Vector3(1.62878, 0.716309, 1.69434)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_r8afx"]
-size = Vector3(1.69836, 1, 1.39594)
+size = Vector3(1.69836, 0.775391, 1.39594)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tne48"]
 size = Vector3(1.67322, 2.13721, 1)
@@ -264,7 +264,7 @@ size = Vector3(0.774048, 0.428223, 0.907776)
 [sub_resource type="BoxShape3D" id="BoxShape3D_yhu5n"]
 size = Vector3(0.730347, 0.791626, 0.708618)
 
-[sub_resource type="Resource" id="Resource_adc3a"]
+[sub_resource type="Resource" id="Resource_vbgwk"]
 script = ExtResource("16_wnqum")
 amount = 700
 enabled = true
@@ -273,7 +273,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 1
 
-[sub_resource type="Resource" id="Resource_kfstx"]
+[sub_resource type="Resource" id="Resource_3s5iq"]
 script = ExtResource("17_th5ci")
 position = Vector3(0.15, 0.15, 0.15)
 rotation = Vector3(2, 360, 2)
@@ -284,7 +284,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_a6bfp"]
+[sub_resource type="Resource" id="Resource_5g0rs"]
 script = ExtResource("18_vjr1n")
 iterations = 3
 offset_step = 0.2
@@ -296,7 +296,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_1efwo"]
+[sub_resource type="Resource" id="Resource_t1kr2"]
 script = ExtResource("19_nwiio")
 ray_direction = Vector3(0, -1, 0)
 ray_length = 5.0
@@ -312,7 +312,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_i3dxk"]
+[sub_resource type="Resource" id="Resource_a4fdk"]
 script = ExtResource("20_4eo5w")
 terrain_node = NodePath("../Terrain3D")
 align_with_collision_normal = false
@@ -322,9 +322,9 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_oaab7"]
+[sub_resource type="Resource" id="Resource_sictf"]
 script = ExtResource("15_w1mf1")
-stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_adc3a"), SubResource("Resource_kfstx"), SubResource("Resource_a6bfp"), SubResource("Resource_1efwo"), SubResource("Resource_i3dxk")])
+stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_vbgwk"), SubResource("Resource_3s5iq"), SubResource("Resource_5g0rs"), SubResource("Resource_t1kr2"), SubResource("Resource_a4fdk")])
 
 [node name="Night1" instance=ExtResource("1_dexbp")]
 
@@ -601,8 +601,8 @@ text = "Não sei quem vai encontrar isso, mas preciso escrever. Talvez assim as 
 script = ExtResource("12_i34te")
 
 [node name="BedArea" type="Area3D" parent="SubViewport/World/SleepTask" index="0"]
-collision_layer = 6
-collision_mask = 6
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewport/World/SleepTask/BedArea" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.04843, 4.42031, 0.347168)
@@ -613,7 +613,7 @@ collision_layer = 4
 collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewport/World/SleepTask/BedArea/BedRay" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.11168, 4.26482, 0.377028)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.11168, 4.15252, 0.377028)
 shape = SubResource("BoxShape3D_r8afx")
 
 [node name="TriggerSleepTask" type="Area3D" parent="SubViewport/World/SleepTask" index="1"]
@@ -721,7 +721,7 @@ disabled = true
 visible = true
 
 [node name="Nature" parent="SubViewport/World" index="13"]
-modifier_stack = SubResource("Resource_oaab7")
+modifier_stack = SubResource("Resource_sictf")
 
 [connection signal="body_entered" from="SubViewport/World/GeneratorTask/GeneratorArea" to="SubViewport/World/GeneratorTask" method="_on_generator_area_body_entered"]
 [connection signal="body_exited" from="SubViewport/World/GeneratorTask/GeneratorArea" to="SubViewport/World/GeneratorTask" method="_on_generator_area_body_exited"]
