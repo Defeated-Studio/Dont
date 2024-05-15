@@ -3,7 +3,6 @@ var canSleep = false
 @onready var interact_text = %InteractText
 @onready var quest_control = $"../QuestControl"
 @onready var dialogue_text = $"../Player/DialogueText"
-@onready var raycastCol = $BedArea/BedRayCast/CollisionShape3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -12,13 +11,12 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if (Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")) and canSleep:
+	if Input.is_action_just_pressed("interact") and canSleep:
+		print("Dia acabou")
 		quest_control.finishQuest()
-		SceneTransition.change_scene("res://Scenes/Night2.tscn", "Night1-2")
 
 func _on_bed_area_body_entered(body):
 	if quest_control.questActive == 4:
-		raycastCol.set_deferred("disabled", false)
 		canSleep = true
 		interact_text.show()
 		interact_text.text = "[E] Dormir"
