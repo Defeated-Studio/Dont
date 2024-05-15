@@ -1,7 +1,6 @@
-[gd_scene load_steps=66 format=3 uid="uid://syu2pf7jl5jl"]
+[gd_scene load_steps=64 format=3 uid="uid://syu2pf7jl5jl"]
 
 [ext_resource type="PackedScene" uid="uid://bonk8egsbphsi" path="res://Scenes/World.tscn" id="1_dexbp"]
-[ext_resource type="PackedScene" uid="uid://c5io532rrd1i6" path="res://Scenes/QuestControlUI.tscn" id="2_xuli7"]
 [ext_resource type="Script" path="res://Scripts/GeneratorTask.gd" id="3_0rlj4"]
 [ext_resource type="Script" path="res://Scripts/CleanHouseTask.gd" id="4_o8g44"]
 [ext_resource type="Texture2D" uid="uid://c5fophsrke1nq" path="res://House/Models/soda_can_0.png" id="5_qbsrj"]
@@ -14,7 +13,6 @@
 [ext_resource type="Script" path="res://Scripts/SleepTask.gd" id="12_i34te"]
 [ext_resource type="Script" path="res://Scripts/MessageBobTask.gd" id="13_pqd3f"]
 [ext_resource type="Script" path="res://Scripts/EatTask.gd" id="14_fv2x2"]
-[ext_resource type="PackedScene" uid="uid://bu428plfcgs2f" path="res://Scenes/Diary.tscn" id="15_v7u6l"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/stack/modifier_stack.gd" id="15_w1mf1"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/create_inside_random.gd" id="16_wnqum"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/randomize_transforms.gd" id="17_th5ci"]
@@ -263,7 +261,7 @@ size = Vector3(0.774048, 0.428223, 0.907776)
 [sub_resource type="BoxShape3D" id="BoxShape3D_yhu5n"]
 size = Vector3(0.730347, 0.791626, 0.708618)
 
-[sub_resource type="Resource" id="Resource_yilmx"]
+[sub_resource type="Resource" id="Resource_6h4x7"]
 script = ExtResource("16_wnqum")
 amount = 700
 enabled = true
@@ -272,7 +270,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 1
 
-[sub_resource type="Resource" id="Resource_qv5d8"]
+[sub_resource type="Resource" id="Resource_7pk10"]
 script = ExtResource("17_th5ci")
 position = Vector3(0.15, 0.15, 0.15)
 rotation = Vector3(2, 360, 2)
@@ -283,7 +281,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_7r57k"]
+[sub_resource type="Resource" id="Resource_xa81v"]
 script = ExtResource("18_vjr1n")
 iterations = 3
 offset_step = 0.2
@@ -295,7 +293,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_n40op"]
+[sub_resource type="Resource" id="Resource_l0vm5"]
 script = ExtResource("19_nwiio")
 ray_direction = Vector3(0, -1, 0)
 ray_length = 5.0
@@ -311,7 +309,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_dbrdv"]
+[sub_resource type="Resource" id="Resource_dieub"]
 script = ExtResource("20_4eo5w")
 terrain_node = NodePath("../Terrain3D")
 align_with_collision_normal = false
@@ -321,11 +319,11 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_qrw0g"]
+[sub_resource type="Resource" id="Resource_s8jr4"]
 script = ExtResource("15_w1mf1")
-stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_yilmx"), SubResource("Resource_qv5d8"), SubResource("Resource_7r57k"), SubResource("Resource_n40op"), SubResource("Resource_dbrdv")])
+stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_6h4x7"), SubResource("Resource_7pk10"), SubResource("Resource_xa81v"), SubResource("Resource_l0vm5"), SubResource("Resource_dieub")])
 
-[node name="World" instance=ExtResource("1_dexbp")]
+[node name="Night1" instance=ExtResource("1_dexbp")]
 
 [node name="SubViewport" parent="." index="0"]
 audio_listener_enable_3d = true
@@ -333,12 +331,7 @@ audio_listener_enable_3d = true
 [node name="Player" parent="SubViewport/World" index="1"]
 unique_name_in_owner = true
 
-[node name="FPSCounter" parent="SubViewport/World" index="3"]
-visible = true
-
-[node name="QuestControl" parent="SubViewport/World" index="4" instance=ExtResource("2_xuli7")]
-
-[node name="InteractText" type="Control" parent="SubViewport/World" index="5"]
+[node name="InteractText" type="Control" parent="SubViewport/World" index="4"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -359,7 +352,7 @@ grow_horizontal = 2
 grow_vertical = 0
 horizontal_alignment = 1
 
-[node name="TutorialText" type="Control" parent="SubViewport/World" index="6"]
+[node name="TutorialText" type="Control" parent="SubViewport/World" index="5"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -379,7 +372,7 @@ grow_horizontal = 2
 grow_vertical = 0
 horizontal_alignment = 1
 
-[node name="GeneratorTask" type="Node3D" parent="SubViewport/World" index="7"]
+[node name="GeneratorTask" type="Node3D" parent="SubViewport/World" index="6"]
 script = ExtResource("3_0rlj4")
 
 [node name="GeneratorArea" type="Area3D" parent="SubViewport/World/GeneratorTask" index="0"]
@@ -391,7 +384,7 @@ collision_mask = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.182617, 0, -0.35376)
 shape = SubResource("BoxShape3D_32aba")
 
-[node name="CleanHouseTask" type="Node3D" parent="SubViewport/World" index="8"]
+[node name="CleanHouseTask" type="Node3D" parent="SubViewport/World" index="7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.29965, 0.996747, 2.20655)
 script = ExtResource("4_o8g44")
 
@@ -601,7 +594,7 @@ visible = false
 id = 1
 text = "Não sei quem vai encontrar isso, mas preciso escrever. Talvez assim as coisas fiquem mais claras pra mim também.  Me mudei pra essa casa há algumas semanas. Sempre quis um lugar afastado, tranquilo, onde pudesse relaxar. Mas parece que não foi uma boa ideia. Sinto que estou sendo observada o tempo todo. Não sei explicar, mas é como se alguém ou algo estivesse me vigiando.  A cidade não gosta de falar sobre essas coisas. Parece que todo mundo sabe, mas ninguém quer comentar. Fico com a sensação de que há algo sinistro escondido por aqui. Se você encontrou este relato, fique atento. Confie no seu instinto."
 
-[node name="SleepTask" type="Node3D" parent="SubViewport/World" index="9"]
+[node name="SleepTask" type="Node3D" parent="SubViewport/World" index="8"]
 script = ExtResource("12_i34te")
 
 [node name="BedArea" type="Area3D" parent="SubViewport/World/SleepTask" index="0"]
@@ -618,10 +611,10 @@ shape = SubResource("BoxShape3D_ew158")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.41454, 2.21771, 4.63356)
 shape = SubResource("BoxShape3D_tne48")
 
-[node name="MessageBobTask" type="Node3D" parent="SubViewport/World" index="10"]
+[node name="MessageBobTask" type="Node3D" parent="SubViewport/World" index="9"]
 script = ExtResource("13_pqd3f")
 
-[node name="EatTask" type="Node3D" parent="SubViewport/World" index="11"]
+[node name="EatTask" type="Node3D" parent="SubViewport/World" index="10"]
 script = ExtResource("14_fv2x2")
 
 [node name="TriggerEatTask" type="Area3D" parent="SubViewport/World/EatTask" index="0"]
@@ -713,12 +706,11 @@ transform = Transform3D(0.79, 0, 0, 0, 0.79, 0, 0, 0, 0.79, 4.60343, 1.189, 1.84
 shape = SubResource("BoxShape3D_yhu5n")
 disabled = true
 
-[node name="Nature" parent="SubViewport/World" index="13"]
-modifier_stack = SubResource("Resource_qrw0g")
+[node name="FPSCounter" parent="SubViewport/World" index="11"]
+visible = true
 
-[node name="Diary" parent="." index="2" instance=ExtResource("15_v7u6l")]
-visible = false
-layout_mode = 2
+[node name="Nature" parent="SubViewport/World" index="13"]
+modifier_stack = SubResource("Resource_s8jr4")
 
 [connection signal="body_entered" from="SubViewport/World/GeneratorTask/GeneratorArea" to="SubViewport/World/GeneratorTask" method="_on_generator_area_body_entered"]
 [connection signal="body_exited" from="SubViewport/World/GeneratorTask/GeneratorArea" to="SubViewport/World/GeneratorTask" method="_on_generator_area_body_exited"]
@@ -752,5 +744,3 @@ layout_mode = 2
 [connection signal="body_exited" from="SubViewport/World/EatTask/SofaArea" to="SubViewport/World/EatTask" method="_on_sofa_area_body_exited"]
 [connection signal="body_entered" from="SubViewport/World/EatTask/TrashArea" to="SubViewport/World/EatTask" method="_on_trash_area_body_entered"]
 [connection signal="body_exited" from="SubViewport/World/EatTask/TrashArea" to="SubViewport/World/EatTask" method="_on_trash_area_body_exited"]
-
-[editable path="SubViewport/World/QuestControl"]

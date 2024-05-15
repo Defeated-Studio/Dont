@@ -2,7 +2,7 @@ extends Node3D
 
 
 @onready var messages_app = $"../../MessagesApp"
-@onready var player = %Player
+@onready var player = $Player
 @onready var diary = $"../../Diary"
 
 var canOpenMobile = true
