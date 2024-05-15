@@ -6,15 +6,17 @@ extends Control
 
 static var questActive = 0
 
-var questsText = ["Arrume o Gerador", "Limpe a Casa", "Chame o Bob", "Coma algo", "Vá dormir"]
+var questsText = ["Arrume o Gerador", "Limpe a Casa", "Chame o Bob", "Coma algo", "Vá dormir", "Investigue o barulho"]
 # 0 - Arrume o Gerador
 # 1 - Limpe a Casa
 # 2 - Chame o Bob
 # 3 - Coma algo
 # 4 - Vá dormir
+# 5 - Investigue o barulho
 
 # Começar tasks instantaneamente para testes
 func _ready():
+  # if questActive == 0: ?
 	if get_tree().get_current_scene().get_name() == "Night1":
 		$"../TutorialText/TutorialText".text = "[F] Lanterna"
 		$"../TutorialText/TutorialText".show()

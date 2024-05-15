@@ -7,7 +7,7 @@ extends Node3D
 
 var doorOpen = false
 var canOpenDoor = false
-var shutDoor = true
+static var shutDoor = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

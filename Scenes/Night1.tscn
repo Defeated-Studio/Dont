@@ -261,7 +261,7 @@ size = Vector3(0.774048, 0.428223, 0.907776)
 [sub_resource type="BoxShape3D" id="BoxShape3D_yhu5n"]
 size = Vector3(0.730347, 0.791626, 0.708618)
 
-[sub_resource type="Resource" id="Resource_6h4x7"]
+[sub_resource type="Resource" id="Resource_mkndc"]
 script = ExtResource("16_wnqum")
 amount = 700
 enabled = true
@@ -270,7 +270,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 1
 
-[sub_resource type="Resource" id="Resource_7pk10"]
+[sub_resource type="Resource" id="Resource_vc4tt"]
 script = ExtResource("17_th5ci")
 position = Vector3(0.15, 0.15, 0.15)
 rotation = Vector3(2, 360, 2)
@@ -281,7 +281,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_xa81v"]
+[sub_resource type="Resource" id="Resource_cw1si"]
 script = ExtResource("18_vjr1n")
 iterations = 3
 offset_step = 0.2
@@ -293,7 +293,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_l0vm5"]
+[sub_resource type="Resource" id="Resource_ss3s6"]
 script = ExtResource("19_nwiio")
 ray_direction = Vector3(0, -1, 0)
 ray_length = 5.0
@@ -309,7 +309,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_dieub"]
+[sub_resource type="Resource" id="Resource_35e8w"]
 script = ExtResource("20_4eo5w")
 terrain_node = NodePath("../Terrain3D")
 align_with_collision_normal = false
@@ -319,9 +319,9 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_s8jr4"]
+[sub_resource type="Resource" id="Resource_lexf8"]
 script = ExtResource("15_w1mf1")
-stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_6h4x7"), SubResource("Resource_7pk10"), SubResource("Resource_xa81v"), SubResource("Resource_l0vm5"), SubResource("Resource_dieub")])
+stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_mkndc"), SubResource("Resource_vc4tt"), SubResource("Resource_cw1si"), SubResource("Resource_ss3s6"), SubResource("Resource_35e8w")])
 
 [node name="Night1" instance=ExtResource("1_dexbp")]
 
@@ -710,7 +710,7 @@ disabled = true
 visible = true
 
 [node name="Nature" parent="SubViewport/World" index="13"]
-modifier_stack = SubResource("Resource_s8jr4")
+modifier_stack = SubResource("Resource_lexf8")
 
 [connection signal="body_entered" from="SubViewport/World/GeneratorTask/GeneratorArea" to="SubViewport/World/GeneratorTask" method="_on_generator_area_body_entered"]
 [connection signal="body_exited" from="SubViewport/World/GeneratorTask/GeneratorArea" to="SubViewport/World/GeneratorTask" method="_on_generator_area_body_exited"]
