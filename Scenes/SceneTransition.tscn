@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://1ep6mfvvg7as"]
+[gd_scene load_steps=8 format=3 uid="uid://1ep6mfvvg7as"]
 
 [ext_resource type="Script" path="res://Scripts/SceneTransition.gd" id="1_6l6xo"]
 [ext_resource type="FontFile" uid="uid://cxdcng7dslxny" path="res://Fonts/Cinzel-Bold.ttf" id="2_s3lis"]
+[ext_resource type="AudioStream" uid="uid://y74lxn6pmcl5" path="res://House/SFX/PowerDown.ogg" id="3_pvx5a"]
 
 [sub_resource type="Animation" id="Animation_chkts"]
 length = 0.001
@@ -40,6 +41,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PowerOff:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_f48tv"]
@@ -97,6 +110,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PowerOff:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(7),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tbnmc"]
 _data = {
@@ -142,3 +167,7 @@ text = "3:47 AM"
 visible_characters = 0
 visible_characters_behavior = 2
 visible_ratio = 0.0
+
+[node name="PowerOff" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_pvx5a")
+stream_paused = true
