@@ -5,9 +5,11 @@ extends Node3D
 @onready var livingroomDoor = $"../House/FrontDoor"
 @onready var house = $"../House"
 @onready var interact_text = %InteractText
+@onready var sleep_area_col = $SleepArea/CollisionShape3D
+@onready var world_environment = $"../WorldEnvironment".environment
 
 var canPowerOn = false
-
+var canSleep = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -24,9 +26,6 @@ func _ready():
 	dialogue_text.queueDialogue("não acredito nisso")
 	dialogue_text.showDialogue()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
 
 func findByClass(node: Node, className : String, result : Array):
@@ -38,8 +37,19 @@ func findByClass(node: Node, className : String, result : Array):
 		findByClass(child, className, result)
 	
 func _physics_process(delta):
-	if (Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")) and canPowerOn:
+	if (Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")) and canSleep and IsRayCasting.canInteract:
+		get_node("SleepArea").queue_free()
+		SceneTransition.change_scene("", "night2-day2", 0)
+		await get_tree().create_timer(1.1).timeout
+		world_environment.background_energy_multiplier = 5.0
+		world_environment.volumetric_fog_enabled = false
+			
+		# MUDAR HDRI?
+		
+		
+	if (Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")) and canPowerOn and IsRayCasting.canInteract:
 		canPowerOn = false
+		get_node("GeneratorArea").queue_free()
 		interact_text.hide()
 	
 		var res = []
@@ -57,6 +67,9 @@ func _physics_process(delta):
 			i.show()
 		await get_tree().create_timer(0.3).timeout	
 		
+		dialogue_text.queueDialogue("gerador velho fica desligando sozinho")
+		dialogue_text.showDialogue()
+		
 		for i in res:
 			i.hide()
 		await get_tree().create_timer(0.2).timeout
@@ -64,7 +77,7 @@ func _physics_process(delta):
 		for i in res:
 			i.show()
 		quest_control.finishQuest()
-
+		sleep_area_col.set_deferred("disabled", false)
 
 func _on_generator_area_body_entered(body):
 	interact_text.text = "[E] Ligar"
@@ -73,4 +86,15 @@ func _on_generator_area_body_entered(body):
 
 func _on_generator_area_body_exited(body):
 	canPowerOn = false
+	interact_text.hide()
+
+
+func _on_sleep_area_body_entered(body):
+	interact_text.text = "[E] Dormir"
+	interact_text.show()
+	canSleep = true
+
+
+func _on_sleep_area_body_exited(body):
+	canSleep = false
 	interact_text.hide()

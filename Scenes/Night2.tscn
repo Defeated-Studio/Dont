@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c600nek871ay1"]
+[gd_scene load_steps=19 format=3 uid="uid://c600nek871ay1"]
 
 [ext_resource type="PackedScene" uid="uid://bonk8egsbphsi" path="res://Scenes/World.tscn" id="1_qvbmn"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/stack/modifier_stack.gd" id="2_pq8sj"]
@@ -9,7 +9,7 @@
 [ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/project_on_terrain3d.gd" id="7_icr4n"]
 [ext_resource type="Script" path="res://Scripts/InvesigateTask.gd" id="8_trp5y"]
 
-[sub_resource type="Resource" id="Resource_gb5ln"]
+[sub_resource type="Resource" id="Resource_ctxxr"]
 script = ExtResource("3_4jca5")
 amount = 1000
 enabled = true
@@ -18,7 +18,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 1
 
-[sub_resource type="Resource" id="Resource_svkpg"]
+[sub_resource type="Resource" id="Resource_qy4f6"]
 script = ExtResource("4_w36g3")
 position = Vector3(0.15, 0.15, 0.15)
 rotation = Vector3(2, 360, 2)
@@ -29,7 +29,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_jfy3c"]
+[sub_resource type="Resource" id="Resource_501kq"]
 script = ExtResource("5_hoyad")
 iterations = 3
 offset_step = 0.2
@@ -41,7 +41,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_1olw3"]
+[sub_resource type="Resource" id="Resource_sjjcv"]
 script = ExtResource("6_720a1")
 ray_direction = Vector3(0, -1, 0)
 ray_length = 5.0
@@ -57,7 +57,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_652sg"]
+[sub_resource type="Resource" id="Resource_t058u"]
 script = ExtResource("7_icr4n")
 terrain_node = NodePath("../Terrain3D")
 align_with_collision_normal = false
@@ -67,15 +67,21 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_a7dbs"]
+[sub_resource type="Resource" id="Resource_fd8ij"]
 script = ExtResource("2_pq8sj")
-stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_gb5ln"), SubResource("Resource_svkpg"), SubResource("Resource_jfy3c"), SubResource("Resource_1olw3"), SubResource("Resource_652sg")])
+stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_ctxxr"), SubResource("Resource_qy4f6"), SubResource("Resource_501kq"), SubResource("Resource_sjjcv"), SubResource("Resource_t058u")])
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q1wb1"]
 size = Vector3(2.25427, 1.72607, 1.36475)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_55jnb"]
 size = Vector3(2.33496, 1.74226, 1.1752)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gk087"]
+size = Vector3(1.48779, 0.631958, 1.74539)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ey2et"]
+size = Vector3(1.79321, 0.664429, 1.17328)
 
 [node name="Night2" instance=ExtResource("1_qvbmn")]
 
@@ -107,7 +113,8 @@ horizontal_alignment = 1
 visible = true
 
 [node name="Nature" parent="SubViewport/World" index="7"]
-modifier_stack = SubResource("Resource_a7dbs")
+global_seed = 5
+modifier_stack = SubResource("Resource_fd8ij")
 
 [node name="InvesigateTask" type="Node3D" parent="SubViewport/World" index="8"]
 script = ExtResource("8_trp5y")
@@ -128,5 +135,24 @@ collision_mask = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.88851, 0.371132, -3.28201)
 shape = SubResource("BoxShape3D_55jnb")
 
+[node name="SleepArea" type="Area3D" parent="SubViewport/World/InvesigateTask" index="1"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewport/World/InvesigateTask/SleepArea" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.08104, 4.25604, 0.378907)
+shape = SubResource("BoxShape3D_gk087")
+disabled = true
+
+[node name="Raycast" type="StaticBody3D" parent="SubViewport/World/InvesigateTask/SleepArea" index="1" groups=["InteractGroup"]]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewport/World/InvesigateTask/SleepArea/Raycast" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.07251, 4.31481, 0.332134)
+shape = SubResource("BoxShape3D_ey2et")
+
 [connection signal="body_entered" from="SubViewport/World/InvesigateTask/GeneratorArea" to="SubViewport/World/InvesigateTask" method="_on_generator_area_body_entered"]
 [connection signal="body_exited" from="SubViewport/World/InvesigateTask/GeneratorArea" to="SubViewport/World/InvesigateTask" method="_on_generator_area_body_exited"]
+[connection signal="body_entered" from="SubViewport/World/InvesigateTask/SleepArea" to="SubViewport/World/InvesigateTask" method="_on_sleep_area_body_entered"]
+[connection signal="body_exited" from="SubViewport/World/InvesigateTask/SleepArea" to="SubViewport/World/InvesigateTask" method="_on_sleep_area_body_exited"]

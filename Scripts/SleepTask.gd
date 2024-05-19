@@ -13,7 +13,7 @@ func _ready():
 func _process(delta):
 	if (Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")) and canSleep and IsRayCasting.canInteract:
 		quest_control.finishQuest()
-		SceneTransition.change_scene("res://Scenes/Night2.tscn")
+		SceneTransition.change_scene("res://Scenes/Night2.tscn", "night1-2")
 
 func _on_bed_area_body_entered(body):
 	if quest_control.questActive == 4:
