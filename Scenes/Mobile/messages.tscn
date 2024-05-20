@@ -1,10 +1,10 @@
 [gd_scene load_steps=22 format=3 uid="uid://ptr0cc31jxbp"]
 
 [ext_resource type="Script" path="res://Scenes/Mobile/messages.gd" id="1_3ha1o"]
-[ext_resource type="Texture2D" uid="uid://b0ndw0pcsj0yp" path="res://Scenes/Mobile/messages.png" id="1_6a3vw"]
-[ext_resource type="Texture2D" uid="uid://dceok5g3lmlrg" path="res://Scenes/Mobile/cara.png" id="3_ytnvq"]
-[ext_resource type="Texture2D" uid="uid://62f1chuxa6ai" path="res://Scenes/Mobile/eu.png" id="4_h2hf2"]
-[ext_resource type="Texture2D" uid="uid://cwdvdmn52kcsn" path="res://Scenes/Mobile/mobile.png" id="5_18nkp"]
+[ext_resource type="Texture2D" uid="uid://c7ottxhrdctq2" path="res://Scenes/Mobile/messages.png" id="1_6a3vw"]
+[ext_resource type="Texture2D" uid="uid://b0cwfegd4sfcm" path="res://Scenes/Mobile/cara.png" id="3_ytnvq"]
+[ext_resource type="Texture2D" uid="uid://78bopv1ed2vo" path="res://Scenes/Mobile/eu.png" id="4_h2hf2"]
+[ext_resource type="Texture2D" uid="uid://b0nkaopnfng33" path="res://Scenes/Mobile/mobile.png" id="5_18nkp"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_tyeyn"]
 font_size = 35
@@ -70,6 +70,7 @@ grow_vertical = 2
 script = ExtResource("1_3ha1o")
 
 [node name="Messages" type="TextureRect" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 1051.0
 offset_top = 350.0
@@ -1020,18 +1021,15 @@ stretch_mode = 3
 layout_mode = 2
 
 [node name="SecondDate" type="Label" parent="Bob/ScrollContainer/VBoxContainer"]
-visible = false
 layout_mode = 2
 text = "Hoje 23:10"
 label_settings = SubResource("LabelSettings_46f1j")
 horizontal_alignment = 1
 
 [node name="Space25" type="Label" parent="Bob/ScrollContainer/VBoxContainer"]
-visible = false
 layout_mode = 2
 
 [node name="Message23" type="Label" parent="Bob/ScrollContainer/VBoxContainer"]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 8
 text = "cara a casa não tem nada haver⠀
@@ -1050,7 +1048,6 @@ expand_mode = 1
 stretch_mode = 3
 
 [node name="noSignal" type="Label" parent="Bob/ScrollContainer/VBoxContainer/Message23"]
-visible = false
 layout_mode = 2
 offset_left = -1.50002
 offset_top = 78.75
@@ -1061,19 +1058,16 @@ text = "Não enviado⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
 label_settings = SubResource("LabelSettings_ly72b")
 
 [node name="Space23" type="Label" parent="Bob/ScrollContainer/VBoxContainer"]
-visible = false
 layout_mode = 2
 text = "⠀"
 label_settings = SubResource("LabelSettings_muc7g")
 
 [node name="Space24" type="Label" parent="Bob/ScrollContainer/VBoxContainer"]
-visible = false
 layout_mode = 2
 text = "⠀"
 label_settings = SubResource("LabelSettings_muc7g")
 
 [node name="Message24" type="Label" parent="Bob/ScrollContainer/VBoxContainer"]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 8
 text = "o que aconteceu?⠀"
@@ -1091,20 +1085,17 @@ expand_mode = 1
 stretch_mode = 3
 
 [node name="Space28" type="Label" parent="Bob/ScrollContainer/VBoxContainer"]
-visible = false
 layout_mode = 2
 text = "⠀"
 label_settings = SubResource("LabelSettings_5dopo")
 
 [node name="noSignal2" type="Label" parent="Bob/ScrollContainer/VBoxContainer"]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 8
 text = "Não enviado⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
 label_settings = SubResource("LabelSettings_ly72b")
 
 [node name="Space27" type="Label" parent="Bob/ScrollContainer/VBoxContainer"]
-visible = false
 layout_mode = 2
 text = "⠀"
 label_settings = SubResource("LabelSettings_3wdud")
