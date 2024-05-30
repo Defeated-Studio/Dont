@@ -257,3 +257,4 @@ visible_ratio = 0.0
 
 [node name="PowerOff" type="AudioStreamPlayer" parent="Night1-2"]
 stream = ExtResource("3_pvx5a")
+volume_db = 15.0
