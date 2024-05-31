@@ -54,7 +54,9 @@ func _physics_process(delta):
 		
 		for i in res:
 			i.show()
+			
 		quest_control.finishQuest()
+		self.queue_free()
 
 func _on_generator_area_body_entered(body):
 	if quest_control.questActive == 0:
@@ -77,6 +79,7 @@ func _on_trigger_task_body_entered(body):
 	player_dialogue.queueDialogue("Eu lembro do Bob falar algo da chave")
 	player_dialogue.queueDialogue("tenho que ver meu celular")
 	player_dialogue.showDialogue()
+	await get_tree().create_timer(5).timeout
 	showInteractText()
 	quest_control.startQuest()
 	
