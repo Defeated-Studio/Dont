@@ -8,6 +8,11 @@ extends Node3D
 @onready var sleep_area_col = $SleepArea/CollisionShape3D
 @onready var world_environment = $"../WorldEnvironment".environment
 
+@onready var front_door = $"../House/FrontDoor"
+@onready var bedroom_curtain = $"../House/Bedroom1/Curtain"
+@onready var bedroom_door = $"../House/Bedroom1/Bedroom1Door"
+
+
 var canPowerOn = false
 var canSleep = false
 
@@ -39,10 +44,19 @@ func findByClass(node: Node, className : String, result : Array):
 func _physics_process(delta):
 	if (Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")) and canSleep and IsRayCasting.canInteract:
 		get_node("SleepArea").queue_free()
-		SceneTransition.change_scene("", "night2-day2", 0)
-		await get_tree().create_timer(1.1).timeout
-		world_environment.background_energy_multiplier = 5.0
-		world_environment.volumetric_fog_enabled = false
+		
+		if front_door.doorOpen:
+			dialogue_text.queueDialogue("não posso dormir com a porta da frente aberta")
+			dialogue_text.timeBetweenText = 3
+			dialogue_text.showDialogue()
+		elif bedroom_door.doorOpen or bedroom_curtain.CurtainOpened:
+			dialogue_text.queueDialogue("preciso fechar a porta e as cortinas antes de dormir")
+			dialogue_text.showDialogue()
+		else:
+			SceneTransition.change_scene("", "night2-day2", 0)
+			await get_tree().create_timer(1.1).timeout
+			world_environment.background_energy_multiplier = 5.0
+			world_environment.volumetric_fog_enabled = false
 			
 		# MUDAR HDRI?
 		
@@ -76,6 +90,7 @@ func _physics_process(delta):
 		
 		for i in res:
 			i.show()
+			
 		quest_control.finishQuest()
 		sleep_area_col.set_deferred("disabled", false)
 
