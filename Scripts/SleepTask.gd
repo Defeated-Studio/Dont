@@ -4,16 +4,23 @@ var canSleep = false
 @onready var quest_control = $"../QuestControl"
 @onready var dialogue_text = $"../Player/DialogueText"
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
+@onready var front_door = $"../House/FrontDoor"
+@onready var bedroom_curtain = $"../House/Bedroom1/Curtain"
+@onready var bedroom_door = $"../House/Bedroom1/Bedroom1Door"
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if (Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")) and canSleep and IsRayCasting.canInteract:
-		quest_control.finishQuest()
-		SceneTransition.change_scene("res://Scenes/Night2.tscn", "night1-2")
+		if front_door.doorOpen:
+			dialogue_text.queueDialogue("não posso dormir com a porta da frente aberta")
+			dialogue_text.timeBetweenText = 3
+			dialogue_text.showDialogue()
+		elif bedroom_door.doorOpen or bedroom_curtain.CurtainOpened:
+			dialogue_text.queueDialogue("preciso fechar a porta e as cortinas antes de dormir")
+			dialogue_text.showDialogue()
+		else:
+			quest_control.finishQuest()
+			SceneTransition.change_scene("res://Scenes/Night2.tscn", "night1-2")
 
 func _on_bed_area_body_entered(body):
 	if quest_control.questActive == 4:
