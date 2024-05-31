@@ -1,11 +1,11 @@
 [gd_resource type="ShaderMaterial" load_steps=7 format=3 uid="uid://d28lq2qtgdyie"]
 
-[ext_resource type="Shader" path="res://addons/proton_scatter/demos/assets/materials/leaves.gdshader" id="1_hlncd"]
+[ext_resource type="Shader" path="res://addons/proton_scatter/demos/assets/materials/leaves2.gdshader" id="1_iy6qe"]
 [ext_resource type="Texture2D" uid="uid://pvrh3kuk7y25" path="res://addons/proton_scatter/demos/assets/textures/t_pine_branch.png" id="2_yef44"]
 
 [sub_resource type="Gradient" id="Gradient_pookg"]
 offsets = PackedFloat32Array(0.38342, 0.694301, 1)
-colors = PackedColorArray(0.059375, 0.078125, 0.07, 1, 0.628287, 0.73, 0.1752, 1, 0.897921, 1, 0, 1)
+colors = PackedColorArray(0.059375, 0.078125, 0.07, 1, 0.810703, 0.643573, 0.404985, 1, 0.688944, 0.492859, 0.257843, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_n86jv"]
 gradient = SubResource("Gradient_pookg")
@@ -22,9 +22,9 @@ noise = SubResource("FastNoiseLite_t7o5y")
 
 [resource]
 render_priority = 0
-shader = ExtResource("1_hlncd")
+shader = ExtResource("1_iy6qe")
 shader_parameter/alpha_scissor_threshold = 0.3
-shader_parameter/transmission = Color(0.745098, 0.741176, 0, 1)
+shader_parameter/transmission = Color(4.42803e-06, 0.510122, 0.705465, 1)
 shader_parameter/total_height = 4.046
 shader_parameter/wind_direction = Vector2(1, -0.5)
 shader_parameter/wind_speed = 0.2

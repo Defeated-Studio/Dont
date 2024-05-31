@@ -4,7 +4,7 @@
 [ext_resource type="Shader" path="res://Shaders/World2.gdshader" id="1_ysvic"]
 [ext_resource type="PackedScene" uid="uid://dobytd4rsv0er" path="res://House/House.tscn" id="2_8svwb"]
 [ext_resource type="PackedScene" uid="uid://cxsva7okbm5ol" path="res://Scenes/Player.tscn" id="3_btjh2"]
-[ext_resource type="Texture2D" uid="uid://7ov7anefv7vd" path="res://HDRI/night.exr" id="4_c8sla"]
+[ext_resource type="Texture2D" uid="uid://1qwuksqrb8xp" path="res://HDRI/sky.exr" id="5_ikphh"]
 [ext_resource type="Terrain3DStorage" uid="uid://bwnbu8p65s8k1" path="res://Texture/terrainStorage.res" id="6_tctqa"]
 [ext_resource type="PackedScene" uid="uid://ptr0cc31jxbp" path="res://Scenes/Mobile/messages.tscn" id="7_0r5p1"]
 [ext_resource type="Terrain3DMaterial" uid="uid://w6b3gg83d158" path="res://Texture/terrainMaterial.res" id="7_cvp35"]
@@ -30,7 +30,7 @@ shader_parameter/colors = 16
 shader_parameter/dither_size = 1
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_4ifls"]
-panorama = ExtResource("4_c8sla")
+panorama = ExtResource("5_ikphh")
 
 [sub_resource type="Sky" id="Sky_clk0i"]
 sky_material = SubResource("PanoramaSkyMaterial_4ifls")
@@ -47,30 +47,30 @@ volumetric_fog_density = 0.06
 volumetric_fog_albedo = Color(0.494118, 0.494118, 0.494118, 1)
 volumetric_fog_detail_spread = 6.0
 
-[sub_resource type="Resource" id="Resource_2ajwd"]
+[sub_resource type="Resource" id="Resource_5c43u"]
 script = ExtResource("11_wxgki")
-amount = 400
+amount = 550
 enabled = true
-override_global_seed = false
-custom_seed = 0
+override_global_seed = true
+custom_seed = 8
 restrict_height = true
 reference_frame = 1
 
-[sub_resource type="Resource" id="Resource_vwego"]
+[sub_resource type="Resource" id="Resource_67c1j"]
 script = ExtResource("12_4lsev")
 position = Vector3(0.15, 0.15, 0.15)
 rotation = Vector3(2, 360, 2)
-scale = Vector3(0.1, 0.1, 0.1)
+scale = Vector3(1, 0.1, 1.5)
 enabled = true
 override_global_seed = false
 custom_seed = 0
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_dn0mj"]
+[sub_resource type="Resource" id="Resource_curdu"]
 script = ExtResource("13_v755k")
-iterations = 3
-offset_step = 0.2
+iterations = 4
+offset_step = 0.0
 consecutive_step_multiplier = 0.75
 use_computeshader = true
 enabled = true
@@ -79,7 +79,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_h1p4c"]
+[sub_resource type="Resource" id="Resource_kkwh7"]
 script = ExtResource("14_uutcr")
 ray_direction = Vector3(0, -1, 0)
 ray_length = 5.0
@@ -95,7 +95,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_qcfcb"]
+[sub_resource type="Resource" id="Resource_npgsn"]
 script = ExtResource("15_hp6mn")
 terrain_node = NodePath("../Terrain3D")
 align_with_collision_normal = false
@@ -105,9 +105,9 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_kp826"]
+[sub_resource type="Resource" id="Resource_ebcvw"]
 script = ExtResource("10_rhs0g")
-stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_2ajwd"), SubResource("Resource_vwego"), SubResource("Resource_dn0mj"), SubResource("Resource_h1p4c"), SubResource("Resource_qcfcb")])
+stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_5c43u"), SubResource("Resource_67c1j"), SubResource("Resource_curdu"), SubResource("Resource_kkwh7"), SubResource("Resource_npgsn")])
 
 [sub_resource type="Resource" id="Resource_aogur"]
 script = ExtResource("17_7lvh5")
@@ -160,7 +160,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.865362)
 script = ExtResource("9_we0ft")
 global_seed = 7
 keep_static_colliders = true
-modifier_stack = SubResource("Resource_kp826")
+modifier_stack = SubResource("Resource_ebcvw")
 Performance/use_chunks = true
 Performance/chunk_dimensions = Vector3(15, 15, 15)
 
@@ -182,6 +182,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.95958)
 visible = false
 script = ExtResource("16_atlbf")
 shape = SubResource("Resource_fm8yr")
+
+[node name="ScatterItem" type="Node3D" parent="SubViewport/World/Nature"]
+script = ExtResource("15_d4jng")
+proportion = 90
+source_scale_multiplier = 3.0
+path = "res://addons/proton_scatter/demos/assets/pine_tree_2.tscn"
 
 [node name="MessagesApp" parent="." instance=ExtResource("7_0r5p1")]
 visible = false

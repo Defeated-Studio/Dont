@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dmfh1jcdu66k8" path="res://addons/proton_scatter/demos/assets/models/pine_tree.glb" id="1_hw1e5"]
 [ext_resource type="Material" uid="uid://d01d0h08lqqn6" path="res://addons/proton_scatter/demos/assets/materials/m_trunk.tres" id="2_cgtpc"]
 
-[sub_resource type="Shader" id="Shader_8mtvn"]
+[sub_resource type="Shader" id="Shader_cblmh"]
 code = "shader_type spatial;
 
 render_mode depth_draw_opaque, cull_disabled;
@@ -57,39 +57,39 @@ void fragment() {
 }
 "
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7vce1"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fty4x"]
 load_path = "res://.godot/imported/t_pine_branch.png-912fabf99bebd2eee6af2f445a54650e.s3tc.ctex"
 
-[sub_resource type="Gradient" id="Gradient_ocxbd"]
+[sub_resource type="Gradient" id="Gradient_lohn6"]
 offsets = PackedFloat32Array(0.38342, 0.694301, 1)
-colors = PackedColorArray(0.059375, 0.078125, 0.07, 1, 0.57743, 0.46122, 0.27909, 1, 0.729975, 0.462521, 0.315309, 1)
+colors = PackedColorArray(0.059375, 0.078125, 0.07, 1, 0.242522, 0.549754, 0.427508, 1, 0.0732625, 0.195438, 0.113484, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_hop5u"]
-gradient = SubResource("Gradient_ocxbd")
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_uvywa"]
+gradient = SubResource("Gradient_lohn6")
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_rrcpc"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_8ry41"]
 seed = 1
 frequency = 0.002
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_abbhn"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_osvdg"]
 in_3d_space = true
 seamless = true
 seamless_blend_skirt = 0.65
-noise = SubResource("FastNoiseLite_rrcpc")
+noise = SubResource("FastNoiseLite_8ry41")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7xq4b"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vkmip"]
 render_priority = 0
-shader = SubResource("Shader_8mtvn")
+shader = SubResource("Shader_cblmh")
 shader_parameter/alpha_scissor_threshold = 0.3
-shader_parameter/transmission = Color(0.603454, 0.424101, 0.315478, 1)
+shader_parameter/transmission = Color(0.334222, 0.52716, 0.318534, 1)
 shader_parameter/total_height = 4.046
 shader_parameter/wind_direction = Vector2(1, -0.5)
 shader_parameter/wind_speed = 0.2
 shader_parameter/wind_strength = 0.05
 shader_parameter/noise_scale = 12.0
-shader_parameter/texture_albedo = SubResource("CompressedTexture2D_7vce1")
-shader_parameter/texture_gradient = SubResource("GradientTexture1D_hop5u")
-shader_parameter/texture_noise = SubResource("NoiseTexture2D_abbhn")
+shader_parameter/texture_albedo = SubResource("CompressedTexture2D_fty4x")
+shader_parameter/texture_gradient = SubResource("GradientTexture1D_uvywa")
+shader_parameter/texture_noise = SubResource("NoiseTexture2D_osvdg")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2xqpo"]
 radius = 0.0750397
@@ -105,7 +105,7 @@ height = 0.489166
 surface_material_override/0 = ExtResource("2_cgtpc")
 
 [node name="Leaves" parent="." index="1"]
-surface_material_override/0 = SubResource("ShaderMaterial_7xq4b")
+surface_material_override/0 = SubResource("ShaderMaterial_vkmip")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." index="2"]
 
