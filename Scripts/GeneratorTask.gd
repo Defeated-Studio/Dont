@@ -8,6 +8,7 @@ extends Node3D
 @onready var front_door = $"../House/FrontDoor"
 
 var canPowerOn = false
+var toPickUp = 2
 
 func _process(delta):
 	if Input.is_action_just_pressed("Mobile"):
@@ -28,10 +29,12 @@ func _physics_process(delta):
 	if (IsRayCasting.collider) and (IsRayCasting.collider.name == "Key") and (Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")):
 		get_node("Key").queue_free()
 		front_door.locked = false
+		toPickUp -= 1
 		
 	if (IsRayCasting.canInteract) and (IsRayCasting.collider) and (IsRayCasting.collider.name == "Generator") and (Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")) and canPowerOn:
 		canPowerOn = false
 		interact_text.hide()
+		toPickUp -= 1
 	
 		var res = []
 		findByClass(house, "OmniLight3D", res)
@@ -54,7 +57,8 @@ func _physics_process(delta):
 		
 		for i in res:
 			i.show()
-			
+
+	if toPickUp == 0:
 		quest_control.finishQuest()
 		self.queue_free()
 

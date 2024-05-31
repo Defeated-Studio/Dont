@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://House/Scripts/DoorScript.gd" id="1_8e388"]
 [ext_resource type="Texture2D" uid="uid://cyoyg8ccxrqs4" path="res://House/Models/Doors_0.webp" id="2_55hno"]
-[ext_resource type="AudioStream" uid="uid://bbfmhuikpul3g" path="res://House/SFX/doorSlam.wav" id="3_0sgor"]
+[ext_resource type="AudioStream" uid="uid://cqqq1nx6in6sv" path="res://House/SFX/doorSlam.wav" id="3_0sgor"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wnquo"]
 resource_name = "material"
