@@ -4,6 +4,9 @@ extends Node3D
 @onready var doorText = $Door/DoorText
 @onready var animation = $Door/DoorAnimation
 @onready var doorShutSound = $AudioStreamPlayer3D
+@onready var locked_text = $Door/LockedText
+
+@export var locked = false
 
 var doorOpen = false
 var canOpenDoor = false
@@ -17,6 +20,10 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if ((Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")) and !doorOpen) and canOpenDoor and IsRayCasting.canInteract:
+		if locked:
+			locked_text.show()
+			return
+			
 		animation.play("OpenDoorAni")
 		#doorOpenSound.play()
 		setdoorOpen(!doorOpen)
@@ -47,6 +54,7 @@ func setcanOpenDoor(value):
 			doorText.text = "[E] Abrir Porta"
 		doorText.show()
 	else:
+		locked_text.hide()
 		doorText.hide()
 
 

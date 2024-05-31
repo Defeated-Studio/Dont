@@ -1,6 +1,5 @@
 extends Node3D
 
-@onready var trigger_clean_house_task = $TriggerCleanHouseTask
 @onready var quest_control = $"../QuestControl"
 @onready var player_dialogue = $"../Player/DialogueText"
 @onready var interact_text = $"../InteractText/InteractText"
@@ -31,7 +30,7 @@ func _process(delta):
 		toClean -= 1
 		if toClean == 0:
 			await get_tree().create_timer(1.5).timeout
-			player_dialogue.queueDialogue("acho que terminei, preciso jogar isso fora.")
+			player_dialogue.queueDialogue("Acho que terminei, preciso jogar isso fora.")
 			player_dialogue.showDialogue()
 			trash.set_deferred("disabled", false) 
 	
@@ -39,28 +38,6 @@ func _process(delta):
 		quest_control.finishQuest()
 		get_node("TrashCan").queue_free()
 		await get_tree().create_timer(1.0).timeout
-		player_dialogue.timeBetweenText = 3
-		player_dialogue.queueDialogue("essa casa não parece certa, sinto algo estranho.")
-		player_dialogue.queueDialogue("posso jurar que as fotos do anúncio estavam diferentes")
-		player_dialogue.queueDialogue("vou chamar o bob e resolver isso")
-		player_dialogue.showDialogue()
-		quest_control.startQuest()
-
-func _on_trigger_clean_house_task_body_entered(body):
-	if quest_control.questActive == 1:
-		paper1.show()
-		paper_collision.set_deferred("disabled", false)
-		player_dialogue.queueDialogue("essa casa tá uma bagunça, preciso limpar isso.")
-		player_dialogue.showDialogue()
-		activateCollisions()
-		get_node("TriggerCleanHouseTask").queue_free()
-		await get_tree().create_timer(3.0).timeout
-		quest_control.startQuest()
-	else:
-		player_dialogue.queueDialogue("que escuridão, melhor eu achar essa porra de gerador.")
-		player_dialogue.showDialogue()
-		pass
-
 
 func activateCollisions():
 	clean_sodas.set_deferred("disabled", false)
@@ -76,7 +53,6 @@ func _on_clean_entered(body, node_name):
 	canClean = true
 	currentNode = node_name
 
-
 func _on_clean_exited(body):
 	interact_text.hide()
 	canClean = false
@@ -86,7 +62,14 @@ func _on_trash_can_body_entered(body):
 	interact_text.show()
 	canThrowAway = true
 
-
 func _on_trash_can_body_exited(body):
 	interact_text.hide()
 	canThrowAway = false
+
+
+func _on_quest_control_quest_started():
+	if quest_control.questActive == 2:
+		paper1.show()
+		paper_collision.set_deferred("disabled", false)
+		activateCollisions()
+		quest_control.startQuest()

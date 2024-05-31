@@ -10,12 +10,13 @@ func _ready():
 
 
 func _process(delta):
-	var collider = get_collider()
+	IsRayCasting.collider = get_collider()
 	default_crosshair.show()
 	interact_crosshair.hide()
 	IsRayCasting.canInteract = false
-	if collider is Node:
-		if collider.is_in_group("InteractGroup"):
+	
+	if IsRayCasting.collider is Node:
+		if IsRayCasting.collider.is_in_group("InteractGroup"):
 			IsRayCasting.canInteract = true
 			default_crosshair.hide()
 			interact_crosshair.show()

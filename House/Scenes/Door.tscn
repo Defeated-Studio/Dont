@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://House/Scripts/DoorScript.gd" id="1_8e388"]
 [ext_resource type="Texture2D" uid="uid://cyoyg8ccxrqs4" path="res://House/Models/Doors_0.webp" id="2_55hno"]
-[ext_resource type="AudioStream" uid="uid://cqqq1nx6in6sv" path="res://House/SFX/doorSlam.wav" id="3_0sgor"]
+[ext_resource type="AudioStream" uid="uid://bbfmhuikpul3g" path="res://House/SFX/doorSlam.wav" id="3_0sgor"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wnquo"]
 resource_name = "material"
@@ -165,12 +165,26 @@ libraries = {
 "": SubResource("AnimationLibrary_4sum3")
 }
 
+[node name="LockedText" type="Label" parent="Door"]
+visible = false
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -105.0
+offset_bottom = -57.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Trancado"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="DoorText" type="Label" parent="Door"]
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -86.0
+offset_top = -70.0
 grow_horizontal = 2
 grow_vertical = 0
 horizontal_alignment = 1

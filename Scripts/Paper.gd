@@ -1,7 +1,7 @@
 extends Node3D
 
 @export var id: int
-@export var text: String
+@export_multiline var text : String
 
 var canPickUp = false
 

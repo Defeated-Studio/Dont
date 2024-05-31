@@ -1,11 +1,11 @@
 [gd_scene load_steps=9 format=3 uid="uid://do34y4r5bdc6j"]
 
 [ext_resource type="Script" path="res://Scripts/LoadingScreen.gd" id="1_aj7a2"]
-[ext_resource type="FontFile" uid="uid://b1vymeh36eknt" path="res://Fonts/Cinzel-Bold.ttf" id="2_hkbvc"]
-[ext_resource type="Texture2D" uid="uid://e0alu2i81423" path="res://Texture/defeated_opaque_50px.png" id="3_5th6f"]
-[ext_resource type="Texture2D" uid="uid://c786kyfeask07" path="res://Texture/defeated_white_50px.png" id="4_syagl"]
-[ext_resource type="Texture2D" uid="uid://b0a4tpn7d1mfb" path="res://Texture/Dont-not-full.png" id="5_d3c8w"]
-[ext_resource type="Texture2D" uid="uid://l6kurhsl100e" path="res://Texture/Dont-full.png" id="6_mc4si"]
+[ext_resource type="FontFile" uid="uid://dx05xccu4q56q" path="res://Fonts/Cinzel-Bold.ttf" id="2_hkbvc"]
+[ext_resource type="Texture2D" uid="uid://y634kqd7it66" path="res://Texture/defeated_opaque_50px.png" id="3_5th6f"]
+[ext_resource type="Texture2D" uid="uid://3wb1q1g3nxow" path="res://Texture/defeated_white_50px.png" id="4_syagl"]
+[ext_resource type="Texture2D" uid="uid://758n7wautdaf" path="res://Texture/Dont-not-full.png" id="5_d3c8w"]
+[ext_resource type="Texture2D" uid="uid://be6keuus3rgon" path="res://Texture/Dont-full.png" id="6_mc4si"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ekfce"]
 bg_color = Color(0.443137, 0.470588, 0.501961, 0.572549)

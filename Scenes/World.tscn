@@ -37,7 +37,7 @@ sky_material = SubResource("PanoramaSkyMaterial_4ifls")
 
 [sub_resource type="Environment" id="Environment_kf7d3"]
 background_mode = 2
-background_energy_multiplier = 0.25
+background_energy_multiplier = 0.5
 sky = SubResource("Sky_clk0i")
 ssil_enabled = true
 ssil_intensity = 0.8
@@ -47,16 +47,16 @@ volumetric_fog_density = 0.06
 volumetric_fog_albedo = Color(0.494118, 0.494118, 0.494118, 1)
 volumetric_fog_detail_spread = 6.0
 
-[sub_resource type="Resource" id="Resource_a06sy"]
+[sub_resource type="Resource" id="Resource_2ajwd"]
 script = ExtResource("11_wxgki")
-amount = 1000
+amount = 400
 enabled = true
 override_global_seed = false
 custom_seed = 0
 restrict_height = true
 reference_frame = 1
 
-[sub_resource type="Resource" id="Resource_ryovt"]
+[sub_resource type="Resource" id="Resource_vwego"]
 script = ExtResource("12_4lsev")
 position = Vector3(0.15, 0.15, 0.15)
 rotation = Vector3(2, 360, 2)
@@ -67,7 +67,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_5vvhc"]
+[sub_resource type="Resource" id="Resource_dn0mj"]
 script = ExtResource("13_v755k")
 iterations = 3
 offset_step = 0.2
@@ -79,7 +79,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_jyrjy"]
+[sub_resource type="Resource" id="Resource_h1p4c"]
 script = ExtResource("14_uutcr")
 ray_direction = Vector3(0, -1, 0)
 ray_length = 5.0
@@ -95,7 +95,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_lkqls"]
+[sub_resource type="Resource" id="Resource_qcfcb"]
 script = ExtResource("15_hp6mn")
 terrain_node = NodePath("../Terrain3D")
 align_with_collision_normal = false
@@ -105,13 +105,13 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_5cl8p"]
+[sub_resource type="Resource" id="Resource_kp826"]
 script = ExtResource("10_rhs0g")
-stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_a06sy"), SubResource("Resource_ryovt"), SubResource("Resource_5vvhc"), SubResource("Resource_jyrjy"), SubResource("Resource_lkqls")])
+stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_2ajwd"), SubResource("Resource_vwego"), SubResource("Resource_dn0mj"), SubResource("Resource_h1p4c"), SubResource("Resource_qcfcb")])
 
 [sub_resource type="Resource" id="Resource_aogur"]
 script = ExtResource("17_7lvh5")
-size = Vector3(16.644, 11.9201, 15)
+size = Vector3(22.4867, 11.9201, 18.8855)
 
 [sub_resource type="Resource" id="Resource_fm8yr"]
 script = ExtResource("17_7lvh5")
@@ -137,7 +137,7 @@ script = ExtResource("1_5u8qh")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.225123, 2)
 
 [node name="Player" parent="SubViewport/World" instance=ExtResource("3_btjh2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.48725, 0.639103, 59.4992)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.48725, 0.639103, 24.8572)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewport/World"]
 environment = SubResource("Environment_kf7d3")
@@ -160,18 +160,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.865362)
 script = ExtResource("9_we0ft")
 global_seed = 7
 keep_static_colliders = true
-modifier_stack = SubResource("Resource_5cl8p")
+modifier_stack = SubResource("Resource_kp826")
 Performance/use_chunks = true
 Performance/chunk_dimensions = Vector3(15, 15, 15)
 
 [node name="Trees" type="Node3D" parent="SubViewport/World/Nature"]
 script = ExtResource("15_d4jng")
 proportion = 200
-source_scale_multiplier = 3.0
+source_scale_multiplier = 5.0
 path = "res://addons/proton_scatter/demos/assets/pine_tree.tscn"
 
 [node name="HouseArea" type="Node3D" parent="SubViewport/World/Nature"]
-transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 2.16745, 5.61763, 0.940838)
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 2.16745, 5.61763, 1.64365)
 visible = false
 script = ExtResource("16_atlbf")
 negative = true
