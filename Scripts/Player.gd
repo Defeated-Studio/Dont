@@ -30,7 +30,7 @@ var direction = Vector3.ZERO
 @onready var camera = $Head/Camera3D
 @onready var crouch_animation = $CrouchAnimation
 @onready var hand = $Hand
-@onready var flashlight = $Hand/Flashlight
+@onready var flashlight = $Head/Flashlight
 @onready var flashlight_animation = $FlashlightAnimation
 @onready var flashlight_model = $Head/FlashlightModel
 

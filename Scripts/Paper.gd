@@ -49,8 +49,8 @@ func _on_close_button_pressed():
 	
 	if id == 1:
 		player_dialogue_text.queueDialogue("O quê? Isso é sério? Deve ser uma piada... Mas e se não for?")
-		player_dialogue_text.queueDialogue("Talvez ela só estivesse imaginando coisas.")
-		player_dialogue_text.queueDialogue("Talvez eu dê uma olhada na casa amanhã, ver se encontro mais alguma coisa.") 
-		player_dialogue_text.queueDialogue("Mas agora... nossa, eu tô cansado demais pra pensar nisso. Preciso limpar isso e dormir um pouco.") 
+		#player_dialogue_text.queueDialogue("Talvez ela só estivesse imaginando coisas.")
+		#player_dialogue_text.queueDialogue("Talvez eu dê uma olhada na casa amanhã, ver se encontro mais alguma coisa.") 
+		#player_dialogue_text.queueDialogue("Mas agora... nossa, eu tô cansado demais pra pensar nisso. Preciso limpar isso e dormir um pouco.") 
 		player_dialogue_text.timeBetweenText = 4
 		player_dialogue_text.showDialogue()
