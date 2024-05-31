@@ -33,6 +33,7 @@ func _process(delta):
 		player_dialogue.queueDialogue("ta tudo uma bagunça, parece que quem estava aqui saiu as pressas")
 		player_dialogue.showDialogue()
 		quest_control.finishQuest()
+		self.queue_free()
 			
 	if Input.is_action_just_pressed("Mobile"):
 		interact_text.hide()

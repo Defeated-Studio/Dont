@@ -21,16 +21,11 @@ func _process(delta):
 		player.canMove = true
 		messages_app.backButtonSignal = false
 	
-	if Input.is_action_just_pressed("Mobile") and !diary.visible and canOpenMobile:
-		if messages_app.visible:
-			messages_app.hide()
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-			player.canMove = true
-		else:
-			player.canMove = false
-			messages_app.show()
-			messages_app.showMobile()
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	if Input.is_action_just_pressed("Mobile") and !diary.visible and canOpenMobile and !messages_app.visible:
+		player.canMove = false
+		messages_app.show()
+		messages_app.showMobile()
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	elif Input.is_action_just_pressed("Diary") and !messages_app.visible and canOpenDiary:
 		if diary.visible:
 			diary.hide()

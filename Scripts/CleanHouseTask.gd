@@ -36,8 +36,7 @@ func _process(delta):
 	
 	if (Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")) and canThrowAway and IsRayCasting.canInteract:
 		quest_control.finishQuest()
-		get_node("TrashCan").queue_free()
-		await get_tree().create_timer(1.0).timeout
+		self.queue_free()
 
 func activateCollisions():
 	clean_sodas.set_deferred("disabled", false)
