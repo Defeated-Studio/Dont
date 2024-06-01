@@ -43,8 +43,6 @@ func findByClass(node: Node, className : String, result : Array):
 	
 func _physics_process(delta):
 	if (Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")) and canSleep and IsRayCasting.canInteract:
-		get_node("SleepArea").queue_free()
-		
 		if front_door.doorOpen:
 			dialogue_text.queueDialogue("não posso dormir com a porta da frente aberta")
 			dialogue_text.timeBetweenText = 3
@@ -53,6 +51,7 @@ func _physics_process(delta):
 			dialogue_text.queueDialogue("preciso fechar a porta e as cortinas antes de dormir")
 			dialogue_text.showDialogue()
 		else:
+			get_node("SleepArea").queue_free()
 			SceneTransition.change_scene("", "night2-day2", 0)
 			await get_tree().create_timer(1.1).timeout
 			world_environment.background_energy_multiplier = 5.0
