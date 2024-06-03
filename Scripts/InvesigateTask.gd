@@ -22,7 +22,6 @@ func _ready():
 	findByClass(house, "OmniLight3D", res)
 	for i in res:
 		i.hide()
-	livingroomDoor.setState(true)
 	quest_control.startQuest()
 	dialogue_text.timeBetweenText = 3
 	dialogue_text.queueDialogue("que barulho foi esse?")
@@ -30,6 +29,8 @@ func _ready():
 	dialogue_text.queueDialogue("não acredito nisso")
 	dialogue_text.showDialogue()
 
+	await get_tree().create_timer(1.1).timeout
+	livingroomDoor.setState(true)
 
 
 func findByClass(node: Node, className : String, result : Array):
