@@ -5,6 +5,7 @@ extends Node3D
 @onready var animation = $Door/DoorAnimation
 @onready var doorShutSound = $AudioStreamPlayer3D
 @onready var locked_text = $Door/LockedText
+@onready var door = $Door
 
 @export var locked = false
 
@@ -12,10 +13,16 @@ var doorOpen = false
 var canOpenDoor = false
 static var shutDoor = true
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+func getState():
+	return doorOpen
 
+func setState(state):
+	if state:
+		door.rotation.z = 1.85004997253418
+		doorOpen = true
+	else:
+		door.rotation.z = 0
+		doorOpen = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -28,6 +35,7 @@ func _process(delta):
 		#doorOpenSound.play()
 		setdoorOpen(!doorOpen)
 		doorText.hide()
+		
 	elif ((Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")) and doorOpen) and canOpenDoor and IsRayCasting.canInteract:
 		if shutDoor and self.name == "FrontDoor":
 			animation.play("ShutDoor")

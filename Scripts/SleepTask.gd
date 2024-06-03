@@ -1,4 +1,6 @@
 extends Node3D
+
+
 var canSleep = false
 @onready var interact_text = %InteractText
 @onready var quest_control = $"../QuestControl"
@@ -7,6 +9,7 @@ var canSleep = false
 @onready var front_door = $"../House/FrontDoor"
 @onready var bedroom_curtain = $"../House/Bedroom1/Curtain"
 @onready var bedroom_door = $"../House/Bedroom1/Bedroom1Door"
+@onready var states = $"../../../States"
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -20,10 +23,11 @@ func _process(delta):
 			dialogue_text.showDialogue()
 		else:
 			quest_control.finishQuest()
+			states.saveStates()
 			SceneTransition.change_scene("res://Scenes/Night2.tscn", "night1-2")
 
 func _on_bed_area_body_entered(body):
-	if quest_control.questActive == 4:
+	if quest_control.questActive == 1:
 		canSleep = true
 		interact_text.show()
 		interact_text.text = "[E] Dormir"
@@ -34,7 +38,7 @@ func _on_bed_area_body_exited(body):
 
 
 func _on_trigger_sleep_task_body_entered(body):
-	if quest_control.questActive == 4:
+	if quest_control.questActive == 1:
 		quest_control.startQuest()
 		dialogue_text.timeBetweenText = 3
 		dialogue_text.queueDialogue("preciso ir deitar, não estou me sentindo muito bem")

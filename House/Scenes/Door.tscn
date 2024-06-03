@@ -65,7 +65,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(-1.06581e-14, -1.48231e-21, 7.10543e-15), Vector3(5.53355e-08, -4.21376e-08, 1.83996)]
+"values": [Vector3(-1.06581e-14, -1.48231e-21, 7.10543e-15), Vector3(0, 0, 1.85005)]
 }
 
 [sub_resource type="Animation" id="Animation_5rjth"]

@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 SceneTransition="*res://Scenes/SceneTransition.tscn"
 IsRayCasting="*res://Scripts/IsRayCasting.gd"
+NodeStates="*res://Scripts/NodeStates.gd"
 
 [display]
 

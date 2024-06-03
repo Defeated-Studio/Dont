@@ -22,8 +22,7 @@ func _ready():
 	findByClass(house, "OmniLight3D", res)
 	for i in res:
 		i.hide()
-	livingroomDoor.animation.play("OpenDoorAni")
-	livingroomDoor.setdoorOpen(true)
+	livingroomDoor.setState(true)
 	quest_control.startQuest()
 	dialogue_text.timeBetweenText = 3
 	dialogue_text.queueDialogue("que barulho foi esse?")

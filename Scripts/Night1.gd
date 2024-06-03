@@ -6,6 +6,7 @@ extends SubViewportContainer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
 	var res = []
 	findByClass(house, "OmniLight3D", res)
 	for i in res:
