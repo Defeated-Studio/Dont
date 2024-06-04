@@ -6,6 +6,7 @@ extends SubViewportContainer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	front_door.locked = true
 	
 	var res = []
 	findByClass(house, "OmniLight3D", res)
@@ -16,7 +17,6 @@ func _ready():
 	tutorial_text.show()
 	await get_tree().create_timer(5).timeout
 	tutorial_text.hide()
-	front_door.locked = true
 	
 
 func findByClass(node: Node, className : String, result : Array):
