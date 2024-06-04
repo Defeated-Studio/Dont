@@ -11,7 +11,6 @@ var flag = 1
 var timer_flag = 1
 
 func _ready():
-	ResourceLoader.load_threaded_request("res://Scenes/Night1.tscn")
 	animation_player.play("fade_in_first")
 	animation_player.animation_finished.connect(_on_animation_finished)
 
@@ -49,10 +48,6 @@ func _process(delta):
 			animation_player.play("fade_out_sec")
 			timer_flag = 1
 			flag = 0
-
-func _load_screen():
-	var pscene = ResourceLoader.load_threaded_get("res://Scenes/Night1.tscn")
-	get_tree().change_scene_to_packed(pscene)
 
 func _on_timer_timeout():
 	if anim_next == 0 || anim_next == 1:
