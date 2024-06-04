@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://co7tsrq574r11"]
 
-[ext_resource type="Script" path="res://Scripts/InitialScreen.gd" id="1_jbgwg"]
+[ext_resource type="Script" path="res://Scripts/StoryScreen.gd" id="1_oe1pu"]
 
 [sub_resource type="Animation" id="Animation_x68ho"]
 length = 0.001
@@ -304,7 +304,7 @@ _data = {
 }
 
 [node name="Initial Screen" type="Node2D"]
-script = ExtResource("1_jbgwg")
+script = ExtResource("1_oe1pu")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3

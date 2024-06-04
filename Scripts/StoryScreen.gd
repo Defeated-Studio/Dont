@@ -11,6 +11,7 @@ var flag = 1
 var timer_flag = 1
 
 func _ready():
+	ResourceLoader.load_threaded_request("res://Scenes/Night1.tscn")
 	animation_player.play("fade_in_first")
 	animation_player.animation_finished.connect(_on_animation_finished)
 
@@ -25,7 +26,7 @@ func _on_animation_finished(anim_name):
 	elif anim_name == "fade_out_sec":
 		animation_player.play("fade_out_screen")
 	elif anim_name == "fade_out_screen":
-		_load_screen()
+		visible = false
 	elif (anim_name == "fade_in_first" || anim_name == "fade_in_sec" || anim_name == "fade_in_third") && timer_flag == 1:
 		timer.start()
 	
@@ -50,7 +51,7 @@ func _process(delta):
 			flag = 0
 
 func _load_screen():
-	var pscene = load("res://Scenes/Screens/LoadingScreen.tscn")
+	var pscene = ResourceLoader.load_threaded_get("res://Scenes/Night1.tscn")
 	get_tree().change_scene_to_packed(pscene)
 
 func _on_timer_timeout():

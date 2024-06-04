@@ -12,9 +12,8 @@ func _ready():
 func _process(delta):
 	var progress = []
 	ResourceLoader.load_threaded_get_status(next_scene, progress)
-	#progress_bar.value = progress[0]*100
+	
 	logo_bar.value = progress[0]*100
-	#dont_bar.value = progress[0]*100
 	label.text = str(round(progress[0]*100)) + "%"
 	
 	if progress[0] == 1:

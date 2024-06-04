@@ -1,6 +1,6 @@
 extends Control
 
-const INITIAL_SCREEN = preload("res://Scenes/Screens/InitialScreen.tscn")
+const LOADING_SCREEN = preload("res://Scenes/Screens/LoadingScreen.tscn")
 @onready var options_menu = $OptionsMenu
 @onready var margin_container = $MarginContainer
 
@@ -12,7 +12,7 @@ func _process(delta):
 
 
 func _on_new_game_pressed():
-	get_tree().change_scene_to_packed(INITIAL_SCREEN)
+	get_tree().change_scene_to_packed(LOADING_SCREEN)
 
 
 func _on_options_pressed():
