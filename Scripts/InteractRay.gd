@@ -17,6 +17,13 @@ func _process(delta):
 	
 	if IsRayCasting.collider is Node:
 		if IsRayCasting.collider.is_in_group("InteractGroup"):
-			IsRayCasting.canInteract = true
-			default_crosshair.hide()
-			interact_crosshair.show()
+			if IsRayCasting.collider.name == "PeepHoleRay":
+				default_crosshair.hide()
+				interact_crosshair.show()
+				IsRayCasting.canInteract = true
+				interact_crosshair.label_settings.font_color = Color(0, 0.575, 0.173)
+			else:
+				interact_crosshair.label_settings.font_color = Color(1, 1, 0)
+				IsRayCasting.canInteract = true
+				default_crosshair.hide()
+				interact_crosshair.show()

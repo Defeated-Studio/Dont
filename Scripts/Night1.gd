@@ -2,10 +2,13 @@ extends SubViewportContainer
 @onready var front_door = $SubViewport/World/House/FrontDoor
 @onready var tutorial_text = %TutorialText
 @onready var house = $SubViewport/World/House
+@onready var main_camera = $SubViewport/World/Player/Head/Camera3D
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	main_camera.set_current(true)
+	
 	front_door.locked = true
 	
 	var res = []

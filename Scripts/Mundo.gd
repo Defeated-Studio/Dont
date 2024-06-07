@@ -4,9 +4,14 @@ extends Node3D
 @onready var messages_app = $"../../MessagesApp"
 @onready var player = $Player
 @onready var diary = $"../../Diary"
+@onready var peephole_camera = $House/FrontDoor/Door/PeepHole/Camera3D
+@onready var transition = $House/FrontDoor/Door/PeepHole/AnimationPlayer
+@onready var peephole_text = $House/FrontDoor/Door/PeepHole/PeepHoleText
+@onready var door_text = $House/FrontDoor/Door/DoorText
 
 var canOpenMobile = true
 var canOpenDiary = true
+var inPeepHole = false
 
 func _ready():
 	#Engine.max_fps = 144
@@ -14,6 +19,31 @@ func _ready():
 
 
 func _process(delta):
+	if Input.is_action_just_pressed("LeftMouseButton") and IsRayCasting.canInteract and (IsRayCasting.collider) and IsRayCasting.collider.name == "PeepHoleRay" and !inPeepHole:
+		player.canMove = false
+		player.canMoveCamera = false
+		canOpenDiary = false
+		canOpenMobile = false
+		transition.play("peephole")
+		await get_tree().create_timer(1.1).timeout
+		peephole_camera.set_current(true)
+		transition.play_backwards("peephole")
+		inPeepHole = true
+		peephole_text.show()
+		door_text.hide()
+	
+	if Input.is_action_just_pressed("interact") and inPeepHole:
+		peephole_text.hide()
+		transition.play("peephole")
+		await get_tree().create_timer(1.1).timeout
+		player.canMove = true
+		player.canMoveCamera = true
+		canOpenDiary = true
+		canOpenMobile = true
+		transition.play_backwards("peephole")
+		inPeepHole = false
+		peephole_camera.set_current(false)
+	
 	$FPSCounter.set_text("FPS: %d" % Engine.get_frames_per_second())
 	if messages_app.backButtonSignal:
 		messages_app.hide()

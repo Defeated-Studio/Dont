@@ -26,7 +26,7 @@ func setState(state):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if ((Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")) and !doorOpen) and canOpenDoor and IsRayCasting.canInteract:
+	if ((Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")) and !doorOpen) and canOpenDoor and IsRayCasting.canInteract and ("Door" in IsRayCasting.collider.name):
 		if locked:
 			locked_text.show()
 			return
@@ -36,7 +36,7 @@ func _process(delta):
 		setdoorOpen(!doorOpen)
 		doorText.hide()
 		
-	elif ((Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")) and doorOpen) and canOpenDoor and IsRayCasting.canInteract:
+	elif ((Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")) and doorOpen) and canOpenDoor and IsRayCasting.canInteract and ("Door" in IsRayCasting.collider.name):
 		if shutDoor and self.name == "FrontDoor":
 			animation.play("ShutDoor")
 			setdoorOpen(!doorOpen)
