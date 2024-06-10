@@ -9,7 +9,7 @@ extends Node3D
 @onready var transition = $House/FrontDoor/Door/PeepHole/AnimationPlayer
 @onready var peephole_text = $House/FrontDoor/Door/PeepHole/PeepHoleText
 @onready var door_text = $House/FrontDoor/Door/DoorText
-@onready var fisheye = $Fisheye
+@onready var fisheye = $"../../Fisheye"
 
 var canOpenMobile = true
 var canOpenDiary = true

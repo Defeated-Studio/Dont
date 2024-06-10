@@ -31,18 +31,6 @@ shader_parameter/dithering = true
 shader_parameter/colors = 16
 shader_parameter/dither_size = 1
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_25sak"]
-shader = ExtResource("20_ex8sx")
-shader_parameter/aspect = 1.0
-shader_parameter/distortion = 1.0
-shader_parameter/radius = 1.07
-shader_parameter/alpha = 1.0
-shader_parameter/crop = 0.943
-shader_parameter/crop_color = Color(0, 0, 0, 1)
-shader_parameter/crop_feathering = 0.1
-shader_parameter/channel_offset = 0.005
-shader_parameter/noise_strength = 5.0
-
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_4ifls"]
 panorama = ExtResource("4_c8sla")
 
@@ -61,7 +49,7 @@ volumetric_fog_density = 0.06
 volumetric_fog_albedo = Color(0.494118, 0.494118, 0.494118, 1)
 volumetric_fog_detail_spread = 6.0
 
-[sub_resource type="Resource" id="Resource_4wxy3"]
+[sub_resource type="Resource" id="Resource_4v1hw"]
 script = ExtResource("11_wxgki")
 amount = 550
 enabled = true
@@ -70,7 +58,7 @@ custom_seed = 9
 restrict_height = true
 reference_frame = 1
 
-[sub_resource type="Resource" id="Resource_axgcl"]
+[sub_resource type="Resource" id="Resource_0yx7j"]
 script = ExtResource("12_4lsev")
 position = Vector3(0.15, 0.15, 0.15)
 rotation = Vector3(2, 360, 2)
@@ -81,7 +69,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_35r0m"]
+[sub_resource type="Resource" id="Resource_ro3sx"]
 script = ExtResource("13_v755k")
 iterations = 3
 offset_step = 0.2
@@ -93,7 +81,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_b7akg"]
+[sub_resource type="Resource" id="Resource_46c42"]
 script = ExtResource("14_uutcr")
 ray_direction = Vector3(0, -1, 0)
 ray_length = 5.0
@@ -109,7 +97,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_84nto"]
+[sub_resource type="Resource" id="Resource_thw8j"]
 script = ExtResource("15_hp6mn")
 terrain_node = NodePath("../Terrain3D")
 align_with_collision_normal = false
@@ -119,9 +107,9 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_v7vsx"]
+[sub_resource type="Resource" id="Resource_5ab8q"]
 script = ExtResource("10_rhs0g")
-stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_4wxy3"), SubResource("Resource_axgcl"), SubResource("Resource_35r0m"), SubResource("Resource_b7akg"), SubResource("Resource_84nto")])
+stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_4v1hw"), SubResource("Resource_0yx7j"), SubResource("Resource_ro3sx"), SubResource("Resource_46c42"), SubResource("Resource_thw8j")])
 
 [sub_resource type="Resource" id="Resource_aogur"]
 script = ExtResource("17_7lvh5")
@@ -130,6 +118,18 @@ size = Vector3(26.9512, 11.9201, 18.8855)
 [sub_resource type="Resource" id="Resource_fm8yr"]
 script = ExtResource("17_7lvh5")
 size = Vector3(120, 10, 145)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_25sak"]
+shader = ExtResource("20_ex8sx")
+shader_parameter/aspect = 1.0
+shader_parameter/distortion = 1.0
+shader_parameter/radius = 1.07
+shader_parameter/alpha = 1.0
+shader_parameter/crop = 0.943
+shader_parameter/crop_color = Color(0, 0, 0, 1)
+shader_parameter/crop_feathering = 0.1
+shader_parameter/channel_offset = 0.005
+shader_parameter/noise_strength = 5.0
 
 [node name="WorldView" type="SubViewportContainer"]
 material = SubResource("ShaderMaterial_4xe8w")
@@ -146,17 +146,6 @@ render_target_update_mode = 4
 
 [node name="World" type="Node3D" parent="SubViewport"]
 script = ExtResource("1_5u8qh")
-
-[node name="Fisheye" type="CanvasLayer" parent="SubViewport/World"]
-visible = false
-
-[node name="ColorRect" type="ColorRect" parent="SubViewport/World/Fisheye"]
-material = SubResource("ShaderMaterial_25sak")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="House" parent="SubViewport/World" instance=ExtResource("2_8svwb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.225123, 2)
@@ -185,7 +174,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.865362)
 script = ExtResource("9_we0ft")
 global_seed = 7
 keep_static_colliders = true
-modifier_stack = SubResource("Resource_v7vsx")
+modifier_stack = SubResource("Resource_5ab8q")
 Performance/use_chunks = true
 Performance/chunk_dimensions = Vector3(15, 15, 15)
 
@@ -220,6 +209,17 @@ layout_mode = 2
 [node name="Diary" parent="." instance=ExtResource("20_cinll")]
 visible = false
 layout_mode = 2
+
+[node name="Fisheye" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="Fisheye"]
+material = SubResource("ShaderMaterial_25sak")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="States" type="Node3D" parent="."]
 script = ExtResource("22_2jk3m")
