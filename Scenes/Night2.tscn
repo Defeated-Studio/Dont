@@ -10,19 +10,7 @@
 [ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/project_on_terrain3d.gd" id="7_icr4n"]
 [ext_resource type="Script" path="res://Scripts/InvesigateTask.gd" id="8_trp5y"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_q1wb1"]
-size = Vector3(2.25427, 1.72607, 1.36475)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_55jnb"]
-size = Vector3(2.33496, 1.74226, 1.1752)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_gk087"]
-size = Vector3(1.48779, 0.631958, 1.74539)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_ey2et"]
-size = Vector3(1.79321, 0.664429, 1.17328)
-
-[sub_resource type="Resource" id="Resource_6psw4"]
+[sub_resource type="Resource" id="Resource_tqshm"]
 script = ExtResource("3_4jca5")
 amount = 550
 enabled = true
@@ -31,7 +19,7 @@ custom_seed = 9
 restrict_height = true
 reference_frame = 1
 
-[sub_resource type="Resource" id="Resource_733lt"]
+[sub_resource type="Resource" id="Resource_mlcpf"]
 script = ExtResource("4_w36g3")
 position = Vector3(0.15, 0.15, 0.15)
 rotation = Vector3(2, 360, 2)
@@ -42,7 +30,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_vemrr"]
+[sub_resource type="Resource" id="Resource_0ohgu"]
 script = ExtResource("5_hoyad")
 iterations = 3
 offset_step = 0.2
@@ -54,7 +42,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_qk1dd"]
+[sub_resource type="Resource" id="Resource_hcrld"]
 script = ExtResource("6_720a1")
 ray_direction = Vector3(0, -1, 0)
 ray_length = 5.0
@@ -70,7 +58,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_jp5ph"]
+[sub_resource type="Resource" id="Resource_pwxh0"]
 script = ExtResource("7_icr4n")
 terrain_node = NodePath("../Terrain3D")
 align_with_collision_normal = false
@@ -80,14 +68,26 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_8c62x"]
+[sub_resource type="Resource" id="Resource_4hotf"]
 script = ExtResource("2_pq8sj")
-stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_6psw4"), SubResource("Resource_733lt"), SubResource("Resource_vemrr"), SubResource("Resource_qk1dd"), SubResource("Resource_jp5ph")])
+stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_tqshm"), SubResource("Resource_mlcpf"), SubResource("Resource_0ohgu"), SubResource("Resource_hcrld"), SubResource("Resource_pwxh0")])
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q1wb1"]
+size = Vector3(2.25427, 1.72607, 1.36475)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_55jnb"]
+size = Vector3(2.33496, 1.74226, 1.1752)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gk087"]
+size = Vector3(1.48779, 0.631958, 1.74539)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ey2et"]
+size = Vector3(1.79321, 0.664429, 1.17328)
 
 [node name="Night2" instance=ExtResource("1_qvbmn")]
 script = ExtResource("2_5li4r")
 
-[node name="Player" parent="SubViewport/World" index="2"]
+[node name="Player" parent="SubViewport/World" index="1"]
 transform = Transform3D(0.150933, 0, 0.988544, 0, 1, 0, -0.988544, 0, 0.150933, 7.14036, 3.92235, -0.767373)
 
 [node name="InteractText" type="Control" parent="SubViewport/World" index="4"]
@@ -111,8 +111,12 @@ grow_horizontal = 2
 grow_vertical = 0
 horizontal_alignment = 1
 
-[node name="FPSCounter" parent="SubViewport/World" index="6"]
+[node name="FPSCounter" parent="SubViewport/World" index="5"]
 visible = true
+
+[node name="Nature" parent="SubViewport/World" index="7"]
+global_seed = 5
+modifier_stack = SubResource("Resource_4hotf")
 
 [node name="InvesigateTask" type="Node3D" parent="SubViewport/World" index="8"]
 script = ExtResource("8_trp5y")
@@ -149,10 +153,6 @@ collision_mask = 4
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewport/World/InvesigateTask/SleepArea/Raycast" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.07251, 4.31481, 0.332134)
 shape = SubResource("BoxShape3D_ey2et")
-
-[node name="Nature" parent="SubViewport/World" index="9"]
-global_seed = 5
-modifier_stack = SubResource("Resource_8c62x")
 
 [connection signal="body_entered" from="SubViewport/World/InvesigateTask/GeneratorArea" to="SubViewport/World/InvesigateTask" method="_on_generator_area_body_entered"]
 [connection signal="body_exited" from="SubViewport/World/InvesigateTask/GeneratorArea" to="SubViewport/World/InvesigateTask" method="_on_generator_area_body_exited"]

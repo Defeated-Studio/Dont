@@ -4,6 +4,7 @@ extends Node3D
 @onready var messages_app = $"../../MessagesApp"
 @onready var player = $Player
 @onready var crosshair = $Player/Head/InteractRay/Control
+@onready var flashlight = $Player/Head/FlashlightModel
 @onready var diary = $"../../Diary"
 @onready var peephole_camera = $House/FrontDoor/Door/PeepHole/Camera3D
 @onready var transition = $House/FrontDoor/Door/PeepHole/AnimationPlayer
@@ -21,9 +22,10 @@ func _ready():
 
 
 func _process(delta):
-	if Input.is_action_just_pressed("LeftMouseButton") and IsRayCasting.canInteract and (IsRayCasting.collider) and IsRayCasting.collider.name == "PeepHoleRay" and !inPeepHole:
+	if Input.is_action_just_pressed("LeftMouseButton") and IsRayCasting.canInteract and (IsRayCasting.collider is Node) and IsRayCasting.collider.name == "PeepHoleRay" and !inPeepHole:
 		player.canMove = false
 		player.canMoveCamera = false
+		player.canUseFlashlight = false
 		canOpenDiary = false
 		canOpenMobile = false
 		transition.play("peephole")
@@ -35,6 +37,7 @@ func _process(delta):
 		door_text.hide()
 		crosshair.hide()
 		fisheye.show()
+		flashlight.hide()
 	
 	if Input.is_action_just_pressed("interact") and inPeepHole:
 		peephole_text.hide()
@@ -43,12 +46,14 @@ func _process(delta):
 		fisheye.hide()
 		player.canMove = true
 		player.canMoveCamera = true
+		player.canUseFlashlight = true
 		canOpenDiary = true
 		canOpenMobile = true
 		transition.play_backwards("peephole")
 		inPeepHole = false
 		peephole_camera.set_current(false)
 		crosshair.show()
+		flashlight.show()
 	
 	$FPSCounter.set_text("FPS: %d" % Engine.get_frames_per_second())
 	if messages_app.backButtonSignal:

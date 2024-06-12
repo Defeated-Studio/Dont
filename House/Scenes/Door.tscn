@@ -107,7 +107,7 @@ _data = {
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wcd6m"]
-size = Vector3(2.83054, 2.583, 1)
+size = Vector3(2.83054, 2.84961, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2gppr"]
 size = Vector3(0.352921, 2.59338, 3.91217)
@@ -196,7 +196,7 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Door/DoorEvent"]
-transform = Transform3D(1, 0, 9.14796e-20, 0, 1, 1.86162e-12, 9.86793e-20, -1.86162e-12, 1, 0.155399, 1.05646, -4.602)
+transform = Transform3D(1, -5.96046e-08, 1.04604e-13, 5.96046e-08, 1, 1.87941e-12, -1.38283e-14, -1.86029e-12, 0.999998, 0.155399, 1.18976, -4.602)
 shape = SubResource("BoxShape3D_wcd6m")
 
 [node name="Colission" type="CollisionShape3D" parent="Door"]

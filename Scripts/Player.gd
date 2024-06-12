@@ -2,6 +2,8 @@ extends CharacterBody3D
 
 var canMove = true
 var canMoveCamera = true
+var canUseFlashlight = true
+
 var speed
 var gravity = 9.8
 const WALK_SPEED = 2.2
@@ -47,7 +49,7 @@ func _input(event):
 
 
 func _physics_process(delta):
-	if Input.is_action_just_pressed("flashlight"):
+	if Input.is_action_just_pressed("flashlight") and canUseFlashlight:
 		if flashlight.visible:
 			flashlight_animation.play(("hide"))		
 			flashlight.hide()	

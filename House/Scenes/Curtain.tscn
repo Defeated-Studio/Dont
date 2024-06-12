@@ -163,7 +163,7 @@ _data = {
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yh0pb"]
-size = Vector3(3.03622, 1, 0.48877)
+size = Vector3(3.03622, 1, 0.779541)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mco5x"]
 size = Vector3(3.15088, 2.93555, 0.531738)
@@ -213,7 +213,7 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractCurt"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0886662, 0.635206, 1.03306)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0886662, 0.635206, 1.17845)
 shape = SubResource("BoxShape3D_yh0pb")
 
 [node name="CurtainRaycast" type="StaticBody3D" parent="InteractCurt" groups=["InteractGroup"]]
