@@ -1,8 +1,8 @@
 [gd_scene load_steps=16 format=3 uid="uid://4wt0nosut0yj"]
 
-[ext_resource type="Script" path="res://House/Scripts/DoorScript.gd" id="1_8e388"]
+[ext_resource type="Script" path="res://House/Scripts/doorScript.gd" id="1_li46k"]
 [ext_resource type="Texture2D" uid="uid://cyoyg8ccxrqs4" path="res://House/Models/Doors_0.webp" id="2_55hno"]
-[ext_resource type="AudioStream" uid="uid://cqqq1nx6in6sv" path="res://House/SFX/doorSlam.wav" id="3_0sgor"]
+[ext_resource type="AudioStream" uid="uid://bbfmhuikpul3g" path="res://House/SFX/doorSlam.wav" id="3_0sgor"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wnquo"]
 resource_name = "material"
@@ -107,7 +107,7 @@ _data = {
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wcd6m"]
-size = Vector3(2.83054, 2.84961, 1)
+size = Vector3(2.831, 3.3, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2gppr"]
 size = Vector3(0.352921, 2.59338, 3.91217)
@@ -148,7 +148,7 @@ shadow_mesh = SubResource("ArrayMesh_mdr0t")
 
 [node name="FrontDoor" type="Node3D"]
 transform = Transform3D(-1.74846e-08, 0.4, 1.74846e-08, 0, -1.74846e-08, 0.4, 0.4, 1.74846e-08, 7.64274e-16, -0.438233, 2.87784, 4.41177)
-script = ExtResource("1_8e388")
+script = ExtResource("1_li46k")
 
 [node name="Door" type="StaticBody3D" parent="." groups=["InteractGroup"]]
 transform = Transform3D(1, -7.10543e-15, -1.48231e-21, 7.10543e-15, 1, 1.06581e-14, 1.48231e-21, -1.06581e-14, 1, 0, 0, 0)
@@ -167,14 +167,14 @@ libraries = {
 
 [node name="LockedText" type="Label" parent="Door"]
 visible = false
-anchors_preset = 12
-anchor_top = 1.0
+anchors_preset = 14
+anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -105.0
-offset_bottom = -57.0
+anchor_bottom = 0.5
+offset_top = 6.0
+offset_bottom = 29.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
 text = "Trancado"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -196,7 +196,7 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Door/DoorEvent"]
-transform = Transform3D(1, -5.96046e-08, 1.04604e-13, 5.96046e-08, 1, 1.87941e-12, -1.38283e-14, -1.86029e-12, 0.999998, 0.155399, 1.18976, -4.602)
+transform = Transform3D(1, -1.19209e-07, 4.00825e-13, 1.19209e-07, 1, 1.90773e-12, -2.80392e-14, -1.78835e-12, 0.999993, 0.155399, 1.4288, -4.602)
 shape = SubResource("BoxShape3D_wcd6m")
 
 [node name="Colission" type="CollisionShape3D" parent="Door"]

@@ -77,8 +77,3 @@ func _process(delta):
 			player.canMove = false
 			diary.show()
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-
-
-func _input(event):
-	if event.is_action_pressed("ui_cancel"):
-		get_tree().quit()

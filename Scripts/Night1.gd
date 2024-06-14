@@ -4,7 +4,6 @@ extends SubViewportContainer
 @onready var house = $SubViewport/World/House
 @onready var main_camera = $SubViewport/World/Player/Head/Camera3D
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	main_camera.set_current(true)

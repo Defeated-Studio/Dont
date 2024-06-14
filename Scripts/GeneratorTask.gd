@@ -8,7 +8,7 @@ extends Node3D
 @onready var front_door = $"../House/FrontDoor"
 
 var canPowerOn = false
-var toPickUp = 2
+var toDo = 2
 
 func _process(delta):
 	if Input.is_action_just_pressed("Mobile"):
@@ -26,15 +26,24 @@ func findByClass(node: Node, className : String, result : Array):
 		findByClass(child, className, result)
 	
 func _physics_process(delta):
-	if (IsRayCasting.collider) and (IsRayCasting.collider.name == "Key") and (Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")):
-		get_node("Key").queue_free()
-		front_door.locked = false
-		toPickUp -= 1
+	if (IsRayCasting.collider) and (IsRayCasting.collider.name == "Key"):
+		interact_text.show()
+		interact_text.text = "[E] Pegar"
+	elif interact_text.text == "[E] Pegar":
+		interact_text.hide()
 		
-	if (IsRayCasting.canInteract) and (IsRayCasting.collider) and (IsRayCasting.collider.name == "Generator") and (Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")) and canPowerOn:
+	if (IsRayCasting.collider) and (IsRayCasting.collider.name == "Key") and (Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")):
+		front_door.locked = false
+		toDo -= 1
+		get_node("Key").queue_free()
+		if toDo == 0:
+			quest_control.finishQuest()
+			self.queue_free()
+		
+	if (IsRayCasting.collider) and (IsRayCasting.collider.name == "Generator") and (IsRayCasting.canInteract) and (Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")) and canPowerOn:
 		canPowerOn = false
 		interact_text.hide()
-		toPickUp -= 1
+		toDo -= 1
 	
 		var res = []
 		findByClass(house, "OmniLight3D", res)
@@ -57,14 +66,14 @@ func _physics_process(delta):
 		
 		for i in res:
 			i.show()
-
-	if toPickUp == 0:
-		quest_control.finishQuest()
-		self.queue_free()
+		
+		if toDo == 0:
+			quest_control.finishQuest()
+			self.queue_free()
+	
 
 func _on_generator_area_body_entered(body):
 	if quest_control.questActive == 0:
-		
 		canPowerOn = true
 		interact_text.show()
 		interact_text.text = "[E] Ligar"
@@ -86,4 +95,3 @@ func _on_trigger_task_body_entered(body):
 	await get_tree().create_timer(5).timeout
 	showInteractText()
 	quest_control.startQuest()
-	
