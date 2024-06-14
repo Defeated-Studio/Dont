@@ -38,6 +38,7 @@ func _physics_process(delta):
 		get_node("Key").queue_free()
 		if toDo == 0:
 			quest_control.finishQuest()
+			interact_text.text = ""
 			self.queue_free()
 		
 	if (IsRayCasting.collider) and (IsRayCasting.collider.name == "Generator") and (IsRayCasting.canInteract) and (Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")) and canPowerOn:
@@ -69,6 +70,7 @@ func _physics_process(delta):
 		
 		if toDo == 0:
 			quest_control.finishQuest()
+			interact_text.text = ""
 			self.queue_free()
 	
 
@@ -89,7 +91,7 @@ func showInteractText():
 func _on_trigger_task_body_entered(body):
 	get_node("TriggerTask").queue_free()
 	player_dialogue.timeBetweenText = 2.5
-	player_dialogue.queueDialogue("Eu lembro do Bob falar algo da chave")
+	player_dialogue.queueDialogue("eu lembro do Bob falar algo da chave")
 	player_dialogue.queueDialogue("tenho que ver meu celular")
 	player_dialogue.showDialogue()
 	await get_tree().create_timer(5).timeout

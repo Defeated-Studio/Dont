@@ -27,9 +27,9 @@ func _process(delta):
 		messages_app.finishedTexting = false
 		await get_tree().create_timer(0.5).timeout
 		player_dialogue.timeBetweenText = 3
-		player_dialogue.queueDialogue("Sem sinal? sério")
+		player_dialogue.queueDialogue("sem sinal? sério")
 		player_dialogue.queueDialogue("isso só pode ser um pesadelo")
-		player_dialogue.queueDialogue("bom, se vou ficar aqui preciso limpar as coisas")
+		player_dialogue.queueDialogue("se vou ficar aqui preciso limpar as coisas")
 		player_dialogue.queueDialogue("ta tudo uma bagunça, parece que quem estava aqui saiu as pressas")
 		player_dialogue.showDialogue()
 		quest_control.finishQuest()
@@ -51,7 +51,7 @@ func showInteractText():
 func _on_trigger_message_bob_task_body_entered(body):
 	if quest_control.questActive == 1:
 		player_dialogue.timeBetweenText = 3
-		player_dialogue.queueDialogue("Essa casa não parece certa, sinto algo estranho.")
+		player_dialogue.queueDialogue("essa casa não parece certa, sinto algo estranho.")
 		player_dialogue.queueDialogue("posso jurar que as fotos do anúncio estavam diferentes")
 		player_dialogue.queueDialogue("vou chamar o bob e resolver isso")
 		player_dialogue.showDialogue()
