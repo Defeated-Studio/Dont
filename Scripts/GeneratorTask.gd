@@ -8,14 +8,17 @@ extends Node3D
 @onready var front_door = $"../House/FrontDoor"
 
 var canPowerOn = false
+var canTriggerTask = true
 var toDo = 2
 
 func _process(delta):
 	if Input.is_action_just_pressed("Mobile"):
 		tutorial_text.hide()
 		
-func _ready():
-	pass
+	if (IsRayCasting.collider is Node) and (IsRayCasting.collider.name == "Door") and (Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")) and canTriggerTask:
+		canTriggerTask = false
+		await get_tree().create_timer(0.8).timeout
+		triggerTask()
 	
 func findByClass(node: Node, className : String, result : Array):
 	if node.is_class(className):
@@ -88,12 +91,11 @@ func showInteractText():
 	tutorial_text.text = "[M] Abrir Celular"
 	tutorial_text.show()
 	
-func _on_trigger_task_body_entered(body):
-	get_node("TriggerTask").queue_free()
-	player_dialogue.timeBetweenText = 2.5
+func triggerTask():
+	player_dialogue.timeBetweenText = 2
 	player_dialogue.queueDialogue("eu lembro do Bob falar algo da chave")
 	player_dialogue.queueDialogue("tenho que ver meu celular")
 	player_dialogue.showDialogue()
-	await get_tree().create_timer(5).timeout
+	await get_tree().create_timer(4).timeout
 	showInteractText()
 	quest_control.startQuest()
