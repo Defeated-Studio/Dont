@@ -15,7 +15,7 @@ func _process(delta):
 	if Input.is_action_just_pressed("Mobile"):
 		tutorial_text.hide()
 		
-	if (IsRayCasting.collider is Node) and (IsRayCasting.collider.name == "Door") and (Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")) and canTriggerTask:
+	if (is_instance_valid(IsRayCasting.collider)) and (IsRayCasting.collider.name == "Door") and (Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")) and canTriggerTask:
 		canTriggerTask = false
 		await get_tree().create_timer(0.8).timeout
 		triggerTask()
@@ -29,13 +29,13 @@ func findByClass(node: Node, className : String, result : Array):
 		findByClass(child, className, result)
 	
 func _physics_process(delta):
-	if (IsRayCasting.collider) and (IsRayCasting.collider.name == "Key"):
+	if (is_instance_valid(IsRayCasting.collider)) and (IsRayCasting.collider.name == "Key"):
 		interact_text.show()
 		interact_text.text = "[E] Pegar"
 	elif interact_text.text == "[E] Pegar":
 		interact_text.hide()
 		
-	if (IsRayCasting.collider) and (IsRayCasting.collider.name == "Key") and (Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")):
+	if (is_instance_valid(IsRayCasting.collider)) and (IsRayCasting.collider.name == "Key") and (Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")):
 		front_door.locked = false
 		toDo -= 1
 		get_node("Key").queue_free()
@@ -44,7 +44,7 @@ func _physics_process(delta):
 			interact_text.text = ""
 			self.queue_free()
 		
-	if (IsRayCasting.collider) and (IsRayCasting.collider.name == "Generator") and (IsRayCasting.canInteract) and (Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")) and canPowerOn:
+	if (is_instance_valid(IsRayCasting.collider)) and (IsRayCasting.collider.name == "Generator") and (IsRayCasting.canInteract) and (Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")) and canPowerOn:
 		canPowerOn = false
 		interact_text.hide()
 		toDo -= 1

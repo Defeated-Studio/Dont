@@ -21,7 +21,7 @@ func _ready():
 
 
 func _process(delta):
-	if Input.is_action_just_pressed("LeftMouseButton") and IsRayCasting.canInteract and (IsRayCasting.collider is Node) and IsRayCasting.collider.name == "PeepHoleRay" and !inPeepHole:
+	if Input.is_action_just_pressed("LeftMouseButton") and IsRayCasting.canInteract and (is_instance_valid(IsRayCasting.collider)) and IsRayCasting.collider.name == "PeepHoleRay" and !inPeepHole:
 		player.canMove = false
 		player.canMoveCamera = false
 		player.canUseFlashlight = false

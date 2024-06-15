@@ -48,7 +48,7 @@ func _on_close_button_pressed():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
 	if id == 1:
-		player_dialogue_text.queueDialogue("Isso é sério? Sendo observada? Meu Deus...")
+		player_dialogue_text.queueDialogue("isso é sério? sendo observada? meu deus")
 		player_dialogue_text.queueDialogue("meu instinto diz pra eu vazar daqui dona Helena")
 		player_dialogue_text.timeBetweenText = 4
 		player_dialogue_text.showDialogue()

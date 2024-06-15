@@ -13,9 +13,6 @@ extends Node3D
 @onready var clean_toilet = $CleanToilet/CleanToilet/CleanToilet
 @onready var trash = $TrashCan/TrashCan/Trash
 
-@onready var paper1 = $Paper1
-@onready var paper_collision = $Paper1/RayCast/InteractArea/CollisionShape3D
-
 var questEnabled = false
 var canClean = false
 var currentNode
@@ -65,10 +62,12 @@ func _on_trash_can_body_exited(body):
 	interact_text.hide()
 	canThrowAway = false
 
-
-func _on_quest_control_quest_started():
-	if quest_control.questActive == 2:
-		paper1.show()
-		paper_collision.set_deferred("disabled", false)
+func _on_trigger_task_body_entered(body):
+	if quest_control.questActive == 5:
+		get_node("TriggerTask").queue_free()
 		activateCollisions()
 		quest_control.startQuest()
+		player_dialogue.timeBetweenText = 3
+		player_dialogue.queueDialogue("essa casa ta uma bagunça, parece que quem estava aqui saiu as pressas")
+		player_dialogue.queueDialogue("preciso limpar isso")
+		player_dialogue.showDialogue()

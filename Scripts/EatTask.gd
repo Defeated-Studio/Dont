@@ -67,7 +67,7 @@ func _process(delta):
 			player.canCrouch = true
 			player.canMove = true
 			world.canOpenMobile = true
-			world.canOpenDiary = true
+			#world.canOpenDiary = true
 			player.global_position = playerStandupPos
 			player_view.position.y = playerViewPos
 			doneEating = false
@@ -85,6 +85,10 @@ func _process(delta):
 		EatAnimation.play("Eating")
 		interact_text.hide()
 		if eatCount == 1:
+			await get_tree().create_timer(0.5).timeout
+			dialogue_text.timeBetweenText = 3
+			dialogue_text.queueDialogue("eu não posso simplesmente sair andando, to muito longe de casa")
+			dialogue_text.showDialogue()
 			await get_tree().create_timer(0.7).timeout
 			if BedroomDoor.doorOpen:
 				BedroomDoor.animation.play_backwards("OpenDoorAni")
@@ -119,11 +123,15 @@ func _process(delta):
 			player.canMove = false
 			player.canCrouch = false
 			world.canOpenMobile = false
-			world.canOpenDiary = false
+			#world.canOpenDiary = false
 			sitDown = true
 			await get_tree().create_timer(0.5).timeout
 			interact_text.text = "[MB1] Comer"
 			interact_text.show()
+			dialogue_text.timeBetweenText = 3
+			dialogue_text.queueDialogue("não tem nenhum horário de ônibus pros próximos 5 dias")
+			dialogue_text.queueDialogue("eu tive sorte de conseguir esse para vir")
+			dialogue_text.showDialogue()
 
 	if ((Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")) 
 		and canTurnTv and IsRayCasting.canInteract):
@@ -175,11 +183,12 @@ func _process(delta):
 
 
 func _on_trigger_eat_task_body_entered(body):
-	if quest_control.questActive == 3:
+	if quest_control.questActive == 2:
 		quest_control.startQuest()
 		activateCollisions()
 		dialogue_text.timeBetweenText = 3
-		dialogue_text.queueDialogue("estou com muita fome, talvez tenha algo na cozinha")
+		dialogue_text.queueDialogue("estou com muita fome depois dessa viagem longa")
+		dialogue_text.queueDialogue("vou comer algo enquanto penso como dar o fora daqui")
 		dialogue_text.showDialogue()
 		get_node("TriggerEatTask").queue_free()
 

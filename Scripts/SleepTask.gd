@@ -27,7 +27,7 @@ func _process(delta):
 			SceneTransition.change_scene("res://Scenes/Night2.tscn", "night1-2")
 
 func _on_bed_area_body_entered(body):
-	if quest_control.questActive == 4:
+	if quest_control.questActive == 3:
 		canSleep = true
 		interact_text.show()
 		interact_text.text = "[E] Dormir"
@@ -38,9 +38,10 @@ func _on_bed_area_body_exited(body):
 
 
 func _on_trigger_sleep_task_body_entered(body):
-	if quest_control.questActive == 4:
+	if quest_control.questActive == 3:
 		quest_control.startQuest()
 		dialogue_text.timeBetweenText = 3
 		dialogue_text.queueDialogue("preciso ir deitar, não estou me sentindo muito bem")
+		dialogue_text.queueDialogue("amanhã eu resolvo tudo")
 		dialogue_text.showDialogue()
 		get_node("TriggerSleepTask").queue_free()

@@ -5,15 +5,16 @@ signal QuestStarted
 @onready var quest_text = $QuestText
 @onready var quest_text_animation = $QuestTextAnimation
 
-static var questActive = -1
+static var questActive = 4
 
-var questsText = ["Arrume o Gerador", "Chame o Bob", "Limpe a Casa", "Coma algo", "Vá dormir", "Investigue o barulho"]
+var questsText = ["Arrume o Gerador", "Chame o Bob", "Coma algo", "Vá dormir", "Investigue o barulho", "Limpe a Casa"]
 # 0 - Arrume o Gerador
 # 1 - Chame o Bob
-# 2 - Limpe a Casa
-# 3 - Coma algo
-# 4 - Vá dormir
-# 5 - Investigue o barulho
+# 2 - Coma algo
+# 3 - Vá dormir
+# 4 - Investigue o barulho
+# 5 - Limpe a Casa
+
 
 # Começar tasks instantaneamente para testes
 func _ready():

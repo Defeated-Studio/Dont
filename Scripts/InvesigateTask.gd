@@ -56,6 +56,8 @@ func _physics_process(delta):
 			await get_tree().create_timer(1.1).timeout
 			world_environment.background_energy_multiplier = 5.0
 			world_environment.volumetric_fog_enabled = false
+			quest_control.finishQuest()
+			self.queue_free()
 			
 		# MUDAR HDRI?
 		
@@ -90,7 +92,6 @@ func _physics_process(delta):
 		for i in res:
 			i.show()
 			
-		quest_control.finishQuest()
 		sleep_area_col.set_deferred("disabled", false)
 
 func _on_generator_area_body_entered(body):

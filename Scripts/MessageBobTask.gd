@@ -29,8 +29,6 @@ func _process(delta):
 		player_dialogue.timeBetweenText = 3
 		player_dialogue.queueDialogue("sem sinal? sério")
 		player_dialogue.queueDialogue("isso só pode ser um pesadelo")
-		player_dialogue.queueDialogue("se vou ficar aqui preciso limpar as coisas")
-		player_dialogue.queueDialogue("ta tudo uma bagunça, parece que quem estava aqui saiu as pressas")
 		player_dialogue.showDialogue()
 		quest_control.finishQuest()
 		self.queue_free()
