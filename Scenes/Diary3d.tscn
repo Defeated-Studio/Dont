@@ -1,0 +1,295 @@
+[gd_scene load_steps=18 format=3 uid="uid://d1dii1a71vb20"]
+
+[ext_resource type="Script" path="res://Scripts/Diary/Diary3d.gd" id="1_w6evf"]
+[ext_resource type="PackedScene" uid="uid://doy4oi7c3qacf" path="res://Models/diary.glb" id="1_x2qlc"]
+[ext_resource type="Texture2D" uid="uid://c4ypypgdka1we" path="res://Texture/Diario.png" id="3_iilso"]
+[ext_resource type="Script" path="res://Scripts/Diary/Diary_UI.gd" id="3_u0kww"]
+[ext_resource type="Script" path="res://Scripts/Diary/Pages.gd" id="5_8l2yg"]
+[ext_resource type="Script" path="res://Scripts/Diary/Papers.gd" id="6_t3pmu"]
+[ext_resource type="Texture2D" uid="uid://bj6duw5pk5h5l" path="res://Texture/Paper_for_diary.png" id="7_ofe5r"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6rr1v"]
+size = Vector3(1.58115, 1, 5.60074)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ihlom"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gpf85"]
+bg_color = Color(0.45098, 0.305882, 0.0980392, 0.913725)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w0o1x"]
+bg_color = Color(0.211765, 0.133333, 0.027451, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_enn6h"]
+bg_color = Color(0.45098, 0.305882, 0.0980392, 0.913725)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6wmd5"]
+bg_color = Color(0.211765, 0.133333, 0.027451, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0uhv1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o2j07"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ra1h6"]
+bg_color = Color(0.45098, 0.305882, 0.0980392, 0.913725)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vi6x7"]
+bg_color = Color(0.211765, 0.133333, 0.027451, 1)
+
+[node name="Diary3D" type="Node3D"]
+script = ExtResource("1_w6evf")
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("1_x2qlc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.370924, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="InteractArea" type="Area3D" parent="StaticBody3D"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D/InteractArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0420074, 0.193849, 0.9554)
+shape = SubResource("BoxShape3D_6rr1v")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.98023e-08, 0)
+shape = SubResource("BoxShape3D_ihlom")
+
+[node name="Diary_UI" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_u0kww")
+
+[node name="Diary" type="TextureRect" parent="Diary_UI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 263.0
+offset_top = 114.0
+offset_right = 1063.0
+offset_bottom = 614.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_iilso")
+expand_mode = 3
+
+[node name="papers_button" type="Button" parent="Diary_UI/Diary"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -33.0
+offset_top = 14.0
+offset_right = 15.0
+offset_bottom = 46.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_gpf85")
+theme_override_styles/hover = SubResource("StyleBoxFlat_w0o1x")
+text = "Papéis"
+
+[node name="diary_button" type="Button" parent="Diary_UI/Diary"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -33.0
+offset_top = 48.0
+offset_right = 15.0
+offset_bottom = 80.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_enn6h")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6wmd5")
+text = "Diário
+"
+
+[node name="next_button" type="Button" parent="Diary_UI/Diary"]
+layout_mode = 0
+offset_left = 745.0
+offset_top = 405.0
+offset_right = 780.0
+offset_bottom = 440.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxEmpty_0uhv1")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0uhv1")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_0uhv1")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_0uhv1")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0uhv1")
+text = ">"
+
+[node name="previous_button" type="Button" parent="Diary_UI/Diary"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 405.0
+offset_right = 60.0
+offset_bottom = 440.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxEmpty_o2j07")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_o2j07")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_o2j07")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_o2j07")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_o2j07")
+text = "<"
+
+[node name="close_button" type="Button" parent="Diary_UI/Diary"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -33.0
+offset_top = 82.0
+offset_right = 15.0
+offset_bottom = 114.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_ra1h6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_vi6x7")
+text = "Fechar"
+
+[node name="Pages" type="Control" parent="Diary_UI/Diary"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 29.0
+offset_top = 8.0
+offset_right = -35.0
+offset_bottom = -87.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_8l2yg")
+
+[node name="left_page" type="Label" parent="Diary_UI/Diary/Pages"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 20.0
+offset_right = 355.0
+offset_bottom = 405.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 10
+text = "   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce a dui molestie, tincidunt orci in, imperdiet ex. Mauris facilisis nulla vel dolor vulputate dapibus. Vivamus ac diam condimentum, vulputate est non, pretium eros. Quisque accumsan tempus massa vel pharetra. Cras velit metus, tristique sodales urna sit amet, fringilla imperdiet dui. Pellentesque ut rutrum sapien. Cras condimentum justo a risus dictum, ac feugiat arcu consectetur. Quisque pretium iaculis diam, ut consectetur tortor scelerisque a. Aenean elementum ornare mi, quis rhoncus leo fringilla aliquet. Etiam elementum diam pulvinar ex gravida viverra. Proin in rutrum ex.
+
+    Integer eget consequat tellus, et ullamcorper sapien. Ut molestie nec orci id imperdiet. Aenean ut volutpat est. In sagittis luctus facilisis. Fusce sem neque, bibendum semper tristique eu, finibus vitae nisl. Aliquam id orci sed quam pharetra vehicula venenatis id mauris. Vestibulum pulvinar malesuada leo. Vestibulum viverra massa vitae dapibus placerat. Aliquam cursus risus non libero feugiat, at lobortis risus commodo. Fusce rutrum diam non ligula elementum sollicitudin. Nam at massa at mi venenatis finibus sit amet non eros. Curabitur in scelerisque elit. Donec luctus, nibh eget lobortis ultricies, arcu justo condimentum eros, et suscipit quam lectus dictum augue."
+autowrap_mode = 2
+
+[node name="right_page" type="Label" parent="Diary_UI/Diary/Pages"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -351.0
+offset_top = -182.5
+offset_right = -6.0
+offset_bottom = 516.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 10
+text = "Mauris at mattis lacus, vitae consequat risus. Vivamus aliquet libero vitae posuere vestibulum. Nulla sodales in ante quis faucibus. Phasellus sagittis luctus nibh. Phasellus vel ligula erat. Proin fringilla vestibulum odio sit amet convallis. Vestibulum accumsan sapien luctus tincidunt laoreet. Pellentesque fermentum, nunc ut gravida commodo, libero lectus mollis dui, sit amet molestie tellus libero et ante. Sed imperdiet nulla non consectetur interdum.
+
+Ut varius iaculis feugiat. Nam gravida imperdiet luctus. Pellentesque euismod dictum ex id molestie. Ut lacinia hendrerit est non tincidunt. Aenean urna massa, volutpat non neque sit amet, accumsan finibus nibh. Maecenas rutrum risus sit amet convallis vulputate. Morbi tincidunt leo ut maximus dignissim. Nulla iaculis ac massa sit amet sagittis. Morbi ultricies ut orci mattis iaculis. Suspendisse potenti. Duis mollis leo eget ex fringilla, sit amet pellentesque augue fringilla. Morbi eleifend enim velit, bibendum ultrices erat imperdiet vel."
+autowrap_mode = 2
+
+[node name="Papers" type="Control" parent="Diary_UI/Diary"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 60.0
+offset_top = 11.0
+offset_right = -55.0
+offset_bottom = -60.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("6_t3pmu")
+
+[node name="left_paper" type="TextureRect" parent="Diary_UI/Diary/Papers"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -11.0
+offset_top = -230.5
+offset_right = 314.0
+offset_bottom = 234.5
+grow_vertical = 2
+rotation = -0.0349066
+texture = ExtResource("7_ofe5r")
+
+[node name="left_paper_text" type="Label" parent="Diary_UI/Diary/Papers/left_paper"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 28.0
+offset_top = 31.0
+offset_right = -21.0
+offset_bottom = -23.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 13
+text = "Não sei quem vai encontrar isso, mas preciso escrever. Talvez assim as coisas fiquem mais claras pra mim também. 
+Me mudei pra essa casa há algumas semanas. Sempre quis um lugar afastado, tranquilo, onde pudesse relaxar. Mas parece que não foi uma boa ideia.
+Sinto que estou sendo observada o tempo todo. Não sei explicar, mas é como se alguém ou algo estivesse me vigiando. 
+A cidade não gosta de falar sobre essas coisas. Parece que todo mundo sabe, mas ninguém quer comentar. Fico com a sensação de que há algo sinistro escondido por aqui.
+Se você encontrou este relato, fique atento. Confie no seu instinto.
+
+"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="right_paper" type="TextureRect" parent="Diary_UI/Diary/Papers"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -311.0
+offset_top = -243.5
+offset_right = 14.0
+offset_bottom = 221.5
+grow_horizontal = 0
+grow_vertical = 2
+rotation = 0.0349066
+texture = ExtResource("7_ofe5r")
+flip_h = true
+flip_v = true
+
+[node name="right_paper_text" type="Label" parent="Diary_UI/Diary/Papers/right_paper"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 26.0
+offset_top = 23.0
+offset_right = -24.0
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 13
+text = "Paper 2"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[connection signal="body_entered" from="StaticBody3D/InteractArea" to="." method="_on_interact_area_body_entered"]
+[connection signal="body_exited" from="StaticBody3D/InteractArea" to="." method="_on_interact_area_body_exited"]
+[connection signal="pressed" from="Diary_UI/Diary/papers_button" to="Diary_UI" method="_on_papers_button_pressed"]
+[connection signal="pressed" from="Diary_UI/Diary/diary_button" to="Diary_UI" method="_on_diary_button_pressed"]
+[connection signal="pressed" from="Diary_UI/Diary/next_button" to="Diary_UI" method="_on_next_button_pressed"]
+[connection signal="pressed" from="Diary_UI/Diary/previous_button" to="Diary_UI" method="_on_previous_button_pressed"]
+[connection signal="pressed" from="Diary_UI/Diary/close_button" to="." method="_on_close_button_pressed"]
