@@ -28,6 +28,10 @@ extends Node3D
 @onready var ray_cast_trash_col = $TrashArea/TrashRayCast/CollisionShape3D
 @onready var world = $".."
 
+@onready var skin_walker = $"../../../SkinWalker"
+@onready var skin_walker_anim = $"../../../SkinWalker/AnimationPlayer"
+
+
 var canPickup = false
 var canMicrowave = false
 var MicrowaveDone = false
@@ -39,6 +43,7 @@ var doneEating = false
 var canThrow = false
 var showTvDialogue = true
 var canClickAgain = true
+var canShowEnemy = false
 var eatCount = 3
 var playerStandupPos
 var playerViewPos
@@ -58,6 +63,14 @@ func _set_viewport_mat(_display_mesh : MeshInstance3D, _sub_viewport : SubViewpo
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if canShowEnemy:
+		skin_walker.show()
+		skin_walker.position.x += 1 * delta
+		skin_walker_anim.play("walk")
+		if skin_walker.position.x > 5:
+			canShowEnemy = false
+			skin_walker.hide()
+		
 	if doneEating:
 		interact_text.text = "[E] Levantar"
 		interact_text.show()
@@ -84,16 +97,16 @@ func _process(delta):
 		eatCount -= 1
 		EatAnimation.play("Eating")
 		interact_text.hide()
+		if eatCount == 2:
+			if !BedroomDoor.doorOpen:
+				BedroomDoor.animation.play("OpenDoorAni")
 		if eatCount == 1:
+			canShowEnemy = true
 			await get_tree().create_timer(0.5).timeout
 			dialogue_text.timeBetweenText = 3
 			dialogue_text.queueDialogue("eu não posso simplesmente sair andando, to muito longe de casa")
 			dialogue_text.showDialogue()
 			await get_tree().create_timer(0.7).timeout
-			if BedroomDoor.doorOpen:
-				BedroomDoor.animation.play_backwards("OpenDoorAni")
-			else:
-				BedroomDoor.animation.play("OpenDoorAni")
 			BedroomDoor.setdoorOpen(!BedroomDoor.doorOpen)
 		await get_tree().create_timer(3).timeout
 		if eatCount == 0:
