@@ -12,6 +12,7 @@ extends Node3D
 @onready var bedroom_curtain = $"../House/Bedroom1/Curtain"
 @onready var bedroom_door = $"../House/Bedroom1/Bedroom1Door"
 
+@onready var diary = $"../../../Diary"
 
 var canPowerOn = false
 var canSleep = false
@@ -57,6 +58,7 @@ func _physics_process(delta):
 			world_environment.background_energy_multiplier = 5.0
 			world_environment.volumetric_fog_enabled = false
 			quest_control.finishQuest()
+			diary.toggle_visibility()
 			self.queue_free()
 			
 		# MUDAR HDRI?

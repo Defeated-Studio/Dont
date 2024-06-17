@@ -49,7 +49,7 @@ volumetric_fog_density = 0.06
 volumetric_fog_albedo = Color(0.494118, 0.494118, 0.494118, 1)
 volumetric_fog_detail_spread = 6.0
 
-[sub_resource type="Resource" id="Resource_7whi4"]
+[sub_resource type="Resource" id="Resource_3nsa5"]
 script = ExtResource("11_wxgki")
 amount = 550
 enabled = true
@@ -58,7 +58,7 @@ custom_seed = 9
 restrict_height = true
 reference_frame = 1
 
-[sub_resource type="Resource" id="Resource_nc7ys"]
+[sub_resource type="Resource" id="Resource_w3qh5"]
 script = ExtResource("12_4lsev")
 position = Vector3(0.15, 0.15, 0.15)
 rotation = Vector3(2, 360, 2)
@@ -69,7 +69,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_e4ms8"]
+[sub_resource type="Resource" id="Resource_l3u64"]
 script = ExtResource("13_v755k")
 iterations = 3
 offset_step = 0.2
@@ -81,7 +81,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_uaijg"]
+[sub_resource type="Resource" id="Resource_c347x"]
 script = ExtResource("14_uutcr")
 ray_direction = Vector3(0, -1, 0)
 ray_length = 5.0
@@ -97,7 +97,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_5f811"]
+[sub_resource type="Resource" id="Resource_cjh0h"]
 script = ExtResource("15_hp6mn")
 terrain_node = NodePath("../Terrain3D")
 align_with_collision_normal = false
@@ -107,9 +107,9 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_mdtti"]
+[sub_resource type="Resource" id="Resource_y7okd"]
 script = ExtResource("10_rhs0g")
-stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_7whi4"), SubResource("Resource_nc7ys"), SubResource("Resource_e4ms8"), SubResource("Resource_uaijg"), SubResource("Resource_5f811")])
+stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_3nsa5"), SubResource("Resource_w3qh5"), SubResource("Resource_l3u64"), SubResource("Resource_c347x"), SubResource("Resource_cjh0h")])
 
 [sub_resource type="Resource" id="Resource_aogur"]
 script = ExtResource("17_7lvh5")
@@ -174,7 +174,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.865362)
 script = ExtResource("9_we0ft")
 global_seed = 7
 keep_static_colliders = true
-modifier_stack = SubResource("Resource_mdtti")
+modifier_stack = SubResource("Resource_y7okd")
 Performance/use_chunks = true
 Performance/chunk_dimensions = Vector3(15, 15, 15)
 
@@ -207,7 +207,7 @@ visible = false
 layout_mode = 2
 
 [node name="Diary" parent="." instance=ExtResource("20_cinll")]
-transform = Transform3D(-8.74228e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.74228e-09, 4.84786, 4.83244, 1.21415)
+transform = Transform3D(-8.74228e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.74228e-09, 4.84786, 4.83244, 1.18466)
 
 [node name="Fisheye" type="CanvasLayer" parent="."]
 visible = false

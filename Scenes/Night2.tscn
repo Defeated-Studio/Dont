@@ -10,14 +10,14 @@
 [ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/project_on_terrain3d.gd" id="7_icr4n"]
 [ext_resource type="Script" path="res://Scripts/InvesigateTask.gd" id="8_trp5y"]
 [ext_resource type="Script" path="res://Scripts/CleanHouseTask.gd" id="10_6t53u"]
-[ext_resource type="Texture2D" uid="uid://c5fophsrke1nq" path="res://House/Models/soda_can_0.png" id="11_ii4cx"]
-[ext_resource type="PackedScene" uid="uid://c8xs6ctym0laa" path="res://House/Models/pizza.glb" id="12_6cx46"]
-[ext_resource type="Texture2D" uid="uid://cgpytmkxuptnv" path="res://House/Models/dirty_plate_0.jpg" id="13_wpvmb"]
-[ext_resource type="Texture2D" uid="uid://v2uehxlh5jks" path="res://House/Models/dirty_plate_1.png" id="14_512c6"]
-[ext_resource type="Texture2D" uid="uid://cx8kx0cx417pa" path="res://House/Models/dirty_plate_2.png" id="15_g1f0s"]
-[ext_resource type="PackedScene" uid="uid://w0i8fnfcdlwm" path="res://House/Models/cereal_box.glb" id="16_japfy"]
+[ext_resource type="Texture2D" uid="uid://d2dbf7ikwxmin" path="res://House/Models/soda_can_0.png" id="11_ii4cx"]
+[ext_resource type="PackedScene" uid="uid://dpc8475e573ji" path="res://House/Models/pizza.glb" id="12_6cx46"]
+[ext_resource type="Texture2D" uid="uid://b17gwg8rfdav6" path="res://House/Models/dirty_plate_0.jpg" id="13_wpvmb"]
+[ext_resource type="Texture2D" uid="uid://rqr804ofer5o" path="res://House/Models/dirty_plate_1.png" id="14_512c6"]
+[ext_resource type="Texture2D" uid="uid://c051l58tmrv4n" path="res://House/Models/dirty_plate_2.png" id="15_g1f0s"]
+[ext_resource type="PackedScene" uid="uid://1ss2ybqen67g" path="res://House/Models/cereal_box.glb" id="16_japfy"]
 
-[sub_resource type="Resource" id="Resource_vjope"]
+[sub_resource type="Resource" id="Resource_528av"]
 script = ExtResource("3_4jca5")
 amount = 550
 enabled = true
@@ -26,7 +26,7 @@ custom_seed = 9
 restrict_height = true
 reference_frame = 1
 
-[sub_resource type="Resource" id="Resource_7btm2"]
+[sub_resource type="Resource" id="Resource_rv4ug"]
 script = ExtResource("4_w36g3")
 position = Vector3(0.15, 0.15, 0.15)
 rotation = Vector3(2, 360, 2)
@@ -37,7 +37,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_ctv5h"]
+[sub_resource type="Resource" id="Resource_kmjgq"]
 script = ExtResource("5_hoyad")
 iterations = 3
 offset_step = 0.2
@@ -49,7 +49,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_benkp"]
+[sub_resource type="Resource" id="Resource_d6xma"]
 script = ExtResource("6_720a1")
 ray_direction = Vector3(0, -1, 0)
 ray_length = 5.0
@@ -65,7 +65,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_uv373"]
+[sub_resource type="Resource" id="Resource_q6irf"]
 script = ExtResource("7_icr4n")
 terrain_node = NodePath("../Terrain3D")
 align_with_collision_normal = false
@@ -75,9 +75,9 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_m40d1"]
+[sub_resource type="Resource" id="Resource_5nvsv"]
 script = ExtResource("2_pq8sj")
-stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_vjope"), SubResource("Resource_7btm2"), SubResource("Resource_ctv5h"), SubResource("Resource_benkp"), SubResource("Resource_uv373")])
+stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_528av"), SubResource("Resource_rv4ug"), SubResource("Resource_kmjgq"), SubResource("Resource_d6xma"), SubResource("Resource_q6irf")])
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q1wb1"]
 size = Vector3(2.25427, 1.72607, 1.36475)
@@ -325,7 +325,7 @@ visible = true
 
 [node name="Nature" parent="SubViewport/World" index="7"]
 global_seed = 5
-modifier_stack = SubResource("Resource_m40d1")
+modifier_stack = SubResource("Resource_5nvsv")
 
 [node name="InvesigateTask" type="Node3D" parent="SubViewport/World" index="8"]
 script = ExtResource("8_trp5y")
@@ -566,6 +566,9 @@ collision_mask = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewport/World/CleanHouseTask/TriggerTask" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.10466, 1.615, 0.0757751)
 shape = SubResource("BoxShape3D_yo2fx")
+
+[node name="Diary" parent="." index="2"]
+visible = false
 
 [connection signal="body_entered" from="SubViewport/World/InvesigateTask/GeneratorArea" to="SubViewport/World/InvesigateTask" method="_on_generator_area_body_entered"]
 [connection signal="body_exited" from="SubViewport/World/InvesigateTask/GeneratorArea" to="SubViewport/World/InvesigateTask" method="_on_generator_area_body_exited"]
