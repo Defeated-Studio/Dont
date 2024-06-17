@@ -1,5 +1,11 @@
 extends CharacterBody3D
 
+var ground = "Grass"
+@onready var wood_foot_steps = $Feet/WoodFootSteps
+@onready var grass_foot_steps = $Feet/GrassFootSteps
+@onready var grass_foot_steps_run = $Feet/GrassFootStepsRun
+@onready var wood_foot_steps_run = $Feet/WoodFootStepsRun
+
 var canMove = true
 var canMoveCamera = true
 var canUseFlashlight = true
@@ -7,7 +13,7 @@ var canUseFlashlight = true
 var speed
 var gravity = 9.8
 const WALK_SPEED = 2.2
-const SPRINT_SPEED = 15
+const SPRINT_SPEED = 5
 const SENSITIVITY = 0.2
 
 #bob variables
@@ -40,13 +46,11 @@ func _ready():
 	flashlight_model.hide()
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
-
 func _input(event):
 	if event is InputEventMouseMotion and canMoveCamera:
 		rotate_y(deg_to_rad(-event.relative.x*SENSITIVITY))
 		head.rotate_x(deg_to_rad(-event.relative.y*SENSITIVITY))
 		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-80), deg_to_rad(60))
-
 
 func _physics_process(delta):
 	if Input.is_action_just_pressed("flashlight") and canUseFlashlight:
@@ -88,7 +92,48 @@ func _physics_process(delta):
 
 	# Get the input direction and handle the movement/deceleration.
 	var input_dir = Input.get_vector("a", "d", "w", "s")
+	
+	if (ground == "Wood"):
+		if (input_dir != Vector2.ZERO) and (!wood_foot_steps.playing) and (speed != SPRINT_SPEED):
+			grass_foot_steps.stop()
+			grass_foot_steps_run.stop()
+			
+			wood_foot_steps_run.stop()
+			wood_foot_steps.play()
+			
+		elif (input_dir != Vector2.ZERO) and (!wood_foot_steps_run.playing) and (speed == SPRINT_SPEED):
+			grass_foot_steps.stop()
+			grass_foot_steps_run.stop()
+			
+			wood_foot_steps.stop()
+			wood_foot_steps_run.play()
+			
+		elif (input_dir == Vector2.ZERO) and ((wood_foot_steps.playing) or (wood_foot_steps_run.playing)):
+			wood_foot_steps.stop()
+			wood_foot_steps_run.stop()
+			
+	elif (ground == "Grass"):
+		if (input_dir != Vector2.ZERO) and (!grass_foot_steps.playing) and (speed != SPRINT_SPEED):
+			wood_foot_steps.stop()
+			wood_foot_steps_run.stop()
+			
+			grass_foot_steps_run.stop()
+			grass_foot_steps.play()
+			
+		elif (input_dir != Vector2.ZERO) and (!grass_foot_steps_run.playing) and (speed == SPRINT_SPEED):
+			wood_foot_steps.stop()
+			wood_foot_steps_run.stop()
+			
+			grass_foot_steps.stop()
+			grass_foot_steps_run.play()
+			
+		elif (input_dir == Vector2.ZERO) and ((grass_foot_steps.playing) or (grass_foot_steps_run.playing)):
+			grass_foot_steps.stop()
+			grass_foot_steps_run.stop()
+	
+		
 	direction = lerp(direction,(transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized(), delta * speed)
+
 	if direction:
 		velocity.x = direction.x * speed
 		velocity.z = direction.z * speed
@@ -113,7 +158,6 @@ func _headbob(time) -> Vector3:
 	pos.y = sin(time * BOB_FREQ) * BOB_AMP
 	pos.x = cos(time * BOB_FREQ / 2) * BOB_AMP
 	return pos
-
 
 func _on_crouch_animation_animation_finished(anim_name):
 	finishedCrouchAnimation = true
