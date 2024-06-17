@@ -216,6 +216,7 @@ grow_vertical = 2
 script = ExtResource("6_t3pmu")
 
 [node name="left_paper" type="TextureRect" parent="Diary_UI/Diary/Papers"]
+visible = false
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -240,18 +241,12 @@ offset_bottom = -23.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 13
-text = "Não sei quem vai encontrar isso, mas preciso escrever. Talvez assim as coisas fiquem mais claras pra mim também. 
-Me mudei pra essa casa há algumas semanas. Sempre quis um lugar afastado, tranquilo, onde pudesse relaxar. Mas parece que não foi uma boa ideia.
-Sinto que estou sendo observada o tempo todo. Não sei explicar, mas é como se alguém ou algo estivesse me vigiando. 
-A cidade não gosta de falar sobre essas coisas. Parece que todo mundo sabe, mas ninguém quer comentar. Fico com a sensação de que há algo sinistro escondido por aqui.
-Se você encontrou este relato, fique atento. Confie no seu instinto.
-
-"
+theme_override_font_sizes/font_size = 14
 vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="right_paper" type="TextureRect" parent="Diary_UI/Diary/Papers"]
+visible = false
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -282,7 +277,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 13
-text = "Paper 2"
 vertical_alignment = 1
 autowrap_mode = 2
 

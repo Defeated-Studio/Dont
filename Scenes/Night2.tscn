@@ -17,7 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://c051l58tmrv4n" path="res://House/Models/dirty_plate_2.png" id="15_g1f0s"]
 [ext_resource type="PackedScene" uid="uid://1ss2ybqen67g" path="res://House/Models/cereal_box.glb" id="16_japfy"]
 
-[sub_resource type="Resource" id="Resource_528av"]
+[sub_resource type="Resource" id="Resource_dkoyf"]
 script = ExtResource("3_4jca5")
 amount = 550
 enabled = true
@@ -26,7 +26,7 @@ custom_seed = 9
 restrict_height = true
 reference_frame = 1
 
-[sub_resource type="Resource" id="Resource_rv4ug"]
+[sub_resource type="Resource" id="Resource_77m7w"]
 script = ExtResource("4_w36g3")
 position = Vector3(0.15, 0.15, 0.15)
 rotation = Vector3(2, 360, 2)
@@ -37,7 +37,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_kmjgq"]
+[sub_resource type="Resource" id="Resource_0e040"]
 script = ExtResource("5_hoyad")
 iterations = 3
 offset_step = 0.2
@@ -49,7 +49,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_d6xma"]
+[sub_resource type="Resource" id="Resource_eddqj"]
 script = ExtResource("6_720a1")
 ray_direction = Vector3(0, -1, 0)
 ray_length = 5.0
@@ -65,7 +65,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_q6irf"]
+[sub_resource type="Resource" id="Resource_f5xkd"]
 script = ExtResource("7_icr4n")
 terrain_node = NodePath("../Terrain3D")
 align_with_collision_normal = false
@@ -75,9 +75,9 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_5nvsv"]
+[sub_resource type="Resource" id="Resource_iaaar"]
 script = ExtResource("2_pq8sj")
-stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_528av"), SubResource("Resource_rv4ug"), SubResource("Resource_kmjgq"), SubResource("Resource_d6xma"), SubResource("Resource_q6irf")])
+stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_dkoyf"), SubResource("Resource_77m7w"), SubResource("Resource_0e040"), SubResource("Resource_eddqj"), SubResource("Resource_f5xkd")])
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q1wb1"]
 size = Vector3(2.25427, 1.72607, 1.36475)
@@ -325,7 +325,7 @@ visible = true
 
 [node name="Nature" parent="SubViewport/World" index="7"]
 global_seed = 5
-modifier_stack = SubResource("Resource_5nvsv")
+modifier_stack = SubResource("Resource_iaaar")
 
 [node name="InvesigateTask" type="Node3D" parent="SubViewport/World" index="8"]
 script = ExtResource("8_trp5y")

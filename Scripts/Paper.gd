@@ -13,7 +13,6 @@ var canPickUp = false
 @onready var ui = $UI
 @onready var text_ui = $UI/Text
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	text_ui.text = text 

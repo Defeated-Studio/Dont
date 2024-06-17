@@ -1,6 +1,7 @@
 extends Node3D
 
 var canPickUp = false
+var paper: int
 
 @onready var diary = $Diary_UI
 @onready var interact_text = %InteractText
@@ -18,6 +19,7 @@ func _process(delta):
 	if Input.is_action_just_pressed("interact") and canPickUp:
 		player.canMove = false;
 		player.canMoveCamera = false;
+		diary.reset_diary();
 		diary.show();
 		interact_text.hide();
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE);

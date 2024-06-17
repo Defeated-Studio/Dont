@@ -4,7 +4,7 @@ extends Control
 @onready var right_page = $right_page
 
 var page = 0
-var page_texts := ["Page 1/1", "Page 1/2", "Page 2/1", "Page 2/2"]
+var page_texts := ["1/1", "1/2", "2/1", "2/2", "3/1", "3/2", "4/1", "4/2"]
 
 func _ready():
 	set_visibility(true)
