@@ -24,6 +24,7 @@ func _process(delta):
 		else:
 			quest_control.finishQuest()
 			states.saveStates()
+			states.savePapersTaken()
 			SceneTransition.change_scene("res://Scenes/Night2.tscn", "night1-2")
 
 func _on_bed_area_body_entered(body):

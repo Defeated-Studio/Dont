@@ -23,7 +23,6 @@ func _process(delta):
 		diary.show();
 		interact_text.hide();
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE);
-	pass
 
 
 func _on_interact_area_body_entered(body):
@@ -49,3 +48,9 @@ func toggle_visibility():
 	else:
 		visible = true;
 		interact_area.collision_mask = 2;
+
+func new_paper_taken(id):
+	diary.papers_taken[id - 1] = 1;
+
+func add_page():
+	diary.total_pages += 1;

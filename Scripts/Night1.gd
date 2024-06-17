@@ -3,6 +3,8 @@ extends SubViewportContainer
 @onready var tutorial_text = %TutorialText
 @onready var house = $SubViewport/World/House
 @onready var main_camera = $SubViewport/World/Player/Head/Camera3D
+@onready var states = $States
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

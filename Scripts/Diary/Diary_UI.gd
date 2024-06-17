@@ -12,7 +12,6 @@ var total_pages = 0;
 var toggle = 0   # page == 0   paper == 1
 
 func _ready():
-	papers.start_papers(papers_taken);
 	pass
 
 func _on_next_button_pressed():
@@ -29,6 +28,7 @@ func _on_previous_button_pressed():
 
 func _on_papers_button_pressed():
 	toggle = 1
+	papers.start_papers(papers_taken);
 	pages.set_visibility(false)
 	papers.set_visibility(true)
 
@@ -72,9 +72,3 @@ func reset_diary():
 	paper_count = 0
 	papers.change_papers(0, papers_taken)
 	pages.change_page(0)
-
-func new_paper(id):
-	papers_taken[id] = 1;
-
-func new_page():
-	total_pages += 1;

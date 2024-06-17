@@ -13,6 +13,8 @@ var canPickUp = false
 @onready var ui = $UI
 @onready var text_ui = $UI/Text
 
+@onready var diary = %Diary
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	text_ui.text = text 
@@ -44,6 +46,7 @@ func _on_close_button_pressed():
 	player.canMove = true
 	player.canMoveCamera = true
 	ui.hide()
+	diary.new_paper_taken(id)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
 	if id == 1:
@@ -51,3 +54,4 @@ func _on_close_button_pressed():
 		player_dialogue_text.queueDialogue("meu instinto diz pra eu vazar daqui dona Helena")
 		player_dialogue_text.timeBetweenText = 4
 		player_dialogue_text.showDialogue()
+

@@ -11,3 +11,13 @@ func setStates():
 	var nodes = get_tree().get_nodes_in_group("StatesGroup")
 	for i in range(len(NodeStates.states)):
 		nodes[i].setState(NodeStates.states[i])
+
+
+func savePapersTaken():
+	var diary = get_tree().get_nodes_in_group("DiaryGroup")
+	NodeStates.papers_taken = diary[0].papers_taken
+
+
+func setPapersTaken():
+	var diary = get_tree().get_nodes_in_group("DiaryGroup")
+	diary[0].papers_taken = NodeStates.papers_taken
