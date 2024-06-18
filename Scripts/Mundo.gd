@@ -5,7 +5,7 @@ extends Node3D
 @onready var player = $Player
 @onready var crosshair = $Player/Head/InteractRay/Control
 @onready var flashlight = $Player/Head/FlashlightModel
-@onready var diary = $"../../Diary"
+@onready var diary = $"../../Diary/Diary_UI"
 @onready var peephole_camera = $House/FrontDoor/Door/PeepHole/Camera3D
 @onready var transition = $House/FrontDoor/Door/PeepHole/AnimationPlayer
 @onready var peephole_text = $House/FrontDoor/Door/PeepHole/PeepHoleText
