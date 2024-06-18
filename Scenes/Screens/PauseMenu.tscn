@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://tgwmty4iab1d"]
 
 [ext_resource type="Script" path="res://Scripts/PauseMenu.gd" id="1_ci7ax"]
-[ext_resource type="FontFile" uid="uid://dx05xccu4q56q" path="res://Fonts/Cinzel-Bold.ttf" id="1_oap8q"]
+[ext_resource type="FontFile" uid="uid://befjvk7w4mfom" path="res://Fonts/Cinzel-Bold.ttf" id="1_oap8q"]
 
 [node name="PauseMenu" type="ColorRect"]
 process_mode = 3
@@ -49,8 +49,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_colors/font_color = Color(0.443137, 0.470588, 0.501961, 1)
 theme_override_fonts/font = ExtResource("1_oap8q")
-text = "Continuar
-"
+text = "Continuar"
 
 [node name="Quit" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(320, 80)

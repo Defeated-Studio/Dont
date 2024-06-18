@@ -1,8 +1,8 @@
 [gd_scene load_steps=16 format=3 uid="uid://4wt0nosut0yj"]
 
-[ext_resource type="Script" path="res://House/Scripts/doorScript.gd" id="1_li46k"]
+[ext_resource type="Script" path="res://House/Scripts/DoorScript.gd" id="1_xykys"]
 [ext_resource type="Texture2D" uid="uid://cyoyg8ccxrqs4" path="res://House/Models/Doors_0.webp" id="2_55hno"]
-[ext_resource type="AudioStream" uid="uid://bbfmhuikpul3g" path="res://House/SFX/doorSlam.wav" id="3_0sgor"]
+[ext_resource type="AudioStream" uid="uid://chna5r5qk33h1" path="res://House/SFX/doorSlam.wav" id="3_0sgor"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wnquo"]
 resource_name = "material"
@@ -148,7 +148,7 @@ shadow_mesh = SubResource("ArrayMesh_mdr0t")
 
 [node name="FrontDoor" type="Node3D"]
 transform = Transform3D(-1.74846e-08, 0.4, 1.74846e-08, 0, -1.74846e-08, 0.4, 0.4, 1.74846e-08, 7.64274e-16, -0.438233, 2.87784, 4.41177)
-script = ExtResource("1_li46k")
+script = ExtResource("1_xykys")
 
 [node name="Door" type="StaticBody3D" parent="." groups=["InteractGroup"]]
 transform = Transform3D(1, -7.10543e-15, -1.48231e-21, 7.10543e-15, 1, 1.06581e-14, 1.48231e-21, -1.06581e-14, 1, 0, 0, 0)
