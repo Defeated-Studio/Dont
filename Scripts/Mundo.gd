@@ -11,6 +11,8 @@ extends Node3D
 @onready var peephole_text = $House/FrontDoor/Door/PeepHole/PeepHoleText
 @onready var door_text = $House/FrontDoor/Door/DoorText
 @onready var fisheye = $"../../Fisheye"
+@onready var pause_menu = $"../../PauseMenu"
+
 
 var canOpenMobile = true
 var inPeepHole = false
@@ -19,8 +21,12 @@ func _ready():
 	#Engine.max_fps = 144
 	pass
 
-
 func _process(delta):
+	$FPSCounter.set_text("FPS: %d" % Engine.get_frames_per_second())
+	
+	if Input.is_action_just_pressed("esc"):
+		pause_menu.pause()
+	
 	if Input.is_action_just_pressed("LeftMouseButton") and IsRayCasting.canInteract and (is_instance_valid(IsRayCasting.collider)) and IsRayCasting.collider.name == "PeepHoleRay" and !inPeepHole:
 		player.canMove = false
 		player.canMoveCamera = false
@@ -52,7 +58,6 @@ func _process(delta):
 		crosshair.show()
 		flashlight.show()
 	
-	$FPSCounter.set_text("FPS: %d" % Engine.get_frames_per_second())
 	if messages_app.backButtonSignal:
 		messages_app.hide()
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

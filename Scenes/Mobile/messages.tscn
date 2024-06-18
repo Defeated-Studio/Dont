@@ -1,10 +1,10 @@
 [gd_scene load_steps=22 format=3 uid="uid://ptr0cc31jxbp"]
 
 [ext_resource type="Script" path="res://Scenes/Mobile/messages.gd" id="1_3ha1o"]
-[ext_resource type="Texture2D" uid="uid://c7ottxhrdctq2" path="res://Scenes/Mobile/messages.png" id="1_6a3vw"]
-[ext_resource type="Texture2D" uid="uid://b0cwfegd4sfcm" path="res://Scenes/Mobile/cara.png" id="3_ytnvq"]
-[ext_resource type="Texture2D" uid="uid://78bopv1ed2vo" path="res://Scenes/Mobile/eu.png" id="4_h2hf2"]
-[ext_resource type="Texture2D" uid="uid://b0nkaopnfng33" path="res://Scenes/Mobile/mobile.png" id="5_18nkp"]
+[ext_resource type="Texture2D" uid="uid://bygu7qarctdyb" path="res://Scenes/Mobile/messages.png" id="1_6a3vw"]
+[ext_resource type="Texture2D" uid="uid://d4lj7as3tb7dh" path="res://Scenes/Mobile/cara.png" id="3_ytnvq"]
+[ext_resource type="Texture2D" uid="uid://b6m31jco0r6uo" path="res://Scenes/Mobile/eu.png" id="4_h2hf2"]
+[ext_resource type="Texture2D" uid="uid://c48vw5eu1s405" path="res://Scenes/Mobile/mobile.png" id="5_18nkp"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_tyeyn"]
 font_size = 35
@@ -494,7 +494,7 @@ offset_bottom = 107.0
 
 [node name="Label" type="Label" parent="Bob/CenterContainer"]
 layout_mode = 2
-text = "Mensagens > BOB"
+text = "Mensagens > Bob"
 label_settings = SubResource("LabelSettings_btkpp")
 
 [node name="MessageText" type="LineEdit" parent="Bob"]

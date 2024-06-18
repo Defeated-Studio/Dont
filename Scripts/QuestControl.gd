@@ -7,8 +7,8 @@ signal QuestStarted
 
 static var questActive = 0
 
-var questsText = ["Arrume o Gerador", "Chame o Bob", "Coma algo", "Vá dormir", "Investigue o barulho", "Escreva no Diário", "Limpe a Casa"]
-# 0 - Arrume o Gerador
+var questsText = ["Arrume o Gerador e Ache a chave", "Chame o Bob", "Coma algo", "Vá dormir", "Investigue o barulho", "Escreva no Diário", "Limpe a Casa"]
+# 0 - Arrume o Gerador e Ache a chave
 # 1 - Chame o Bob
 # 2 - Coma algo
 # 3 - Vá dormir
