@@ -20,7 +20,11 @@ var inPeepHole = false
 func _ready():
 	#Engine.max_fps = 144
 	pass
-
+	
+func _notification(what):
+	if what == NOTIFICATION_APPLICATION_FOCUS_OUT:
+		pause_menu.pause()
+				
 func _process(delta):
 	$FPSCounter.set_text("FPS: %d" % Engine.get_frames_per_second())
 	

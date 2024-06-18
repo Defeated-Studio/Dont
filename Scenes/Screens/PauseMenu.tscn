@@ -1,18 +1,27 @@
 [gd_scene load_steps=3 format=3 uid="uid://tgwmty4iab1d"]
 
 [ext_resource type="Script" path="res://Scripts/PauseMenu.gd" id="1_ci7ax"]
-[ext_resource type="FontFile" uid="uid://befjvk7w4mfom" path="res://Fonts/Cinzel-Bold.ttf" id="1_oap8q"]
+[ext_resource type="FontFile" uid="uid://dx05xccu4q56q" path="res://Fonts/Cinzel-Bold.ttf" id="1_oap8q"]
 
-[node name="PauseMenu" type="ColorRect"]
+[node name="PauseMenu" type="Control"]
 process_mode = 3
 visible = false
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.756863)
 script = ExtResource("1_ci7ax")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.686275)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1

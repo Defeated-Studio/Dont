@@ -1,4 +1,4 @@
-extends ColorRect
+extends Control
 
 func pause():
 	get_tree().paused = true

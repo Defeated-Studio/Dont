@@ -6,20 +6,21 @@ extends Control
 @onready var right_paper = $right_paper
 
 var paper = 0
-var paper_texts := ["Não sei quem vai encontrar isso, mas preciso escrever. Talvez assim as coisas fiquem mais claras pra mim também. Me mudei pra essa casa há algum tempo.
+var paper_texts = ["Não sei quem vai encontrar isso, mas preciso escrever. Talvez assim as coisas fiquem mais claras pra mim também. Me mudei pra essa casa há algum tempo.
 Sinto que estou sendo observada o tempo todo. Não sei explicar, mas é como se alguém ou algo estivesse me vigiando. A cidade não gosta de falar sobre essas coisas. Fico com a sensação de que há algo escondido por aqui.
 Se você encontrou isso, fique atento. Confie no seu instinto. Como minha mãe sempre disse: nosso instinto é a alma falando o que o corpo contesta.
- - Helena
-", "Eu não estava imaginando coisas, tem algo de errado aqui, não entendi muito bem o que é, mas sei disso:
+ - Helena", 
+"Eu não estava imaginando coisas, tem algo de errado aqui, não entendi muito bem o que é, mas sei disso:
 1 - Não corra, não olhe e não grite.
 2 - Nunca fique na floresta durante a noite.
 3 - Nunca saia da trilha marcada, está marcada por uma razão.
 4 - Se você escutar vozes chamando seu nome, NÃO responda.
-5 - Nunca olhe diretamente para as árvores.
-", "Essas criaturas nas florestas, eu juro que são reais, eu não estou ficando louca.
+5 - Nunca olhe diretamente para as árvores.", 
+"Essas criaturas nas florestas, eu juro que são reais, eu não estou ficando louca.
 Elas são como sombras vivas, quase impossíveis de enxergar. Quando mudam assumem a forma de pessoas ou animais, tentando nos enganar.
 É muito importante que você reconheça e se mantenha longe.
-", "SE ESCONDA", "EU DESCOBRI, SÓ PODE SER ISSO, OS EVENTOS NESSA FLORESTA SE REPETEM TODA VEZ. EU NÃO FUI A PRIMEIRA MORADORA DESSA CASA E NÃO VOU SER A ÚLTIMA. TUDO FAZ SENTIDO AGORA, EU TENHO CERT"]
+", 
+"SE ESCONDA", "EU DESCOBRI, SÓ PODE SER ISSO, OS EVENTOS NESSA FLORESTA SE REPETEM TODA VEZ. EU NÃO FUI A PRIMEIRA MORADORA DESSA CASA E NÃO VOU SER A ÚLTIMA. TUDO FAZ SENTIDO AGORA, EU TENHO CERT"]
 
 func _ready():
 	set_visibility(false)

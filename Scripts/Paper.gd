@@ -54,4 +54,8 @@ func _on_close_button_pressed():
 		player_dialogue_text.queueDialogue("meu instinto diz pra eu vazar daqui dona Helena")
 		player_dialogue_text.timeBetweenText = 4
 		player_dialogue_text.showDialogue()
+	if id == 2:
+		player_dialogue_text.queueDialogue("quem é essa mulher? Por que ela ta me ajudando?")
+		player_dialogue_text.timeBetweenText = 4
+		player_dialogue_text.showDialogue()
 

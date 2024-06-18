@@ -7,7 +7,8 @@ signal QuestStarted
 
 static var questActive = 0
 
-var questsText = ["Arrume o Gerador e Ache a chave", "Chame o Bob", "Coma algo", "Vá dormir", "Investigue o barulho", "Escreva no Diário", "Limpe a Casa"]
+var questsText = ["Arrume o Gerador e Ache a chave", "Chame o Bob", "Coma algo", "Vá dormir", 
+"Investigue o barulho", "Escreva no Diário", "Limpe a Casa", "Coma algo"]
 # 0 - Arrume o Gerador e Ache a chave
 # 1 - Chame o Bob
 # 2 - Coma algo
@@ -15,6 +16,7 @@ var questsText = ["Arrume o Gerador e Ache a chave", "Chame o Bob", "Coma algo",
 # 4 - Investigue o barulho
 # 5 - Escreva no Diário
 # 6 - Limpe a Casa
+# 7 - Coma algo
 
 
 # Começar tasks instantaneamente para testes

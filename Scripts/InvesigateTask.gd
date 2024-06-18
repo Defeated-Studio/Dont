@@ -11,8 +11,7 @@ extends Node3D
 @onready var front_door = $"../House/FrontDoor"
 @onready var bedroom_curtain = $"../House/Bedroom1/Curtain"
 @onready var bedroom_door = $"../House/Bedroom1/Bedroom1Door"
-
-
+@onready var paper_2 = $"../CleanHouseTask/Paper2"
 
 var canPowerOn = false
 var canSleep = false
@@ -57,11 +56,9 @@ func _physics_process(delta):
 			await get_tree().create_timer(1.1).timeout
 			world_environment.background_energy_multiplier = 5.0
 			world_environment.volumetric_fog_enabled = false
+			paper_2.show()
 			quest_control.finishQuest()
 			self.queue_free()
-			
-		# MUDAR HDRI?
-		
 		
 	if (Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")) and canPowerOn and IsRayCasting.canInteract:
 		canPowerOn = false
