@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=3 uid="uid://c600nek871ay1"]
+[gd_scene load_steps=94 format=3 uid="uid://c600nek871ay1"]
 
 [ext_resource type="PackedScene" uid="uid://bonk8egsbphsi" path="res://Scenes/World.tscn" id="1_qvbmn"]
 [ext_resource type="Script" path="res://Scripts/Night2.gd" id="2_5li4r"]
@@ -26,6 +26,8 @@
 [ext_resource type="Texture2D" uid="uid://bu0xssqk28rcn" path="res://House/Models/dirty_plate_2.png" id="15_g1f0s"]
 [ext_resource type="PackedScene" uid="uid://bginy2tbi4blv" path="res://House/Models/cereal_box.glb" id="16_japfy"]
 [ext_resource type="Script" path="res://Scripts/EatTask2.gd" id="20_cg3fv"]
+[ext_resource type="PackedScene" uid="uid://beoqf711ceigh" path="res://Models/Pizza.glb" id="27_mn06n"]
+[ext_resource type="AudioStream" uid="uid://jynelgqb3j6c" path="res://Sounds/OvenBell.mp3" id="28_7eamp"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qxjqa"]
 resource_name = "20190111_235741"
@@ -320,7 +322,7 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_o7pgp")
 
-[sub_resource type="Resource" id="Resource_ws1ng"]
+[sub_resource type="Resource" id="Resource_twnbu"]
 script = ExtResource("3_4jca5")
 amount = 550
 enabled = true
@@ -329,7 +331,7 @@ custom_seed = 9
 restrict_height = true
 reference_frame = 1
 
-[sub_resource type="Resource" id="Resource_65gxn"]
+[sub_resource type="Resource" id="Resource_7ukv3"]
 script = ExtResource("4_w36g3")
 position = Vector3(0.15, 0.15, 0.15)
 rotation = Vector3(2, 360, 2)
@@ -340,7 +342,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_fagcb"]
+[sub_resource type="Resource" id="Resource_angw2"]
 script = ExtResource("5_hoyad")
 iterations = 3
 offset_step = 0.2
@@ -352,7 +354,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_2tb33"]
+[sub_resource type="Resource" id="Resource_68icj"]
 script = ExtResource("6_720a1")
 ray_direction = Vector3(0, -1, 0)
 ray_length = 5.0
@@ -368,7 +370,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_x4rin"]
+[sub_resource type="Resource" id="Resource_btq6c"]
 script = ExtResource("7_icr4n")
 terrain_node = NodePath("../Terrain3D")
 align_with_collision_normal = false
@@ -378,9 +380,9 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_vh0vp"]
+[sub_resource type="Resource" id="Resource_i3d4m"]
 script = ExtResource("2_pq8sj")
-stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_ws1ng"), SubResource("Resource_65gxn"), SubResource("Resource_fagcb"), SubResource("Resource_2tb33"), SubResource("Resource_x4rin")])
+stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_twnbu"), SubResource("Resource_7ukv3"), SubResource("Resource_angw2"), SubResource("Resource_68icj"), SubResource("Resource_btq6c")])
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q1wb1"]
 size = Vector3(2.25427, 1.72607, 1.36475)
@@ -605,6 +607,15 @@ size = Vector3(1.19434, 1.12695, 1.16748)
 [sub_resource type="BoxShape3D" id="BoxShape3D_yo2fx"]
 size = Vector3(1.87109, 1, 2.57526)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_weidh"]
+size = Vector3(1, 1, 0.703339)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e1sic"]
+size = Vector3(0.51416, 1, 0.580139)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cilbw"]
+size = Vector3(0.825317, 1, 0.843689)
+
 [node name="Night2" instance=ExtResource("1_qvbmn")]
 script = ExtResource("2_5li4r")
 
@@ -612,39 +623,39 @@ script = ExtResource("2_5li4r")
 unique_name_in_owner = true
 transform = Transform3D(0.150933, 0, 0.988544, 0, 1, 0, -0.988544, 0, 0.150933, 7.14036, 3.92235, -0.767373)
 
-[node name="Pizza" type="Node3D" parent="SubViewport/World/Player" index="7"]
-transform = Transform3D(-0.05, 7.54979e-09, 0, -7.54979e-09, -0.05, 3.33067e-16, 0, 9.99201e-16, 0.05, 1.14618, 1.4517, -0.76271)
+[node name="PizzaBox" type="Node3D" parent="SubViewport/World/Player" index="7"]
+transform = Transform3D(-0.05, 7.54979e-09, 0, -7.54979e-09, -0.05, 3.33067e-16, 0, 9.99201e-16, 0.05, 1.15132, 1.4517, -0.729019)
 visible = false
 
-[node name="Material2" type="MeshInstance3D" parent="SubViewport/World/Player/Pizza" index="0"]
+[node name="Material2" type="MeshInstance3D" parent="SubViewport/World/Player/PizzaBox" index="0"]
 mesh = SubResource("ArrayMesh_gp13b")
 skeleton = NodePath("")
 
-[node name="Material22" type="MeshInstance3D" parent="SubViewport/World/Player/Pizza" index="1"]
+[node name="Material22" type="MeshInstance3D" parent="SubViewport/World/Player/PizzaBox" index="1"]
 mesh = SubResource("ArrayMesh_1n1l6")
 skeleton = NodePath("")
 
-[node name="Material3" type="MeshInstance3D" parent="SubViewport/World/Player/Pizza" index="2"]
+[node name="Material3" type="MeshInstance3D" parent="SubViewport/World/Player/PizzaBox" index="2"]
 mesh = SubResource("ArrayMesh_vkxfn")
 skeleton = NodePath("")
 
-[node name="Material4" type="MeshInstance3D" parent="SubViewport/World/Player/Pizza" index="3"]
+[node name="Material4" type="MeshInstance3D" parent="SubViewport/World/Player/PizzaBox" index="3"]
 mesh = SubResource("ArrayMesh_tyxn3")
 skeleton = NodePath("")
 
-[node name="Material5" type="MeshInstance3D" parent="SubViewport/World/Player/Pizza" index="4"]
+[node name="Material5" type="MeshInstance3D" parent="SubViewport/World/Player/PizzaBox" index="4"]
 mesh = SubResource("ArrayMesh_blf2t")
 skeleton = NodePath("")
 
-[node name="Material23" type="MeshInstance3D" parent="SubViewport/World/Player/Pizza" index="5"]
+[node name="Material23" type="MeshInstance3D" parent="SubViewport/World/Player/PizzaBox" index="5"]
 mesh = SubResource("ArrayMesh_ajtso")
 skeleton = NodePath("")
 
-[node name="Material32" type="MeshInstance3D" parent="SubViewport/World/Player/Pizza" index="6"]
+[node name="Material32" type="MeshInstance3D" parent="SubViewport/World/Player/PizzaBox" index="6"]
 mesh = SubResource("ArrayMesh_dfk2h")
 skeleton = NodePath("")
 
-[node name="Material24" type="MeshInstance3D" parent="SubViewport/World/Player/Pizza" index="7"]
+[node name="Material24" type="MeshInstance3D" parent="SubViewport/World/Player/PizzaBox" index="7"]
 mesh = SubResource("ArrayMesh_kqbft")
 skeleton = NodePath("")
 
@@ -674,7 +685,7 @@ visible = true
 
 [node name="Nature" parent="SubViewport/World" index="7"]
 global_seed = 5
-modifier_stack = SubResource("Resource_vh0vp")
+modifier_stack = SubResource("Resource_i3d4m")
 
 [node name="InvesigateTask" type="Node3D" parent="SubViewport/World" index="8"]
 script = ExtResource("8_trp5y")
@@ -749,7 +760,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.29965, 0.996747, 2.20655)
 script = ExtResource("10_6t53u")
 
 [node name="Paper2" parent="SubViewport/World/CleanHouseTask" index="0" instance=ExtResource("13_cnefb")]
-transform = Transform3D(0.000445688, 0, -0.0049801, 0, 0.005, 0, 0.0049801, 0, 0.000445688, 2.1976, -0.471289, 3.38902)
+transform = Transform3D(-0.00489235, 0, -0.00103196, 0, 0.005, 0, 0.00103196, 0, -0.00489235, 1.43254, 2.89184, -3.67883)
 visible = false
 id = 2
 text = "Eu não estava imaginando coisas, tem algo de errado aqui, não entendi muito bem o que é, mas sei disso:
@@ -967,6 +978,43 @@ shape = SubResource("BoxShape3D_yo2fx")
 [node name="EatTask2" type="Node3D" parent="SubViewport/World" index="11"]
 script = ExtResource("20_cg3fv")
 
+[node name="Pizza" parent="SubViewport/World/EatTask2" index="0" instance=ExtResource("27_mn06n")]
+transform = Transform3D(0.04, 0, 0, 0, 0.04, 0, 0, 0, 0.04, 7.55586, 1.55375, -0.978851)
+visible = false
+
+[node name="GeladeiraArea" type="Area3D" parent="SubViewport/World/EatTask2" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.38693, 1.19375, 0.595351)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewport/World/EatTask2/GeladeiraArea" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0573883)
+shape = SubResource("BoxShape3D_weidh")
+
+[node name="PlateArea" type="Area3D" parent="SubViewport/World/EatTask2" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.12124, 1.39671, -0.692212)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewport/World/EatTask2/PlateArea" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24292, 0, -0.284088)
+shape = SubResource("BoxShape3D_e1sic")
+
+[node name="FornoArea" type="Area3D" parent="SubViewport/World/EatTask2" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.31671, 1.00286, 0.259109)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewport/World/EatTask2/FornoArea" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0817037, -0.00485593, 0.00162888)
+shape = SubResource("BoxShape3D_cilbw")
+
+[node name="OvenTimer" type="Timer" parent="SubViewport/World/EatTask2" index="4"]
+wait_time = 5.0
+
+[node name="OvenSound" type="AudioStreamPlayer" parent="SubViewport/World/EatTask2" index="5"]
+stream = ExtResource("28_7eamp")
+
 [node name="Diary" parent="." index="3"]
 visible = false
 
@@ -993,3 +1041,10 @@ visible = false
 [connection signal="body_entered" from="SubViewport/World/CleanHouseTask/TrashCan/TrashCan" to="SubViewport/World/CleanHouseTask" method="_on_trash_can_body_entered"]
 [connection signal="body_exited" from="SubViewport/World/CleanHouseTask/TrashCan/TrashCan" to="SubViewport/World/CleanHouseTask" method="_on_trash_can_body_exited"]
 [connection signal="body_entered" from="SubViewport/World/CleanHouseTask/TriggerTask" to="SubViewport/World/CleanHouseTask" method="_on_trigger_task_body_entered"]
+[connection signal="body_entered" from="SubViewport/World/EatTask2/GeladeiraArea" to="SubViewport/World/EatTask2" method="_on_geladeira_area_body_entered"]
+[connection signal="body_exited" from="SubViewport/World/EatTask2/GeladeiraArea" to="SubViewport/World/EatTask2" method="_on_geladeira_area_body_exited"]
+[connection signal="body_entered" from="SubViewport/World/EatTask2/PlateArea" to="SubViewport/World/EatTask2" method="_on_plate_area_body_entered"]
+[connection signal="body_exited" from="SubViewport/World/EatTask2/PlateArea" to="SubViewport/World/EatTask2" method="_on_plate_area_body_exited"]
+[connection signal="body_entered" from="SubViewport/World/EatTask2/FornoArea" to="SubViewport/World/EatTask2" method="_on_forno_area_body_entered"]
+[connection signal="body_exited" from="SubViewport/World/EatTask2/FornoArea" to="SubViewport/World/EatTask2" method="_on_forno_area_body_exited"]
+[connection signal="timeout" from="SubViewport/World/EatTask2/OvenTimer" to="SubViewport/World/EatTask2" method="_on_oven_timer_timeout"]
