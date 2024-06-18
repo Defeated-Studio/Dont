@@ -63,7 +63,7 @@ func _on_trash_can_body_exited(body):
 	canThrowAway = false
 
 func _on_trigger_task_body_entered(body):
-	if quest_control.questActive == 5:
+	if quest_control.questActive == 6:
 		get_node("TriggerTask").queue_free()
 		activateCollisions()
 		quest_control.startQuest()

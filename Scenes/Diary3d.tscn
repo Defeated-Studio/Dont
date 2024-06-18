@@ -1,17 +1,18 @@
 [gd_scene load_steps=18 format=3 uid="uid://d1dii1a71vb20"]
 
 [ext_resource type="Script" path="res://Scripts/Diary/Diary3d.gd" id="1_w6evf"]
-[ext_resource type="PackedScene" uid="uid://doy4oi7c3qacf" path="res://Models/diary.glb" id="1_x2qlc"]
-[ext_resource type="Texture2D" uid="uid://c4ypypgdka1we" path="res://Texture/Diario.png" id="3_iilso"]
+[ext_resource type="PackedScene" uid="uid://b2ujdds2geuni" path="res://House/Models/Bedroom1/pbr_dark_diary.glb" id="2_wlyje"]
+[ext_resource type="Texture2D" uid="uid://bmon2bq03pdt4" path="res://Texture/Diario.png" id="3_iilso"]
 [ext_resource type="Script" path="res://Scripts/Diary/Diary_UI.gd" id="3_u0kww"]
 [ext_resource type="Script" path="res://Scripts/Diary/Pages.gd" id="5_8l2yg"]
 [ext_resource type="Script" path="res://Scripts/Diary/Papers.gd" id="6_t3pmu"]
-[ext_resource type="Texture2D" uid="uid://bj6duw5pk5h5l" path="res://Texture/Paper_for_diary.png" id="7_ofe5r"]
+[ext_resource type="Texture2D" uid="uid://dtn5qjgbyue27" path="res://Texture/Paper_for_diary.png" id="7_ofe5r"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6rr1v"]
 size = Vector3(1.58115, 1, 5.60074)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ihlom"]
+size = Vector3(1, 0.297119, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gpf85"]
 bg_color = Color(0.45098, 0.305882, 0.0980392, 0.913725)
@@ -38,10 +39,12 @@ bg_color = Color(0.211765, 0.133333, 0.027451, 1)
 [node name="Diary3D" type="Node3D"]
 script = ExtResource("1_w6evf")
 
-[node name="Sketchfab_Scene" parent="." instance=ExtResource("1_x2qlc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.370924, 0, 0)
+[node name="DiaryModel" parent="." instance=ExtResource("2_wlyje")]
+transform = Transform3D(3.18, 0, 0, 0, 3.18, 0, 0, 0, 3.18, 0.0451059, -0.0235227, -0.0140969)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
+[node name="StaticBody3D" type="StaticBody3D" parent="." groups=["InteractGroup"]]
+collision_layer = 4
+collision_mask = 4
 
 [node name="InteractArea" type="Area3D" parent="StaticBody3D"]
 collision_layer = 2
@@ -52,7 +55,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0420074, 0.193849, 0.9554)
 shape = SubResource("BoxShape3D_6rr1v")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.98023e-08, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0318604, 0)
 shape = SubResource("BoxShape3D_ihlom")
 
 [node name="Diary_UI" type="Control" parent="." groups=["DiaryGroup"]]

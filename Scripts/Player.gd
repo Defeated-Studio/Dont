@@ -5,6 +5,7 @@ var ground = "Grass"
 @onready var grass_foot_steps = $Feet/GrassFootSteps
 @onready var grass_foot_steps_run = $Feet/GrassFootStepsRun
 @onready var wood_foot_steps_run = $Feet/WoodFootStepsRun
+@onready var flash_light_sound = $Head/FlashlightModel/FlashLightSound
 
 var canMove = true
 var canMoveCamera = true
@@ -55,13 +56,15 @@ func _input(event):
 func _physics_process(delta):
 	if Input.is_action_just_pressed("flashlight") and canUseFlashlight:
 		if flashlight.visible:
-			flashlight_animation.play(("hide"))		
-			flashlight.hide()	
+			flashlight_animation.play(("hide"))
+			flashlight.hide()
+			flash_light_sound.play()
 		else:
 			flashlight_model.show()
 			flashlight.show()
 			flashlight_animation.play(("show"))
-						
+			flash_light_sound.play()
+
 	make_flashlight_follow(delta)
 	
 	# Add the gravity.

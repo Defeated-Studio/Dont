@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://c600nek871ay1"]
+[gd_scene load_steps=57 format=3 uid="uid://c600nek871ay1"]
 
 [ext_resource type="PackedScene" uid="uid://bonk8egsbphsi" path="res://Scenes/World.tscn" id="1_qvbmn"]
 [ext_resource type="Script" path="res://Scripts/Night2.gd" id="2_5li4r"]
@@ -10,14 +10,16 @@
 [ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/project_on_terrain3d.gd" id="7_icr4n"]
 [ext_resource type="Script" path="res://Scripts/InvesigateTask.gd" id="8_trp5y"]
 [ext_resource type="Script" path="res://Scripts/CleanHouseTask.gd" id="10_6t53u"]
-[ext_resource type="Texture2D" uid="uid://d2dbf7ikwxmin" path="res://House/Models/soda_can_0.png" id="11_ii4cx"]
-[ext_resource type="PackedScene" uid="uid://dpc8475e573ji" path="res://House/Models/pizza.glb" id="12_6cx46"]
-[ext_resource type="Texture2D" uid="uid://b17gwg8rfdav6" path="res://House/Models/dirty_plate_0.jpg" id="13_wpvmb"]
-[ext_resource type="Texture2D" uid="uid://rqr804ofer5o" path="res://House/Models/dirty_plate_1.png" id="14_512c6"]
-[ext_resource type="Texture2D" uid="uid://c051l58tmrv4n" path="res://House/Models/dirty_plate_2.png" id="15_g1f0s"]
-[ext_resource type="PackedScene" uid="uid://1ss2ybqen67g" path="res://House/Models/cereal_box.glb" id="16_japfy"]
+[ext_resource type="Script" path="res://Scripts/WriteDiaryTask.gd" id="10_dsvv1"]
+[ext_resource type="AudioStream" uid="uid://bxfvpy4g6pbe0" path="res://Sounds/PenWriting.mp3" id="11_a67hc"]
+[ext_resource type="Texture2D" uid="uid://c5fophsrke1nq" path="res://House/Models/soda_can_0.png" id="11_ii4cx"]
+[ext_resource type="PackedScene" uid="uid://c8xs6ctym0laa" path="res://House/Models/pizza.glb" id="12_6cx46"]
+[ext_resource type="Texture2D" uid="uid://cgpytmkxuptnv" path="res://House/Models/dirty_plate_0.jpg" id="13_wpvmb"]
+[ext_resource type="Texture2D" uid="uid://v2uehxlh5jks" path="res://House/Models/dirty_plate_1.png" id="14_512c6"]
+[ext_resource type="Texture2D" uid="uid://cx8kx0cx417pa" path="res://House/Models/dirty_plate_2.png" id="15_g1f0s"]
+[ext_resource type="PackedScene" uid="uid://w0i8fnfcdlwm" path="res://House/Models/cereal_box.glb" id="16_japfy"]
 
-[sub_resource type="Resource" id="Resource_52ffn"]
+[sub_resource type="Resource" id="Resource_ptlig"]
 script = ExtResource("3_4jca5")
 amount = 550
 enabled = true
@@ -26,7 +28,7 @@ custom_seed = 9
 restrict_height = true
 reference_frame = 1
 
-[sub_resource type="Resource" id="Resource_1x7it"]
+[sub_resource type="Resource" id="Resource_v41e5"]
 script = ExtResource("4_w36g3")
 position = Vector3(0.15, 0.15, 0.15)
 rotation = Vector3(2, 360, 2)
@@ -37,7 +39,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_tjclv"]
+[sub_resource type="Resource" id="Resource_xxpeb"]
 script = ExtResource("5_hoyad")
 iterations = 3
 offset_step = 0.2
@@ -49,7 +51,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_7yr8g"]
+[sub_resource type="Resource" id="Resource_txsfg"]
 script = ExtResource("6_720a1")
 ray_direction = Vector3(0, -1, 0)
 ray_length = 5.0
@@ -65,7 +67,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_0qooc"]
+[sub_resource type="Resource" id="Resource_ai6gh"]
 script = ExtResource("7_icr4n")
 terrain_node = NodePath("../Terrain3D")
 align_with_collision_normal = false
@@ -75,9 +77,9 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_5g5h4"]
+[sub_resource type="Resource" id="Resource_dccmk"]
 script = ExtResource("2_pq8sj")
-stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_52ffn"), SubResource("Resource_1x7it"), SubResource("Resource_tjclv"), SubResource("Resource_7yr8g"), SubResource("Resource_0qooc")])
+stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_ptlig"), SubResource("Resource_v41e5"), SubResource("Resource_xxpeb"), SubResource("Resource_txsfg"), SubResource("Resource_ai6gh")])
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q1wb1"]
 size = Vector3(2.25427, 1.72607, 1.36475)
@@ -86,10 +88,19 @@ size = Vector3(2.25427, 1.72607, 1.36475)
 size = Vector3(2.33496, 1.74226, 1.1752)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gk087"]
-size = Vector3(1.48779, 0.631958, 1.74539)
+size = Vector3(1.48779, 0.631958, 1.29145)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ey2et"]
 size = Vector3(1.79321, 0.664429, 1.17328)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_750ty"]
+size = Vector3(0.792603, 1, 1.4032)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ng5c3"]
+size = Vector3(0.69429, 1, 0.892227)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r6gdx"]
+size = Vector3(0.66626, 0.159546, 1.7146)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yf0i4"]
 size = Vector3(0.145752, 0.500122, 0.509521)
@@ -325,7 +336,7 @@ visible = true
 
 [node name="Nature" parent="SubViewport/World" index="7"]
 global_seed = 5
-modifier_stack = SubResource("Resource_5g5h4")
+modifier_stack = SubResource("Resource_dccmk")
 
 [node name="InvesigateTask" type="Node3D" parent="SubViewport/World" index="8"]
 script = ExtResource("8_trp5y")
@@ -351,7 +362,7 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewport/World/InvesigateTask/SleepArea" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.08104, 4.25604, 0.378907)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.08104, 4.25604, 0.151937)
 shape = SubResource("BoxShape3D_gk087")
 disabled = true
 
@@ -363,7 +374,38 @@ collision_mask = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.07251, 4.31481, 0.332134)
 shape = SubResource("BoxShape3D_ey2et")
 
-[node name="CleanHouseTask" type="Node3D" parent="SubViewport/World" index="9"]
+[node name="WriteDiaryTask" type="Node3D" parent="SubViewport/World" index="9"]
+script = ExtResource("10_dsvv1")
+
+[node name="TriggerTask" type="Area3D" parent="SubViewport/World/WriteDiaryTask" index="0"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewport/World/WriteDiaryTask/TriggerTask" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.88761, 4.52416, -1.54039)
+shape = SubResource("BoxShape3D_750ty")
+
+[node name="StartQuest" type="Area3D" parent="SubViewport/World/WriteDiaryTask" index="1"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewport/World/WriteDiaryTask/StartQuest" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.30703, 4.4851, 1.06385)
+shape = SubResource("BoxShape3D_ng5c3")
+disabled = true
+
+[node name="QuestRayCast" type="StaticBody3D" parent="SubViewport/World/WriteDiaryTask/StartQuest" index="1" groups=["InteractGroup"]]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewport/World/WriteDiaryTask/StartQuest/QuestRayCast" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.74188, 4.90163, 1.16956)
+shape = SubResource("BoxShape3D_r6gdx")
+
+[node name="PenWriting" type="AudioStreamPlayer" parent="SubViewport/World/WriteDiaryTask" index="2"]
+stream = ExtResource("11_a67hc")
+
+[node name="CleanHouseTask" type="Node3D" parent="SubViewport/World" index="10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.29965, 0.996747, 2.20655)
 script = ExtResource("10_6t53u")
 
@@ -574,6 +616,9 @@ visible = false
 [connection signal="body_exited" from="SubViewport/World/InvesigateTask/GeneratorArea" to="SubViewport/World/InvesigateTask" method="_on_generator_area_body_exited"]
 [connection signal="body_entered" from="SubViewport/World/InvesigateTask/SleepArea" to="SubViewport/World/InvesigateTask" method="_on_sleep_area_body_entered"]
 [connection signal="body_exited" from="SubViewport/World/InvesigateTask/SleepArea" to="SubViewport/World/InvesigateTask" method="_on_sleep_area_body_exited"]
+[connection signal="body_entered" from="SubViewport/World/WriteDiaryTask/TriggerTask" to="SubViewport/World/WriteDiaryTask" method="_on_trigger_task_body_entered"]
+[connection signal="body_entered" from="SubViewport/World/WriteDiaryTask/StartQuest" to="SubViewport/World/WriteDiaryTask" method="_on_start_quest_body_entered"]
+[connection signal="body_exited" from="SubViewport/World/WriteDiaryTask/StartQuest" to="SubViewport/World/WriteDiaryTask" method="_on_start_quest_body_exited"]
 [connection signal="body_entered" from="SubViewport/World/CleanHouseTask/CleanSodas/CleanSodas" to="SubViewport/World/CleanHouseTask" method="_on_clean_entered" binds= ["CleanSodas"]]
 [connection signal="body_exited" from="SubViewport/World/CleanHouseTask/CleanSodas/CleanSodas" to="SubViewport/World/CleanHouseTask" method="_on_clean_exited"]
 [connection signal="body_entered" from="SubViewport/World/CleanHouseTask/CleanPizza/CleanPizza" to="SubViewport/World/CleanHouseTask" method="_on_clean_entered" binds= ["CleanPizza"]]

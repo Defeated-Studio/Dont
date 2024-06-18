@@ -15,3 +15,7 @@ func change_scene(target_scene, anim, scene_change=1):
 		if scene_change:
 			get_tree().change_scene_to_file(target_scene)
 		animation.play_backwards('dissolve')
+	elif anim == "quickTransition":
+		animation.play("quickTransition")
+		await animation.animation_finished
+		animation.play_backwards("quickTransition")
