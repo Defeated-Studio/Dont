@@ -31,6 +31,8 @@ extends Node3D
 @onready var skin_walker = $"../../../SkinWalker"
 @onready var skin_walker_anim = $"../../../SkinWalker/AnimationPlayer"
 
+@onready var microwave_sound = $Microwavesound
+
 
 var canPickup = false
 var canMicrowave = false
@@ -188,7 +190,8 @@ func _process(delta):
 			can_food_closed.hide()
 			can_food_opened.show()
 			microwave_light.show()
-			await get_tree().create_timer(10).timeout
+			microwave_sound.play()
+			await get_tree().create_timer(9.1).timeout
 			microwave_light.hide()
 			MicrowaveDone = true
 			microwave_col.set_deferred("disabled", false)
