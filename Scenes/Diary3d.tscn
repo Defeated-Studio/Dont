@@ -1,12 +1,12 @@
 [gd_scene load_steps=18 format=3 uid="uid://d1dii1a71vb20"]
 
 [ext_resource type="Script" path="res://Scripts/Diary/Diary3d.gd" id="1_w6evf"]
-[ext_resource type="PackedScene" uid="uid://c60q283f1baa5" path="res://House/Models/Bedroom1/pbr_dark_diary.glb" id="2_wlyje"]
-[ext_resource type="Texture2D" uid="uid://btop37yft7wjn" path="res://Texture/Diario.png" id="3_iilso"]
+[ext_resource type="PackedScene" uid="uid://dhqlued4hwi2s" path="res://House/Models/Bedroom1/pbr_dark_diary.glb" id="2_wlyje"]
+[ext_resource type="Texture2D" uid="uid://c4ypypgdka1we" path="res://Texture/Diario.png" id="3_iilso"]
 [ext_resource type="Script" path="res://Scripts/Diary/Diary_UI.gd" id="3_u0kww"]
 [ext_resource type="Script" path="res://Scripts/Diary/Pages.gd" id="5_8l2yg"]
 [ext_resource type="Script" path="res://Scripts/Diary/Papers.gd" id="6_t3pmu"]
-[ext_resource type="Texture2D" uid="uid://d3pg6ylspaan2" path="res://Texture/Paper_for_diary.png" id="7_ofe5r"]
+[ext_resource type="Texture2D" uid="uid://bj6duw5pk5h5l" path="res://Texture/Paper_for_diary.png" id="7_ofe5r"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6rr1v"]
 size = Vector3(1.58115, 1, 5.60074)
@@ -179,9 +179,10 @@ offset_right = 355.0
 offset_bottom = 405.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 10
-text = "   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce a dui molestie, tincidunt orci in, imperdiet ex. Mauris facilisis nulla vel dolor vulputate dapibus. Vivamus ac diam condimentum, vulputate est non, pretium eros. Quisque accumsan tempus massa vel pharetra. Cras velit metus, tristique sodales urna sit amet, fringilla imperdiet dui. Pellentesque ut rutrum sapien. Cras condimentum justo a risus dictum, ac feugiat arcu consectetur. Quisque pretium iaculis diam, ut consectetur tortor scelerisque a. Aenean elementum ornare mi, quis rhoncus leo fringilla aliquet. Etiam elementum diam pulvinar ex gravida viverra. Proin in rutrum ex.
-
-    Integer eget consequat tellus, et ullamcorper sapien. Ut molestie nec orci id imperdiet. Aenean ut volutpat est. In sagittis luctus facilisis. Fusce sem neque, bibendum semper tristique eu, finibus vitae nisl. Aliquam id orci sed quam pharetra vehicula venenatis id mauris. Vestibulum pulvinar malesuada leo. Vestibulum viverra massa vitae dapibus placerat. Aliquam cursus risus non libero feugiat, at lobortis risus commodo. Fusce rutrum diam non ligula elementum sollicitudin. Nam at massa at mi venenatis finibus sit amet non eros. Curabitur in scelerisque elit. Donec luctus, nibh eget lobortis ultricies, arcu justo condimentum eros, et suscipit quam lectus dictum augue."
+text = "Cheguei aqui e logo percebi que essa casa não é nada como nas fotos. Talvez ela fosse daquele jeito antes, mas agora parece tão velha. Mas tudo bem, eu que resolvi vir pra cá, precisava de mudanças na minha vida mesmo.
+Ainda bem que eu trouxe esse diário aqui comigo, sem sinal de internet e a TV fora do ar realmente fica sem muito o que fazer. Pelo menos com isso eu posso passar um pouco do tempo, e também não me sinto tão solitário. Vou mostrar esse diário pra minha mãe quando ela vier visitar pra ela ver como eu tô vivendo de boa sozinho.
+Mas sinceramente, tem umas coisas que me deixaram meio desconfiado com esse lugar. Tudo bem não ter sinal de internet ainda e tal, recém me mudei pra cá, essas coisas acontecem, mas e aquele papel que eu achei ontem? Quem é essa tal de Helena e o que foi isso que ela tava dizendo? Ainda tô sem sinal, não vou conseguir falar com o Bob sobre isso.
+Talvez ela só estivesse vendo coisas mesmo. Ontem eu estava bem cansado e estava um pouco assim também, mas era só o cansaço. Até esqueci de fechar a porta direito."
 autowrap_mode = 2
 
 [node name="right_page" type="Label" parent="Diary_UI/Diary/Pages"]
@@ -199,9 +200,8 @@ grow_horizontal = 0
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 10
-text = "Mauris at mattis lacus, vitae consequat risus. Vivamus aliquet libero vitae posuere vestibulum. Nulla sodales in ante quis faucibus. Phasellus sagittis luctus nibh. Phasellus vel ligula erat. Proin fringilla vestibulum odio sit amet convallis. Vestibulum accumsan sapien luctus tincidunt laoreet. Pellentesque fermentum, nunc ut gravida commodo, libero lectus mollis dui, sit amet molestie tellus libero et ante. Sed imperdiet nulla non consectetur interdum.
-
-Ut varius iaculis feugiat. Nam gravida imperdiet luctus. Pellentesque euismod dictum ex id molestie. Ut lacinia hendrerit est non tincidunt. Aenean urna massa, volutpat non neque sit amet, accumsan finibus nibh. Maecenas rutrum risus sit amet convallis vulputate. Morbi tincidunt leo ut maximus dignissim. Nulla iaculis ac massa sit amet sagittis. Morbi ultricies ut orci mattis iaculis. Suspendisse potenti. Duis mollis leo eget ex fringilla, sit amet pellentesque augue fringilla. Morbi eleifend enim velit, bibendum ultrices erat imperdiet vel."
+text = "É bom que esse gerador pare logo de se desligar, fica muito escuro aqui de noite, preciso da luz se não não enxergo um palmo na minha frente. Ainda bem que trouxe minha lanterna.
+Hoje vou ter que começar dando um jeito na bagunça que essa casa tá. Impossível viver num lugar assim por muito tempo, vou terminar de escrever aqui e vou dar uma geral em tudo."
 autowrap_mode = 2
 
 [node name="Papers" type="Control" parent="Diary_UI/Diary"]

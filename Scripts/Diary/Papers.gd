@@ -34,9 +34,6 @@ func set_visibility(is_visible: bool):
 	visible = is_visible
 
 func change_papers(to_paper, papers_taken):
-	if paper == to_paper:
-		return;
-	
 	paper = to_paper
 	if paper == 2:
 		right_paper.visible = false;
