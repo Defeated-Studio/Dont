@@ -1,5 +1,6 @@
 extends Node3D
 @onready var player = %Player
+@onready var playerCamera = %Player/Head
 @onready var dialogue_text = %Player/DialogueText
 
 @onready var quest_control = $"../QuestControl"
@@ -27,13 +28,16 @@ var PizzaReady = false
 var canPickUpPizza = false
 
 func _ready():
-	geladeira_area.monitoring = false
+	geladeira_area.monitoring = true #colocar false em prod
 	
 func _on_oven_timer_timeout():
 	oven_sound.play()
 	oven_timer.stop()
 	PizzaReady = true
-	dialogue_text.queueDialogue("ficou pronto")
+	player.canMove = true
+	player.canMoveCamera = true
+	player.canUseFlashlight = true
+	dialogue_text.queueDialogue("ficou pronto (agora da de se mexer)")
 	dialogue_text.timeBetweenText = 2
 	dialogue_text.showDialogue()
 	
@@ -46,8 +50,8 @@ func _physics_process(delta):
 		interact_text.hide()
 		
 		dialogue_text.queueDialogue("beleza, melhor do que aquele lixo que comi ontem")
-		dialogue_text.queueDialogue("preciso colocar em um prato de metal")
-		dialogue_text.timeBetweenText = 3
+		dialogue_text.queueDialogue("preciso colocar em uma forma de pizza")
+		dialogue_text.timeBetweenText = 2
 		dialogue_text.showDialogue()
 		
 	if (Input.is_action_just_pressed("interact") and canPutPizzaOnPlate): 
@@ -62,7 +66,7 @@ func _physics_process(delta):
 		pizza.reparent(player)
 		
 		dialogue_text.queueDialogue("só colocar no forno agora")
-		dialogue_text.timeBetweenText = 3
+		dialogue_text.timeBetweenText = 2
 		dialogue_text.showDialogue()
 		
 	if (Input.is_action_just_pressed("interact") and canPutPizzaOnOven): 
@@ -72,11 +76,25 @@ func _physics_process(delta):
 		pizza.hide()
 		interact_text.hide()
 		
-		oven_timer.start()
-		
 		dialogue_text.queueDialogue("esperar né")
 		dialogue_text.timeBetweenText = 2
 		dialogue_text.showDialogue()
+		
+		await get_tree().create_timer(1).timeout
+		SceneTransition.change_scene("", "quickTransition", 0)
+		player.canMove = false
+		player.canMoveCamera = false
+		player.canUseFlashlight = false
+		
+		await get_tree().create_timer(1).timeout
+		teleport_player()
+		
+		await get_tree().create_timer(2).timeout
+		dialogue_text.queueDialogue("aqui vai o medo (nao da de se mexer)")
+		dialogue_text.timeBetweenText = 3
+		dialogue_text.showDialogue()
+		
+		oven_timer.start()
 		
 	if (Input.is_action_just_pressed("interact") and canPickUpPizza): 
 		canPickUpPizza = false
@@ -133,3 +151,8 @@ func _on_forno_area_body_entered(body):
 func _on_forno_area_body_exited(body):
 	interact_text.hide()
 	canPutPizzaOnOven = false
+
+func teleport_player():
+	player.global_position = Vector3(5.345, 0.541, -1.702)
+	player.set_rotation_degrees(Vector3(0, 0, 0))
+	playerCamera.set_rotation_degrees(Vector3(0, 0, 0))

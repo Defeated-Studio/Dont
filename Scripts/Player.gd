@@ -161,7 +161,6 @@ func _physics_process(delta):
 	
 	move_and_slide()
 
-
 func _headbob(time) -> Vector3:
 	var pos = Vector3.ZERO
 	pos.y = sin(time * BOB_FREQ) * BOB_AMP
