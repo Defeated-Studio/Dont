@@ -90,7 +90,7 @@ func _physics_process(delta):
 		dialogue_text.showDialogue()
 		
 func _on_quest_control_quest_started():
-	if quest_control.questActive == 7:
+	if quest_control.questActive == 8:
 		geladeira_area.monitoring = true
 		
 		dialogue_text.queueDialogue("to morrendo de fome, mal comi desde que cheguei aqui")

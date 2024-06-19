@@ -2,6 +2,7 @@ extends CanvasLayer
 
 @onready var animation = $"Night1-2/AnimationPlayer"
 
+
 func change_scene(target_scene, anim, scene_change=1):
 	if anim == "night1-2":
 		animation.play("dissolve_night1-2")
@@ -19,3 +20,5 @@ func change_scene(target_scene, anim, scene_change=1):
 		animation.play("quickTransition")
 		await animation.animation_finished
 		animation.play_backwards("quickTransition")
+	elif anim == "SpendTime":
+		animation.play("SpendTime")

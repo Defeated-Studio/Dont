@@ -1,33 +1,34 @@
-[gd_scene load_steps=94 format=3 uid="uid://c600nek871ay1"]
+[gd_scene load_steps=95 format=3 uid="uid://c600nek871ay1"]
 
 [ext_resource type="PackedScene" uid="uid://bonk8egsbphsi" path="res://Scenes/World.tscn" id="1_qvbmn"]
 [ext_resource type="Script" path="res://Scripts/Night2.gd" id="2_5li4r"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/stack/modifier_stack.gd" id="2_pq8sj"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/create_inside_random.gd" id="3_4jca5"]
-[ext_resource type="Texture2D" uid="uid://gpkx34n4hnk5" path="res://Models/PizzaBox_0.jpg" id="3_453mx"]
-[ext_resource type="Texture2D" uid="uid://jajxt3os7ohd" path="res://Models/PizzaBox_1.jpg" id="4_gbsuh"]
+[ext_resource type="Texture2D" uid="uid://bphjny1aw018k" path="res://Models/PizzaBox_0.jpg" id="3_453mx"]
+[ext_resource type="Texture2D" uid="uid://byrcohgxvdc7f" path="res://Models/PizzaBox_1.jpg" id="4_gbsuh"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/randomize_transforms.gd" id="4_w36g3"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/relax.gd" id="5_hoyad"]
-[ext_resource type="Texture2D" uid="uid://dyfbtxtux1r8y" path="res://Models/PizzaBox_2.jpg" id="5_wemk0"]
-[ext_resource type="Texture2D" uid="uid://ctnesvmuraiga" path="res://Models/PizzaBox_3.jpg" id="6_0sfmm"]
+[ext_resource type="Texture2D" uid="uid://bafykdojqnrur" path="res://Models/PizzaBox_2.jpg" id="5_wemk0"]
+[ext_resource type="Texture2D" uid="uid://85ec6322w2hj" path="res://Models/PizzaBox_3.jpg" id="6_0sfmm"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/project_on_geometry.gd" id="6_720a1"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/project_on_terrain3d.gd" id="7_icr4n"]
-[ext_resource type="Texture2D" uid="uid://cwh1q7aow1yvv" path="res://Models/PizzaBox_4.jpg" id="7_vgigs"]
-[ext_resource type="Texture2D" uid="uid://qhae7lqbdu66" path="res://Models/PizzaBox_5.jpg" id="8_3uytl"]
+[ext_resource type="Texture2D" uid="uid://u4fd5ptwpq6f" path="res://Models/PizzaBox_4.jpg" id="7_vgigs"]
+[ext_resource type="Texture2D" uid="uid://b8bj2l7qatpq7" path="res://Models/PizzaBox_5.jpg" id="8_3uytl"]
 [ext_resource type="Script" path="res://Scripts/InvesigateTask.gd" id="8_trp5y"]
 [ext_resource type="Script" path="res://Scripts/CleanHouseTask.gd" id="10_6t53u"]
 [ext_resource type="Script" path="res://Scripts/WriteDiaryTask.gd" id="10_dsvv1"]
-[ext_resource type="AudioStream" uid="uid://d2pnkxoa8asm1" path="res://Sounds/PenWriting.mp3" id="11_a67hc"]
-[ext_resource type="Texture2D" uid="uid://d2dbf7ikwxmin" path="res://House/Models/soda_can_0.png" id="11_ii4cx"]
-[ext_resource type="PackedScene" uid="uid://dpc8475e573ji" path="res://House/Models/pizza.glb" id="12_6cx46"]
+[ext_resource type="AudioStream" uid="uid://bxfvpy4g6pbe0" path="res://Sounds/PenWriting.mp3" id="11_a67hc"]
+[ext_resource type="Texture2D" uid="uid://c5fophsrke1nq" path="res://House/Models/soda_can_0.png" id="11_ii4cx"]
+[ext_resource type="PackedScene" uid="uid://c8xs6ctym0laa" path="res://House/Models/pizza.glb" id="12_6cx46"]
 [ext_resource type="PackedScene" uid="uid://dsbkf1co3qjwj" path="res://Scenes/Paper/Paper.tscn" id="13_cnefb"]
-[ext_resource type="Texture2D" uid="uid://b17gwg8rfdav6" path="res://House/Models/dirty_plate_0.jpg" id="13_wpvmb"]
-[ext_resource type="Texture2D" uid="uid://rqr804ofer5o" path="res://House/Models/dirty_plate_1.png" id="14_512c6"]
-[ext_resource type="Texture2D" uid="uid://c051l58tmrv4n" path="res://House/Models/dirty_plate_2.png" id="15_g1f0s"]
-[ext_resource type="PackedScene" uid="uid://1ss2ybqen67g" path="res://House/Models/cereal_box.glb" id="16_japfy"]
+[ext_resource type="Texture2D" uid="uid://cgpytmkxuptnv" path="res://House/Models/dirty_plate_0.jpg" id="13_wpvmb"]
+[ext_resource type="Texture2D" uid="uid://v2uehxlh5jks" path="res://House/Models/dirty_plate_1.png" id="14_512c6"]
+[ext_resource type="Texture2D" uid="uid://cx8kx0cx417pa" path="res://House/Models/dirty_plate_2.png" id="15_g1f0s"]
+[ext_resource type="PackedScene" uid="uid://w0i8fnfcdlwm" path="res://House/Models/cereal_box.glb" id="16_japfy"]
 [ext_resource type="Script" path="res://Scripts/EatTask2.gd" id="20_cg3fv"]
-[ext_resource type="PackedScene" uid="uid://dbhkpma8swn20" path="res://Models/Pizza.glb" id="27_mn06n"]
-[ext_resource type="AudioStream" uid="uid://cc1uhjyj5ksmh" path="res://Sounds/OvenBell.mp3" id="28_7eamp"]
+[ext_resource type="Script" path="res://Scripts/SpendTimeTask.gd" id="26_s8c6h"]
+[ext_resource type="PackedScene" uid="uid://bq7dq6w07rko7" path="res://Models/Pizza.glb" id="27_mn06n"]
+[ext_resource type="AudioStream" uid="uid://bjqn7hhw801xa" path="res://Sounds/OvenBell.mp3" id="28_7eamp"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qxjqa"]
 resource_name = "20190111_235741"
@@ -322,7 +323,7 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_o7pgp")
 
-[sub_resource type="Resource" id="Resource_o3ka4"]
+[sub_resource type="Resource" id="Resource_747v6"]
 script = ExtResource("3_4jca5")
 amount = 550
 enabled = true
@@ -331,7 +332,7 @@ custom_seed = 9
 restrict_height = true
 reference_frame = 1
 
-[sub_resource type="Resource" id="Resource_ruc3h"]
+[sub_resource type="Resource" id="Resource_frp6j"]
 script = ExtResource("4_w36g3")
 position = Vector3(0.15, 0.15, 0.15)
 rotation = Vector3(2, 360, 2)
@@ -342,7 +343,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_vhjbo"]
+[sub_resource type="Resource" id="Resource_b0kdn"]
 script = ExtResource("5_hoyad")
 iterations = 3
 offset_step = 0.2
@@ -354,7 +355,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_ghkbv"]
+[sub_resource type="Resource" id="Resource_qioek"]
 script = ExtResource("6_720a1")
 ray_direction = Vector3(0, -1, 0)
 ray_length = 5.0
@@ -370,7 +371,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_d0pg6"]
+[sub_resource type="Resource" id="Resource_xg4vl"]
 script = ExtResource("7_icr4n")
 terrain_node = NodePath("../Terrain3D")
 align_with_collision_normal = false
@@ -380,9 +381,9 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_e2yqr"]
+[sub_resource type="Resource" id="Resource_ofvsd"]
 script = ExtResource("2_pq8sj")
-stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_o3ka4"), SubResource("Resource_ruc3h"), SubResource("Resource_vhjbo"), SubResource("Resource_ghkbv"), SubResource("Resource_d0pg6")])
+stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_747v6"), SubResource("Resource_frp6j"), SubResource("Resource_b0kdn"), SubResource("Resource_qioek"), SubResource("Resource_xg4vl")])
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q1wb1"]
 size = Vector3(2.25427, 1.72607, 1.36475)
@@ -685,7 +686,7 @@ visible = true
 
 [node name="Nature" parent="SubViewport/World" index="7"]
 global_seed = 5
-modifier_stack = SubResource("Resource_e2yqr")
+modifier_stack = SubResource("Resource_ofvsd")
 
 [node name="InvesigateTask" type="Node3D" parent="SubViewport/World" index="8"]
 script = ExtResource("8_trp5y")
@@ -975,7 +976,13 @@ collision_mask = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.10466, 1.615, 0.0757751)
 shape = SubResource("BoxShape3D_yo2fx")
 
-[node name="EatTask2" type="Node3D" parent="SubViewport/World" index="11"]
+[node name="SpendTimeTask" type="Node3D" parent="SubViewport/World" index="11"]
+script = ExtResource("26_s8c6h")
+
+[node name="Position" type="Node3D" parent="SubViewport/World/SpendTimeTask" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.73287, 4.70952, 4.6373)
+
+[node name="EatTask2" type="Node3D" parent="SubViewport/World" index="12"]
 script = ExtResource("20_cg3fv")
 
 [node name="Pizza" parent="SubViewport/World/EatTask2" index="0" instance=ExtResource("27_mn06n")]
@@ -1018,6 +1025,7 @@ stream = ExtResource("28_7eamp")
 [node name="Diary" parent="." index="3"]
 visible = false
 
+[connection signal="QuestStarted" from="SubViewport/World/QuestControl" to="SubViewport/World/SpendTimeTask" method="_on_quest_control_quest_started"]
 [connection signal="QuestStarted" from="SubViewport/World/QuestControl" to="SubViewport/World/EatTask2" method="_on_quest_control_quest_started"]
 [connection signal="body_entered" from="SubViewport/World/InvesigateTask/GeneratorArea" to="SubViewport/World/InvesigateTask" method="_on_generator_area_body_entered"]
 [connection signal="body_exited" from="SubViewport/World/InvesigateTask/GeneratorArea" to="SubViewport/World/InvesigateTask" method="_on_generator_area_body_exited"]

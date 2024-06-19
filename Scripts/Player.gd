@@ -43,6 +43,12 @@ var direction = Vector3.ZERO
 @onready var flashlight_animation = $FlashlightAnimation
 @onready var flashlight_model = $Head/FlashlightModel
 
+
+func change_input_flags(value):
+	canMove = value
+	canMoveCamera = value
+	canUseFlashlight = value
+
 func _ready():
 	flashlight_model.hide()
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
