@@ -16,7 +16,7 @@ func _ready():
 
 
 func _process(delta):
-	if is_instance_valid(IsRayCasting.collider) and IsRayCasting.canInteract and (Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")) and canPickUp:
+	if is_instance_valid(IsRayCasting.collider) and IsRayCasting.canInteract and Input.is_action_just_pressed("interact") and canPickUp:
 		player.canMove = false;
 		player.canMoveCamera = false;
 		diary.reset_diary();
