@@ -44,8 +44,9 @@ var onWindow = false
 var readyToEat = false
 var canSitDown = false
 var playerLastPosition = Vector3.ZERO
+
 func _ready():
-	geladeira_area.monitoring = true #colocar false em prod
+	geladeira_area.monitoring = false 
 	
 func _on_oven_timer_timeout():
 	oven_sound.play()
