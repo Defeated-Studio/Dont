@@ -33,9 +33,10 @@ func _process(delta):
 		
 
 func _on_interact_area_body_entered(body):
-	canPickUp = true
-	interact_text.text = "[E] Pegar"
-	interact_text.show()
+	if self.visible:
+		canPickUp = true
+		interact_text.text = "[E] Pegar"
+		interact_text.show()
 
 func _on_interact_area_body_exited(body):
 	canPickUp = false
@@ -52,10 +53,12 @@ func _on_close_button_pressed():
 	if id == 1:
 		player_dialogue_text.queueDialogue("isso é sério? sendo observada? meu deus")
 		player_dialogue_text.queueDialogue("meu instinto diz pra eu vazar daqui dona Helena")
-		player_dialogue_text.timeBetweenText = 4
+		player_dialogue_text.timeBetweenText = 3
 		player_dialogue_text.showDialogue()
 	if id == 2:
+		player_dialogue_text.queueDialogue("esse papel apareceu do nada")
+		player_dialogue_text.queueDialogue("juro que olhei aqui antes")
 		player_dialogue_text.queueDialogue("quem é essa mulher? Por que ela ta me ajudando?")
-		player_dialogue_text.timeBetweenText = 4
+		player_dialogue_text.timeBetweenText = 3
 		player_dialogue_text.showDialogue()
 

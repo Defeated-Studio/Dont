@@ -20,7 +20,6 @@ func _process(delta):
 		SceneTransition.change_scene("", "quickTransition", 0)
 		await get_tree().create_timer(1).timeout
 		pen_writing.play()
-		diary.toggle_visibility()
 		await get_tree().create_timer(1.5).timeout
 		quest_control.finishQuest()
 		self.queue_free()

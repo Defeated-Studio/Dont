@@ -10,4 +10,5 @@ func _ready():
 	states.setStates()
 	states.setPapersTaken()
 	diary.add_page()
+	diary.toggle_visibility()
 	main_camera.set_current(true)

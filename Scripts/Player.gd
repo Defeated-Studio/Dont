@@ -79,6 +79,7 @@ func _physics_process(delta):
 		
 	if !canMove:
 		speed = 0
+		return
 	else:
 		if crouched:
 			speed = CROUCH_SPEED

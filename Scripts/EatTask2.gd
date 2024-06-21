@@ -1,7 +1,9 @@
 extends Node3D
 @onready var player = %Player
-@onready var playerCamera = %Player/Head
+@onready var player_camera = %Player/Head/Camera3D
+@onready var player_head = %Player/Head
 @onready var dialogue_text = %Player/DialogueText
+@onready var position_target = $EatArea/PositionTarget
 
 @onready var quest_control = $"../QuestControl"
 @onready var interact_text = %InteractText
@@ -9,6 +11,7 @@ extends Node3D
 @onready var geladeira_area = $GeladeiraArea
 @onready var plate_area = $PlateArea
 @onready var forno_area = $FornoArea
+@onready var eat_area = $EatArea
 
 @onready var pizza_box = $"../Player/PizzaBox"
 @onready var pizza = $Pizza
@@ -16,6 +19,15 @@ extends Node3D
 
 @onready var oven_timer = $OvenTimer
 @onready var oven_sound = $OvenSound
+
+@onready var skin_walker = $SkinWalker
+@onready var skin_walker_animation_player = $SkinWalker/AnimationPlayer
+@onready var hand = $Hand
+@onready var hand_animation_player = $Hand/AnimationPlayer
+@onready var hand2 = $Hand2
+@onready var hand2_animation_player = $Hand2/AnimationPlayer
+@onready var appear_animation_player = $SkinWalker/Appear/AnimationPlayer
+@onready var heartbeat = $Heartbeat
 
 var canPickUpPizzaBox = false
 var PizzaBox = false
@@ -27,6 +39,11 @@ var canPutPizzaOnOven = false
 var PizzaReady = false
 var canPickUpPizza = false
 
+var onWindow = false
+
+var readyToEat = false
+var canSitDown = false
+var playerLastPosition = Vector3.ZERO
 func _ready():
 	geladeira_area.monitoring = true #colocar false em prod
 	
@@ -37,9 +54,13 @@ func _on_oven_timer_timeout():
 	player.canMove = true
 	player.canMoveCamera = true
 	player.canUseFlashlight = true
-	dialogue_text.queueDialogue("ficou pronto (agora da de se mexer)")
-	dialogue_text.timeBetweenText = 2
+	dialogue_text.queueDialogue("que PORRA foi essa??")
+	dialogue_text.queueDialogue("acho que to vendo coisa")
+	dialogue_text.queueDialogue("ficou pronto...")
+	dialogue_text.timeBetweenText = 3
 	dialogue_text.showDialogue()
+	onWindow = false
+	hide_everything()
 	
 func _physics_process(delta):
 	if (Input.is_action_just_pressed("interact") and canPickUpPizzaBox):
@@ -76,7 +97,7 @@ func _physics_process(delta):
 		pizza.hide()
 		interact_text.hide()
 		
-		dialogue_text.queueDialogue("esperar né")
+		dialogue_text.queueDialogue("só esperar")
 		dialogue_text.timeBetweenText = 2
 		dialogue_text.showDialogue()
 		
@@ -90,11 +111,41 @@ func _physics_process(delta):
 		teleport_player()
 		
 		await get_tree().create_timer(2).timeout
-		dialogue_text.queueDialogue("aqui vai o medo (nao da de se mexer)")
+		dialogue_text.queueDialogue("cara, o que eu faço?")
+		dialogue_text.queueDialogue("tudo deu errado, to basicamente preso nesse fim de mundo")
+		dialogue_text.queueDialogue("eu só queria poder voltar no tempo")
 		dialogue_text.timeBetweenText = 3
 		dialogue_text.showDialogue()
 		
+		await get_tree().create_timer(10).timeout
+		onWindow = true
 		oven_timer.start()
+		
+	if (onWindow):
+
+		if !skin_walker_animation_player.is_playing():	
+			skin_walker_animation_player.play("idle")
+		if !skin_walker.visible:
+			skin_walker.show()
+			appear_animation_player.play("appear")
+			
+		if !hand_animation_player.is_playing():
+			hand_animation_player.play("idle")
+			hand2_animation_player.play("idle")
+		hand.show()
+		hand2.show()
+		
+		player_head.position.z -= 0.02 * delta
+		
+		await get_tree().create_timer(3).timeout
+		if (!heartbeat.playing):
+			heartbeat.play()
+
+		if hand.position.x >= 7.88:
+			hand.position.x -= 0.05 * delta
+			
+		if hand2.position.x <= 2.8:
+			hand2.position.x += 0.05 * delta
 		
 	if (Input.is_action_just_pressed("interact") and canPickUpPizza): 
 		canPickUpPizza = false
@@ -103,10 +154,36 @@ func _physics_process(delta):
 		pizza.show()
 		forno_area.queue_free()
 		
-		dialogue_text.queueDialogue("vim muito nessa aqui")
+		dialogue_text.queueDialogue("pelo menos ficou bom")
+		dialogue_text.queueDialogue("não tem tv, vou de mesa")
 		dialogue_text.timeBetweenText = 2
 		dialogue_text.showDialogue()
 		
+		readyToEat = true
+	
+	
+	if (Input.is_action_just_pressed("interact") and canSitDown): 
+		SceneTransition.change_scene("", "quickTransition", 0)
+		await get_tree().create_timer(1).timeout
+		interact_text.hide()
+		readyToEat = false
+		canSitDown = false
+		playerLastPosition = player.global_position
+		player.global_position = position_target.get_global_transform().origin
+		player.set_rotation_degrees(Vector3(0, 180, 0))
+		player.canMove = false
+		player.canUseFlashlight = false
+		await get_tree().create_timer(3).timeout
+		SceneTransition.change_scene("", "quickTransition", 0)
+		await get_tree().create_timer(1).timeout
+		player.global_position = playerLastPosition
+		player.canMove = true
+		player.canUseFlashlight = true
+		pizza.queue_free()
+		metal_plate.queue_free()
+		quest_control.finishQuest()
+		self.queue_free()
+	
 func _on_quest_control_quest_started():
 	if quest_control.questActive == 8:
 		geladeira_area.monitoring = true
@@ -153,6 +230,19 @@ func _on_forno_area_body_exited(body):
 	canPutPizzaOnOven = false
 
 func teleport_player():
-	player.global_position = Vector3(5.345, 0.541, -1.702)
+	player.global_position = Vector3(5.145, 0.541, -1.4)
 	player.set_rotation_degrees(Vector3(0, 0, 0))
-	playerCamera.set_rotation_degrees(Vector3(0, 0, 0))
+	player_head.set_rotation_degrees(Vector3(0, 0, 0))
+
+func hide_everything():
+	heartbeat.stop()
+	skin_walker.hide()
+	hand.hide()
+	hand2.hide()
+
+
+func _on_eat_area_body_entered(body):
+	if readyToEat:
+		interact_text.text = "[E] Sentar"
+		interact_text.show()
+		canSitDown = true

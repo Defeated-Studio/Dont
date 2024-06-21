@@ -29,6 +29,9 @@ func _process(delta):
 	$FPSCounter.set_text("FPS: %d" % Engine.get_frames_per_second())
 	
 	if Input.is_action_just_pressed("esc"):
+		pause_menu.inputPrev = Input.mouse_mode
+		
+		pause_menu.move_to_front()
 		pause_menu.pause()
 	
 	if Input.is_action_just_pressed("LeftMouseButton") and IsRayCasting.canInteract and (is_instance_valid(IsRayCasting.collider)) and IsRayCasting.collider.name == "PeepHoleRay" and !inPeepHole:

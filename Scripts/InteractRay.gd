@@ -16,7 +16,7 @@ func _process(delta):
 	IsRayCasting.canInteract = false
 	
 	if IsRayCasting.collider is Node:
-		if IsRayCasting.collider.is_in_group("InteractGroup"):
+		if (IsRayCasting.collider.is_in_group("InteractGroup") and IsRayCasting.collider.is_visible_in_tree()):
 			if IsRayCasting.collider.name == "PeepHoleRay":
 				default_crosshair.hide()
 				interact_crosshair.show()
