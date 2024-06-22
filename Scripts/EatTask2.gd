@@ -74,6 +74,7 @@ func _on_oven_timer_timeout():
 	dialogue_text.timeBetweenText = 3
 	dialogue_text.showDialogue()
 	onWindow = false
+	world.canOpenMobile = true
 	hide_everything()
 	
 func _physics_process(delta):
@@ -110,6 +111,7 @@ func _physics_process(delta):
 		metal_plate.hide()
 		pizza.hide()
 		interact_text.hide()
+		world.canOpenMobile = false
 		
 		dialogue_text.queueDialogue("só esperar")
 		dialogue_text.timeBetweenText = 2
