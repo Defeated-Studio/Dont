@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://co7tsrq574r11"]
+[gd_scene load_steps=13 format=3 uid="uid://co7tsrq574r11"]
 
 [ext_resource type="Script" path="res://Scripts/StoryScreen.gd" id="1_oe1pu"]
 [ext_resource type="FontFile" uid="uid://cxdcng7dslxny" path="res://Fonts/Cinzel-Bold.ttf" id="2_civu7"]
+[ext_resource type="FontFile" path="res://Fonts/Derringer-Serial Regular.ttf" id="2_fmpux"]
 
 [sub_resource type="Animation" id="Animation_x68ho"]
 length = 0.001
@@ -431,6 +432,7 @@ offset_right = -278.0
 offset_bottom = 249.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0.713726, 0.654902, 0.160784, 1)
+theme_override_fonts/font = ExtResource("2_fmpux")
 theme_override_font_sizes/font_size = 24
 text = "Enfrentando dificuldades financeiras e desesperado por um lugar para morar, Jake, um jovem de vinte e poucos anos, se depara com uma oferta irresistível"
 horizontal_alignment = 1
@@ -453,6 +455,7 @@ offset_bottom = 65.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.713726, 0.654902, 0.160784, 1)
+theme_override_fonts/font = ExtResource("2_fmpux")
 theme_override_font_sizes/font_size = 24
 text = "Uma casa aparentemente elegante, situada nas montanhas dos Apalaches, a um preço surpreendentemente acessível."
 horizontal_alignment = 1
@@ -475,6 +478,7 @@ offset_bottom = -119.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/font_color = Color(0.713726, 0.654902, 0.160784, 1)
+theme_override_fonts/font = ExtResource("2_fmpux")
 theme_override_font_sizes/font_size = 24
 text = "Sem hesitar, ele se agarra à oportunidade, adquirindo a propriedade sem sequer visitá-la pessoalmente.
 "
@@ -495,6 +499,7 @@ offset_right = -278.0
 offset_bottom = 349.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0.713726, 0.654902, 0.160784, 1)
+theme_override_fonts/font = ExtResource("2_fmpux")
 theme_override_font_sizes/font_size = 24
 text = "A sua decisão impulsiva pode ter consequências não conhecidas por ele ainda"
 horizontal_alignment = 1
@@ -517,6 +522,7 @@ offset_bottom = 65.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.713726, 0.654902, 0.160784, 1)
+theme_override_fonts/font = ExtResource("2_fmpux")
 theme_override_font_sizes/font_size = 24
 text = "O conduzindo não a um novo começo, mas a um pesadelo que está apenas começando."
 horizontal_alignment = 1
