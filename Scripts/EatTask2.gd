@@ -78,7 +78,7 @@ func _on_oven_timer_timeout():
 	hide_everything()
 	
 func _physics_process(delta):
-	if (Input.is_action_just_pressed("interact") and canPickUpPizzaBox):
+	if ((Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")) and canPickUpPizzaBox):
 		canPickUpPizzaBox = false
 		PizzaBox = true
 		pizza_box.show()
@@ -90,7 +90,7 @@ func _physics_process(delta):
 		dialogue_text.timeBetweenText = 2
 		dialogue_text.showDialogue()
 		
-	if (Input.is_action_just_pressed("interact") and canPutPizzaOnPlate): 
+	if ((Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")) and canPutPizzaOnPlate): 
 		canPutPizzaOnPlate = false
 		PizzaAndPlate = true
 		pizza_box.hide()
@@ -105,7 +105,7 @@ func _physics_process(delta):
 		dialogue_text.timeBetweenText = 2
 		dialogue_text.showDialogue()
 		
-	if (Input.is_action_just_pressed("interact") and canPutPizzaOnOven): 
+	if ((Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")) and canPutPizzaOnOven): 
 		canPutPizzaOnOven = false
 		PizzaAndPlate = false
 		metal_plate.hide()
@@ -163,7 +163,7 @@ func _physics_process(delta):
 		if hand2.position.x <= 2.8:
 			hand2.position.x += 0.05 * delta
 		
-	if (Input.is_action_just_pressed("interact") and canPickUpPizza): 
+	if ((Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")) and canPickUpPizza): 
 		canPickUpPizza = false
 		
 		metal_plate.show()
@@ -178,7 +178,7 @@ func _physics_process(delta):
 		readyToEat = true
 	
 	
-	if (Input.is_action_just_pressed("interact") and canSitDown): 
+	if ((Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")) and canSitDown): 
 		SceneTransition.change_scene("", "quickTransition", 0)
 		await get_tree().create_timer(1).timeout
 		interact_text.hide()
