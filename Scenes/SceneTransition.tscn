@@ -1,8 +1,8 @@
 [gd_scene load_steps=11 format=3 uid="uid://1ep6mfvvg7as"]
 
 [ext_resource type="Script" path="res://Scripts/SceneTransition.gd" id="1_6l6xo"]
-[ext_resource type="FontFile" uid="uid://dx05xccu4q56q" path="res://Fonts/Cinzel-Bold.ttf" id="2_s3lis"]
-[ext_resource type="AudioStream" uid="uid://cmffsbm46heo1" path="res://House/SFX/PowerDown.ogg" id="3_pvx5a"]
+[ext_resource type="FontFile" uid="uid://cxdcng7dslxny" path="res://Fonts/Cinzel-Bold.ttf" id="2_s3lis"]
+[ext_resource type="AudioStream" uid="uid://y74lxn6pmcl5" path="res://House/SFX/PowerDown.ogg" id="3_pvx5a"]
 
 [sub_resource type="Animation" id="Animation_chkts"]
 length = 0.001
@@ -102,6 +102,30 @@ tracks/7/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Night1-2/Day2:visible_ratio")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Night1-2/Day2:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_cd8sn"]
 resource_name = "SpendTime"
@@ -161,7 +185,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_kprbj"]
 resource_name = "dissolve_night1-2"
-length = 7.0
+length = 8.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -181,7 +205,7 @@ tracks/1/path = NodePath("Night1-2/347AM:visible_ratio")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(3, 4.7),
+"times": PackedFloat32Array(4, 5.7),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 1.0]
@@ -193,7 +217,7 @@ tracks/2/path = NodePath("Night1-2/347AM:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(6.1, 7),
+"times": PackedFloat32Array(6.6, 7.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -205,10 +229,34 @@ tracks/3/path = NodePath("Night1-2/PowerOff:playing")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(7),
+"times": PackedFloat32Array(8),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Night1-2/Day2:visible_ratio")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(2, 3.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Night1-2/Day2:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(6.6, 7.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_yt0pa"]
@@ -358,6 +406,24 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_s3lis")
 theme_override_font_sizes/font_size = 40
 text = "22:06 PM"
+visible_characters = 0
+visible_characters_behavior = 2
+visible_ratio = 0.0
+
+[node name="Day2" type="Label" parent="Night1-2"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -85.5
+offset_top = 176.0
+offset_right = 85.5
+offset_bottom = 258.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_s3lis")
+theme_override_font_sizes/font_size = 60
+text = "Dia 2"
+horizontal_alignment = 1
+vertical_alignment = 1
 visible_characters = 0
 visible_characters_behavior = 2
 visible_ratio = 0.0
