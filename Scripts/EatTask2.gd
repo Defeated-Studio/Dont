@@ -10,6 +10,8 @@ extends Node3D
 
 @onready var world = $".."
 
+@onready var timer_sleep_task = $"../SleepTask/TimerSleepTask"
+
 @onready var geladeira_area = $GeladeiraArea
 @onready var plate_area = $PlateArea
 @onready var forno_area = $FornoArea
@@ -214,6 +216,7 @@ func finish_quest():
 	player.canUseFlashlight = true
 	world.canOpenMobile = true
 	quest_control.finishQuest()
+	timer_sleep_task.start()
 	self.queue_free()
 	
 func _on_quest_control_quest_started():

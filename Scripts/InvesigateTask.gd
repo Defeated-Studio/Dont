@@ -42,7 +42,7 @@ func findByClass(node: Node, className : String, result : Array):
 		findByClass(child, className, result)
 	
 func _physics_process(delta):
-	if (Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")) and canSleep and IsRayCasting.canInteract:
+	if (Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")) and canSleep and IsRayCasting.canInteract and quest_control.questActive == 4:
 		if front_door.doorOpen:
 			dialogue_text.queueDialogue("não posso dormir com a porta da frente aberta")
 			dialogue_text.timeBetweenText = 3
