@@ -48,6 +48,7 @@ func change_input_flags(value):
 	canMove = value
 	canMoveCamera = value
 	canUseFlashlight = value
+	canCrouch = value
 
 func _ready():
 	flashlight_model.hide()

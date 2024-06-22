@@ -8,6 +8,8 @@ extends Node3D
 @onready var quest_control = $"../QuestControl"
 @onready var interact_text = %InteractText
 
+@onready var world = $".."
+
 @onready var geladeira_area = $GeladeiraArea
 @onready var plate_area = $PlateArea
 @onready var forno_area = $FornoArea
@@ -17,8 +19,16 @@ extends Node3D
 @onready var pizza = $Pizza
 @onready var metal_plate = $"../House/Kitchen/MetalPlate"
 
+@onready var pizza_mesa = $PizzaMesa
+@onready var first_piece = $PizzaMesa/Pizzanova/FirstPiece
+@onready var second_piece = $PizzaMesa/Pizzanova/SecondPiece
+@onready var third_piece = $PizzaMesa/Pizzanova/ThirdPiece
+@onready var fourth_piece = $PizzaMesa/Pizzanova/FourthPiece
+@onready var pizza_pieces = [first_piece, second_piece, third_piece, fourth_piece]
+
 @onready var oven_timer = $OvenTimer
 @onready var oven_sound = $OvenSound
+@onready var eating_pizza = $EatingPizza
 
 @onready var skin_walker = $SkinWalker
 @onready var skin_walker_animation_player = $SkinWalker/AnimationPlayer
@@ -43,10 +53,13 @@ var onWindow = false
 
 var readyToEat = false
 var canSitDown = false
+var canEat = false
+var canEatAgain = true
+var eatCount = 0
 var playerLastPosition = Vector3.ZERO
 
 func _ready():
-	geladeira_area.monitoring = false 
+	geladeira_area.monitoring = false
 	
 func _on_oven_timer_timeout():
 	oven_sound.play()
@@ -174,16 +187,32 @@ func _physics_process(delta):
 		player.set_rotation_degrees(Vector3(0, 180, 0))
 		player.canMove = false
 		player.canUseFlashlight = false
-		await get_tree().create_timer(3).timeout
-		SceneTransition.change_scene("", "quickTransition", 0)
-		await get_tree().create_timer(1).timeout
-		player.global_position = playerLastPosition
-		player.canMove = true
-		player.canUseFlashlight = true
+		world.canOpenMobile = false
+		pizza_mesa.show()
 		pizza.queue_free()
 		metal_plate.queue_free()
-		quest_control.finishQuest()
-		self.queue_free()
+		canEat = true
+
+	if (IsRayCasting.canInteract and is_instance_valid(IsRayCasting.collider) and IsRayCasting.collider.name == "RaycastPizza" and Input.is_action_just_pressed("LeftMouseButton") and canEat and canEatAgain):
+		canEatAgain = false
+		eating_pizza.play()
+		pizza_pieces[eatCount].queue_free()
+		eatCount += 1
+		await get_tree().create_timer(5).timeout
+		if eatCount == 4:
+			finish_quest()
+		else:
+			canEatAgain = true
+
+func finish_quest():
+	SceneTransition.change_scene("", "quickTransition", 0)
+	await get_tree().create_timer(1).timeout
+	player.global_position = playerLastPosition
+	player.canMove = true
+	player.canUseFlashlight = true
+	world.canOpenMobile = true
+	quest_control.finishQuest()
+	self.queue_free()
 	
 func _on_quest_control_quest_started():
 	if quest_control.questActive == 8:
