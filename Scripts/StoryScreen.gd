@@ -9,6 +9,7 @@ extends Node2D
 var anim_next = 0
 var flag = 1
 var timer_flag = 1
+var canReceiveInput = true
 
 func _ready():
 	animation_player.play("fade_in_first")
@@ -25,6 +26,9 @@ func _on_animation_finished(anim_name):
 	elif anim_name == "fade_out_sec":
 		animation_player.play("fade_out_screen")
 	elif anim_name == "fade_out_screen":
+		animation_player.play("first_day")
+		canReceiveInput = false
+	elif anim_name == "first_day":
 		visible = false
 	elif (anim_name == "fade_in_first" || anim_name == "fade_in_sec" || anim_name == "fade_in_third") && timer_flag == 1:
 		timer.start()
@@ -38,7 +42,7 @@ func _change_labels():
 	label_3.text = "Trilha essa, que ele teve que percorrer andando pela maior parte, chegando já durante a noite na casa"
 
 func _process(delta):
-	if Input.is_anything_pressed() && flag == 1:
+	if (Input.is_anything_pressed() && flag == 1) and canReceiveInput:
 		flag = 0
 		timer_flag = 0
 		if anim_next == 0 || anim_next == 1:
