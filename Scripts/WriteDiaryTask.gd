@@ -12,7 +12,6 @@ extends Node3D
 
 var canWrite = false
 
-
 func _process(delta):
 	if is_instance_valid(IsRayCasting.collider) and IsRayCasting.canInteract and (Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")) and canWrite:
 		SceneTransition.change_scene("", "quickTransition", 0)
@@ -50,12 +49,3 @@ func _on_start_quest_body_entered(body):
 func _on_start_quest_body_exited(body):
 	canWrite = false
 	interact_text.hide()
-
-
-func _on_timer_write_diary_timeout():
-	if quest_control.questActive == 9:
-		start_quest_col.set_deferred("disabled", false)
-		dialogue_text.timeBetweenText = 3
-		dialogue_text.queueDialogue("não tô conseguindo dormir, aquilo que eu vi ta me assombrando")
-		dialogue_text.queueDialogue("vou tentar arrumar meus pensamentos escrevendo eles")
-		dialogue_text.showDialogue()

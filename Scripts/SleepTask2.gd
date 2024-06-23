@@ -10,13 +10,20 @@ extends Node3D
 @onready var bedroom_curtain = $"../House/Bedroom1/Curtain"
 @onready var bedroom_door = $"../House/Bedroom1/Bedroom1Door"
 @onready var sleep_area_col = $SleepArea/CollisionShape3D
+@onready var start_quest_col = $"../WriteDiaryTask/StartQuest/CollisionShape3D"
 
 @onready var player = %Player
+@onready var world = $".."
 
-@onready var timer_write_diary = $"../WriteDiaryTask/TimerWriteDiary"
+@onready var states = $"../../../States"
+
+@onready var timer_write_diary = $TimerWriteDiary
 
 var canSleep = false
+var canGetUp = false
 var questFlag = 0
+var prevPosition
+var prevRotation
 
 
 func _process(delta):
@@ -32,14 +39,44 @@ func _process(delta):
 			if questFlag == 0:
 				questFlag += 1
 				SceneTransition.change_scene("", "quickTransition", 0)
+				await get_tree().create_timer(1).timeout
 				canSleep = false
-				player.set_rotation_degrees(Vector3(0, 120, 0))
 				sleep_area_col.set_deferred("disabled", true)
+				teleport_player()
+				on_bed_dialogue()
+				player.change_input_flags(false)
+				world.canOpenMobile = false
 				timer_write_diary.start()
 			else:
 				quest_control.finishQuest()
+				states.saveStates()
+				states.savePapersTaken()
+				SceneTransition.change_scene("res://Scenes/Night3.tscn", "dissolve_night2-3")
 				self.queue_free()
+				
+	if (Input.is_action_just_pressed("interact") and canGetUp):
+		canGetUp = false
+		interact_text.hide()
+		SceneTransition.change_scene("", "quickTransition", 0)
+		await get_tree().create_timer(1).timeout
+		player.global_position = prevPosition
+		player.set_rotation_degrees(prevRotation)
+		player.change_input_flags(true)
+		world.canOpenMobile = true
 
+func teleport_player():
+	prevPosition = player.global_position
+	prevRotation = player.get_rotation_degrees()
+	player.global_position = Vector3(6.383, 4.8, -0.281)
+	player.set_rotation_degrees(Vector3(90, 90, 0))
+	
+func on_bed_dialogue():
+	await get_tree().create_timer(1).timeout
+	dialogue_text.timeBetweenText = 3
+	dialogue_text.queueDialogue("não tô conseguindo dormir, aquilo que eu vi ta me assombrando")
+	dialogue_text.queueDialogue("não pode ser real, eu to imaginando coisa")
+	dialogue_text.queueDialogue("vou tentar arrumar meus pensamentos escrevendo eles")
+	dialogue_text.showDialogue()
 
 func _on_sleep_area_body_entered(body):
 	if quest_control.questActive == 9:
@@ -61,3 +98,10 @@ func _on_timer_sleep_task_timeout():
 	dialogue_text.queueDialogue("acho que tô vendo coisas")
 	dialogue_text.queueDialogue("melhor eu tentar dormir pra me acalmar")
 	dialogue_text.showDialogue()
+	
+func _on_timer_write_diary_timeout():
+	if quest_control.questActive == 9:
+		start_quest_col.set_deferred("disabled", false)
+		canGetUp = true
+		interact_text.show()
+		interact_text.text = "[E] Levantar"

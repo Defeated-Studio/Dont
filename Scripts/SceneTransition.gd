@@ -22,3 +22,9 @@ func change_scene(target_scene, anim, scene_change=1):
 		animation.play_backwards("quickTransition")
 	elif anim == "SpendTime":
 		animation.play("SpendTime")
+	elif anim == "dissolve_night2-3":
+		animation.play("dissolve_night2-3")
+		await animation.animation_finished
+		if scene_change:
+			get_tree().change_scene_to_file(target_scene)
+		animation.play_backwards("dissolve")
