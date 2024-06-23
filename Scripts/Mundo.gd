@@ -23,6 +23,7 @@ func _ready():
 	
 func _notification(what):
 	if what == NOTIFICATION_APPLICATION_FOCUS_OUT:
+		pause_menu.inputPrev = Input.mouse_mode
 		pause_menu.pause()
 				
 func _process(delta):

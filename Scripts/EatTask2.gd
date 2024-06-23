@@ -51,6 +51,7 @@ var canPutPizzaOnOven = false
 var PizzaReady = false
 var canPickUpPizza = false
 
+var playerHeadLastPosition
 var onWindow = false
 
 var readyToEat = false
@@ -61,15 +62,19 @@ var eatCount = 0
 var playerLastPosition = Vector3.ZERO
 
 func _ready():
-	geladeira_area.monitoring = false
+	geladeira_area.monitoring = true # false
 	
 func _on_oven_timer_timeout():
 	oven_sound.play()
 	oven_timer.stop()
+
 	PizzaReady = true
+	
 	player.canMove = true
 	player.canMoveCamera = true
 	player.canUseFlashlight = true
+	player_head.position.z = playerHeadLastPosition
+	
 	dialogue_text.queueDialogue("que PORRA foi essa??")
 	dialogue_text.queueDialogue("acho que to vendo coisa")
 	dialogue_text.queueDialogue("ficou pronto...")
@@ -127,6 +132,7 @@ func _physics_process(delta):
 		
 		await get_tree().create_timer(1).timeout
 		teleport_player()
+		playerHeadLastPosition = player_head.position.z
 		
 		await get_tree().create_timer(2).timeout
 		dialogue_text.queueDialogue("cara, o que eu faço?")
@@ -140,7 +146,6 @@ func _physics_process(delta):
 		oven_timer.start()
 		
 	if (onWindow):
-
 		if !skin_walker_animation_player.is_playing():	
 			skin_walker_animation_player.play("idle")
 		if !skin_walker.visible:
