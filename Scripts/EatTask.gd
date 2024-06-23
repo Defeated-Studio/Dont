@@ -102,6 +102,7 @@ func _process(delta):
 		if eatCount == 2:
 			if !BedroomDoor.doorOpen:
 				BedroomDoor.animation.play("OpenDoorAni")
+				BedroomDoor.setdoorOpen(!BedroomDoor.doorOpen)
 		if eatCount == 1:
 			canShowEnemy = true
 			await get_tree().create_timer(0.5).timeout
@@ -109,7 +110,6 @@ func _process(delta):
 			dialogue_text.queueDialogue("eu não posso simplesmente sair andando, to muito longe de casa")
 			dialogue_text.showDialogue()
 			await get_tree().create_timer(0.7).timeout
-			BedroomDoor.setdoorOpen(!BedroomDoor.doorOpen)
 		await get_tree().create_timer(3).timeout
 		if eatCount == 0:
 			sitDown = false
