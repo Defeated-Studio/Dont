@@ -10,6 +10,7 @@ var ground = "Grass"
 var canMove = true
 var canMoveCamera = true
 var canUseFlashlight = true
+var canSprint = true
 
 var speed
 var gravity = 9.8
@@ -87,7 +88,7 @@ func _physics_process(delta):
 		else:
 			speed = WALK_SPEED
 	
-		if Input.is_action_pressed("sprint") and !crouched:
+		if Input.is_action_pressed("sprint") and !crouched and canSprint:
 			speed = SPRINT_SPEED
 		
 	if Input.is_action_pressed("crouch") and canCrouch:
