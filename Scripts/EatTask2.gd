@@ -62,7 +62,7 @@ var eatCount = 0
 var playerLastPosition = Vector3.ZERO
 
 func _ready():
-	geladeira_area.monitoring = false
+	geladeira_area.monitoring = true
 	
 func _on_oven_timer_timeout():
 	oven_sound.play()
