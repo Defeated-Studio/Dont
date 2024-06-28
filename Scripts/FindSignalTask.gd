@@ -1,8 +1,11 @@
 extends Node3D
 
+@onready var player = %Player
+@onready var player_head = %Player/Head
+@onready var dialogue_text = %Player/DialogueText
+
 @onready var quest_control = $"../QuestControl"
 
-@onready var dialogue_text = %Player/DialogueText
 @onready var messages_app = $"../../../MessagesApp"
 @onready var animation_player = $Notification/AnimationPlayer
 
@@ -18,11 +21,27 @@ extends Node3D
 @onready var space_19 = $"../../../MessagesApp/Mom/ScrollContainer/VBoxContainer/Space19"
 @onready var eleventh_message_3 = $"../../../MessagesApp/Mom/ScrollContainer/VBoxContainer/EleventhMessage3"
 
+@onready var skin_walker = %SkinWalker
 
 var canSendMom = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if !player.onPath:
+		skin_walker.following = true
+
+		if !skin_walker.visible:
+			skin_walker.global_position = player.global_position
+			if player.rotation.y >= 0:
+				skin_walker.global_position.x += 10	
+			else:
+				skin_walker.global_position.x -= 10	
+			
+			skin_walker.visible = true
+	else:
+		skin_walker.following = false
+		skin_walker.visible = false
+		
 	if canSendMom and messages_app.triggerMomTask:
 		canSendMom = false
 		await get_tree().create_timer(1).timeout
@@ -62,4 +81,5 @@ func _on_trigger_task_body_entered(body):
 		canSendMom = true
 		get_node("TriggerTask").queue_free()
 		
-	
+func _on_navigation_agent_3d_target_reached():
+	print("morreu")
