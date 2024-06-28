@@ -1,10 +1,10 @@
-[gd_scene load_steps=22 format=3 uid="uid://ptr0cc31jxbp"]
+[gd_scene load_steps=23 format=3 uid="uid://ptr0cc31jxbp"]
 
 [ext_resource type="Script" path="res://Scenes/Mobile/messages.gd" id="1_3ha1o"]
-[ext_resource type="Texture2D" uid="uid://bygu7qarctdyb" path="res://Scenes/Mobile/messages.png" id="1_6a3vw"]
-[ext_resource type="Texture2D" uid="uid://d4lj7as3tb7dh" path="res://Scenes/Mobile/cara.png" id="3_ytnvq"]
-[ext_resource type="Texture2D" uid="uid://b6m31jco0r6uo" path="res://Scenes/Mobile/eu.png" id="4_h2hf2"]
-[ext_resource type="Texture2D" uid="uid://c48vw5eu1s405" path="res://Scenes/Mobile/mobile.png" id="5_18nkp"]
+[ext_resource type="Texture2D" uid="uid://c7ottxhrdctq2" path="res://Scenes/Mobile/messages.png" id="1_6a3vw"]
+[ext_resource type="Texture2D" uid="uid://b0cwfegd4sfcm" path="res://Scenes/Mobile/cara.png" id="3_ytnvq"]
+[ext_resource type="Texture2D" uid="uid://78bopv1ed2vo" path="res://Scenes/Mobile/eu.png" id="4_h2hf2"]
+[ext_resource type="Texture2D" uid="uid://b0nkaopnfng33" path="res://Scenes/Mobile/mobile.png" id="5_18nkp"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_tyeyn"]
 font_size = 35
@@ -34,6 +34,13 @@ font_size = 30
 [sub_resource type="LabelSettings" id="LabelSettings_d8lxg"]
 font_size = 30
 
+[sub_resource type="LabelSettings" id="LabelSettings_ly72b"]
+font_size = 12
+font_color = Color(0.729412, 0.054902, 0.054902, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_71unl"]
+font_size = 20
+
 [sub_resource type="LabelSettings" id="LabelSettings_btkpp"]
 font_size = 35
 font_color = Color(1, 1, 1, 0.741176)
@@ -46,10 +53,6 @@ font_size = 30
 
 [sub_resource type="LabelSettings" id="LabelSettings_fh3m0"]
 font_size = 30
-
-[sub_resource type="LabelSettings" id="LabelSettings_ly72b"]
-font_size = 12
-font_color = Color(0.729412, 0.054902, 0.054902, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_muc7g"]
 font_size = 20
@@ -146,7 +149,6 @@ text = "<"
 flat = true
 
 [node name="Mom" type="TextureRect" parent="."]
-visible = false
 layout_mode = 0
 offset_left = 1051.0
 offset_top = 350.0
@@ -181,7 +183,7 @@ layout_mode = 0
 offset_left = 3.0
 offset_top = 108.0
 offset_right = 440.0
-offset_bottom = 541.0
+offset_bottom = 538.0
 follow_focus = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Mom/ScrollContainer"]
@@ -464,6 +466,111 @@ texture = ExtResource("3_ytnvq")
 expand_mode = 1
 stretch_mode = 3
 
+[node name="FirstDate2" type="Label" parent="Mom/ScrollContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "Colocar data certa"
+label_settings = SubResource("LabelSettings_ekpyr")
+horizontal_alignment = 1
+
+[node name="Space15" type="Label" parent="Mom/ScrollContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "⠀"
+label_settings = SubResource("LabelSettings_d8lxg")
+
+[node name="NinthMessage2" type="Label" parent="Mom/ScrollContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 8
+text = "mãe, eu preciso de ajuda vem me buscar "
+
+[node name="TextureRect" type="TextureRect" parent="Mom/ScrollContainer/VBoxContainer/NinthMessage2"]
+visible = false
+show_behind_parent = true
+layout_mode = 0
+offset_left = -9.235
+offset_top = -17.25
+offset_right = 227.765
+offset_bottom = 119.75
+scale = Vector2(1.385, 0.46)
+texture = ExtResource("4_h2hf2")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="noSignal" type="Label" parent="Mom/ScrollContainer/VBoxContainer/NinthMessage2"]
+visible = false
+offset_left = -0.999907
+offset_top = 50.2
+offset_right = 151.0
+offset_bottom = 67.2
+size_flags_horizontal = 8
+text = "Não enviado⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
+label_settings = SubResource("LabelSettings_ly72b")
+
+[node name="Space16" type="Label" parent="Mom/ScrollContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "⠀"
+label_settings = SubResource("LabelSettings_d8lxg")
+
+[node name="Space18" type="Label" parent="Mom/ScrollContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "⠀"
+label_settings = SubResource("LabelSettings_d8lxg")
+
+[node name="SixteenthMessage2" type="Label" parent="Mom/ScrollContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 0
+text = "⠀ Filho? o que houve? Estou indo
+    mas a viagem é longa"
+
+[node name="TextureRect" type="TextureRect" parent="Mom/ScrollContainer/VBoxContainer/SixteenthMessage2"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 6.7888
+offset_top = -21.02
+offset_right = 244.789
+offset_bottom = 118.98
+scale = Vector2(1.125, 0.675)
+texture = ExtResource("3_ytnvq")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="Space19" type="Label" parent="Mom/ScrollContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "⠀"
+label_settings = SubResource("LabelSettings_d8lxg")
+
+[node name="EleventhMessage3" type="Label" parent="Mom/ScrollContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 0
+text = "    Devo demorar uns dias
+
+"
+
+[node name="TextureRect" type="TextureRect" parent="Mom/ScrollContainer/VBoxContainer/EleventhMessage3"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 6.78882
+offset_top = -17.8601
+offset_right = 244.789
+offset_bottom = 122.14
+scale = Vector2(0.86, 0.43)
+texture = ExtResource("3_ytnvq")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="Space20" type="Label" parent="Mom/ScrollContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "⠀"
+label_settings = SubResource("LabelSettings_71unl")
+
 [node name="BackButtonMom" type="Button" parent="Mom"]
 layout_mode = 0
 offset_left = 9.23077
@@ -510,7 +617,7 @@ layout_mode = 0
 offset_left = 3.0
 offset_top = 108.0
 offset_right = 440.0
-offset_bottom = 542.0
+offset_bottom = 541.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Bob/ScrollContainer"]
 layout_mode = 2

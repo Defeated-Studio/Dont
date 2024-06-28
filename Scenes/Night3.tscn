@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bt3ggc3m851ab"]
+[gd_scene load_steps=22 format=3 uid="uid://bt3ggc3m851ab"]
 
 [ext_resource type="PackedScene" uid="uid://bonk8egsbphsi" path="res://Scenes/World.tscn" id="1_n8xdb"]
 [ext_resource type="Script" path="res://Scripts/Night3.gd" id="2_7xnte"]
@@ -8,8 +8,10 @@
 [ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/relax.gd" id="5_cid0g"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/project_on_geometry.gd" id="6_t2c6f"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/project_on_terrain3d.gd" id="7_jwh3j"]
+[ext_resource type="Script" path="res://Scripts/FindSignalTask.gd" id="9_dqx70"]
+[ext_resource type="PackedScene" uid="uid://dsbkf1co3qjwj" path="res://Scenes/Paper/Paper.tscn" id="9_j1vim"]
 
-[sub_resource type="Resource" id="Resource_s4rh4"]
+[sub_resource type="Resource" id="Resource_y3sd0"]
 script = ExtResource("3_3s3u6")
 amount = 550
 enabled = true
@@ -18,7 +20,7 @@ custom_seed = 9
 restrict_height = true
 reference_frame = 1
 
-[sub_resource type="Resource" id="Resource_3eyc2"]
+[sub_resource type="Resource" id="Resource_jf3jj"]
 script = ExtResource("4_ybwdb")
 position = Vector3(0.15, 0.15, 0.15)
 rotation = Vector3(2, 360, 2)
@@ -29,7 +31,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_3uvwg"]
+[sub_resource type="Resource" id="Resource_miuvk"]
 script = ExtResource("5_cid0g")
 iterations = 3
 offset_step = 0.2
@@ -41,7 +43,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_3c6b3"]
+[sub_resource type="Resource" id="Resource_ipb6t"]
 script = ExtResource("6_t2c6f")
 ray_direction = Vector3(0, -1, 0)
 ray_length = 5.0
@@ -57,7 +59,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_68w2y"]
+[sub_resource type="Resource" id="Resource_thv71"]
 script = ExtResource("7_jwh3j")
 terrain_node = NodePath("../Terrain3D")
 align_with_collision_normal = false
@@ -67,14 +69,58 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_tl8x0"]
+[sub_resource type="Resource" id="Resource_jbo1g"]
 script = ExtResource("2_a1tev")
-stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_s4rh4"), SubResource("Resource_3eyc2"), SubResource("Resource_3uvwg"), SubResource("Resource_3c6b3"), SubResource("Resource_68w2y")])
+stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_y3sd0"), SubResource("Resource_jf3jj"), SubResource("Resource_miuvk"), SubResource("Resource_ipb6t"), SubResource("Resource_thv71")])
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fp8ke"]
+size = Vector3(10.9822, 2.40393, 10.961)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7ieb0"]
+size = Vector3(1.52649, 0.331787, 1.11279)
+
+[sub_resource type="Animation" id="Animation_wyehg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(750.41, -110)]
+}
+
+[sub_resource type="Animation" id="Animation_ejwvh"]
+resource_name = "newNotification"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 2, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(880, -110), Vector2(880, 12.5), Vector2(880, 12.5), Vector2(880, -110)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q412a"]
+_data = {
+"RESET": SubResource("Animation_wyehg"),
+"newNotification": SubResource("Animation_ejwvh")
+}
 
 [node name="Night3" instance=ExtResource("1_n8xdb")]
 script = ExtResource("2_7xnte")
 
 [node name="Player" parent="SubViewport/World" index="1"]
+unique_name_in_owner = true
 transform = Transform3D(0.999638, 0, -0.0268923, 0, 1, 0, 0.0268923, 0, 0.999638, -0.463397, 3.92511, 4.1547)
 
 [node name="InteractText" type="Control" parent="SubViewport/World" index="4"]
@@ -100,4 +146,74 @@ horizontal_alignment = 1
 
 [node name="Nature" parent="SubViewport/World" index="7"]
 global_seed = 5
-modifier_stack = SubResource("Resource_tl8x0")
+modifier_stack = SubResource("Resource_jbo1g")
+
+[node name="FindSignalTask" type="Node3D" parent="SubViewport/World" index="8"]
+script = ExtResource("9_dqx70")
+
+[node name="SignalArea" type="Area3D" parent="SubViewport/World/FindSignalTask" index="0"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewport/World/FindSignalTask/SignalArea" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.0488, 7.79869, 34.9062)
+shape = SubResource("BoxShape3D_fp8ke")
+
+[node name="TriggerTask" type="Area3D" parent="SubViewport/World/FindSignalTask" index="1"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewport/World/FindSignalTask/TriggerTask" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.27051, 4.09634, -1.59279)
+shape = SubResource("BoxShape3D_7ieb0")
+
+[node name="Notification" type="Control" parent="SubViewport/World/FindSignalTask" index="2"]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -615.59
+offset_top = -110.0
+offset_right = -148.588
+offset_bottom = -5.0
+grow_horizontal = 0
+
+[node name="ColorRect" type="ColorRect" parent="SubViewport/World/FindSignalTask/Notification" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.788235, 0.788235, 0.788235, 1)
+
+[node name="Label" type="Label" parent="SubViewport/World/FindSignalTask/Notification" index="1"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Nova mensagem recebida"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SubViewport/World/FindSignalTask/Notification" index="2"]
+libraries = {
+"": SubResource("AnimationLibrary_q412a")
+}
+
+[node name="Paper3" parent="." index="6" instance=ExtResource("9_j1vim")]
+transform = Transform3D(6.55671e-10, 0, 0.005, 0, 0.005, 0, -0.005, 0, 6.55671e-10, 1.59032, 3.90353, 2.51419)
+id = 3
+text = "Essas criaturas nas florestas, eu juro que são reais, eu não estou ficando louca. Elas são como carne viva, quase impossíveis de enxergar.
+
+Quando mudam assumem a forma de pessoas ou animais, tentando nos enganar.
+
+É muito importante que você reconheça e se mantenha longe.
+Coisas estranhas acontecem aqui, não sei se o gerador é velho ou o que, mas ele vive desligando, e eu juro que to ouvindo coisas, vozes, da minha mãe que morreu faz tempo.
+"
+
+[connection signal="body_entered" from="SubViewport/World/FindSignalTask/SignalArea" to="SubViewport/World/FindSignalTask" method="_on_signal_area_body_entered"]
+[connection signal="body_entered" from="SubViewport/World/FindSignalTask/TriggerTask" to="SubViewport/World/FindSignalTask" method="_on_trigger_task_body_entered"]

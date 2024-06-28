@@ -7,3 +7,4 @@ func _process(delta):
 		player.ground = "Wood"
 	elif collider != null and collider.name == "Terrain3D":
 		player.ground = "Grass"
+		print(collider.get_storage().get_texture_id(player.global_position)[0])

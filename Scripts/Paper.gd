@@ -61,4 +61,9 @@ func _on_close_button_pressed():
 		player_dialogue_text.queueDialogue("quem é essa mulher? Por que ela ta me ajudando?")
 		player_dialogue_text.timeBetweenText = 3
 		player_dialogue_text.showDialogue()
+	if id == 3:
+		player_dialogue_text.queueDialogue("eu não to ficando louco")
+		player_dialogue_text.queueDialogue("deve ter sido isso que eu vi na janela ontem")
+		player_dialogue_text.timeBetweenText = 3
+		player_dialogue_text.showDialogue()
 

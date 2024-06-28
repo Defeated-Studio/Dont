@@ -19,12 +19,19 @@ extends Control
 @onready var no_signal_2 = $"Bob/ScrollContainer/VBoxContainer/noSignal2"
 @onready var space_27 = $"Bob/ScrollContainer/VBoxContainer/Space27"
 
-@onready var scrollbar = $"Bob/ScrollContainer".get_v_scroll_bar()
-@onready var scrollbarValue = $"Bob/ScrollContainer"
-var max_scroll_length = 0 
+@onready var bob_scrollbar = $"Bob/ScrollContainer".get_v_scroll_bar()
+@onready var bob_scrollbarValue = $"Bob/ScrollContainer"
+
+@onready var mom_scrollbar = $Mom/ScrollContainer.get_v_scroll_bar()
+@onready var mom_scrollbarValue = $Mom/ScrollContainer
+
+var max_scroll_length_bob = 0 
+var max_scroll_length_mom = 0
+
 var finishedTexting = false
 
 var inBobWindow = false
+var triggerMomTask = false
 var backButtonSignal = false
 var previous_day
 
@@ -52,9 +59,12 @@ func _ready():
 	first_date_mom.text = str(current_day) + "/" + str(current_month) + " " + "16:21"
 
 func _process(delta):
-	if max_scroll_length != scrollbar.max_value: 
-		max_scroll_length = scrollbar.max_value
-		scrollbarValue.scroll_vertical = max_scroll_length
+	if max_scroll_length_bob != bob_scrollbar.max_value: 
+		max_scroll_length_bob = bob_scrollbar.max_value
+		bob_scrollbarValue.scroll_vertical = max_scroll_length_bob
+	if max_scroll_length_mom != mom_scrollbar.max_value: 
+		max_scroll_length_mom = mom_scrollbar.max_value
+		mom_scrollbarValue.scroll_vertical = max_scroll_length_mom
 
 func sendBobMessages():
 	await get_tree().create_timer(1.2).timeout
@@ -82,6 +92,7 @@ func showMobile():
 func _on_mom_button_pressed():
 	mom.show()
 	messages.hide()
+	triggerMomTask = true
 
 
 func _on_bob_button_pressed():
