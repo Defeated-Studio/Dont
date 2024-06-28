@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bt3ggc3m851ab"]
+[gd_scene load_steps=24 format=3 uid="uid://bt3ggc3m851ab"]
 
 [ext_resource type="PackedScene" uid="uid://bonk8egsbphsi" path="res://Scenes/World.tscn" id="1_n8xdb"]
 [ext_resource type="Script" path="res://Scripts/Night3.gd" id="2_7xnte"]
@@ -11,8 +11,9 @@
 [ext_resource type="Script" path="res://Scripts/FindSignalTask.gd" id="9_dqx70"]
 [ext_resource type="PackedScene" uid="uid://dsbkf1co3qjwj" path="res://Scenes/Paper/Paper.tscn" id="9_j1vim"]
 [ext_resource type="PackedScene" uid="uid://ki8aq1tvk6o3" path="res://Scenes/Enemy.tscn" id="11_cd6cw"]
+[ext_resource type="PackedScene" uid="uid://dow18v8t80381" path="res://Scenes/Screens/Death.tscn" id="11_k54ja"]
 
-[sub_resource type="Resource" id="Resource_02uiv"]
+[sub_resource type="Resource" id="Resource_xt3cy"]
 script = ExtResource("3_3s3u6")
 amount = 550
 enabled = true
@@ -21,7 +22,7 @@ custom_seed = 9
 restrict_height = true
 reference_frame = 1
 
-[sub_resource type="Resource" id="Resource_4eub1"]
+[sub_resource type="Resource" id="Resource_fv4jf"]
 script = ExtResource("4_ybwdb")
 position = Vector3(0.15, 0.15, 0.15)
 rotation = Vector3(2, 360, 2)
@@ -32,7 +33,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_7yfu8"]
+[sub_resource type="Resource" id="Resource_voi8j"]
 script = ExtResource("5_cid0g")
 iterations = 3
 offset_step = 0.2
@@ -44,7 +45,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_fpfgx"]
+[sub_resource type="Resource" id="Resource_bnroc"]
 script = ExtResource("6_t2c6f")
 ray_direction = Vector3(0, -1, 0)
 ray_length = 5.0
@@ -60,7 +61,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_4clcb"]
+[sub_resource type="Resource" id="Resource_wc16s"]
 script = ExtResource("7_jwh3j")
 terrain_node = NodePath("../Terrain3D")
 align_with_collision_normal = false
@@ -70,9 +71,9 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_s7o1n"]
+[sub_resource type="Resource" id="Resource_gxnte"]
 script = ExtResource("2_a1tev")
-stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_02uiv"), SubResource("Resource_4eub1"), SubResource("Resource_7yfu8"), SubResource("Resource_fpfgx"), SubResource("Resource_4clcb")])
+stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_xt3cy"), SubResource("Resource_fv4jf"), SubResource("Resource_voi8j"), SubResource("Resource_bnroc"), SubResource("Resource_wc16s")])
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fp8ke"]
 size = Vector3(10.9822, 2.40393, 10.961)
@@ -150,7 +151,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
 
 [node name="Nature" parent="SubViewport/World" index="7"]
 global_seed = 5
-modifier_stack = SubResource("Resource_s7o1n")
+modifier_stack = SubResource("Resource_gxnte")
 
 [node name="FindSignalTask" type="Node3D" parent="SubViewport/World" index="8"]
 script = ExtResource("9_dqx70")
@@ -178,7 +179,7 @@ anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -615.59
 offset_top = -110.0
-offset_right = -148.588
+offset_right = -148.59
 offset_bottom = -5.0
 grow_horizontal = 0
 
@@ -219,9 +220,13 @@ Quando mudam assumem a forma de pessoas ou animais, tentando nos enganar.
 Coisas estranhas acontecem aqui, não sei se o gerador é velho ou o que, mas ele vive desligando, e eu juro que to ouvindo coisas, vozes, da minha mãe que morreu faz tempo.
 "
 
-[node name="SkinWalker" parent="." index="7" instance=ExtResource("11_cd6cw")]
+[node name="Death" parent="." index="7" instance=ExtResource("11_k54ja")]
+visible = false
+layout_mode = 2
+
+[node name="SkinWalker" parent="." index="8" instance=ExtResource("11_cd6cw")]
 unique_name_in_owner = true
-transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 7.3702, 0, 15.2336)
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 7.37, 0, 15.234)
 
 [connection signal="body_entered" from="SubViewport/World/FindSignalTask/SignalArea" to="SubViewport/World/FindSignalTask" method="_on_signal_area_body_entered"]
 [connection signal="body_entered" from="SubViewport/World/FindSignalTask/TriggerTask" to="SubViewport/World/FindSignalTask" method="_on_trigger_task_body_entered"]

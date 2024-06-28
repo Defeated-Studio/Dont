@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://dow18v8t80381"]
+
+[ext_resource type="Script" path="res://Scripts/Death.gd" id="1_5yfqo"]
+[ext_resource type="Shader" path="res://Shaders/Death.gdshader" id="1_e3o3w"]
+[ext_resource type="Texture2D" uid="uid://dkj0ykoxjfxxf" path="res://Texture/rgba-noise-medium.png" id="2_5cnnf"]
+[ext_resource type="AudioStream" uid="uid://sd2ab7tcp1pg" path="res://Sounds/Jumpscare.mp3" id="4_f4dgf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_21pls"]
+shader = ExtResource("1_e3o3w")
+shader_parameter/curvature = 2.0
+shader_parameter/skip = 1.0
+shader_parameter/image_flicker = 1.0
+shader_parameter/vignette_flicker_speed = 1.0
+shader_parameter/vignette_strength = 0.2
+shader_parameter/small_scanlines_speed = 1.0
+shader_parameter/small_scanlines_proximity = 1.0
+shader_parameter/small_scanlines_opacity = 1.0
+shader_parameter/scanlines_opacity = 1.0
+shader_parameter/scanlines_speed = 1.0
+shader_parameter/scanline_thickness = 0.5
+shader_parameter/scanlines_spacing = 1.0
+shader_parameter/noise_texture = ExtResource("2_5cnnf")
+
+[node name="Death" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5yfqo")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+visible = false
+material = SubResource("ShaderMaterial_21pls")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_f4dgf")
+volume_db = 2.0

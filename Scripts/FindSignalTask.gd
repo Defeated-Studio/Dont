@@ -22,6 +22,7 @@ extends Node3D
 @onready var eleventh_message_3 = $"../../../MessagesApp/Mom/ScrollContainer/VBoxContainer/EleventhMessage3"
 
 @onready var skin_walker = %SkinWalker
+@onready var death = $"../../../Death"
 
 var canSendMom = false
 
@@ -33,9 +34,9 @@ func _process(delta):
 		if !skin_walker.visible:
 			skin_walker.global_position = player.global_position
 			if player.rotation.y >= 0:
-				skin_walker.global_position.x += 10	
+				skin_walker.global_position.x += 7	
 			else:
-				skin_walker.global_position.x -= 10	
+				skin_walker.global_position.x -= 7	
 			
 			skin_walker.visible = true
 	else:
@@ -69,7 +70,7 @@ func _on_signal_area_body_entered(body):
 	await get_tree().create_timer(1).timeout
 	space_19.show()
 	eleventh_message_3.show()
-	
+
 
 func _on_trigger_task_body_entered(body):
 	if quest_control.questActive == 10:
@@ -80,6 +81,8 @@ func _on_trigger_task_body_entered(body):
 		dialogue_text.showDialogue()
 		canSendMom = true
 		get_node("TriggerTask").queue_free()
-		
+
+
 func _on_navigation_agent_3d_target_reached():
-	print("morreu")
+	player.look_at(skin_walker.global_position)
+	death.appear()

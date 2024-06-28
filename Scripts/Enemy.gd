@@ -6,7 +6,7 @@ extends CharacterBody3D
 
 var following = false
 
-var speed = 3
+var speed = 2.5
 var accel = 10
 
 # Called when the node enters the scene tree for the first time.
@@ -27,6 +27,7 @@ func _physics_process(delta):
 		
 		velocity = velocity.lerp(direction * speed, accel*delta)
 		move_and_slide()
+		self.global_position.y -= 0.1
 	else:
 		animation_player.play("idle")
 # Called every frame. 'delta' is the elapsed time since the previous frame.

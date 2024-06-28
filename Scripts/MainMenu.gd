@@ -5,7 +5,7 @@ const LOADING_SCREEN = preload("res://Scenes/Screens/LoadingScreen.tscn")
 @onready var margin_container = $MarginContainer
 
 func _ready():
-	pass
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _process(delta):
 	pass
