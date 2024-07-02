@@ -25,7 +25,7 @@ const BOB_AMP = 0.02
 var t_bob = 0.0
 
 #fov variables
-const BASE_FOV = 60.0
+var BASE_FOV = 60.0
 const FOV_CHANGE = 1.5
 
 #crouch variables

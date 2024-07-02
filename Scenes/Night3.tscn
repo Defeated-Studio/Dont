@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bt3ggc3m851ab"]
+[gd_scene load_steps=25 format=3 uid="uid://bt3ggc3m851ab"]
 
 [ext_resource type="PackedScene" uid="uid://bonk8egsbphsi" path="res://Scenes/World.tscn" id="1_n8xdb"]
 [ext_resource type="Script" path="res://Scripts/Night3.gd" id="2_7xnte"]
@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://ki8aq1tvk6o3" path="res://Scenes/Enemy.tscn" id="11_cd6cw"]
 [ext_resource type="PackedScene" uid="uid://dow18v8t80381" path="res://Scenes/Screens/Death.tscn" id="11_k54ja"]
 
-[sub_resource type="Resource" id="Resource_xt3cy"]
+[sub_resource type="Resource" id="Resource_1pilq"]
 script = ExtResource("3_3s3u6")
 amount = 550
 enabled = true
@@ -22,7 +22,7 @@ custom_seed = 9
 restrict_height = true
 reference_frame = 1
 
-[sub_resource type="Resource" id="Resource_fv4jf"]
+[sub_resource type="Resource" id="Resource_og58s"]
 script = ExtResource("4_ybwdb")
 position = Vector3(0.15, 0.15, 0.15)
 rotation = Vector3(2, 360, 2)
@@ -33,7 +33,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_voi8j"]
+[sub_resource type="Resource" id="Resource_h7gw6"]
 script = ExtResource("5_cid0g")
 iterations = 3
 offset_step = 0.2
@@ -45,7 +45,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_bnroc"]
+[sub_resource type="Resource" id="Resource_j14t2"]
 script = ExtResource("6_t2c6f")
 ray_direction = Vector3(0, -1, 0)
 ray_length = 5.0
@@ -61,7 +61,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_wc16s"]
+[sub_resource type="Resource" id="Resource_3biyd"]
 script = ExtResource("7_jwh3j")
 terrain_node = NodePath("../Terrain3D")
 align_with_collision_normal = false
@@ -71,9 +71,12 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_gxnte"]
+[sub_resource type="Resource" id="Resource_bry6x"]
 script = ExtResource("2_a1tev")
-stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_xt3cy"), SubResource("Resource_fv4jf"), SubResource("Resource_voi8j"), SubResource("Resource_bnroc"), SubResource("Resource_wc16s")])
+stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_1pilq"), SubResource("Resource_og58s"), SubResource("Resource_h7gw6"), SubResource("Resource_j14t2"), SubResource("Resource_3biyd")])
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x4hrb"]
+size = Vector3(1.45166, 1.01172, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fp8ke"]
 size = Vector3(10.9822, 2.40393, 10.961)
@@ -151,12 +154,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
 
 [node name="Nature" parent="SubViewport/World" index="7"]
 global_seed = 5
-modifier_stack = SubResource("Resource_gxnte")
+modifier_stack = SubResource("Resource_bry6x")
 
 [node name="FindSignalTask" type="Node3D" parent="SubViewport/World" index="8"]
 script = ExtResource("9_dqx70")
 
-[node name="SignalArea" type="Area3D" parent="SubViewport/World/FindSignalTask" index="0"]
+[node name="FinishTaskArea" type="Area3D" parent="SubViewport/World/FindSignalTask" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.86693, 1.00736, 5.69187)
+collision_layer = 2
+collision_mask = 2
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewport/World/FindSignalTask/FinishTaskArea" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.032959, -0.00585938, 0)
+shape = SubResource("BoxShape3D_x4hrb")
+
+[node name="SignalArea" type="Area3D" parent="SubViewport/World/FindSignalTask" index="1"]
 collision_layer = 2
 collision_mask = 2
 
@@ -164,7 +177,7 @@ collision_mask = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.0488, 7.79869, 34.9062)
 shape = SubResource("BoxShape3D_fp8ke")
 
-[node name="TriggerTask" type="Area3D" parent="SubViewport/World/FindSignalTask" index="1"]
+[node name="TriggerTask" type="Area3D" parent="SubViewport/World/FindSignalTask" index="2"]
 collision_layer = 2
 collision_mask = 2
 
@@ -172,7 +185,7 @@ collision_mask = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.27051, 4.09634, -1.59279)
 shape = SubResource("BoxShape3D_7ieb0")
 
-[node name="Notification" type="Control" parent="SubViewport/World/FindSignalTask" index="2"]
+[node name="Notification" type="Control" parent="SubViewport/World/FindSignalTask" index="3"]
 layout_mode = 3
 anchors_preset = 1
 anchor_left = 1.0
@@ -228,6 +241,10 @@ layout_mode = 2
 unique_name_in_owner = true
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 7.37, 0, 15.234)
 
+[node name="CollisionShape3D" parent="SkinWalker" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.884349, 0)
+
+[connection signal="body_entered" from="SubViewport/World/FindSignalTask/FinishTaskArea" to="SubViewport/World/FindSignalTask" method="_on_finish_task_area_body_entered"]
 [connection signal="body_entered" from="SubViewport/World/FindSignalTask/SignalArea" to="SubViewport/World/FindSignalTask" method="_on_signal_area_body_entered"]
 [connection signal="body_entered" from="SubViewport/World/FindSignalTask/TriggerTask" to="SubViewport/World/FindSignalTask" method="_on_trigger_task_body_entered"]
 [connection signal="target_reached" from="SkinWalker/NavigationAgent3D" to="SubViewport/World/FindSignalTask" method="_on_navigation_agent_3d_target_reached"]

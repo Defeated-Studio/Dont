@@ -3,6 +3,7 @@ extends Node3D
 @onready var player = %Player
 @onready var player_head = %Player/Head
 @onready var dialogue_text = %Player/DialogueText
+@onready var interact_ray = %Player/Head/InteractRay
 
 @onready var quest_control = $"../QuestControl"
 
@@ -22,6 +23,7 @@ extends Node3D
 @onready var eleventh_message_3 = $"../../../MessagesApp/Mom/ScrollContainer/VBoxContainer/EleventhMessage3"
 
 @onready var skin_walker = %SkinWalker
+@onready var skin_walker_head = %SkinWalker/Head
 @onready var death = $"../../../Death"
 
 var canSendMom = false
@@ -29,8 +31,14 @@ var canSendMom = false
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if !player.onPath:
+		interact_ray.target_position.z = -10
 		skin_walker.following = true
 
+		if (player.speed != player.WALK_SPEED or IsRayCasting.canInteract && IsRayCasting.collider.name == 'SkinWalker'):
+			skin_walker.speed = 6
+		else:
+			skin_walker.speed = 2.5
+			
 		if !skin_walker.visible:
 			skin_walker.global_position = player.global_position
 			if player.rotation.y >= 0:
@@ -40,8 +48,10 @@ func _process(delta):
 			
 			skin_walker.visible = true
 	else:
+		interact_ray.target_position.z = -2
 		skin_walker.following = false
 		skin_walker.visible = false
+		skin_walker.speed = 2.5
 		
 	if canSendMom and messages_app.triggerMomTask:
 		canSendMom = false
@@ -62,6 +72,7 @@ func _process(delta):
 
 
 func _on_signal_area_body_entered(body):
+	get_node("SignalArea").queue_free()
 	animation_player.play("newNotification")
 	no_signal.hide()
 	space_16.hide()
@@ -70,6 +81,14 @@ func _on_signal_area_body_entered(body):
 	await get_tree().create_timer(1).timeout
 	space_19.show()
 	eleventh_message_3.show()
+	
+	await get_tree().create_timer(2).timeout
+	dialogue_text.timeBetweenText = 3
+	dialogue_text.queueDialogue("finalmente consegui sinal")
+	dialogue_text.queueDialogue("tenho que voltar pra casa, parece que estou sendo observado")
+	dialogue_text.showDialogue()
+	
+	get_node("FinishTaskArea").monitoring = true
 
 
 func _on_trigger_task_body_entered(body):
@@ -86,3 +105,8 @@ func _on_trigger_task_body_entered(body):
 func _on_navigation_agent_3d_target_reached():
 	player.look_at(skin_walker.global_position)
 	death.appear()
+
+
+func _on_finish_task_area_body_entered(body):
+	quest_control.finishQuest()
+	self.queue_free()
