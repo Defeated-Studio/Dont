@@ -4,11 +4,11 @@ extends Node3D
 @onready var interact_text = %InteractText
 @onready var dialogue_text = $"../Player/DialogueText"
 
-@onready var livingroomDoor = $"../House/FrontDoor"
-@onready var house = $"../House"
-@onready var front_door = $"../House/FrontDoor"
-@onready var bedroom_curtain = $"../House/Bedroom1/Curtain"
-@onready var bedroom_door = $"../House/Bedroom1/Bedroom1Door"
+@onready var livingroomDoor = %House/FrontDoor
+@onready var house = %House
+@onready var front_door = %House/FrontDoor
+@onready var bedroom_curtain = %House/Bedroom1/Curtain
+@onready var bedroom_door = %House/Bedroom1/Bedroom1Door
 @onready var sleep_area_col = $SleepArea/CollisionShape3D
 @onready var start_quest_col = $"../WriteDiaryTask/StartQuest/CollisionShape3D"
 

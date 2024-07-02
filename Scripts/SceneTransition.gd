@@ -28,3 +28,7 @@ func change_scene(target_scene, anim, scene_change=1):
 		if scene_change:
 			get_tree().change_scene_to_file(target_scene)
 		animation.play_backwards("dissolve")
+	elif anim == "dissolve_night3to333AM":
+		animation.play("dissolve_night3to333AM")
+		await animation.animation_finished
+		animation.play_backwards("dissolve")

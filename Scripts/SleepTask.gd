@@ -6,9 +6,9 @@ var canSleep = false
 @onready var quest_control = $"../QuestControl"
 @onready var dialogue_text = $"../Player/DialogueText"
 
-@onready var front_door = $"../House/FrontDoor"
-@onready var bedroom_curtain = $"../House/Bedroom1/Curtain"
-@onready var bedroom_door = $"../House/Bedroom1/Bedroom1Door"
+@onready var front_door = %House/FrontDoor
+@onready var bedroom_curtain = %House/Bedroom1/Curtain
+@onready var bedroom_door = %House/Bedroom1/Bedroom1Door
 @onready var states = $"../../../States"
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

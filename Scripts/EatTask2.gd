@@ -19,7 +19,7 @@ extends Node3D
 
 @onready var pizza_box = $"../Player/PizzaBox"
 @onready var pizza = $Pizza
-@onready var metal_plate = $"../House/Kitchen/MetalPlate"
+@onready var metal_plate = %House/Kitchen/MetalPlate
 
 @onready var pizza_mesa = $PizzaMesa
 @onready var first_piece = $PizzaMesa/Pizzanova/FirstPiece

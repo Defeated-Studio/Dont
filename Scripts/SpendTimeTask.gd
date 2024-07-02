@@ -5,7 +5,7 @@ extends Node3D
 @onready var world_environment = $"../WorldEnvironment".environment
 @onready var player = %Player
 @onready var position_target = $Position
-@onready var bathroom_1_door = $"../House/Bathroom1/Bathroom1Door"
+@onready var bathroom_1_door = %House/Bathroom1/Bathroom1Door
 
 
 func _on_quest_control_quest_started():

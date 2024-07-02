@@ -2,15 +2,15 @@ extends Node3D
 
 @onready var quest_control = $"../QuestControl"
 @onready var dialogue_text = $"../Player/DialogueText"
-@onready var livingroomDoor = $"../House/FrontDoor"
-@onready var house = $"../House"
+@onready var livingroomDoor = %House/FrontDoor
+@onready var house = %House
 @onready var interact_text = %InteractText
 @onready var sleep_area_col = $SleepArea/CollisionShape3D
 @onready var world_environment = $"../WorldEnvironment".environment
 
-@onready var front_door = $"../House/FrontDoor"
-@onready var bedroom_curtain = $"../House/Bedroom1/Curtain"
-@onready var bedroom_door = $"../House/Bedroom1/Bedroom1Door"
+@onready var front_door = %House/FrontDoor
+@onready var bedroom_curtain = %House/Bedroom1/Curtain
+@onready var bedroom_door = %House/Bedroom1/Bedroom1Door
 @onready var paper_2 = $"../CleanHouseTask/Paper2"
 
 var canPowerOn = false

@@ -4,7 +4,7 @@ extends Node3D
 @onready var player_dialogue = $"../Player/DialogueText"
 @onready var interact_text = $"../InteractText/InteractText"
 
-@onready var toilet = $"../House/Bathroom2/Toilet"
+@onready var toilet = %House/Bathroom2/Toilet
 @onready var clean_sodas = $CleanSodas/CleanSodas/CleanSodas
 @onready var clean_pizza = $CleanPizza/CleanPizza/CleanPizza
 @onready var clean_living_room_plates = $CleanLivingRoomPlates/CleanLivingRoomPlates/CleanLivingRoomPlates

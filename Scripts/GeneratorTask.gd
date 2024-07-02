@@ -1,11 +1,11 @@
 extends Node3D
 
 @onready var quest_control = $"../QuestControl"
-@onready var house = $"../House"
 @onready var interact_text = %InteractText
 @onready var player_dialogue = $"../Player/DialogueText"
 @onready var tutorial_text = %TutorialText
-@onready var front_door = $"../House/FrontDoor"
+@onready var front_door = %House/FrontDoor
+@onready var house = %House
 
 var canPowerOn = false
 var canTriggerTask = true
