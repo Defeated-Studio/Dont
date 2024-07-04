@@ -17,14 +17,6 @@ var canSleep = false
 @onready var mom_anim = $"../AnswerDoorTask/Mom/AnimationPlayer"
 @onready var answer_door_task = $"../AnswerDoorTask"
 
-func _ready():
-	await get_tree().create_timer(5).timeout
-	quest_control.startQuest()
-	dialogue_text.timeBetweenText = 4
-	dialogue_text.queueDialogue("preciso ir deitar, talvez assim o tempo passe mais rápido e minha mãe chegue logo")
-	dialogue_text.showDialogue()
-	sleep_col.set_deferred("disabled", false)
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if (Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")) and canSleep and IsRayCasting.canInteract:

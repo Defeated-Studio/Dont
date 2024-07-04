@@ -2,12 +2,12 @@ extends Node3D
 
 @onready var front_door = %House/FrontDoor
 @onready var mom = $Mom
-@onready var door_knock = $"../SleepTask/DoorKnock"
+@onready var door_knock = $"../SleepTask3/DoorKnock"
 @onready var peep_hole_text = $PeepHoleText
 @onready var fisheye = $"../../../Fisheye"
 @onready var world = %World
 @onready var dialogue_text = $DialogueText
-
+@onready var quest_control = $"../QuestControl"
 
 ## TODO DIALOGO ENTRE A MÃE E ELE NA PORTA
 ## LISTA COM DIALOGOS 
@@ -47,11 +47,11 @@ func _process(delta):
 		dialogue_text.text = "Mãe???"
 
 func _on_interact_area_body_entered(body):
-	if !hasSeenPeepHole:
+	if !hasSeenPeepHole and quest_control.questActive == 12:
 		peep_hole_text.text = "[Q] Olhar olho mágico"
 		peep_hole_text.show()
 		canPeepHole = true
-	else:
+	elif quest_control.questActive == 12:
 		peep_hole_text.text = "[Q] Questionar"
 		peep_hole_text.show()
 
