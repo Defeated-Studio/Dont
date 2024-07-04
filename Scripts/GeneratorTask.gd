@@ -12,6 +12,11 @@ var canTriggerTask = true
 var toDo = 2
 
 func _process(delta):
+	if toDo == 0:
+		quest_control.finishQuest()
+		interact_text.text = ""
+		toDo = -1
+		
 	if Input.is_action_just_pressed("Mobile"):
 		tutorial_text.hide()
 		
@@ -31,18 +36,15 @@ func findByClass(node: Node, className : String, result : Array):
 func _physics_process(delta):
 	if (is_instance_valid(IsRayCasting.collider)) and (IsRayCasting.collider.name == "Key"):
 		interact_text.show()
-		interact_text.text = "[E] Pegar"
-	elif interact_text.text == "[E] Pegar":
+		interact_text.text = "[E] Pegar Chave"
+	elif interact_text.text == "[E] Pegar Chave":
 		interact_text.hide()
+		pass
 		
 	if (is_instance_valid(IsRayCasting.collider)) and (IsRayCasting.collider.name == "Key") and (Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")):
 		front_door.locked = false
 		toDo -= 1
 		get_node("Key").queue_free()
-		if toDo == 0:
-			quest_control.finishQuest()
-			interact_text.text = ""
-			self.queue_free()
 		
 	if (is_instance_valid(IsRayCasting.collider)) and (IsRayCasting.collider.name == "Generator") and (IsRayCasting.canInteract) and (Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")) and canPowerOn:
 		canPowerOn = false
@@ -70,11 +72,6 @@ func _physics_process(delta):
 		
 		for i in res:
 			i.show()
-		
-		if toDo == 0:
-			quest_control.finishQuest()
-			interact_text.text = ""
-			self.queue_free()
 	
 
 func _on_generator_area_body_entered(body):
