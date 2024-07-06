@@ -5,6 +5,7 @@ extends Node3D
 @onready var player = $Player
 @onready var crosshair = $Player/Head/InteractRay/Control
 @onready var flashlight = $Player/Head/FlashlightModel
+@onready var flashlight_light =  $Player/Head/Flashlight
 @onready var diary = $"../../Diary/Diary_UI"
 @onready var peephole_camera = %House/FrontDoor/Door/PeepHole/Camera3D
 @onready var transition = %House/FrontDoor/Door/PeepHole/AnimationPlayer
@@ -38,7 +39,7 @@ func _process(delta):
 	if Input.is_action_just_pressed("LeftMouseButton") and IsRayCasting.canInteract and (is_instance_valid(IsRayCasting.collider)) and IsRayCasting.collider.name == "PeepHoleRay" and !inPeepHole:
 		showPeepHole()
 	
-	if Input.is_action_just_pressed("interact") and inPeepHole:
+	elif Input.is_action_just_pressed("LeftMouseButton") and inPeepHole:
 		hidePeepHole()
 	
 	if messages_app.backButtonSignal:
@@ -67,8 +68,6 @@ func hidePeepHole():
 	inPeepHole = false
 	peephole_camera.set_current(false)
 	crosshair.show()
-	flashlight.show()
-	
 	
 func showPeepHole():
 	player.canMove = false
@@ -85,3 +84,4 @@ func showPeepHole():
 	crosshair.hide()
 	fisheye.show()
 	flashlight.hide()
+	flashlight_light.hide()

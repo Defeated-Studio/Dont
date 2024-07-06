@@ -110,3 +110,4 @@ func _on_navigation_agent_3d_target_reached():
 func _on_finish_task_area_body_entered(body):
 	quest_control.finishQuest()
 	self.queue_free()
+

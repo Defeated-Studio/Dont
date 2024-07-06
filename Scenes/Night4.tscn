@@ -1,0 +1,100 @@
+[gd_scene load_steps=14 format=3 uid="uid://cpeg2fhwrdkhb"]
+
+[ext_resource type="PackedScene" uid="uid://bonk8egsbphsi" path="res://Scenes/World.tscn" id="1_m2bwn"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/stack/modifier_stack.gd" id="2_ej0e8"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/create_inside_random.gd" id="3_ti0mv"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/randomize_transforms.gd" id="4_4ylnk"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/relax.gd" id="5_weob8"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/project_on_geometry.gd" id="6_tb2cg"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/project_on_terrain3d.gd" id="7_go6li"]
+
+[sub_resource type="Resource" id="Resource_26d00"]
+script = ExtResource("3_ti0mv")
+amount = 550
+enabled = true
+override_global_seed = true
+custom_seed = 9
+restrict_height = true
+reference_frame = 1
+
+[sub_resource type="Resource" id="Resource_3uak1"]
+script = ExtResource("4_4ylnk")
+position = Vector3(0.15, 0.15, 0.15)
+rotation = Vector3(2, 360, 2)
+scale = Vector3(1, 0.1, 1.5)
+enabled = true
+override_global_seed = false
+custom_seed = 0
+restrict_height = false
+reference_frame = 2
+
+[sub_resource type="Resource" id="Resource_5erv5"]
+script = ExtResource("5_weob8")
+iterations = 3
+offset_step = 0.2
+consecutive_step_multiplier = 0.75
+use_computeshader = true
+enabled = true
+override_global_seed = false
+custom_seed = 0
+restrict_height = true
+reference_frame = 0
+
+[sub_resource type="Resource" id="Resource_5u6oy"]
+script = ExtResource("6_tb2cg")
+ray_direction = Vector3(0, -1, 0)
+ray_length = 5.0
+ray_offset = 5.0
+remove_points_on_miss = false
+align_with_collision_normal = false
+max_slope = 90.0
+collision_mask = 1
+exclude_mask = 0
+enabled = true
+override_global_seed = false
+custom_seed = 0
+restrict_height = false
+reference_frame = 0
+
+[sub_resource type="Resource" id="Resource_3um4m"]
+script = ExtResource("7_go6li")
+terrain_node = NodePath("../Terrain3D")
+align_with_collision_normal = false
+enabled = true
+override_global_seed = false
+custom_seed = 0
+restrict_height = false
+reference_frame = 0
+
+[sub_resource type="Resource" id="Resource_4xocr"]
+script = ExtResource("2_ej0e8")
+stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_26d00"), SubResource("Resource_3uak1"), SubResource("Resource_5erv5"), SubResource("Resource_5u6oy"), SubResource("Resource_3um4m")])
+
+[node name="Night4" instance=ExtResource("1_m2bwn")]
+
+[node name="Player" parent="SubViewport/World" index="0"]
+transform = Transform3D(-0.105553, 0.994414, -4.34672e-08, 0, -4.37114e-08, -1, -0.994414, -0.105553, 4.61385e-09, -1.44058, 1.7561, -0.158721)
+
+[node name="InteractText" type="Control" parent="SubViewport/World" index="4"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="InteractText" type="Label" parent="SubViewport/World/InteractText" index="0"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+horizontal_alignment = 1
+
+[node name="Nature" parent="." index="1"]
+modifier_stack = SubResource("Resource_4xocr")

@@ -71,7 +71,7 @@ func teleport_player():
 	player.set_rotation_degrees(Vector3(90, 90, 0))
 	
 func on_bed_dialogue():
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(2.5).timeout
 	dialogue_text.timeBetweenText = 3
 	dialogue_text.queueDialogue("não tô conseguindo dormir, aquilo que eu vi ta me assombrando")
 	dialogue_text.queueDialogue("não pode ser real, eu to imaginando coisa")

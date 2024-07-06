@@ -27,16 +27,23 @@ func _process(delta):
 		elif bedroom_door.doorOpen or bedroom_curtain.CurtainOpened:
 			dialogue_text.queueDialogue("preciso fechar a porta e as cortinas antes de dormir")
 			dialogue_text.showDialogue()
-		else:
+		elif quest_control.questActive == 11:
 			quest_control.finishQuest()
+			canSleep = false
 			SceneTransition.change_scene("", "dissolve_night3to333AM", 0)
 			mom.show()
 			mom_anim.play("idle")
 			await get_tree().create_timer(7).timeout
 			answer_door_task.audioCanPlay = true
+		else:
+			quest_control.finishQuest()
+			states.saveStates()
+			states.savePapersTaken()
+			SceneTransition.change_scene("res://Scenes/Night4.tscn", "dissolve_night333AMToNight4", 1)
+			self.queue_free()
 
 func _on_bed_area_body_entered(body):
-	if quest_control.questActive == 11:
+	if quest_control.questActive == 11 or quest_control.questActive == 13:
 		canSleep = true
 		interact_text.show()
 		interact_text.text = "[E] Dormir"

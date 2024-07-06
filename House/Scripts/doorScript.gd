@@ -23,6 +23,15 @@ func setState(state):
 	else:
 		door.rotation.z = 0
 		doorOpen = false
+		
+func setStateAnimation(state):
+	if state:
+		animation.play("OpenDoorAni")
+		setdoorOpen(!doorOpen)
+	else:
+		animation.play_backwards("OpenDoorAni")
+		setdoorOpen(!doorOpen)
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

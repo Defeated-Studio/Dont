@@ -16,7 +16,8 @@ var canSprint = true
 var speed
 var gravity = 9.8
 const WALK_SPEED = 2
-const SPRINT_SPEED = 5
+#const SPRINT_SPEED = 5
+const SPRINT_SPEED = 25
 const SENSITIVITY = 0.2
 
 #bob variables
@@ -44,6 +45,7 @@ var direction = Vector3.ZERO
 @onready var flashlight = $Head/Flashlight
 @onready var flashlight_animation = $FlashlightAnimation
 @onready var flashlight_model = $Head/FlashlightModel
+@onready var world = $"../"
 
 
 func change_input_flags(value):
@@ -51,6 +53,7 @@ func change_input_flags(value):
 	canMoveCamera = value
 	canUseFlashlight = value
 	canCrouch = value
+	world.canOpenMobile = value
 
 func _ready():
 	flashlight_model.hide()
