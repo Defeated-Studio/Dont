@@ -138,7 +138,6 @@ func _process(delta):
 			player.canMove = false
 			player.canCrouch = false
 			world.canOpenMobile = false
-			#world.canOpenDiary = false
 			sitDown = true
 			await get_tree().create_timer(0.5).timeout
 			interact_text.text = "[MB1] Comer"
@@ -172,6 +171,9 @@ func _process(delta):
 		get_node("GetFood").queue_free()
 		microwave_col.set_deferred("disabled", false)
 		ray_cast_microwave_col.set_deferred("disabled", false)
+		dialogue_text.timeBetweenText = 2.5
+		dialogue_text.queueDialogue("a comida tá gelada")
+		dialogue_text.showDialogue()
 
 	if (Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")) and canMicrowave and IsRayCasting.canInteract:
 		if MicrowaveDone:
@@ -195,7 +197,6 @@ func _process(delta):
 			microwave_light.hide()
 			MicrowaveDone = true
 			microwave_col.set_deferred("disabled", false)
-			# PLAY DONE SOUND
 
 
 func _on_trigger_eat_task_body_entered(body):

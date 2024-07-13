@@ -203,6 +203,7 @@ func _physics_process(delta):
 		pizza.queue_free()
 		metal_plate.queue_free()
 		canEat = true
+		get_node("EatArea").queue_free()
 
 	if (IsRayCasting.canInteract and is_instance_valid(IsRayCasting.collider) and IsRayCasting.collider.name == "RaycastPizza" and Input.is_action_just_pressed("LeftMouseButton") and canEat and canEatAgain):
 		canEatAgain = false

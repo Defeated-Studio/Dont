@@ -16,7 +16,7 @@ var canSleep = false
 @onready var mom = $"../AnswerDoorTask/Mom"
 @onready var mom_anim = $"../AnswerDoorTask/Mom/AnimationPlayer"
 @onready var answer_door_task = $"../AnswerDoorTask"
-
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if (Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")) and canSleep and IsRayCasting.canInteract:
@@ -35,7 +35,9 @@ func _process(delta):
 			mom_anim.play("idle")
 			await get_tree().create_timer(7).timeout
 			answer_door_task.audioCanPlay = true
+			answer_door_task.canDie = true
 		else:
+			answer_door_task.audioCanPlay = false
 			quest_control.finishQuest()
 			states.saveStates()
 			states.savePapersTaken()

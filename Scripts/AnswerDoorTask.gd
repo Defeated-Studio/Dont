@@ -13,21 +13,18 @@ extends Node3D
 @onready var player = %Player
 @onready var dialogue_timer = $dialogue_timer
 @onready var death = $"../../../Death"
-@onready var skin_walker_door = $SkinWalkerDoor
-@onready var animation_player = $SkinWalkerDoor/AnimationPlayer
-
-## TODO DIALOGO ENTRE A MÃE E ELE NA PORTA
-## LISTA COM DIALOGOS 
-
+@onready var skin_walker_door = %SkinWalkerDoor
+@onready var animation_player = %SkinWalkerDoor/AnimationPlayer
 
 var audioCanPlay = false
 var canPeepHole = false
 var hasSeenPeepHole = false
 var inPeepHole = false
 var readyToChoose = false
+var canDie = false
 
 var text_queue = []
-var timeBetweenText = 2.5
+var timeBetweenText = 3
 
 
 func _process(delta):
@@ -35,9 +32,14 @@ func _process(delta):
 		if !door_knock.playing:
 			await get_tree().create_timer(0.5).timeout
 			door_knock.play()
-	if front_door.getState():
+	if front_door.getState() and canDie:
+		canDie = false
 		mom.hide()
 		audioCanPlay = false
+		door_knock.stop()
+		await get_tree().create_timer(2).timeout
+		skin_walker_door.show()
+		death.appear()
 		
 	if canPeepHole and !hasSeenPeepHole and Input.is_action_just_pressed("PeepHole") and !inPeepHole:
 		audioCanPlay = false
@@ -66,18 +68,23 @@ func _process(delta):
 		dialogue_text.hide()
 		player.change_input_flags(true)
 		mom.hide()
+		
 		await get_tree().create_timer(1.5).timeout
-		dialogue_text_player.queueDialogue("o que foi isso???")
-		dialogue_text_player.queueDialogue("não era minha mãe, eu tenho certeza")
-		dialogue_text_player.queueDialogue("os papeis estavam falando a verdade o tempo todo")
-		dialogue_text_player.queueDialogue("é como se ela soubesse o que vai acontecer")
+		door_knock.play()
+		audioCanPlay = true
+		await get_tree().create_timer(0.5).timeout
+		dialogue_text_player.queueDialogue("será que atendo?")
 		dialogue_text_player.showDialogue()
 		quest_control.finishQuest()
+		quest_control.startQuest()
 		
 		
 	if readyToChoose and Input.is_action_just_pressed("interact"):
+		mom.hide()
+		canDie = false
 		readyToChoose = false
 		front_door.setStateAnimation(true)
+		player.change_input_flags(true)
 		dialogue_text.hide()
 		await get_tree().create_timer(1.5).timeout
 		skin_walker_door.show()
@@ -108,11 +115,17 @@ func setUp():
 	
 func dialogueMomJake():
 	queueDialogue("Jake: mãe???")
-	queueDialogue("Mãe: sim sou eu filho, abra a porta")
-	queueDialogue("Jake: mas você falou que iria demorar, o que aconteceu?")
-	queueDialogue("Mãe: eu consegui chegar mais rapido do que imaginei")
+	queueDialogue(" ")
+	queueDialogue("Mãe: sim, filho. eu vim te buscar, vamos para casa")
+	queueDialogue(" ")
+	queueDialogue("Jake: mas você disse que ia demorar um pouco até aqui")
+	queueDialogue(" ")
+	queueDialogue("Mãe: eu... me apressei, consegui chegar mais rápido do que eu achava")
+	queueDialogue(" ")
 	queueDialogue("Mãe: abre a porta filho e vamos embora")
-	queueDialogue("[E] Abrir Porta\n[Q] Não Responder")
+	queueDialogue(" ")
+	queueDialogue("Jake: mas...")
+	queueDialogue("[ E ] Abrir Porta\n[ Q ] Não Responder")
 	showDialogue()
 
 func queueDialogue(text):
@@ -120,15 +133,19 @@ func queueDialogue(text):
 
 func showDialogue():
 	dialogue_text.text = text_queue.pop_front()
-	if dialogue_text.text == "[E] Abrir Porta\n[Q] Não Responder":
+	if dialogue_text.text == "[ E ] Abrir Porta\n[ Q ] Não Responder":
 		dialogue_text.show()
 		readyToChoose = true
 	else:
 		dialogue_text.show()
+		if dialogue_text.text == " ":
+			timeBetweenText = 0.5
+		else:
+			timeBetweenText = 2.5
 		dialogue_timer.start(timeBetweenText)
 
 func _on_dialogue_timer_timeout():
 	if !text_queue.is_empty():
 		showDialogue()
-	elif !(dialogue_text.text == "[E] Abrir Porta\n[Q] Não Responder"):
+	elif !(dialogue_text.text == "[ E ] Abrir Porta\n[ Q ] Não Responder"):
 		dialogue_text.hide()

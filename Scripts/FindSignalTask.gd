@@ -22,6 +22,9 @@ extends Node3D
 @onready var space_19 = $"../../../MessagesApp/Mom/ScrollContainer/VBoxContainer/Space19"
 @onready var eleventh_message_3 = $"../../../MessagesApp/Mom/ScrollContainer/VBoxContainer/EleventhMessage3"
 
+@onready var no_signal_bob = $"../../../MessagesApp/Bob/ScrollContainer/VBoxContainer/Message23/noSignal"
+@onready var no_signal_2_bob = $"../../../MessagesApp/Bob/ScrollContainer/VBoxContainer/noSignal2"
+
 @onready var skin_walker = %SkinWalker
 @onready var skin_walker_head = %SkinWalker/Head
 @onready var death = $"../../../Death"
@@ -75,6 +78,10 @@ func _process(delta):
 func _on_signal_area_body_entered(body):
 	get_node("SignalArea").queue_free()
 	animation_player.play("newNotification")
+	
+	no_signal_bob.hide()
+	no_signal_2_bob.hide()
+	
 	notification_sound.play()
 	no_signal.hide()
 	space_16.hide()
