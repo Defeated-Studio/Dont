@@ -26,7 +26,6 @@ var canDie = false
 var text_queue = []
 var timeBetweenText = 3
 
-
 func _process(delta):
 	if audioCanPlay:
 		if !door_knock.playing:
@@ -38,9 +37,8 @@ func _process(delta):
 		audioCanPlay = false
 		door_knock.stop()
 		await get_tree().create_timer(2).timeout
-		skin_walker_door.show()
-		death.appear()
-		
+		showSkinWalker()
+
 	if canPeepHole and !hasSeenPeepHole and Input.is_action_just_pressed("PeepHole") and !inPeepHole:
 		audioCanPlay = false
 		door_knock.stop()
@@ -87,9 +85,8 @@ func _process(delta):
 		player.change_input_flags(true)
 		dialogue_text.hide()
 		await get_tree().create_timer(1.5).timeout
-		skin_walker_door.show()
 		animation_player.play("idle")
-		death.appear()
+		showSkinWalker()
 
 func _on_interact_area_body_entered(body):
 	if !hasSeenPeepHole and quest_control.questActive == 12:
@@ -104,6 +101,13 @@ func _on_interact_area_body_entered(body):
 func _on_interact_area_body_exited(body):
 	peep_hole_text.hide()
 	canPeepHole = false
+	
+func showSkinWalker():
+	var tween = get_tree().create_tween()
+	skin_walker_door.show()
+	tween.tween_property(skin_walker_door, "position", Vector3(0, -0.147, -1), 0.1)
+	await get_tree().create_timer(0.1).timeout
+	death.appear()
 	
 func setUp():
 	var tween = get_tree().create_tween()
