@@ -25,6 +25,7 @@ extends Node3D
 @onready var skin_walker = %SkinWalker
 @onready var skin_walker_head = %SkinWalker/Head
 @onready var death = $"../../../Death"
+@onready var notification_sound = $NotificationSound
 
 var canSendMom = false
 
@@ -74,6 +75,7 @@ func _process(delta):
 func _on_signal_area_body_entered(body):
 	get_node("SignalArea").queue_free()
 	animation_player.play("newNotification")
+	notification_sound.play()
 	no_signal.hide()
 	space_16.hide()
 	space_18.show()

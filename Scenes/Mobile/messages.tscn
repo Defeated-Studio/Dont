@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://ptr0cc31jxbp"]
+[gd_scene load_steps=24 format=3 uid="uid://ptr0cc31jxbp"]
 
 [ext_resource type="Script" path="res://Scenes/Mobile/messages.gd" id="1_3ha1o"]
 [ext_resource type="Texture2D" uid="uid://c7ottxhrdctq2" path="res://Scenes/Mobile/messages.png" id="1_6a3vw"]
@@ -33,6 +33,9 @@ font_size = 30
 
 [sub_resource type="LabelSettings" id="LabelSettings_d8lxg"]
 font_size = 30
+
+[sub_resource type="LabelSettings" id="LabelSettings_b46g8"]
+font_size = 20
 
 [sub_resource type="LabelSettings" id="LabelSettings_ly72b"]
 font_size = 12
@@ -149,6 +152,7 @@ text = "<"
 flat = true
 
 [node name="Mom" type="TextureRect" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 1051.0
 offset_top = 350.0
@@ -183,7 +187,7 @@ layout_mode = 0
 offset_left = 3.0
 offset_top = 108.0
 offset_right = 440.0
-offset_bottom = 538.0
+offset_bottom = 541.0
 follow_focus = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Mom/ScrollContainer"]
@@ -192,7 +196,7 @@ size_flags_horizontal = 3
 
 [node name="FirstDate" type="Label" parent="Mom/ScrollContainer/VBoxContainer"]
 layout_mode = 2
-text = "Hoje 16:21"
+text = "12/07 16:21"
 label_settings = SubResource("LabelSettings_ekpyr")
 horizontal_alignment = 1
 
@@ -469,7 +473,7 @@ stretch_mode = 3
 [node name="FirstDate2" type="Label" parent="Mom/ScrollContainer/VBoxContainer"]
 visible = false
 layout_mode = 2
-text = "Colocar data certa"
+text = "15/07 | 19:53 PM"
 label_settings = SubResource("LabelSettings_ekpyr")
 horizontal_alignment = 1
 
@@ -477,7 +481,7 @@ horizontal_alignment = 1
 visible = false
 layout_mode = 2
 text = "⠀"
-label_settings = SubResource("LabelSettings_d8lxg")
+label_settings = SubResource("LabelSettings_b46g8")
 
 [node name="NinthMessage2" type="Label" parent="Mom/ScrollContainer/VBoxContainer"]
 visible = false
@@ -500,6 +504,7 @@ stretch_mode = 3
 
 [node name="noSignal" type="Label" parent="Mom/ScrollContainer/VBoxContainer/NinthMessage2"]
 visible = false
+layout_mode = 0
 offset_left = -0.999907
 offset_top = 50.2
 offset_right = 151.0
@@ -617,7 +622,7 @@ layout_mode = 0
 offset_left = 3.0
 offset_top = 108.0
 offset_right = 440.0
-offset_bottom = 541.0
+offset_bottom = 539.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Bob/ScrollContainer"]
 layout_mode = 2
@@ -625,7 +630,7 @@ size_flags_horizontal = 3
 
 [node name="FirstDate" type="Label" parent="Bob/ScrollContainer/VBoxContainer"]
 layout_mode = 2
-text = "System Date"
+text = "11/07 | 19:21 PM"
 label_settings = SubResource("LabelSettings_46f1j")
 horizontal_alignment = 1
 
@@ -1129,7 +1134,7 @@ layout_mode = 2
 
 [node name="SecondDate" type="Label" parent="Bob/ScrollContainer/VBoxContainer"]
 layout_mode = 2
-text = "Hoje 23:10"
+text = "12/07 | 23:10 PM"
 label_settings = SubResource("LabelSettings_46f1j")
 horizontal_alignment = 1
 
