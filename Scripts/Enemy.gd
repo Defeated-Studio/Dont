@@ -9,27 +9,25 @@ var following = false
 var speed = 2.5
 var accel = 10
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
 func _physics_process(delta):
 	if following:
-		animation_player.play("walk")
+		if speed == 2.5:
+			animation_player.speed_scale = 1
+		else:
+			animation_player.speed_scale = 1.5
 		
+		animation_player.play("walk")
 		var direction = Vector3()
 		
 		nav.target_position = player.global_position
 		direction = nav.get_next_path_position() - self.global_position
 		direction = direction.normalized()
-		
-		look_at(player.global_position)
+			
 		
 		velocity = velocity.lerp(direction * speed, accel*delta)
+		look_at(global_transform.origin + velocity)
 		move_and_slide()
 		self.global_position.y -= 0.1
 	else:
 		animation_player.play("idle")
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+

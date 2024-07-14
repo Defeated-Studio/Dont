@@ -16,7 +16,3 @@ func _ready():
 	dialogue_text.timeBetweenText = 3
 	dialogue_text.queueDialogue("eu preciso de ajuda o mais rápido possível, eu não to aguentando mais")
 	dialogue_text.showDialogue()
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
