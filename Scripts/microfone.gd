@@ -4,13 +4,14 @@ var MicrophoneInputPeakVolume = 0
 const SCOPE = 7.5
 const LOWER_BOUND = -340
 const UPPER_BOUND = 0
-var sensitity = 1.8
+var sensitity = 1
 var smoothed_size_y = 10.0
 var smoothed_position_y = 205.0
 var smoothed_color = Color(1, 1, 1, 0.8)
 var interpolation_speed = 5000
 
 @onready var volume = $outline/volume
+@onready var audio_stream_record = $AudioStreamRecord
 
 func _process(delta):
 	MicrophoneInputPeakVolume = AudioServer.get_bus_peak_volume_left_db(AudioServer.get_bus_index("Record"), 0) * SCOPE

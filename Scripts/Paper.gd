@@ -15,6 +15,9 @@ var canPickUp = false
 
 @onready var diary = %Diary
 
+signal close
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	text_ui.text = text 
@@ -43,7 +46,7 @@ func _on_interact_area_body_exited(body):
 	interact_text.hide()
 
 func _on_close_button_pressed():
-	self.queue_free()
+	close.emit()
 	player.canMove = true
 	player.canMoveCamera = true
 	ui.hide()
@@ -66,4 +69,9 @@ func _on_close_button_pressed():
 		player_dialogue_text.queueDialogue("deve ter sido isso que eu vi na janela ontem")
 		player_dialogue_text.timeBetweenText = 3
 		player_dialogue_text.showDialogue()
+	if id == 4:
+		player_dialogue_text.queueDialogue("???")
+		player_dialogue_text.timeBetweenText = 2
+		player_dialogue_text.showDialogue()
 
+	self.queue_free()

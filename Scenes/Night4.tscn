@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cpeg2fhwrdkhb"]
+[gd_scene load_steps=28 format=3 uid="uid://cpeg2fhwrdkhb"]
 
 [ext_resource type="PackedScene" uid="uid://bonk8egsbphsi" path="res://Scenes/World.tscn" id="1_m2bwn"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/stack/modifier_stack.gd" id="2_ej0e8"]
@@ -9,8 +9,14 @@
 [ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/project_on_geometry.gd" id="6_tb2cg"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/project_on_terrain3d.gd" id="7_go6li"]
 [ext_resource type="PackedScene" uid="uid://yooj0rbpwaci" path="res://Scenes/microfone.tscn" id="8_o6d33"]
+[ext_resource type="PackedScene" uid="uid://dsbkf1co3qjwj" path="res://Scenes/Paper/Paper.tscn" id="9_7h12n"]
+[ext_resource type="Script" path="res://Scripts/HideTask.gd" id="9_lldqn"]
+[ext_resource type="PackedScene" uid="uid://1m8nomvlsqin" path="res://Scenes/Mom.tscn" id="12_1qcae"]
+[ext_resource type="Texture2D" uid="uid://blkonc66pkhnm" path="res://Texture/Circle.png" id="14_7fvfo"]
+[ext_resource type="AudioStream" uid="uid://bh8pnxy0cuka0" path="res://Sounds/rainGrave.ogg" id="15_qycrr"]
+[ext_resource type="AudioStream" uid="uid://dvinrd3wbmxla" path="res://Sounds/doorBreakOpen.wav" id="16_dg51i"]
 
-[sub_resource type="Resource" id="Resource_fiwuk"]
+[sub_resource type="Resource" id="Resource_2wen0"]
 script = ExtResource("3_ti0mv")
 amount = 550
 enabled = true
@@ -19,7 +25,7 @@ custom_seed = 9
 restrict_height = true
 reference_frame = 1
 
-[sub_resource type="Resource" id="Resource_xdtp2"]
+[sub_resource type="Resource" id="Resource_hc4xx"]
 script = ExtResource("4_4ylnk")
 position = Vector3(0.15, 0.15, 0.15)
 rotation = Vector3(2, 360, 2)
@@ -30,7 +36,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_s8qj2"]
+[sub_resource type="Resource" id="Resource_uawok"]
 script = ExtResource("5_weob8")
 iterations = 3
 offset_step = 0.2
@@ -42,7 +48,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_in6ix"]
+[sub_resource type="Resource" id="Resource_wulkh"]
 script = ExtResource("6_tb2cg")
 ray_direction = Vector3(0, -1, 0)
 ray_length = 5.0
@@ -58,7 +64,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_4gdqe"]
+[sub_resource type="Resource" id="Resource_mbrca"]
 script = ExtResource("7_go6li")
 terrain_node = NodePath("../Terrain3D")
 align_with_collision_normal = false
@@ -68,15 +74,55 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_gm4ys"]
+[sub_resource type="Resource" id="Resource_3mqlp"]
 script = ExtResource("2_ej0e8")
-stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_fiwuk"), SubResource("Resource_xdtp2"), SubResource("Resource_s8qj2"), SubResource("Resource_in6ix"), SubResource("Resource_4gdqe")])
+stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_2wen0"), SubResource("Resource_hc4xx"), SubResource("Resource_uawok"), SubResource("Resource_wulkh"), SubResource("Resource_mbrca")])
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_07k6r"]
+size = Vector3(1.42926, 0.41748, 0.900513)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_17jk5"]
+size = Vector3(1.70013, 0.224609, 2.52856)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4fh08"]
+emission_shape = 3
+emission_box_extents = Vector3(20, 0.5, 20)
+direction = Vector3(0, -1, 0)
+spread = 5.0
+initial_velocity_min = 10.0
+initial_velocity_max = 15.0
+color = Color(0.8, 0.8, 0.8, 1)
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 0.0
+
+[sub_resource type="Curve" id="Curve_apqrm"]
+max_value = 0.1
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0293454, 0.0535319), 0.245064, 0.245064, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4hrui"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.121569, 0.121569, 0.121569, 1)
+albedo_texture = ExtResource("14_7fvfo")
+use_particle_trails = true
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_uteds"]
+material = SubResource("StandardMaterial3D_4hrui")
+curve = SubResource("Curve_apqrm")
 
 [node name="Night4" instance=ExtResource("1_m2bwn")]
 script = ExtResource("2_nqc5o")
 
+[node name="SubViewport" parent="." index="0"]
+audio_listener_enable_3d = true
+
 [node name="Player" parent="SubViewport/World" index="0"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.468109, 0.764993, 1.78165)
+unique_name_in_owner = true
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6.37467, 0.885873, 1.54087)
 
 [node name="InteractText" type="Control" parent="SubViewport/World" index="4"]
 layout_mode = 3
@@ -100,7 +146,74 @@ grow_vertical = 0
 horizontal_alignment = 1
 
 [node name="Nature" parent="SubViewport/World/NavigationRegion3D" index="0"]
-modifier_stack = SubResource("Resource_gm4ys")
+modifier_stack = SubResource("Resource_3mqlp")
+
+[node name="HideTask" type="Node3D" parent="SubViewport/World" index="6"]
+script = ExtResource("9_lldqn")
+
+[node name="Paper" parent="SubViewport/World/HideTask" index="0" instance=ExtResource("9_7h12n")]
+transform = Transform3D(-0.005, 0, 4.37114e-10, 0, 0.005, 0, -4.37114e-10, 0, -0.005, -2.38257, 3.98059, 4.77733)
+id = 4
+text = "		
+
+
+
+
+
+
+				            SE ESCONDA"
+
+[node name="doorBreakOpen" type="AudioStreamPlayer3D" parent="SubViewport/World/HideTask" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.40945, 1.56669, 6.27907)
+stream = ExtResource("16_dg51i")
+volume_db = 20.0
+
+[node name="Mom" parent="SubViewport/World/HideTask" index="2" instance=ExtResource("12_1qcae")]
+transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, 2.86477, 0.593321, 7.42442)
+
+[node name="WrongSpot" type="Area3D" parent="SubViewport/World/HideTask" index="3"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewport/World/HideTask/WrongSpot" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.0961, 4.28146, -0.856463)
+shape = SubResource("BoxShape3D_07k6r")
+
+[node name="RightSpot" type="Area3D" parent="SubViewport/World/HideTask" index="4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewport/World/HideTask/RightSpot" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.30938, 4.28823, -0.723339)
+shape = SubResource("BoxShape3D_17jk5")
+
+[node name="position" type="Node3D" parent="SubViewport/World/HideTask" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.10582, 4.04271, 0.324618)
+
+[node name="HidingCamera" type="Camera3D" parent="SubViewport/World/HideTask" index="6"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.3546, 4.0833, -0.643793)
 
 [node name="Microfone" parent="." index="6" instance=ExtResource("8_o6d33")]
+visible = false
 layout_mode = 2
+
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="." index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.16159, 3.97836, 2.82368)
+size = Vector3(13.8679, 11.2738, 11.4948)
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.6507, 16.5761, 0)
+amount = 5000
+randomness = 1.0
+visibility_aabb = AABB(-45.2534, -9.87146, -64.8464, 90.5069, 19.7429, 129.693)
+trail_enabled = true
+trail_lifetime = 0.1
+process_material = SubResource("ParticleProcessMaterial_4fh08")
+draw_pass_1 = SubResource("RibbonTrailMesh_uteds")
+
+[node name="rain" type="AudioStreamPlayer" parent="." index="9"]
+stream = ExtResource("15_qycrr")
+
+[connection signal="close" from="SubViewport/World/HideTask/Paper" to="SubViewport/World/HideTask" method="_on_paper_close"]
+[connection signal="body_entered" from="SubViewport/World/HideTask/WrongSpot" to="SubViewport/World/HideTask" method="_on_wrong_spot_body_entered"]
+[connection signal="body_exited" from="SubViewport/World/HideTask/WrongSpot" to="SubViewport/World/HideTask" method="_on_wrong_spot_body_exited"]
+[connection signal="body_entered" from="SubViewport/World/HideTask/RightSpot" to="SubViewport/World/HideTask" method="_on_right_spot_body_entered"]
+[connection signal="body_exited" from="SubViewport/World/HideTask/RightSpot" to="SubViewport/World/HideTask" method="_on_right_spot_body_exited"]
