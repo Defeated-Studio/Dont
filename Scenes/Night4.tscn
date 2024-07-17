@@ -1,14 +1,16 @@
-[gd_scene load_steps=14 format=3 uid="uid://cpeg2fhwrdkhb"]
+[gd_scene load_steps=16 format=3 uid="uid://cpeg2fhwrdkhb"]
 
 [ext_resource type="PackedScene" uid="uid://bonk8egsbphsi" path="res://Scenes/World.tscn" id="1_m2bwn"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/stack/modifier_stack.gd" id="2_ej0e8"]
+[ext_resource type="Script" path="res://Scripts/Night4.gd" id="2_nqc5o"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/create_inside_random.gd" id="3_ti0mv"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/randomize_transforms.gd" id="4_4ylnk"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/relax.gd" id="5_weob8"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/project_on_geometry.gd" id="6_tb2cg"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/project_on_terrain3d.gd" id="7_go6li"]
+[ext_resource type="PackedScene" uid="uid://yooj0rbpwaci" path="res://Scenes/microfone.tscn" id="8_o6d33"]
 
-[sub_resource type="Resource" id="Resource_26d00"]
+[sub_resource type="Resource" id="Resource_fiwuk"]
 script = ExtResource("3_ti0mv")
 amount = 550
 enabled = true
@@ -17,7 +19,7 @@ custom_seed = 9
 restrict_height = true
 reference_frame = 1
 
-[sub_resource type="Resource" id="Resource_3uak1"]
+[sub_resource type="Resource" id="Resource_xdtp2"]
 script = ExtResource("4_4ylnk")
 position = Vector3(0.15, 0.15, 0.15)
 rotation = Vector3(2, 360, 2)
@@ -28,7 +30,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_5erv5"]
+[sub_resource type="Resource" id="Resource_s8qj2"]
 script = ExtResource("5_weob8")
 iterations = 3
 offset_step = 0.2
@@ -40,7 +42,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_5u6oy"]
+[sub_resource type="Resource" id="Resource_in6ix"]
 script = ExtResource("6_tb2cg")
 ray_direction = Vector3(0, -1, 0)
 ray_length = 5.0
@@ -56,7 +58,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_3um4m"]
+[sub_resource type="Resource" id="Resource_4gdqe"]
 script = ExtResource("7_go6li")
 terrain_node = NodePath("../Terrain3D")
 align_with_collision_normal = false
@@ -66,14 +68,15 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_4xocr"]
+[sub_resource type="Resource" id="Resource_gm4ys"]
 script = ExtResource("2_ej0e8")
-stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_26d00"), SubResource("Resource_3uak1"), SubResource("Resource_5erv5"), SubResource("Resource_5u6oy"), SubResource("Resource_3um4m")])
+stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_fiwuk"), SubResource("Resource_xdtp2"), SubResource("Resource_s8qj2"), SubResource("Resource_in6ix"), SubResource("Resource_4gdqe")])
 
 [node name="Night4" instance=ExtResource("1_m2bwn")]
+script = ExtResource("2_nqc5o")
 
 [node name="Player" parent="SubViewport/World" index="0"]
-transform = Transform3D(-0.105553, 0.994414, -4.34672e-08, 0, -4.37114e-08, -1, -0.994414, -0.105553, 4.61385e-09, -1.44058, 1.7561, -0.158721)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.468109, 0.764993, 1.78165)
 
 [node name="InteractText" type="Control" parent="SubViewport/World" index="4"]
 layout_mode = 3
@@ -96,5 +99,8 @@ grow_horizontal = 2
 grow_vertical = 0
 horizontal_alignment = 1
 
-[node name="Nature" parent="." index="1"]
-modifier_stack = SubResource("Resource_4xocr")
+[node name="Nature" parent="SubViewport/World/NavigationRegion3D" index="0"]
+modifier_stack = SubResource("Resource_gm4ys")
+
+[node name="Microfone" parent="." index="6" instance=ExtResource("8_o6d33")]
+layout_mode = 2

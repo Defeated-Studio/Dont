@@ -1,0 +1,57 @@
+[gd_scene load_steps=4 format=3 uid="uid://yooj0rbpwaci"]
+
+[ext_resource type="Script" path="res://Scripts/microfone.gd" id="1_agkah"]
+[ext_resource type="Texture2D" uid="uid://b31swt7a812h3" path="res://Texture/microphone.png" id="2_idqf1"]
+
+[sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_omo4d"]
+
+[node name="Microfone" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_agkah")
+
+[node name="AudioStreamRecord" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamMicrophone_omo4d")
+autoplay = true
+bus = &"Record"
+
+[node name="outline" type="ReferenceRect" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -92.0
+offset_top = -34.0
+offset_right = -48.0
+offset_bottom = 181.0
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(1, 1.515)
+border_color = Color(0, 0, 0, 1)
+editor_only = false
+
+[node name="volume" type="ColorRect" parent="outline"]
+show_behind_parent = true
+layout_mode = 0
+offset_top = 200.0
+offset_right = 44.0
+offset_bottom = 215.0
+color = Color(1, 1, 1, 0.882353)
+
+[node name="TextureRect" type="TextureRect" parent="outline"]
+layout_mode = 0
+offset_left = -27.0
+offset_top = 190.759
+offset_right = 293.0
+offset_bottom = 648.759
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_idqf1")
+expand_mode = 1
+stretch_mode = 3
