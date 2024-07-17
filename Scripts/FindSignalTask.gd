@@ -26,7 +26,6 @@ extends Node3D
 @onready var no_signal_2_bob = $"../../../MessagesApp/Bob/ScrollContainer/VBoxContainer/noSignal2"
 
 @onready var skin_walker = %SkinWalker
-@onready var skin_walker_head = %SkinWalker/Head
 @onready var death = $"../../../Death"
 @onready var notification_sound = $NotificationSound
 

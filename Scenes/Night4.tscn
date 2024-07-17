@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cpeg2fhwrdkhb"]
+[gd_scene load_steps=29 format=3 uid="uid://cpeg2fhwrdkhb"]
 
 [ext_resource type="PackedScene" uid="uid://bonk8egsbphsi" path="res://Scenes/World.tscn" id="1_m2bwn"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/stack/modifier_stack.gd" id="2_ej0e8"]
@@ -12,11 +12,12 @@
 [ext_resource type="PackedScene" uid="uid://dsbkf1co3qjwj" path="res://Scenes/Paper/Paper.tscn" id="9_7h12n"]
 [ext_resource type="Script" path="res://Scripts/HideTask.gd" id="9_lldqn"]
 [ext_resource type="PackedScene" uid="uid://1m8nomvlsqin" path="res://Scenes/Mom.tscn" id="12_1qcae"]
-[ext_resource type="Texture2D" uid="uid://blkonc66pkhnm" path="res://Texture/Circle.png" id="14_7fvfo"]
-[ext_resource type="AudioStream" uid="uid://bh8pnxy0cuka0" path="res://Sounds/rainGrave.ogg" id="15_qycrr"]
-[ext_resource type="AudioStream" uid="uid://dvinrd3wbmxla" path="res://Sounds/doorBreakOpen.wav" id="16_dg51i"]
+[ext_resource type="AudioStream" uid="uid://bn3smc38wh1iq" path="res://Sounds/MomWalkSound.ogg" id="13_ecqmn"]
+[ext_resource type="Texture2D" uid="uid://b604b7iiv32sx" path="res://Texture/Circle.png" id="14_7fvfo"]
+[ext_resource type="AudioStream" uid="uid://casg5wmhtsp8m" path="res://Sounds/rainGrave.ogg" id="15_qycrr"]
+[ext_resource type="AudioStream" uid="uid://dbygfk83p0d6m" path="res://Sounds/doorBreakOpen.wav" id="16_dg51i"]
 
-[sub_resource type="Resource" id="Resource_2wen0"]
+[sub_resource type="Resource" id="Resource_x61mc"]
 script = ExtResource("3_ti0mv")
 amount = 550
 enabled = true
@@ -25,7 +26,7 @@ custom_seed = 9
 restrict_height = true
 reference_frame = 1
 
-[sub_resource type="Resource" id="Resource_hc4xx"]
+[sub_resource type="Resource" id="Resource_js11r"]
 script = ExtResource("4_4ylnk")
 position = Vector3(0.15, 0.15, 0.15)
 rotation = Vector3(2, 360, 2)
@@ -36,7 +37,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_uawok"]
+[sub_resource type="Resource" id="Resource_ao4b4"]
 script = ExtResource("5_weob8")
 iterations = 3
 offset_step = 0.2
@@ -48,7 +49,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_wulkh"]
+[sub_resource type="Resource" id="Resource_eki61"]
 script = ExtResource("6_tb2cg")
 ray_direction = Vector3(0, -1, 0)
 ray_length = 5.0
@@ -64,7 +65,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_mbrca"]
+[sub_resource type="Resource" id="Resource_dlhtg"]
 script = ExtResource("7_go6li")
 terrain_node = NodePath("../Terrain3D")
 align_with_collision_normal = false
@@ -74,9 +75,9 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_3mqlp"]
+[sub_resource type="Resource" id="Resource_he2qn"]
 script = ExtResource("2_ej0e8")
-stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_2wen0"), SubResource("Resource_hc4xx"), SubResource("Resource_uawok"), SubResource("Resource_wulkh"), SubResource("Resource_mbrca")])
+stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_x61mc"), SubResource("Resource_js11r"), SubResource("Resource_ao4b4"), SubResource("Resource_eki61"), SubResource("Resource_dlhtg")])
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_07k6r"]
 size = Vector3(1.42926, 0.41748, 0.900513)
@@ -122,7 +123,7 @@ audio_listener_enable_3d = true
 
 [node name="Player" parent="SubViewport/World" index="0"]
 unique_name_in_owner = true
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6.37467, 0.885873, 1.54087)
+transform = Transform3D(-0.997764, 0, -0.0668311, 0, 1, 0, 0.0668311, 0, -0.997764, 1.75587, 0.885873, -1.03326)
 
 [node name="InteractText" type="Control" parent="SubViewport/World" index="4"]
 layout_mode = 3
@@ -146,7 +147,13 @@ grow_vertical = 0
 horizontal_alignment = 1
 
 [node name="Nature" parent="SubViewport/World/NavigationRegion3D" index="0"]
-modifier_stack = SubResource("Resource_3mqlp")
+modifier_stack = SubResource("Resource_he2qn")
+
+[node name="NavigationRegion3D" parent="SubViewport/World/NavigationRegion3D" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.294553, 0)
+
+[node name="House" parent="SubViewport/World/NavigationRegion3D/NavigationRegion3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.145784, 2)
 
 [node name="HideTask" type="Node3D" parent="SubViewport/World" index="6"]
 script = ExtResource("9_lldqn")
@@ -169,7 +176,12 @@ stream = ExtResource("16_dg51i")
 volume_db = 20.0
 
 [node name="Mom" parent="SubViewport/World/HideTask" index="2" instance=ExtResource("12_1qcae")]
-transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, 2.86477, 0.593321, 7.42442)
+transform = Transform3D(0.821139, 0, 0.570728, 0, 1, 0, -0.570728, 0, 0.821139, 2.49655, 0.593321, 7.51522)
+visible = false
+
+[node name="WalkSound" type="AudioStreamPlayer3D" parent="SubViewport/World/HideTask/Mom" index="4"]
+stream = ExtResource("13_ecqmn")
+volume_db = -10.0
 
 [node name="WrongSpot" type="Area3D" parent="SubViewport/World/HideTask" index="3"]
 collision_layer = 2
@@ -190,6 +202,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.10582, 4.04271, 0.324618)
 
 [node name="HidingCamera" type="Camera3D" parent="SubViewport/World/HideTask" index="6"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.3546, 4.0833, -0.643793)
+
+[node name="Target3" type="Node3D" parent="SubViewport/World/HideTask" index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.50751, 4.67384, 3.34505)
+
+[node name="Target2" type="Node3D" parent="SubViewport/World/HideTask" index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.86691, 4.34555, 0.978614)
+
+[node name="Target1" type="Node3D" parent="SubViewport/World/HideTask" index="9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.82352, 4.25954, -1.39949)
+
+[node name="Target4" type="Node3D" parent="SubViewport/World/HideTask" index="10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0754, 0.813262, 7.33806)
 
 [node name="Microfone" parent="." index="6" instance=ExtResource("8_o6d33")]
 visible = false
@@ -213,7 +237,10 @@ draw_pass_1 = SubResource("RibbonTrailMesh_uteds")
 stream = ExtResource("15_qycrr")
 
 [connection signal="close" from="SubViewport/World/HideTask/Paper" to="SubViewport/World/HideTask" method="_on_paper_close"]
+[connection signal="target_reached" from="SubViewport/World/HideTask/Mom/NavigationAgent3D" to="SubViewport/World/HideTask" method="_on_navigation_agent_3d_target_reached"]
 [connection signal="body_entered" from="SubViewport/World/HideTask/WrongSpot" to="SubViewport/World/HideTask" method="_on_wrong_spot_body_entered"]
 [connection signal="body_exited" from="SubViewport/World/HideTask/WrongSpot" to="SubViewport/World/HideTask" method="_on_wrong_spot_body_exited"]
 [connection signal="body_entered" from="SubViewport/World/HideTask/RightSpot" to="SubViewport/World/HideTask" method="_on_right_spot_body_entered"]
 [connection signal="body_exited" from="SubViewport/World/HideTask/RightSpot" to="SubViewport/World/HideTask" method="_on_right_spot_body_exited"]
+
+[editable path="SubViewport/World/HideTask/Mom"]

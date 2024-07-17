@@ -12,11 +12,17 @@ extends Node3D
 @onready var player = %Player
 @onready var hiding_camera = $HidingCamera
 @onready var microfone = $"../../../Microfone"
+@onready var walk_sound = $Mom/WalkSound
+
+@onready var target_1 = $Target1
+@onready var target_2 = $Target2
+@onready var target_3 = $Target3
+@onready var target_4 = $Target4
 
 var canHideWrongSpot = false
 var canHideRightSpot = false
 var hiding = false
-
+var volume_exceeded = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -32,6 +38,16 @@ func _process(delta):
 	elif hiding and (Input.is_action_just_pressed("interact")):
 		exitSpot()
 		hiding = false
+	
+	if !hiding:
+		mom.target = player
+	elif !volume_exceeded:
+		mom.target = mom.previous_target
+		if microfone.final_volume >= 50:
+			print("GRITEI")
+			volume_exceeded = true
+	elif volume_exceeded:
+		mom.target = player
 
 func exitSpot():
 	SceneTransition.change_scene("", "quickTransition", 0)
@@ -55,7 +71,6 @@ func hideSpot():
 func _on_paper_close():
 	quest_control.finishQuest()
 	quest_control.startQuest()
-	mom.show()
 	door_break_open.play()
 	await get_tree().create_timer(0.5).timeout
 	dialogue_text.timeBetweenText = 2.5
@@ -63,8 +78,11 @@ func _on_paper_close():
 	dialogue_text.showDialogue()
 	front_door.setState(true)
 	
-
-
+	mom.previous_target = target_1
+	mom.target = target_1
+	mom.show()
+	mom.following = true
+	walk_sound.play()
 
 func _on_wrong_spot_body_entered(body):
 	if quest_control.questActive == 15:
@@ -72,12 +90,10 @@ func _on_wrong_spot_body_entered(body):
 		interact_text.show()
 		canHideWrongSpot = true
 
-
 func _on_wrong_spot_body_exited(body):
 	if quest_control.questActive == 15:
 		interact_text.hide()
 		canHideWrongSpot = false
-
 
 func _on_right_spot_body_entered(body):
 	if quest_control.questActive == 15:
@@ -85,8 +101,39 @@ func _on_right_spot_body_entered(body):
 		interact_text.show()
 		canHideRightSpot = true
 
-
 func _on_right_spot_body_exited(body):
 	if quest_control.questActive == 15:
 		interact_text.hide()
 		canHideRightSpot = false
+
+func _on_navigation_agent_3d_target_reached():
+	if mom.target == target_1:
+		walk_sound.stop()
+		await get_tree().create_timer(2).timeout
+		if !walk_sound.playing:
+			walk_sound.play()
+		mom.target = target_2
+		mom.previous_target = target_2
+		
+	elif mom.target == target_2:
+		walk_sound.stop()
+		await get_tree().create_timer(2).timeout
+		if !walk_sound.playing:
+			walk_sound.play()
+		mom.target = target_3
+		mom.previous_target = target_3
+		
+	elif mom.target == target_3:
+		walk_sound.stop()
+		await get_tree().create_timer(2).timeout
+		if !walk_sound.playing:
+			walk_sound.play()
+		mom.target = target_4
+		mom.previous_target = target_4
+		
+	elif mom.target == target_4:
+		walk_sound.stop()
+		mom.hide()
+		
+	elif mom.target == player:
+		print("morreu")

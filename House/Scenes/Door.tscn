@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://House/Scripts/DoorScript.gd" id="1_xykys"]
 [ext_resource type="Texture2D" uid="uid://cyoyg8ccxrqs4" path="res://House/Models/Doors_0.webp" id="2_55hno"]
-[ext_resource type="AudioStream" uid="uid://chna5r5qk33h1" path="res://House/SFX/doorSlam.wav" id="3_0sgor"]
+[ext_resource type="AudioStream" uid="uid://bbfmhuikpul3g" path="res://House/SFX/doorSlam.wav" id="3_0sgor"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wnquo"]
 resource_name = "material"
@@ -107,7 +107,7 @@ _data = {
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wcd6m"]
-size = Vector3(2.831, 3.3, 1)
+size = Vector3(2.831, 2.91165, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2gppr"]
 size = Vector3(0.352921, 2.59338, 3.91217)
@@ -196,7 +196,7 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Door/DoorEvent"]
-transform = Transform3D(1, -1.19209e-07, 4.00825e-13, 1.19209e-07, 1, 1.90773e-12, -2.80392e-14, -1.78835e-12, 0.999993, 0.155399, 1.4288, -4.602)
+transform = Transform3D(1, -1.19209e-07, 4.00825e-13, 1.19209e-07, 1, 1.91136e-12, -2.80392e-14, -1.79057e-12, 0.999993, 0.155399, 1.10437, -4.602)
 shape = SubResource("BoxShape3D_wcd6m")
 
 [node name="Colission" type="CollisionShape3D" parent="Door"]

@@ -76,8 +76,13 @@ func setcanOpenDoor(value):
 
 
 func _on_door_event_body_entered(body):
-	setcanOpenDoor(true)
-
-
+	if body.name == "Mom":
+		if !doorOpen:
+			animation.play("OpenDoorAni")
+			setdoorOpen(!doorOpen)
+	else :
+		setcanOpenDoor(true)
+	
 func _on_door_event_body_exited(body):
-	setcanOpenDoor(false)
+	if body.name != "Mom":
+		setcanOpenDoor(false)

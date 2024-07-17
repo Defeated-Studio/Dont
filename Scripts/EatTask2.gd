@@ -33,12 +33,10 @@ extends Node3D
 @onready var eating_pizza = $EatingPizza
 
 @onready var skin_walker = $SkinWalker
-@onready var skin_walker_animation_player = $SkinWalker/AnimationPlayer
 @onready var hand = $Hand
 @onready var hand_animation_player = $Hand/AnimationPlayer
 @onready var hand2 = $Hand2
 @onready var hand2_animation_player = $Hand2/AnimationPlayer
-@onready var appear_animation_player = $SkinWalker/Appear/AnimationPlayer
 @onready var heartbeat = $Heartbeat
 
 var canPickUpPizzaBox = false
@@ -148,11 +146,8 @@ func _physics_process(delta):
 		oven_timer.start()
 		
 	if (onWindow):
-		if !skin_walker_animation_player.is_playing():	
-			skin_walker_animation_player.play("idle")
 		if !skin_walker.visible:
 			skin_walker.show()
-			appear_animation_player.play("appear")
 			
 		if !hand_animation_player.is_playing():
 			hand_animation_player.play("idle")

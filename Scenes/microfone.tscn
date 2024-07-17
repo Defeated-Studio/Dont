@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://yooj0rbpwaci"]
 
 [ext_resource type="Script" path="res://Scripts/microfone.gd" id="1_agkah"]
-[ext_resource type="Texture2D" uid="uid://b31swt7a812h3" path="res://Texture/microphone.png" id="2_idqf1"]
+[ext_resource type="Texture2D" uid="uid://cj3pl11ybgd6e" path="res://Texture/microphone.png" id="2_idqf1"]
 
 [sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_omo4d"]
 

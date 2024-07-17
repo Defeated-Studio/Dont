@@ -9,6 +9,7 @@ var smoothed_size_y = 10.0
 var smoothed_position_y = 205.0
 var smoothed_color = Color(1, 1, 1, 0.8)
 var interpolation_speed = 5000
+var final_volume = 0
 
 @onready var volume = $outline/volume
 @onready var audio_stream_record = $AudioStreamRecord
@@ -24,6 +25,8 @@ func _process(delta):
 
 	var target_size_y = 10 + microphone_volume * (200 * sensitity)
 	var target_position_y = 205 - microphone_volume * (200 * sensitity)
+	
+	final_volume = microphone_volume * (200 * sensitity)
 	
 	if target_size_y >= 211:
 		target_size_y = 210.0

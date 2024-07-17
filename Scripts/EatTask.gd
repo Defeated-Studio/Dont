@@ -68,7 +68,7 @@ func _process(delta):
 	if canShowEnemy:
 		skin_walker.show()
 		skin_walker.position.x += 1 * delta
-		skin_walker_anim.play("walk")
+		skin_walker_anim.play("idle")
 		if skin_walker.position.x > 5:
 			canShowEnemy = false
 			skin_walker.hide()
