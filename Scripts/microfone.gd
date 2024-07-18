@@ -14,19 +14,21 @@ var final_volume = 0
 @onready var volume = $outline/volume
 @onready var audio_stream_record = $AudioStreamRecord
 
+
 func _process(delta):
 	MicrophoneInputPeakVolume = AudioServer.get_bus_peak_volume_left_db(AudioServer.get_bus_index("Record"), 0) * SCOPE
 	
-	var microphone_volume = abs(MicrophoneInputPeakVolume + 340) / 340
 	if MicrophoneInputPeakVolume < LOWER_BOUND:
 		MicrophoneInputPeakVolume = LOWER_BOUND
 	if MicrophoneInputPeakVolume > UPPER_BOUND:
 		MicrophoneInputPeakVolume = UPPER_BOUND
 
-	var target_size_y = 10 + microphone_volume * (200 * sensitity)
-	var target_position_y = 205 - microphone_volume * (200 * sensitity)
+	var microphone_volume = abs(MicrophoneInputPeakVolume + 340) / 340
+	var target_size_y = 10.0 + microphone_volume * (200 * sensitity)
+	var target_position_y = 205.0 - microphone_volume * (200 * sensitity)
 	
 	final_volume = microphone_volume * (200 * sensitity)
+	
 	
 	if target_size_y >= 211:
 		target_size_y = 210.0

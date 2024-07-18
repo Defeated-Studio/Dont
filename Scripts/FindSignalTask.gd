@@ -111,7 +111,9 @@ func _on_trigger_task_body_entered(body):
 
 
 func _on_navigation_agent_3d_target_reached():
-	player.look_at(skin_walker.global_position)
+	player.look_at(skin_walker.global_position, Vector3.UP)
+	player.head.set_rotation_degrees(Vector3(40, 0, 0))
+	player.camera.fov = 25.0
 	death.appear()
 
 

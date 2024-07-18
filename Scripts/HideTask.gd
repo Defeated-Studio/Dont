@@ -14,6 +14,7 @@ extends Node3D
 @onready var microfone = $"../../../Microfone"
 @onready var walk_sound = $Mom/WalkSound
 @onready var skin_walker = $SkinWalker
+@onready var skin_walker_2 = $SkinWalker2
 @onready var death = $"../../../Death"
 
 
@@ -46,8 +47,9 @@ func _process(delta):
 		mom.target = player
 	elif !volume_exceeded:
 		mom.target = mom.previous_target
-		if microfone.final_volume >= 50:
+		if microfone.final_volume >= 60:
 			print("GRITEI")
+			print(microfone.final_volume)
 			volume_exceeded = true
 	elif volume_exceeded:
 		mom.target = player
@@ -145,9 +147,18 @@ func _on_navigation_agent_3d_target_reached():
 		walk_sound.stop()
 		await get_tree().create_timer(2).timeout
 		skin_walker.show()
+		skin_walker_2.show()
 		var tween = get_tree().create_tween()
 		tween.tween_property(hiding_camera, "rotation_degrees", Vector3(0, -180, 0), 0.1)
 		await get_tree().create_timer(0.1).timeout
 		death.appear()
+	
 	elif mom.target == player and !hiding:
-		pass
+		skin_walker.global_position = mom.global_position
+		skin_walker.look_at(player.global_position)
+		mom.hide()
+		skin_walker.show()
+		player.look_at(skin_walker.global_position, Vector3.UP)
+		player.head.set_rotation_degrees(Vector3(40, 0, 0))
+		player.camera.fov = 25.0
+		death.appear()

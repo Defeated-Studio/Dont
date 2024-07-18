@@ -1,12 +1,14 @@
-[gd_scene load_steps=18 format=3 uid="uid://d1dii1a71vb20"]
+[gd_scene load_steps=20 format=3 uid="uid://d1dii1a71vb20"]
 
 [ext_resource type="Script" path="res://Scripts/Diary/Diary3d.gd" id="1_w6evf"]
 [ext_resource type="PackedScene" uid="uid://dhqlued4hwi2s" path="res://House/Models/Bedroom1/pbr_dark_diary.glb" id="2_wlyje"]
 [ext_resource type="Texture2D" uid="uid://c4ypypgdka1we" path="res://Texture/Diario.png" id="3_iilso"]
 [ext_resource type="Script" path="res://Scripts/Diary/Diary_UI.gd" id="3_u0kww"]
 [ext_resource type="Script" path="res://Scripts/Diary/Pages.gd" id="5_8l2yg"]
+[ext_resource type="FontFile" uid="uid://v6v55nu11kyv" path="res://Fonts/Kalam-Regular.ttf" id="5_me4yl"]
 [ext_resource type="Script" path="res://Scripts/Diary/Papers.gd" id="6_t3pmu"]
 [ext_resource type="Texture2D" uid="uid://bj6duw5pk5h5l" path="res://Texture/Paper_for_diary.png" id="7_ofe5r"]
+[ext_resource type="FontFile" uid="uid://doktlg8ik1xds" path="res://Fonts/Allura-Regular.ttf" id="9_x54gp"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6rr1v"]
 size = Vector3(1.58115, 1, 5.60074)
@@ -92,7 +94,8 @@ offset_top = 48.0
 offset_right = 15.0
 offset_bottom = 80.0
 grow_horizontal = 0
-theme_override_font_sizes/font_size = 12
+theme_override_fonts/font = ExtResource("5_me4yl")
+theme_override_font_sizes/font_size = 15
 theme_override_styles/normal = SubResource("StyleBoxFlat_gpf85")
 theme_override_styles/hover = SubResource("StyleBoxFlat_w0o1x")
 text = "Papéis"
@@ -107,7 +110,8 @@ offset_top = 14.0
 offset_right = 15.0
 offset_bottom = 46.0
 grow_horizontal = 0
-theme_override_font_sizes/font_size = 12
+theme_override_fonts/font = ExtResource("5_me4yl")
+theme_override_font_sizes/font_size = 15
 theme_override_styles/normal = SubResource("StyleBoxFlat_enn6h")
 theme_override_styles/hover = SubResource("StyleBoxFlat_6wmd5")
 text = "Diário
@@ -120,6 +124,7 @@ offset_top = 405.0
 offset_right = 780.0
 offset_bottom = 440.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_me4yl")
 theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxEmpty_0uhv1")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_0uhv1")
@@ -135,6 +140,7 @@ offset_top = 405.0
 offset_right = 60.0
 offset_bottom = 440.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_me4yl")
 theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxEmpty_o2j07")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_o2j07")
@@ -153,7 +159,8 @@ offset_top = 82.0
 offset_right = 15.0
 offset_bottom = 114.0
 grow_horizontal = 0
-theme_override_font_sizes/font_size = 12
+theme_override_fonts/font = ExtResource("5_me4yl")
+theme_override_font_sizes/font_size = 15
 theme_override_styles/normal = SubResource("StyleBoxFlat_ra1h6")
 theme_override_styles/hover = SubResource("StyleBoxFlat_vi6x7")
 text = "Fechar"
@@ -173,16 +180,18 @@ script = ExtResource("5_8l2yg")
 
 [node name="left_page" type="Label" parent="Diary_UI/Diary/Pages"]
 layout_mode = 0
-offset_left = 10.0
+offset_left = 32.0
 offset_top = 20.0
 offset_right = 355.0
-offset_bottom = 393.0
+offset_bottom = 416.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 10
-text = "Cheguei aqui e logo percebi que essa casa não é nada como nas fotos. Talvez ela fosse daquele jeito antes, mas agora parece tão velha. Mas tudo bem, eu que resolvi vir pra cá, precisava de mudanças na minha vida mesmo.
-Ainda bem que eu trouxe esse diário aqui comigo, sem sinal de internet e a TV fora do ar realmente fica sem muito o que fazer. Pelo menos com isso eu posso passar um pouco do tempo, e também não me sinto tão solitário. Vou mostrar esse diário pra minha mãe quando ela vier visitar pra ela ver como eu tô vivendo de boa sozinho.
-Mas sinceramente, tem umas coisas que me deixaram meio desconfiado com esse lugar. Tudo bem não ter sinal de internet ainda e tal, recém me mudei pra cá, essas coisas acontecem, mas e aquele papel que eu achei ontem? Quem é essa tal de Helena e o que foi isso que ela tava dizendo? Ainda tô sem sinal, não vou conseguir falar com o Bob sobre isso.
-Talvez ela só estivesse vendo coisas mesmo. Ontem eu estava bem cansado e estava um pouco assim também, mas era só o cansaço. Até esqueci de fechar a porta direito."
+theme_override_fonts/font = ExtResource("5_me4yl")
+theme_override_font_sizes/font_size = 11
+text = "Meu Deus do céu, o que foi isso? Minha mãe… Eles tentaram me enganar usando minha própria mãe. Se transformaram nela. Essas coisas definitivamente não são humanas, eu não sei o que são, mas nada que seja normal. Não é possível que exista algo assim no reino animal, nem nos meus piores pesadelos eu sonharia com algo assim.
+Aquela criatura é alta e grande, parece forte também. Parece que de todos os lados tinha algo me vigiando. Me senti como uma presa, um brinquedo. Só não fui pego por causa das regras. Se eu não tivesse sido alertado delas, eu provavelmente já taria morto agora. Ela me salvou. A mulher das cartas estava certa, ela não tava louca. Essas criaturas se transformam. Não posso confiar em nada mais que eu vejo ou que escuto.
+A casa parece muito velha, mas parece que pessoas moraram aqui não muito tempo atrás. Quantos já morreram por causa desse monstro? Eu não sei o que fazer, minha mãe vai vir, ela talvez traga ajuda mas eu não sei como vou fazer pra aguentar até lá.
+Dois dias. Só dois dias. Eu tenho que dar um jeito. Nem fodendo que eu saio na rua de novo, ainda mais de noite. Se esse gerador parar de novo eu não sei o que vai acontecer.  
+"
 autowrap_mode = 2
 
 [node name="right_page" type="Label" parent="Diary_UI/Diary/Pages"]
@@ -192,16 +201,16 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -351.0
+offset_left = -334.0
 offset_top = -182.5
-offset_right = -6.0
+offset_right = -16.0
 offset_bottom = 194.5
 grow_horizontal = 0
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 10
-text = "É bom que esse gerador pare logo de se desligar, fica muito escuro aqui de noite, preciso da luz se não não enxergo um palmo na minha frente. Ainda bem que trouxe minha lanterna.
-Hoje vou ter que começar dando um jeito na bagunça que essa casa tá. Impossível viver num lugar assim por muito tempo, vou terminar de escrever aqui e vou dar uma geral em tudo."
+theme_override_fonts/font = ExtResource("5_me4yl")
+theme_override_font_sizes/font_size = 11
+text = "Mas agora eu preciso me manter trancado aqui. Trancar porta e janelas e fechar as cortinas. Só não gosto dessas nuvens que estão se formando, vem chuva por aí…"
 autowrap_mode = 2
 
 [node name="Papers" type="Control" parent="Diary_UI/Diary"]
@@ -244,7 +253,8 @@ offset_bottom = -23.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 14
+theme_override_fonts/font = ExtResource("9_x54gp")
+theme_override_font_sizes/font_size = 19
 vertical_alignment = 1
 autowrap_mode = 2
 
@@ -279,7 +289,8 @@ offset_bottom = -28.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 13
+theme_override_fonts/font = ExtResource("9_x54gp")
+theme_override_font_sizes/font_size = 19
 vertical_alignment = 1
 autowrap_mode = 2
 
