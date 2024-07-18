@@ -13,6 +13,9 @@ extends Node3D
 @onready var hiding_camera = $HidingCamera
 @onready var microfone = $"../../../Microfone"
 @onready var walk_sound = $Mom/WalkSound
+@onready var skin_walker = $SkinWalker
+@onready var death = $"../../../Death"
+
 
 @onready var target_1 = $Target1
 @onready var target_2 = $Target2
@@ -135,5 +138,16 @@ func _on_navigation_agent_3d_target_reached():
 		walk_sound.stop()
 		mom.hide()
 		
-	elif mom.target == player:
-		print("morreu")
+	elif mom.target == player and hiding:
+		mom.following = false
+		mom.target = null
+		mom.hide()
+		walk_sound.stop()
+		await get_tree().create_timer(2).timeout
+		skin_walker.show()
+		var tween = get_tree().create_tween()
+		tween.tween_property(hiding_camera, "rotation_degrees", Vector3(0, -180, 0), 0.1)
+		await get_tree().create_timer(0.1).timeout
+		death.appear()
+	elif mom.target == player and !hiding:
+		pass

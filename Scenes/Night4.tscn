@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cpeg2fhwrdkhb"]
+[gd_scene load_steps=31 format=3 uid="uid://cpeg2fhwrdkhb"]
 
 [ext_resource type="PackedScene" uid="uid://bonk8egsbphsi" path="res://Scenes/World.tscn" id="1_m2bwn"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/stack/modifier_stack.gd" id="2_ej0e8"]
@@ -13,11 +13,13 @@
 [ext_resource type="Script" path="res://Scripts/HideTask.gd" id="9_lldqn"]
 [ext_resource type="PackedScene" uid="uid://1m8nomvlsqin" path="res://Scenes/Mom.tscn" id="12_1qcae"]
 [ext_resource type="AudioStream" uid="uid://bn3smc38wh1iq" path="res://Sounds/MomWalkSound.ogg" id="13_ecqmn"]
+[ext_resource type="PackedScene" uid="uid://ki8aq1tvk6o3" path="res://Scenes/Enemy.tscn" id="14_6htf6"]
 [ext_resource type="Texture2D" uid="uid://b604b7iiv32sx" path="res://Texture/Circle.png" id="14_7fvfo"]
+[ext_resource type="PackedScene" uid="uid://dow18v8t80381" path="res://Scenes/Screens/Death.tscn" id="14_r7hs0"]
 [ext_resource type="AudioStream" uid="uid://casg5wmhtsp8m" path="res://Sounds/rainGrave.ogg" id="15_qycrr"]
 [ext_resource type="AudioStream" uid="uid://dbygfk83p0d6m" path="res://Sounds/doorBreakOpen.wav" id="16_dg51i"]
 
-[sub_resource type="Resource" id="Resource_x61mc"]
+[sub_resource type="Resource" id="Resource_whkcr"]
 script = ExtResource("3_ti0mv")
 amount = 550
 enabled = true
@@ -26,7 +28,7 @@ custom_seed = 9
 restrict_height = true
 reference_frame = 1
 
-[sub_resource type="Resource" id="Resource_js11r"]
+[sub_resource type="Resource" id="Resource_u0xuy"]
 script = ExtResource("4_4ylnk")
 position = Vector3(0.15, 0.15, 0.15)
 rotation = Vector3(2, 360, 2)
@@ -37,7 +39,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_ao4b4"]
+[sub_resource type="Resource" id="Resource_3abim"]
 script = ExtResource("5_weob8")
 iterations = 3
 offset_step = 0.2
@@ -49,7 +51,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_eki61"]
+[sub_resource type="Resource" id="Resource_3t5q4"]
 script = ExtResource("6_tb2cg")
 ray_direction = Vector3(0, -1, 0)
 ray_length = 5.0
@@ -65,7 +67,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_dlhtg"]
+[sub_resource type="Resource" id="Resource_gfqgu"]
 script = ExtResource("7_go6li")
 terrain_node = NodePath("../Terrain3D")
 align_with_collision_normal = false
@@ -75,9 +77,9 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_he2qn"]
+[sub_resource type="Resource" id="Resource_85hpq"]
 script = ExtResource("2_ej0e8")
-stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_x61mc"), SubResource("Resource_js11r"), SubResource("Resource_ao4b4"), SubResource("Resource_eki61"), SubResource("Resource_dlhtg")])
+stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_whkcr"), SubResource("Resource_u0xuy"), SubResource("Resource_3abim"), SubResource("Resource_3t5q4"), SubResource("Resource_gfqgu")])
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_07k6r"]
 size = Vector3(1.42926, 0.41748, 0.900513)
@@ -147,7 +149,7 @@ grow_vertical = 0
 horizontal_alignment = 1
 
 [node name="Nature" parent="SubViewport/World/NavigationRegion3D" index="0"]
-modifier_stack = SubResource("Resource_he2qn")
+modifier_stack = SubResource("Resource_85hpq")
 
 [node name="NavigationRegion3D" parent="SubViewport/World/NavigationRegion3D" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.294553, 0)
@@ -198,7 +200,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.30938, 4.28823, -0.723339)
 shape = SubResource("BoxShape3D_17jk5")
 
 [node name="position" type="Node3D" parent="SubViewport/World/HideTask" index="5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.10582, 4.04271, 0.324618)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.78188, 4.04271, 0.324618)
 
 [node name="HidingCamera" type="Camera3D" parent="SubViewport/World/HideTask" index="6"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.3546, 4.0833, -0.643793)
@@ -207,7 +209,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.354
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.50751, 4.67384, 3.34505)
 
 [node name="Target2" type="Node3D" parent="SubViewport/World/HideTask" index="8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.86691, 4.34555, 0.978614)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.12435, 4.28768, 0.978614)
 
 [node name="Target1" type="Node3D" parent="SubViewport/World/HideTask" index="9"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.82352, 4.25954, -1.39949)
@@ -215,15 +217,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.82352, 4.25954, -1.39949)
 [node name="Target4" type="Node3D" parent="SubViewport/World/HideTask" index="10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0754, 0.813262, 7.33806)
 
-[node name="Microfone" parent="." index="6" instance=ExtResource("8_o6d33")]
+[node name="SkinWalker" parent="SubViewport/World/HideTask" index="11" instance=ExtResource("14_6htf6")]
+transform = Transform3D(1.2, 0, 0, 0, 1.1945, 0.114765, 0, -0.114765, 1.1945, -2.41279, 1.77342, -0.155044)
+visible = false
+
+[node name="Death" parent="." index="6" instance=ExtResource("14_r7hs0")]
 visible = false
 layout_mode = 2
 
-[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="." index="7"]
+[node name="Microfone" parent="." index="7" instance=ExtResource("8_o6d33")]
+visible = false
+layout_mode = 2
+
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="." index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.16159, 3.97836, 2.82368)
 size = Vector3(13.8679, 11.2738, 11.4948)
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="." index="8"]
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." index="9"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.6507, 16.5761, 0)
 amount = 5000
 randomness = 1.0
@@ -233,7 +243,7 @@ trail_lifetime = 0.1
 process_material = SubResource("ParticleProcessMaterial_4fh08")
 draw_pass_1 = SubResource("RibbonTrailMesh_uteds")
 
-[node name="rain" type="AudioStreamPlayer" parent="." index="9"]
+[node name="rain" type="AudioStreamPlayer" parent="." index="10"]
 stream = ExtResource("15_qycrr")
 
 [connection signal="close" from="SubViewport/World/HideTask/Paper" to="SubViewport/World/HideTask" method="_on_paper_close"]
