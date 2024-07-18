@@ -16,6 +16,7 @@ extends Node3D
 @onready var skin_walker = $SkinWalker
 @onready var skin_walker_2 = $SkinWalker2
 @onready var death = $"../../../Death"
+@onready var mom_col = $Mom/CollisionShape3D
 
 
 @onready var target_1 = $Target1
@@ -47,9 +48,7 @@ func _process(delta):
 		mom.target = player
 	elif !volume_exceeded:
 		mom.target = mom.previous_target
-		if microfone.final_volume >= 60:
-			print("GRITEI")
-			print(microfone.final_volume)
+		if microfone.final_volume >= 100:
 			volume_exceeded = true
 	elif volume_exceeded:
 		mom.target = player
@@ -90,24 +89,24 @@ func _on_paper_close():
 	walk_sound.play()
 
 func _on_wrong_spot_body_entered(body):
-	if quest_control.questActive == 15:
+	if quest_control.questActive == 15 and body.name != "Mom":
 		interact_text.text = "[E] Esconder"
 		interact_text.show()
 		canHideWrongSpot = true
 
 func _on_wrong_spot_body_exited(body):
-	if quest_control.questActive == 15:
+	if quest_control.questActive == 15 and body.name != "Mom":
 		interact_text.hide()
 		canHideWrongSpot = false
 
 func _on_right_spot_body_entered(body):
-	if quest_control.questActive == 15:
+	if quest_control.questActive == 15 and body.name != "Mom":
 		interact_text.text = "[E] Esconder"
 		interact_text.show()
 		canHideRightSpot = true
 
 func _on_right_spot_body_exited(body):
-	if quest_control.questActive == 15:
+	if quest_control.questActive == 15 and body.name != "Mom":
 		interact_text.hide()
 		canHideRightSpot = false
 
@@ -136,10 +135,15 @@ func _on_navigation_agent_3d_target_reached():
 		mom.target = target_4
 		mom.previous_target = target_4
 		
-	elif mom.target == target_4:
+	elif mom.target == target_4 and quest_control.questActive == 15:
 		walk_sound.stop()
 		mom.hide()
-		
+		mom_col.set_deferred("disabled", true)
+		mom.following = false
+		quest_control.finishQuest()
+		finishQuestDialogue()
+		setFlags(false)
+
 	elif mom.target == player and hiding:
 		mom.following = false
 		mom.target = null
@@ -162,3 +166,12 @@ func _on_navigation_agent_3d_target_reached():
 		player.head.set_rotation_degrees(Vector3(40, 0, 0))
 		player.camera.fov = 25.0
 		death.appear()
+
+func finishQuestDialogue():
+	dialogue_text.timeBetweenText = 3
+	dialogue_text.queueDialogue("talvez ela tenha ido embora")
+	dialogue_text.showDialogue()
+
+func setFlags(value):
+	canHideWrongSpot = value
+	canHideRightSpot = value

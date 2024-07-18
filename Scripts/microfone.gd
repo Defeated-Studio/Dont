@@ -29,7 +29,6 @@ func _process(delta):
 	
 	final_volume = microphone_volume * (200 * sensitity)
 	
-	
 	if target_size_y >= 211:
 		target_size_y = 210.0
 	if target_position_y <= 4:

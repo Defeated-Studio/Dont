@@ -6,6 +6,11 @@ extends Node2D
 @onready var label_3 = $Control/Label3
 @onready var timer = $Control/Timer
 @onready var label_6 = $Control/Label6
+
+@onready var bus_sound = $BusSound
+@onready var ambience_sound = $AmbienceSound
+
+
 var anim_next = 0
 var flag = 1
 var timer_flag = 1
@@ -14,6 +19,10 @@ var canReceiveInput = true
 func _ready():
 	animation_player.play("fade_in_first")
 	animation_player.animation_finished.connect(_on_animation_finished)
+	bus_sound.play()
+	ambience_sound.play()
+	fadeInAudio(bus_sound)
+	fadeInAudio(ambience_sound)
 
 func _on_animation_finished(anim_name):
 	if anim_name == "fade_out_first":
@@ -27,6 +36,8 @@ func _on_animation_finished(anim_name):
 		animation_player.play("fade_out_screen")
 	elif anim_name == "fade_out_screen":
 		animation_player.play("first_day")
+		fadeOutAudio(bus_sound)
+		fadeOutAudio(ambience_sound)
 		canReceiveInput = false
 	elif anim_name == "first_day":
 		visible = false
@@ -42,6 +53,8 @@ func _change_labels():
 	label_3.text = "Trilha essa, que ele teve que percorrer andando pela maior parte, chegando já durante a noite na casa"
 
 func _process(delta):
+	if !ambience_sound.playing:
+		ambience_sound.play(3)
 	if (Input.is_anything_pressed() && flag == 1) and canReceiveInput:
 		flag = 0
 		timer_flag = 0
@@ -59,3 +72,11 @@ func _on_timer_timeout():
 	elif anim_next == 2:
 		label_6.text = ""
 		animation_player.play("fade_out_screen")
+		
+func fadeInAudio(audio):
+	var tween = get_tree().create_tween()
+	tween.tween_property(audio, "volume_db", -10, 5)
+	
+func fadeOutAudio(audio):
+	var tween = get_tree().create_tween()
+	tween.tween_property(audio, "volume_db", -80, 12)
