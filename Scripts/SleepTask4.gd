@@ -31,7 +31,7 @@ func _process(delta):
 			tween.tween_property(rain, "volume_db", -80, 5)
 
 func _on_bed_area_body_entered(body):
-	if quest_control.questActive == 14:
+	if quest_control.questActive == 16:
 		canSleep = true
 		interact_text.show()
 		interact_text.text = "[E] Dormir"

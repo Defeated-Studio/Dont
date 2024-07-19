@@ -24,6 +24,7 @@ extends Node3D
 @onready var target_3 = $Target3
 @onready var target_4 = $Target4
 
+var canFollowPlayer = false
 var canHideWrongSpot = false
 var canHideRightSpot = false
 var hiding = false
@@ -44,14 +45,15 @@ func _process(delta):
 		exitSpot()
 		hiding = false
 	
-	if !hiding:
-		mom.target = player
-	elif !volume_exceeded:
-		mom.target = mom.previous_target
-		if microfone.final_volume >= 100:
-			volume_exceeded = true
-	elif volume_exceeded:
-		mom.target = player
+	if canFollowPlayer:
+		if !hiding:
+			mom.target = player
+		elif !volume_exceeded:
+			mom.target = mom.previous_target
+			if microfone.final_volume >= 100:
+				volume_exceeded = true
+		elif volume_exceeded:
+			mom.target = player
 
 func exitSpot():
 	SceneTransition.change_scene("", "quickTransition", 0)
@@ -118,6 +120,7 @@ func _on_navigation_agent_3d_target_reached():
 			walk_sound.play()
 		mom.target = target_2
 		mom.previous_target = target_2
+		canFollowPlayer = true
 		
 	elif mom.target == target_2:
 		walk_sound.stop()

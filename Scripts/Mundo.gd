@@ -85,3 +85,4 @@ func showPeepHole():
 	fisheye.show()
 	flashlight.hide()
 	flashlight_light.hide()
+
