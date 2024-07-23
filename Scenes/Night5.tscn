@@ -1,14 +1,15 @@
-[gd_scene load_steps=14 format=3 uid="uid://4t81dajiihv8"]
+[gd_scene load_steps=15 format=3 uid="uid://4t81dajiihv8"]
 
 [ext_resource type="PackedScene" uid="uid://bonk8egsbphsi" path="res://Scenes/World.tscn" id="1_xdcmm"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/stack/modifier_stack.gd" id="2_0fnf1"]
+[ext_resource type="Script" path="res://Scripts/Night5.gd" id="2_0w2jq"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/create_inside_random.gd" id="3_ltruw"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/randomize_transforms.gd" id="4_qdsn8"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/relax.gd" id="5_lgjvr"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/project_on_geometry.gd" id="6_ct28p"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/project_on_terrain3d.gd" id="7_l6gqk"]
 
-[sub_resource type="Resource" id="Resource_w44oe"]
+[sub_resource type="Resource" id="Resource_ig332"]
 script = ExtResource("3_ltruw")
 amount = 550
 enabled = true
@@ -17,7 +18,7 @@ custom_seed = 9
 restrict_height = true
 reference_frame = 1
 
-[sub_resource type="Resource" id="Resource_vmjsj"]
+[sub_resource type="Resource" id="Resource_i0577"]
 script = ExtResource("4_qdsn8")
 position = Vector3(0.15, 0.15, 0.15)
 rotation = Vector3(2, 360, 2)
@@ -28,7 +29,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_planf"]
+[sub_resource type="Resource" id="Resource_oocgl"]
 script = ExtResource("5_lgjvr")
 iterations = 3
 offset_step = 0.2
@@ -40,7 +41,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_vk4wm"]
+[sub_resource type="Resource" id="Resource_tex8y"]
 script = ExtResource("6_ct28p")
 ray_direction = Vector3(0, -1, 0)
 ray_length = 5.0
@@ -56,7 +57,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_yg5bb"]
+[sub_resource type="Resource" id="Resource_410j1"]
 script = ExtResource("7_l6gqk")
 terrain_node = NodePath("../Terrain3D")
 align_with_collision_normal = false
@@ -66,11 +67,16 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_df7rb"]
+[sub_resource type="Resource" id="Resource_8um65"]
 script = ExtResource("2_0fnf1")
-stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_w44oe"), SubResource("Resource_vmjsj"), SubResource("Resource_planf"), SubResource("Resource_vk4wm"), SubResource("Resource_yg5bb")])
+stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_ig332"), SubResource("Resource_i0577"), SubResource("Resource_oocgl"), SubResource("Resource_tex8y"), SubResource("Resource_410j1")])
 
 [node name="Night5" instance=ExtResource("1_xdcmm")]
+script = ExtResource("2_0w2jq")
+
+[node name="Player" parent="SubViewport/World" index="0"]
+unique_name_in_owner = true
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7.14904, 4.0876, -1.37409)
 
 [node name="InteractText" type="Control" parent="SubViewport/World" index="4"]
 layout_mode = 3
@@ -93,5 +99,5 @@ grow_horizontal = 2
 grow_vertical = 0
 horizontal_alignment = 1
 
-[node name="Nature" parent="SubViewport/World/NavigationRegion3D" index="0"]
-modifier_stack = SubResource("Resource_df7rb")
+[node name="Nature" parent="SubViewport/World/ForestNav" index="3"]
+modifier_stack = SubResource("Resource_8um65")

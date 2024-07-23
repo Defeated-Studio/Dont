@@ -144,6 +144,7 @@ func _on_navigation_agent_3d_target_reached():
 		mom_col.set_deferred("disabled", true)
 		mom.following = false
 		quest_control.finishQuest()
+		quest_control.startQuest()
 		finishQuestDialogue()
 		setFlags(false)
 

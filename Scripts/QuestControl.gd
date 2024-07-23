@@ -9,7 +9,8 @@ static var questActive = 14
 
 var questsText = ["Arrume o Gerador e Ache a chave", "Chame o Bob", "Coma algo", "Vá dormir", 
 "Investigue o barulho", "Escreva no Diário", "Limpe a Casa", "Passar o tempo", "Coma algo",
-"Vá dormir", "Ache sinal", "Va dormir", "Atender a porta", "Dormir", "Pegar Papel", "SE ESCONDA", "Dormir"]
+"Vá dormir", "Ache sinal", "Va dormir", "Atender a porta", "Dormir", "Pegar Papel", "SE ESCONDA", "Tentar Dormir",
+"Formar Barricada"]
 # 0  - Arrume o Gerador e Ache a chave
 # 1  - Chame o Bob
 # 2  - Coma algo
@@ -26,7 +27,8 @@ var questsText = ["Arrume o Gerador e Ache a chave", "Chame o Bob", "Coma algo",
 # 13 - Dormir
 # 14 - Pegar Papel
 # 15 - SE ESCONDA
-# 16 - Dormir
+# 16 - Tentar Dormir
+# 17 - Formar Barricada
 
 # Começar tasks instantaneamente para testes
 func _ready():
