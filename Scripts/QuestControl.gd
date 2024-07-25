@@ -31,8 +31,8 @@ var questsText = ["Arrume o Gerador e Ache a chave", "Chame o Bob", "Coma algo",
 # 17 - Formar Barricada
 
 # Começar tasks instantaneamente para testes
-func _ready():
-	pass
+func reset():
+	questActive = -1
 	
 func finishQuest():
 	quest_text_animation.play_backwards("show")

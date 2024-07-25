@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Scripts/Death.gd" id="1_5yfqo"]
 [ext_resource type="Shader" path="res://Shaders/Death.gdshader" id="1_e3o3w"]
-[ext_resource type="Texture2D" uid="uid://dkj0ykoxjfxxf" path="res://Texture/rgba-noise-medium.png" id="2_5cnnf"]
-[ext_resource type="AudioStream" uid="uid://sd2ab7tcp1pg" path="res://Sounds/Jumpscare.mp3" id="4_f4dgf"]
+[ext_resource type="Texture2D" uid="uid://14uu38kf8nrm" path="res://Texture/rgba-noise-medium.png" id="2_5cnnf"]
+[ext_resource type="AudioStream" uid="uid://bbj6b83c2reug" path="res://Sounds/Jumpscare.mp3" id="4_f4dgf"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_21pls"]
 shader = ExtResource("1_e3o3w")

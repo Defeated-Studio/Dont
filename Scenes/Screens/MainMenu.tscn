@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://d3jho5x0s5tdg"]
 
 [ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1_ohjbk"]
-[ext_resource type="FontFile" uid="uid://b1vymeh36eknt" path="res://Fonts/Cinzel-Bold.ttf" id="2_3d6mk"]
+[ext_resource type="FontFile" uid="uid://dx05xccu4q56q" path="res://Fonts/Cinzel-Bold.ttf" id="2_3d6mk"]
 [ext_resource type="PackedScene" uid="uid://ceg1jxer4cb5q" path="res://Scenes/Screens/OptionsMenu.tscn" id="3_0cmda"]
 
 [node name="MainMenu" type="Control"]

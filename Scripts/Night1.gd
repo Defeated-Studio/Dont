@@ -4,10 +4,12 @@ extends SubViewportContainer
 @onready var main_camera = $SubViewport/World/Player/Head/Camera3D
 @onready var states = $States
 @onready var house = %House
+@onready var quest_control = $SubViewport/World/QuestControl
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	quest_control.reset()
 	main_camera.set_current(true)
 	
 	front_door.locked = true

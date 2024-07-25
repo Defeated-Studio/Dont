@@ -24,7 +24,14 @@ extends Node3D
 @onready var skin_walker_final_ray = $SkinWalkerFinal/SkinWalkerFinalRay
 
 @onready var jumpscare = $jumpscare
-@onready var scream = $scream
+@onready var gore = $Gore
+
+@onready var target_position = $TargetPosition
+@onready var car = $"../Car"
+@onready var car_running = $"../Car/CarRunning"
+@onready var player_skin_walker = $"../Player/PlayerSkinWalker"
+
+@onready var player_head = %Player/Head
 
 var audioCanPlay = false
 var canPeepHole = false
@@ -32,6 +39,8 @@ var inPeepHole = false
 var hasSeenPeepHole = false
 var canMoveSofa = false
 var canDie = false
+var dead = false
+var finished = false
 
 func _ready():
 	front_door.setDoorMonitoring(false)
@@ -41,18 +50,49 @@ func _ready():
 	dialogue_text.timeBetweenText = 3
 	dialogue_text.queueDialogue("finalmente, só pode ser minha mãe")
 	dialogue_text.showDialogue()
+	
 
-
+func teleportPlayer():
+	player.global_position = target_position.global_position
+	
 func _process(delta):
+	if front_door.getState():
+		front_door.setDoorMonitoring(false)
+	
 	if canDie and (is_instance_valid(IsRayCasting.collider)) and IsRayCasting.collider.name == "SkinWalkerFinalRay":
 		canDie = false
 		jumpscare.play(0.4)
+		skin_walker_final.look_at(player.global_position)
 		player.look_at(skin_walker_final.global_position, Vector3.UP)
 		player.head.set_rotation_degrees(Vector3(5, 0, 0))
 		player.camera.fov = 25.0
 		player.change_input_flags(false)
 		SceneTransition.change_scene("", "LastKillScreen", 0)
+		await get_tree().create_timer(10).timeout
+		SceneTransition.change_scene("", "Dissolve", 0)
+		teleportPlayer()
+		car.show()
+		dead = true
+		player.camera.fov = 45.0
+		car_running.start()
+		player_skin_walker.show()
+		
+	if dead and !car.arrived:
+		player.look_at(car.global_position)
 	
+	if dead and car.arrived and !finished:
+		finished = true
+		await get_tree().create_timer(1).timeout
+		var tween = get_tree().create_tween()
+		player.camera.fov = 45.0
+		tween.tween_property(player_head, "rotation_degrees", Vector3(-75, 0, 0), 3)
+		
+		await get_tree().create_timer(4).timeout
+		SceneTransition.change_scene("", "LastKillScreen", 0)
+		await get_tree().create_timer(2).timeout
+		SceneTransition.change_scene("", "Dissolve", 0)
+		get_tree().change_scene_to_file("res://Scenes/Screens/MainMenu.tscn")
+		
 	if skin_walker.visible:
 		skin_walker.position.z -= 2.5 * delta
 	
@@ -92,7 +132,7 @@ func _process(delta):
 		paper.show()
 		blood_marks.show()
 		blood_marks_2.show()
-		scream.play()
+		gore.play()
 
 func _on_interact_area_body_entered(body):
 	if !hasSeenPeepHole:
