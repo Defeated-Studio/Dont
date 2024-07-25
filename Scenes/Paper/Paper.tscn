@@ -1,12 +1,12 @@
 [gd_scene load_steps=15 format=3 uid="uid://dsbkf1co3qjwj"]
 
-[ext_resource type="Texture2D" uid="uid://i13w4115w75d" path="res://Models/Paper_0.png" id="1_80tvu"]
+[ext_resource type="Texture2D" uid="uid://c3w3ldcr4sahc" path="res://Models/Paper_0.png" id="1_80tvu"]
 [ext_resource type="Script" path="res://Scripts/Paper.gd" id="1_vmcsi"]
-[ext_resource type="Texture2D" uid="uid://m4rs6bmsfx3b" path="res://Models/Paper_1.png" id="2_xpalx"]
-[ext_resource type="Texture2D" uid="uid://cbctcusrtrqwk" path="res://Models/Paper_2.png" id="3_0puwf"]
+[ext_resource type="Texture2D" uid="uid://c0bqy2jiocvo4" path="res://Models/Paper_1.png" id="2_xpalx"]
+[ext_resource type="Texture2D" uid="uid://dctu21g7hpy8n" path="res://Models/Paper_2.png" id="3_0puwf"]
 [ext_resource type="Shader" path="res://Shaders/Highlight.gdshader" id="4_qok00"]
-[ext_resource type="Texture2D" uid="uid://dmvcmg5sptr2v" path="res://Texture/Paper.png" id="5_j2hh6"]
-[ext_resource type="FontFile" uid="uid://doktlg8ik1xds" path="res://Fonts/Allura-Regular.ttf" id="7_623er"]
+[ext_resource type="Texture2D" uid="uid://c6ovmplaej7nm" path="res://Texture/Paper.png" id="5_j2hh6"]
+[ext_resource type="FontFile" uid="uid://dh51om4khihme" path="res://Fonts/Allura-Regular.ttf" id="7_623er"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_85u0j"]
 render_priority = 0

@@ -44,3 +44,6 @@ func change_scene(target_scene, anim, scene_change=1):
 		animation.play_backwards("dissolve")
 		if scene_change:
 			get_tree().change_scene_to_file(target_scene)
+	elif anim == "LastKillScreen":
+		animation.play("LastKillScreen")
+		await animation.animation_finished

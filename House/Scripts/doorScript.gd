@@ -6,6 +6,7 @@ extends Node3D
 @onready var doorShutSound = $AudioStreamPlayer3D
 @onready var locked_text = $Door/LockedText
 @onready var door = $Door
+@onready var door_event = $Door/DoorEvent
 
 @export var locked = false
 
@@ -15,6 +16,9 @@ static var shutDoor = true
 
 func getState():
 	return doorOpen
+
+func setDoorMonitoring(value):
+	door_event.monitoring = value
 
 func setState(state):
 	if state:
