@@ -1,14 +1,14 @@
 [gd_scene load_steps=20 format=3 uid="uid://d1dii1a71vb20"]
 
 [ext_resource type="Script" path="res://Scripts/Diary/Diary3d.gd" id="1_w6evf"]
-[ext_resource type="PackedScene" uid="uid://dhqlued4hwi2s" path="res://House/Models/Bedroom1/pbr_dark_diary.glb" id="2_wlyje"]
-[ext_resource type="Texture2D" uid="uid://c4ypypgdka1we" path="res://Texture/Diario.png" id="3_iilso"]
+[ext_resource type="PackedScene" uid="uid://b2ujdds2geuni" path="res://House/Models/Bedroom1/pbr_dark_diary.glb" id="2_wlyje"]
+[ext_resource type="Texture2D" uid="uid://bmon2bq03pdt4" path="res://Texture/Diario.png" id="3_iilso"]
 [ext_resource type="Script" path="res://Scripts/Diary/Diary_UI.gd" id="3_u0kww"]
 [ext_resource type="Script" path="res://Scripts/Diary/Pages.gd" id="5_8l2yg"]
-[ext_resource type="FontFile" uid="uid://v6v55nu11kyv" path="res://Fonts/Kalam-Regular.ttf" id="5_me4yl"]
+[ext_resource type="FontFile" uid="uid://cudbfyapbv56x" path="res://Fonts/Kalam-Regular.ttf" id="5_me4yl"]
 [ext_resource type="Script" path="res://Scripts/Diary/Papers.gd" id="6_t3pmu"]
-[ext_resource type="Texture2D" uid="uid://bj6duw5pk5h5l" path="res://Texture/Paper_for_diary.png" id="7_ofe5r"]
-[ext_resource type="FontFile" uid="uid://doktlg8ik1xds" path="res://Fonts/Allura-Regular.ttf" id="9_x54gp"]
+[ext_resource type="Texture2D" uid="uid://dtn5qjgbyue27" path="res://Texture/Paper_for_diary.png" id="7_ofe5r"]
+[ext_resource type="FontFile" uid="uid://dh51om4khihme" path="res://Fonts/Allura-Regular.ttf" id="9_x54gp"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6rr1v"]
 size = Vector3(1.58115, 1, 5.60074)

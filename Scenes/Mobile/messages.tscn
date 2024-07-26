@@ -752,7 +752,7 @@ label_settings = SubResource("LabelSettings_pv1w7")
 [node name="Message5" type="Label" parent="Bob/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
-text = "tem alguma problema?⠀"
+text = "tem algum problema?  "
 
 [node name="TextureRect" type="TextureRect" parent="Bob/ScrollContainer/VBoxContainer/Message5"]
 show_behind_parent = true
