@@ -12,11 +12,11 @@ var canSleep = false
 @onready var states = $"../../../States"
 @onready var sleep_col = $BedArea/CollisionShape3D
 
-@onready var door_knock = $DoorKnock
 @onready var mom = $"../AnswerDoorTask/Mom"
 @onready var mom_anim = $"../AnswerDoorTask/Mom/AnimationPlayer"
 @onready var answer_door_task = $"../AnswerDoorTask"
-	
+
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if (Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")) and canSleep and IsRayCasting.canInteract:

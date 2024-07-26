@@ -5,7 +5,7 @@ signal QuestStarted
 @onready var quest_text = $QuestText
 @onready var quest_text_animation = $QuestTextAnimation
 
-static var questActive = 4
+static var questActive = 10
 
 var questsText = ["Arrume o Gerador e Ache a chave", "Chame o Bob", "Coma algo", "Vá dormir", 
 "Investigue o barulho", "Escreva no Diário", "Limpe a Casa", "Passar o tempo", "Coma algo",

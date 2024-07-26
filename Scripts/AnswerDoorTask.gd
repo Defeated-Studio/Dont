@@ -2,7 +2,7 @@ extends Node3D
 
 @onready var front_door = %House/FrontDoor
 @onready var mom = $Mom
-@onready var door_knock = $"../SleepTask3/DoorKnock"
+@onready var door_knock = $DoorKnock
 @onready var peep_hole_text = $PeepHoleText
 @onready var fisheye = $"../../../Fisheye"
 @onready var world = %World

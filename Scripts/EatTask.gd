@@ -68,7 +68,7 @@ func _process(delta):
 	if canShowEnemy:
 		skin_walker.show()
 		skin_walker.position.x += 1 * delta
-		skin_walker_anim.play("idle")
+		skin_walker_anim.play("walk")
 		if skin_walker.position.x > 5:
 			canShowEnemy = false
 			skin_walker.hide()
@@ -82,7 +82,6 @@ func _process(delta):
 			player.canCrouch = true
 			player.canMove = true
 			world.canOpenMobile = true
-			#world.canOpenDiary = true
 			player.global_position = playerStandupPos
 			player_view.position.y = playerViewPos
 			doneEating = false
@@ -133,6 +132,7 @@ func _process(delta):
 			get_node("SofaArea").queue_free()
 			playerStandupPos = player.global_position
 			player.global_position = pos.get_global_transform().origin
+			player.set_rotation_degrees(Vector3(0, 0, 0))
 			playerViewPos = player_view.position.y
 			player_view.position.y = 0.6
 			player.canMove = false
