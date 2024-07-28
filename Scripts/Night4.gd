@@ -23,8 +23,9 @@ func _process(delta):
 
 
 func _on_dont_go_outside_body_entered(body):
-	dialogue_text.timeBetweenText = 3.5
-	dialogue_text.queueDialogue("melhor eu não sair nessa chuva")
-	dialogue_text.showDialogue()
+	if body.name != "Mom":
+		dialogue_text.timeBetweenText = 3.5
+		dialogue_text.queueDialogue("melhor eu não sair nessa chuva")
+		dialogue_text.showDialogue()
 
 
