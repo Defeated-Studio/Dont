@@ -60,6 +60,7 @@ func _process(delta):
 		await get_tree().create_timer(1).timeout
 		dialogueMomJake()
 		hasSeenPeepHole = false
+		get_node("InteractArea").queue_free()
 		
 	if readyToChoose and Input.is_action_just_pressed("PeepHole"):
 		readyToChoose = false

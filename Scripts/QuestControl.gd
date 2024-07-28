@@ -35,14 +35,16 @@ func reset():
 	questActive = -1
 	
 func finishQuest():
-	quest_text_animation.play_backwards("show")
-	questActive += 1
-	QuestStarted.emit()
+	if !questActive > 17:
+		quest_text_animation.play_backwards("show")
+		questActive += 1
+		QuestStarted.emit()
 
 func startQuest():
 	if questActive == -1:
 		questActive = 0
-	quest_text.text = questsText[questActive]
-	quest_text_animation.play("show")
+	if !questActive > 17:
+		quest_text.text = questsText[questActive]
+		quest_text_animation.play("show")
 	
 

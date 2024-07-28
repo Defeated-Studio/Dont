@@ -27,7 +27,7 @@ func _process(delta):
 		toClean -= 1
 		if toClean == 0:
 			await get_tree().create_timer(1.5).timeout
-			player_dialogue.queueDialogue("acho que terminei, preciso jogar isso fora.")
+			player_dialogue.queueDialogue("acho que terminei, preciso jogar isso fora no lixo da cozinha.")
 			player_dialogue.showDialogue()
 			trash.set_deferred("disabled", false) 
 	
