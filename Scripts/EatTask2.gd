@@ -234,38 +234,44 @@ func _on_quest_control_quest_started():
 		quest_control.startQuest()
 		
 func _on_geladeira_area_body_entered(body):
-	interact_text.text = "[E] Pegar Algo"
-	interact_text.show()
-	canPickUpPizzaBox = true
+	if quest_control.questActive == 8:
+		interact_text.text = "[E] Pegar Algo"
+		interact_text.show()
+		canPickUpPizzaBox = true
 
 func _on_geladeira_area_body_exited(body):
-	interact_text.hide()
-	canPickUpPizzaBox = false
+	if quest_control.questActive == 8:
+		interact_text.hide()
+		canPickUpPizzaBox = false
 
 func _on_plate_area_body_entered(body):
-	if PizzaBox:
-		interact_text.text = "[E] Colocar"
-		interact_text.show()
-		canPutPizzaOnPlate = true
+	if quest_control.questActive == 8:
+		if PizzaBox:
+			interact_text.text = "[E] Colocar"
+			interact_text.show()
+			canPutPizzaOnPlate = true
 
 func _on_plate_area_body_exited(body):
-	interact_text.hide()
-	canPutPizzaOnPlate = false
+	if quest_control.questActive == 8:
+		interact_text.hide()
+		canPutPizzaOnPlate = false
 
 func _on_forno_area_body_entered(body):
-	if PizzaAndPlate:
-		interact_text.text = "[E] Colocar"
-		interact_text.show()
-		canPutPizzaOnOven = true
-		
-	if PizzaReady:
-		interact_text.text = "[E] Pegar"
-		interact_text.show()
-		canPickUpPizza = true
+	if quest_control.questActive == 8:
+		if PizzaAndPlate:
+			interact_text.text = "[E] Colocar"
+			interact_text.show()
+			canPutPizzaOnOven = true
+			
+		if PizzaReady:
+			interact_text.text = "[E] Pegar"
+			interact_text.show()
+			canPickUpPizza = true
 		
 func _on_forno_area_body_exited(body):
-	interact_text.hide()
-	canPutPizzaOnOven = false
+	if quest_control.questActive == 8:
+		interact_text.hide()
+		canPutPizzaOnOven = false
 
 func teleport_player():
 	player.global_position = Vector3(5.145, 0.541, -1.4)

@@ -48,6 +48,7 @@ func _physics_process(delta):
 		
 	if (is_instance_valid(IsRayCasting.collider)) and (IsRayCasting.collider.name == "Generator") and (IsRayCasting.canInteract) and (Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")) and canPowerOn:
 		canPowerOn = false
+		get_node("GeneratorArea").queue_free()
 		interact_text.hide()
 		toDo -= 1
 	

@@ -51,6 +51,7 @@ grow_vertical = 2
 script = ExtResource("1_f66sj")
 
 [node name="QuestText" type="Label" parent="."]
+visible = false
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 1
 anchors_preset = 10
