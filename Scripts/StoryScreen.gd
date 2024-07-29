@@ -6,6 +6,7 @@ extends Node2D
 @onready var label_3 = $Control/Label3
 @onready var timer = $Control/Timer
 @onready var label_6 = $Control/Label6
+@onready var soundtrack = $"../Soundtrack/Soundtrack"
 
 @onready var bus_sound = $BusSound
 @onready var ambience_sound = $AmbienceSound
@@ -21,8 +22,8 @@ func _ready():
 	animation_player.animation_finished.connect(_on_animation_finished)
 	bus_sound.play()
 	ambience_sound.play()
-	fadeInAudio(bus_sound)
-	fadeInAudio(ambience_sound)
+	fadeInAudio(bus_sound, -10)
+	fadeInAudio(ambience_sound, -10)
 
 func _on_animation_finished(anim_name):
 	if anim_name == "fade_out_first":
@@ -41,6 +42,8 @@ func _on_animation_finished(anim_name):
 		canReceiveInput = false
 	elif anim_name == "first_day":
 		visible = false
+		fadeInAudio(soundtrack, 10)
+		soundtrack.play()
 	elif (anim_name == "fade_in_first" || anim_name == "fade_in_sec" || anim_name == "fade_in_third") && timer_flag == 1:
 		timer.start()
 	
@@ -73,9 +76,9 @@ func _on_timer_timeout():
 		label_6.text = ""
 		animation_player.play("fade_out_screen")
 		
-func fadeInAudio(audio):
+func fadeInAudio(audio, db):
 	var tween = get_tree().create_tween()
-	tween.tween_property(audio, "volume_db", -10, 5)
+	tween.tween_property(audio, "volume_db", db, 5)
 	
 func fadeOutAudio(audio):
 	var tween = get_tree().create_tween()

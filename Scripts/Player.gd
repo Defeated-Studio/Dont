@@ -2,6 +2,7 @@ extends CharacterBody3D
 
 var onPath = false
 var ground = "Grass"
+
 @onready var wood_foot_steps = $Feet/WoodFootSteps
 @onready var grass_foot_steps = $Feet/GrassFootSteps
 @onready var grass_foot_steps_run = $Feet/GrassFootStepsRun
