@@ -7,14 +7,18 @@ extends SubViewportContainer
 @onready var player = %Player
 @onready var dialogue_text = %Player/DialogueText
 @onready var forest_nav = %ForestNav
+@onready var quest_control = $SubViewport/World/QuestControl
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	forest_nav.enabled = false
 	rain.play()
+	
 	states.setStates()
 	states.setPapersTaken()
+	
 	diary.add_page()
+	quest_control.setQuestActive(14)
 	main_camera.set_current(true)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

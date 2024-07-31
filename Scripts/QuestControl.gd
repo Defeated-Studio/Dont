@@ -5,7 +5,7 @@ signal QuestStarted
 @onready var quest_text = $QuestText
 @onready var quest_text_animation = $QuestTextAnimation
 
-static var questActive = 14
+static var questActive = 0
 
 var questsText = ["Arrume o Gerador e Ache a chave", "Chame o Bob", "Coma algo", "Vá dormir", 
 "Investigue o barulho", "Escreva no Diário", "Limpe a Casa", "Passar o tempo", "Coma algo",
@@ -33,6 +33,9 @@ var questsText = ["Arrume o Gerador e Ache a chave", "Chame o Bob", "Coma algo",
 # Começar tasks instantaneamente para testes
 func reset():
 	questActive = -1
+	
+func setQuestActive(value):
+	questActive = value
 	
 func finishQuest():
 	if !questActive > 17:
