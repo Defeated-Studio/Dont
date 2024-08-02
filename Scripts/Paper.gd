@@ -23,7 +23,7 @@ func _ready():
 
 
 func _process(delta):
-	if Input.is_action_just_pressed("interact") and canPickUp:
+	if Input.is_action_just_pressed("interact") and canPickUp and is_instance_valid(IsRayCasting.collider) and IsRayCasting.collider.name == "RayCast":
 		player.canMove = false
 		player.canMoveCamera = false
 		paper_model.hide()

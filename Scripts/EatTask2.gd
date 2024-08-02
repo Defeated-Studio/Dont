@@ -18,6 +18,7 @@ extends Node3D
 @onready var eat_area = $EatArea
 
 @onready var pizza_box = $"../Player/PizzaBox"
+@onready var flashlight = $"../Player/Head/Flashlight"
 @onready var pizza = $Pizza
 @onready var metal_plate = %House/Kitchen/MetalPlate
 
@@ -38,6 +39,7 @@ extends Node3D
 @onready var hand2 = $Hand2
 @onready var hand2_animation_player = $Hand2/AnimationPlayer
 @onready var heartbeat = $Heartbeat
+@onready var appear_animation = $SkinWalker/Appear/AnimationPlayer
 
 var canPickUpPizzaBox = false
 var PizzaBox = false
@@ -129,6 +131,7 @@ func _physics_process(delta):
 		player.canMove = false
 		player.canMoveCamera = false
 		player.canUseFlashlight = false
+		flashlight.hide()
 		
 		await get_tree().create_timer(1).timeout
 		teleport_player()
@@ -144,6 +147,8 @@ func _physics_process(delta):
 		await get_tree().create_timer(10).timeout
 		onWindow = true
 		oven_timer.start()
+		appear_animation.play("appear")
+		
 		
 	if (onWindow):
 		if !skin_walker.visible:

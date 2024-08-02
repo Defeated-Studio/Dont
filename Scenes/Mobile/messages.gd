@@ -25,6 +25,21 @@ extends Control
 @onready var mom_scrollbar = $Mom/ScrollContainer.get_v_scroll_bar()
 @onready var mom_scrollbarValue = $Mom/ScrollContainer
 
+@onready var first_date_2 = $Mom/ScrollContainer/VBoxContainer/FirstDate2
+@onready var space_15 = $Mom/ScrollContainer/VBoxContainer/Space15
+@onready var ninth_message_2 = $Mom/ScrollContainer/VBoxContainer/NinthMessage2
+@onready var no_signal_mom = $Mom/ScrollContainer/VBoxContainer/NinthMessage2/noSignal
+@onready var space_16 = $Mom/ScrollContainer/VBoxContainer/Space16
+@onready var space_18 = $Mom/ScrollContainer/VBoxContainer/Space18
+@onready var sixteenth_message_2 = $Mom/ScrollContainer/VBoxContainer/SixteenthMessage2
+@onready var space_19 = $Mom/ScrollContainer/VBoxContainer/Space19
+@onready var eleventh_message_3 = $Mom/ScrollContainer/VBoxContainer/EleventhMessage3
+@onready var space_20 = $Mom/ScrollContainer/VBoxContainer/Space20
+@onready var texture_rect = $Mom/ScrollContainer/VBoxContainer/NinthMessage2/TextureRect
+
+
+
+
 var max_scroll_length_bob = 0 
 var max_scroll_length_mom = 0
 
@@ -87,3 +102,19 @@ func _on_back_button_mom_pressed():
 
 func _on_back_button_pressed():
 	backButtonSignal = true
+
+func updateMessages():
+	no_signal.hide()
+	no_signal_2.hide()
+	no_signal_mom.hide()
+	
+	first_date_2.show()
+	space_15.show()
+	ninth_message_2.show()
+	space_16.show()
+	space_18.show()
+	sixteenth_message_2.show()
+	space_19.show()
+	eleventh_message_3.show()
+	texture_rect.show()
+	

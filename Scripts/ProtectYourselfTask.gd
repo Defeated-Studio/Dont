@@ -9,6 +9,7 @@ extends Node3D
 @onready var move_sofa_a = $MoveSofa
 @onready var bedroom_1_door = %House/Bedroom1/Bedroom1Door
 @onready var rain = $"../../../rain"
+@onready var front_door = %House/FrontDoor
 
 @onready var states = $"../../../States"
 
@@ -20,6 +21,9 @@ var toDo = 2
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if (Input.is_action_just_pressed("interact") and canMoveSofa):
+		if front_door.getState():
+			front_door.setState(false)
+		front_door.setDoorMonitoring(false)
 		player.change_input_flags(false)
 		get_node("SofaArea").queue_free()
 		SceneTransition.change_scene("", "quickTransition", 0)

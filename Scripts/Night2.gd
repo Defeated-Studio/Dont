@@ -5,7 +5,7 @@ extends SubViewportContainer
 @onready var diary = %Diary
 @onready var quest_control = $SubViewport/World/QuestControl
 
-func _ready():		
+func _ready():
 	states.setStates()
 	states.setPapersTaken()
 	

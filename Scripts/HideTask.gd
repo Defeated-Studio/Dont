@@ -88,6 +88,7 @@ func _on_paper_close():
 	mom.target = target_1
 	mom.show()
 	mom.following = true
+	mom_col.set_deferred("disabled", false)
 	walk_sound.play()
 
 func _on_wrong_spot_body_entered(body):

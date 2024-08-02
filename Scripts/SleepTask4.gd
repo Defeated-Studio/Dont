@@ -15,21 +15,13 @@ var canSleep = false
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if (Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")) and canSleep and IsRayCasting.canInteract:
+		get_node("BedArea").queue_free()
 		dialogue_text.queueDialogue("não consigo dormir depois disso")
 		dialogue_text.queueDialogue("preciso achar algum jeito de me proteger")
 		dialogue_text.timeBetweenText = 3
 		dialogue_text.showDialogue()
 		quest_control.finishQuest()
 		quest_control.startQuest()
-		
-		#if front_door.doorOpen:
-			#dialogue_text.queueDialogue("não posso dormir com a porta da frente aberta")
-			#dialogue_text.timeBetweenText = 3
-			#dialogue_text.showDialogue()
-		#elif bedroom_door.doorOpen or bedroom_curtain.CurtainOpened:
-			#dialogue_text.queueDialogue("preciso fechar a porta e as cortinas antes de dormir")
-			#dialogue_text.showDialogue()
-			
 
 func _on_bed_area_body_entered(body):
 	if quest_control.questActive == 16:

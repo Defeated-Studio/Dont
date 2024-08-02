@@ -8,6 +8,7 @@ extends SubViewportContainer
 @onready var dialogue_text = %Player/DialogueText
 @onready var forest_nav = %ForestNav
 @onready var quest_control = $SubViewport/World/QuestControl
+@onready var messages_app = $MessagesApp
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,6 +17,8 @@ func _ready():
 	
 	states.setStates()
 	states.setPapersTaken()
+	
+	messages_app.updateMessages()
 	
 	diary.add_page()
 	quest_control.setQuestActive(14)

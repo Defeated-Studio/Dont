@@ -152,7 +152,6 @@ text = "<"
 flat = true
 
 [node name="Mom" type="TextureRect" parent="."]
-visible = false
 layout_mode = 0
 offset_left = 1051.0
 offset_top = 350.0

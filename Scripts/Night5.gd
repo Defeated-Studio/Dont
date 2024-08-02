@@ -7,12 +7,17 @@ extends SubViewportContainer
 @onready var dialogue_text = %Player/DialogueText
 @onready var couch_1 = %House/LivingRoom/Couch1
 @onready var knifes = %House/Kitchen/Kitchen2/Knifes
+@onready var messages_app = $MessagesApp
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	states.setStates()
 	states.setPapersTaken()
 	diary.add_page()
+	
+	messages_app.updateMessages()
+	
 	main_camera.set_current(true)
 	couch_1.position = Vector3(-0.116, 0.738, 3.188)
 	couch_1.rotation_degrees = Vector3(0, 89.2, 0)
