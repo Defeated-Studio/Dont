@@ -5,7 +5,7 @@ extends SubViewportContainer
 @onready var states = $States
 @onready var house = %House
 @onready var quest_control = $SubViewport/World/QuestControl
-	
+
 
 func findByClass(node: Node, className : String, result : Array):
 	if node.is_class(className):

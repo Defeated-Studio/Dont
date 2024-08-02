@@ -34,12 +34,12 @@ func _on_animation_finished(anim_name):
 			_change_labels()
 			animation_player.play("fade_in_third")
 		elif anim_next == 2:
+			fadeOutAudio(bus_sound)
 			animation_player.play("fade_in_sec")
 	elif anim_name == "fade_out_sec":
 		animation_player.play("fade_out_screen")
 	elif anim_name == "fade_out_screen":
 		animation_player.play("first_day")
-		fadeOutAudio(bus_sound)
 		fadeOutAudio(ambience_sound)
 		canReceiveInput = false
 	elif anim_name == "first_day":

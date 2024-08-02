@@ -1,8 +1,8 @@
 [gd_scene load_steps=13 format=3 uid="uid://co7tsrq574r11"]
 
 [ext_resource type="Script" path="res://Scripts/StoryScreen.gd" id="1_oe1pu"]
-[ext_resource type="FontFile" uid="uid://cxdcng7dslxny" path="res://Fonts/Cinzel-Bold.ttf" id="2_civu7"]
-[ext_resource type="FontFile" path="res://Fonts/Derringer-Serial Regular.ttf" id="2_fmpux"]
+[ext_resource type="FontFile" uid="uid://na3o228ts34l" path="res://Fonts/Cinzel-Bold.ttf" id="2_civu7"]
+[ext_resource type="FontFile" uid="uid://cglxb0itajmiy" path="res://Fonts/Derringer-Serial Regular.ttf" id="2_fmpux"]
 
 [sub_resource type="Animation" id="Animation_x68ho"]
 length = 0.001
@@ -141,7 +141,7 @@ tracks/10/keys = {
 
 [sub_resource type="Animation" id="Animation_7xujv"]
 resource_name = "fade_in_first"
-length = 11.0
+length = 13.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -181,7 +181,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_rhie6"]
 resource_name = "fade_in_sec"
-length = 4.5
+length = 6.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -209,7 +209,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_ptael"]
 resource_name = "fade_in_third"
-length = 10.0
+length = 12.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
