@@ -24,8 +24,7 @@ func _ready():
 
 func _process(delta):
 	if Input.is_action_just_pressed("interact") and canPickUp and is_instance_valid(IsRayCasting.collider) and IsRayCasting.collider.name == "RayCast":
-		player.canMove = false
-		player.canMoveCamera = false
+		player.change_input_flags(false)
 		paper_model.hide()
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		
@@ -44,8 +43,7 @@ func _on_interact_area_body_exited(body):
 
 func _on_close_button_pressed():
 	close.emit()
-	player.canMove = true
-	player.canMoveCamera = true
+	player.change_input_flags(true)
 	ui.hide()
 	diary.new_paper_taken(id)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
