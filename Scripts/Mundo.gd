@@ -13,14 +13,14 @@ extends Node3D
 @onready var door_text = %House/FrontDoor/Door/DoorText
 @onready var fisheye = $"../../Fisheye"
 @onready var pause_menu = $"../../PauseMenu"
-
+@onready var saved_game_label = $SavedGameLabel
 
 var canOpenMobile = true
 var inPeepHole = false
 
 func _ready():
-	#Engine.max_fps = 144
-	pass
+	var saverloader = get_node("/root/SaverLoader")
+	saverloader.connect("saved_game_signal", _on_saver_loader_saved_game_signal)
 	
 func _notification(what):
 	if what == NOTIFICATION_APPLICATION_FOCUS_OUT:
@@ -86,3 +86,8 @@ func showPeepHole():
 	flashlight.hide()
 	flashlight_light.hide()
 
+
+func _on_saver_loader_saved_game_signal():
+	saved_game_label.show()
+	await get_tree().create_timer(5).timeout
+	saved_game_label.hide()	

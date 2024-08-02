@@ -19,3 +19,6 @@ func _ready():
 	dialogue_text.timeBetweenText = 3
 	dialogue_text.queueDialogue("eu preciso de ajuda o mais rápido possível, eu não to aguentando mais")
 	dialogue_text.showDialogue()
+
+	await get_tree().create_timer(2).timeout
+	SaverLoader.save_game(3)

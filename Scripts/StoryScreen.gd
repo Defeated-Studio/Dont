@@ -17,6 +17,8 @@ var flag = 1
 var timer_flag = 1
 var canReceiveInput = true
 
+signal animation_finished
+
 func _ready():
 	animation_player.play("fade_in_first")
 	animation_player.animation_finished.connect(_on_animation_finished)
@@ -44,6 +46,7 @@ func _on_animation_finished(anim_name):
 		visible = false
 		fadeInAudio(soundtrack, 10)
 		soundtrack.play()
+		animation_finished.emit()
 	elif (anim_name == "fade_in_first" || anim_name == "fade_in_sec" || anim_name == "fade_in_third") && timer_flag == 1:
 		timer.start()
 	

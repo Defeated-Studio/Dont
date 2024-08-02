@@ -25,6 +25,7 @@ driver/enable_input=true
 SceneTransition="*res://Scenes/SceneTransition.tscn"
 IsRayCasting="*res://Scripts/IsRayCasting.gd"
 NodeStates="*res://Scripts/NodeStates.gd"
+SaverLoader="*res://Scripts/SaverLoader.gd"
 
 [display]
 

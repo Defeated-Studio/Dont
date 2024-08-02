@@ -1,12 +1,13 @@
 extends Control
 
-var next_scene = "res://Scenes/Night1.tscn"
+var next_scene: String
 @onready var progress_bar = $ProgressBar
 @onready var logo_bar = $LogoBar
 @onready var dont_bar = $DontBar
 @onready var label = $Label2
 
 func _ready():
+	next_scene = SaverLoader.next_scene
 	ResourceLoader.load_threaded_request(next_scene)
 
 func _process(delta):

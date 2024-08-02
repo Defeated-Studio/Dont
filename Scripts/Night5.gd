@@ -17,6 +17,9 @@ func _ready():
 	couch_1.position = Vector3(-0.116, 0.738, 3.188)
 	couch_1.rotation_degrees = Vector3(0, 89.2, 0)
 	knifes.hide()
+	
+	await get_tree().create_timer(2).timeout
+	SaverLoader.save_game(5)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

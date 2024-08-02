@@ -91,6 +91,7 @@ func _process(delta):
 		SceneTransition.change_scene("", "LastKillScreen", 0)
 		await get_tree().create_timer(2).timeout
 		SceneTransition.change_scene("", "Dissolve", 0)
+		SaverLoader.delete_save()
 		get_tree().change_scene_to_file("res://Scenes/Screens/MainMenu.tscn")
 		
 	if skin_walker.visible:

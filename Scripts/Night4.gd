@@ -20,6 +20,9 @@ func _ready():
 	diary.add_page()
 	quest_control.setQuestActive(14)
 	main_camera.set_current(true)
+	
+	await get_tree().create_timer(2).timeout
+	SaverLoader.save_game(4)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
