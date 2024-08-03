@@ -295,3 +295,9 @@ func _on_eat_area_body_entered(body):
 		interact_text.text = "[E] Sentar"
 		interact_text.show()
 		canSitDown = true
+
+
+func _on_eat_area_body_exited(body):
+	if readyToEat:
+		interact_text.hide()
+		canSitDown = false

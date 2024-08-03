@@ -28,6 +28,8 @@ extends Node3D
 @onready var skin_walker = %SkinWalker
 @onready var death = $"../../../Death"
 @onready var notification_sound = $NotificationSound
+@onready var static_body_3d = $StaticBody3D
+
 
 var canSendMom = false
 
@@ -72,6 +74,7 @@ func _process(delta):
 		dialogue_text.queueDialogue("talvez em algum lugar alto da floresta eu consiga")
 		dialogue_text.queueDialogue("essa floresta é assustadora, mas eu preciso ir")
 		dialogue_text.showDialogue()
+		static_body_3d.queue_free()
 
 
 func _on_signal_area_body_entered(body):
@@ -121,3 +124,9 @@ func _on_finish_task_area_body_entered(body):
 	quest_control.finishQuest()
 	self.queue_free()
 
+
+
+func _on_area_3d_body_entered(body):
+	dialogue_text.timeBetweenText = 3
+	dialogue_text.queueDialogue("preciso falar com minha mãe primeiro")
+	dialogue_text.showDialogue()

@@ -70,13 +70,13 @@ func _process(delta):
 		
 		await get_tree().create_timer(1.5).timeout
 		door_knock.play()
-		audioCanPlay = true
 		await get_tree().create_timer(0.5).timeout
 		dialogue_text_player.queueDialogue("será que atendo?")
 		dialogue_text_player.showDialogue()
 		quest_control.finishQuest()
 		quest_control.startQuest()
-		
+		await get_tree().create_timer(6.6).timeout
+		door_knock.stop()
 		
 	if readyToChoose and Input.is_action_just_pressed("interact"):
 		mom.hide()

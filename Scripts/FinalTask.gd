@@ -140,6 +140,9 @@ func _on_interact_area_body_entered(body):
 		peep_hole_text.text = "[Q] Olhar olho mágico"
 		peep_hole_text.show()
 		canPeepHole = true
+	else:
+		peep_hole_text.text = "[Q] Mover Sofá"
+		peep_hole_text.show()
 
 func _on_interact_area_body_exited(body):
 	peep_hole_text.hide()
