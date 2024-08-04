@@ -21,3 +21,13 @@ func savePapersTaken():
 func setPapersTaken():
 	var diary = get_tree().get_nodes_in_group("DiaryGroup")
 	diary[0].papers_taken = NodeStates.papers_taken
+
+
+func saveMicSensi():
+	var mic = get_tree().get_nodes_in_group("MicGroup")
+	NodeStates.mic_sensi = mic[0].sensitity
+
+
+func setMicSensi():
+	var mic = get_tree().get_nodes_in_group("MicGroup")
+	mic[0].sensitity = NodeStates.mic_sensi

@@ -53,3 +53,7 @@ func _process(delta):
 	volume.size.y = smoothed_size_y
 	volume.position.y = smoothed_position_y
 	volume.color = smoothed_color
+
+
+func change_sensi(value):
+	sensitity = value

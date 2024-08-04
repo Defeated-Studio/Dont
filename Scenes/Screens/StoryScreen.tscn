@@ -1,8 +1,8 @@
 [gd_scene load_steps=13 format=3 uid="uid://co7tsrq574r11"]
 
 [ext_resource type="Script" path="res://Scripts/StoryScreen.gd" id="1_oe1pu"]
-[ext_resource type="FontFile" uid="uid://na3o228ts34l" path="res://Fonts/Cinzel-Bold.ttf" id="2_civu7"]
-[ext_resource type="FontFile" uid="uid://cglxb0itajmiy" path="res://Fonts/Derringer-Serial Regular.ttf" id="2_fmpux"]
+[ext_resource type="FontFile" uid="uid://b1vymeh36eknt" path="res://Fonts/Cinzel-Bold.ttf" id="2_civu7"]
+[ext_resource type="FontFile" uid="uid://b0avaycv5qa6i" path="res://Fonts/Derringer-Serial Regular.ttf" id="2_fmpux"]
 
 [sub_resource type="Animation" id="Animation_x68ho"]
 length = 0.001
