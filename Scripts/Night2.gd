@@ -5,14 +5,13 @@ extends SubViewportContainer
 @onready var diary = %Diary
 @onready var quest_control = $SubViewport/World/QuestControl
 
-var pages = 2
+var pages = 1
 
 func _ready():
 	states.setStates()
 	states.setPapersTaken()
 	
 	diary.add_page(pages)
-	diary.toggle_visibility()
 	
 	main_camera.set_current(true)
 	

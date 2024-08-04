@@ -10,7 +10,7 @@ extends SubViewportContainer
 @onready var quest_control = $SubViewport/World/QuestControl
 @onready var messages_app = $MessagesApp
 
-var pages = 4
+var pages = 3
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

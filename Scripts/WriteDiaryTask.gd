@@ -27,6 +27,7 @@ func _process(delta):
 			sleep_area_col.set_deferred("disabled", false)
 			self.queue_free()
 		else:
+			diary.toggle_collision_mask(true)
 			quest_control.finishQuest()
 			start_quest_col.set_deferred("disabled", true)
 

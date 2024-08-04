@@ -61,6 +61,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0318604, 0)
 shape = SubResource("BoxShape3D_ihlom")
 
 [node name="Diary_UI" type="Control" parent="." groups=["DiaryGroup"]]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -213,6 +214,7 @@ text = "Mas agora eu preciso me manter trancado aqui. Trancar porta e janelas e 
 autowrap_mode = 2
 
 [node name="Papers" type="Control" parent="Diary_UI/Diary"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

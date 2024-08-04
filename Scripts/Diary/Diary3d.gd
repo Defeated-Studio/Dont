@@ -54,3 +54,9 @@ func new_paper_taken(id):
 
 func add_page(pages):
 	diary.total_pages = pages;
+
+func toggle_collision_mask(flag):
+	if flag == false:
+		interact_area.collision_mask = 0
+	else:
+		interact_area.collision_mask = 2

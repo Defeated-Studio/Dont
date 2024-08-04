@@ -7,6 +7,7 @@ extends Node3D
 @onready var interact_text = %InteractText
 @onready var sleep_area_col = $SleepArea/CollisionShape3D
 @onready var world_environment = $"../WorldEnvironment".environment
+@onready var diary = %Diary
 
 @onready var front_door = %House/FrontDoor
 @onready var bedroom_curtain = %House/Bedroom1/Curtain
@@ -54,6 +55,8 @@ func _physics_process(delta):
 			get_node("SleepArea").queue_free()
 			SceneTransition.change_scene("", "night2-day2", 0)
 			await get_tree().create_timer(1.1).timeout
+			diary.toggle_visibility()
+			diary.toggle_collision_mask(false)
 			world_environment.background_energy_multiplier = 5.0
 			world_environment.volumetric_fog_enabled = false
 			paper_2.show()
