@@ -1,4 +1,4 @@
 extends Node
 
 var states = []
-var papers_taken = [1, 0, 1, 0, 0]
+var papers_taken = [0, 0, 0, 0, 0]
