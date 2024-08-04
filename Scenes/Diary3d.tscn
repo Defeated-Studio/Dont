@@ -1,14 +1,14 @@
 [gd_scene load_steps=20 format=3 uid="uid://d1dii1a71vb20"]
 
 [ext_resource type="Script" path="res://Scripts/Diary/Diary3d.gd" id="1_w6evf"]
-[ext_resource type="PackedScene" uid="uid://b2ujdds2geuni" path="res://House/Models/Bedroom1/pbr_dark_diary.glb" id="2_wlyje"]
-[ext_resource type="Texture2D" uid="uid://bmon2bq03pdt4" path="res://Texture/Diario.png" id="3_iilso"]
+[ext_resource type="PackedScene" uid="uid://dhqlued4hwi2s" path="res://House/Models/Bedroom1/pbr_dark_diary.glb" id="2_wlyje"]
+[ext_resource type="Texture2D" uid="uid://c4ypypgdka1we" path="res://Texture/Diario.png" id="3_iilso"]
 [ext_resource type="Script" path="res://Scripts/Diary/Diary_UI.gd" id="3_u0kww"]
 [ext_resource type="Script" path="res://Scripts/Diary/Pages.gd" id="5_8l2yg"]
-[ext_resource type="FontFile" uid="uid://cudbfyapbv56x" path="res://Fonts/Kalam-Regular.ttf" id="5_me4yl"]
+[ext_resource type="FontFile" uid="uid://v6v55nu11kyv" path="res://Fonts/Kalam-Regular.ttf" id="5_me4yl"]
 [ext_resource type="Script" path="res://Scripts/Diary/Papers.gd" id="6_t3pmu"]
-[ext_resource type="Texture2D" uid="uid://dtn5qjgbyue27" path="res://Texture/Paper_for_diary.png" id="7_ofe5r"]
-[ext_resource type="FontFile" uid="uid://dh51om4khihme" path="res://Fonts/Allura-Regular.ttf" id="9_x54gp"]
+[ext_resource type="Texture2D" uid="uid://bj6duw5pk5h5l" path="res://Texture/Paper_for_diary.png" id="7_ofe5r"]
+[ext_resource type="FontFile" uid="uid://doktlg8ik1xds" path="res://Fonts/Allura-Regular.ttf" id="9_x54gp"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6rr1v"]
 size = Vector3(1.58115, 1, 5.60074)
@@ -61,7 +61,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0318604, 0)
 shape = SubResource("BoxShape3D_ihlom")
 
 [node name="Diary_UI" type="Control" parent="." groups=["DiaryGroup"]]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -214,7 +213,6 @@ text = "Mas agora eu preciso me manter trancado aqui. Trancar porta e janelas e 
 autowrap_mode = 2
 
 [node name="Papers" type="Control" parent="Diary_UI/Diary"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -228,7 +226,6 @@ grow_vertical = 2
 script = ExtResource("6_t3pmu")
 
 [node name="left_paper" type="TextureRect" parent="Diary_UI/Diary/Papers"]
-visible = false
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -259,7 +256,6 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="right_paper" type="TextureRect" parent="Diary_UI/Diary/Papers"]
-visible = false
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -293,6 +289,28 @@ theme_override_fonts/font = ExtResource("9_x54gp")
 theme_override_font_sizes/font_size = 19
 vertical_alignment = 1
 autowrap_mode = 2
+
+[node name="num_left" type="Label" parent="Diary_UI/Diary/Papers"]
+layout_mode = 0
+offset_left = -15.0
+offset_top = 360.0
+offset_right = 25.0
+offset_bottom = 399.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_me4yl")
+theme_override_font_sizes/font_size = 24
+text = "1"
+
+[node name="num_right" type="Label" parent="Diary_UI/Diary/Papers"]
+layout_mode = 0
+offset_left = 689.0
+offset_top = 360.0
+offset_right = 729.0
+offset_bottom = 399.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_me4yl")
+theme_override_font_sizes/font_size = 24
+text = "2"
 
 [connection signal="body_entered" from="StaticBody3D/InteractArea" to="." method="_on_interact_area_body_entered"]
 [connection signal="body_exited" from="StaticBody3D/InteractArea" to="." method="_on_interact_area_body_exited"]
