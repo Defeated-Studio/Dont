@@ -65,6 +65,6 @@ func start_papers(papers_taken):
 	
 	if papers_taken[1] == 1:
 		right_paper.visible = true;
-		left_paper_text.text = paper_texts[1];
+		right_paper_text.text = paper_texts[1];
 	else:
 		right_paper.visible = false;

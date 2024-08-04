@@ -7,11 +7,13 @@ extends SubViewportContainer
 @onready var dialogue_text = $SubViewport/World/Player/DialogueText
 @onready var quest_control = $SubViewport/World/QuestControl
 
+var pages = 3
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	states.setStates()
 	states.setPapersTaken()
-	diary.add_page()
+	diary.add_page(pages)
 	main_camera.set_current(true)
 	
 	quest_control.setQuestActive(10)

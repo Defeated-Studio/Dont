@@ -9,12 +9,13 @@ extends SubViewportContainer
 @onready var knifes = %House/Kitchen/Kitchen2/Knifes
 @onready var messages_app = $MessagesApp
 
+var pages = 4
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	states.setStates()
 	states.setPapersTaken()
-	diary.add_page()
+	diary.add_page(pages)
 	
 	messages_app.updateMessages()
 	

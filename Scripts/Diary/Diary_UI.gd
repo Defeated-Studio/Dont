@@ -39,7 +39,7 @@ func _on_diary_button_pressed():
 
 
 func next_page():
-	if page_count == total_pages:
+	if page_count == total_pages-1:
 		return
 	
 	page_count += 1

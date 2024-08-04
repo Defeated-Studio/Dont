@@ -52,5 +52,5 @@ func toggle_visibility():
 func new_paper_taken(id):
 	diary.papers_taken[id - 1] = 1;
 
-func add_page():
-	diary.total_pages += 1;
+func add_page(pages):
+	diary.total_pages = pages;
