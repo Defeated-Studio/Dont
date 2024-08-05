@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://tgwmty4iab1d"]
+[gd_scene load_steps=4 format=3 uid="uid://tgwmty4iab1d"]
 
 [ext_resource type="Script" path="res://Scripts/PauseMenu.gd" id="1_ci7ax"]
-[ext_resource type="FontFile" uid="uid://dx05xccu4q56q" path="res://Fonts/Cinzel-Bold.ttf" id="1_oap8q"]
+[ext_resource type="FontFile" uid="uid://b1vymeh36eknt" path="res://Fonts/Cinzel-Bold.ttf" id="1_oap8q"]
+[ext_resource type="PackedScene" uid="uid://ceg1jxer4cb5q" path="res://Scenes/Screens/OptionsMenu.tscn" id="3_ypa40"]
 
 [node name="PauseMenu" type="Control"]
 process_mode = 3
@@ -61,6 +62,15 @@ theme_override_colors/font_color = Color(0.443137, 0.470588, 0.501961, 1)
 theme_override_fonts/font = ExtResource("1_oap8q")
 text = "Continuar"
 
+[node name="Options" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(320, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.443137, 0.470588, 0.501961, 1)
+theme_override_fonts/font = ExtResource("1_oap8q")
+text = "Opções
+"
+
 [node name="Quit" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(320, 80)
 layout_direction = 2
@@ -70,5 +80,11 @@ theme_override_colors/font_color = Color(0.443137, 0.470588, 0.501961, 1)
 theme_override_fonts/font = ExtResource("1_oap8q")
 text = "Sair"
 
+[node name="OptionsMenu" parent="." instance=ExtResource("3_ypa40")]
+visible = false
+layout_mode = 1
+
 [connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="exit_options_menu" from="OptionsMenu" to="." method="_on_options_menu_exit_options_menu"]

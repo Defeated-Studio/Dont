@@ -1,16 +1,20 @@
 [gd_scene load_steps=3 format=3 uid="uid://ca5ctc5o7wdup"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3343d"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_40plp"]
+[ext_resource type="FontFile" uid="uid://b0avaycv5qa6i" path="res://Fonts/Derringer-Serial Regular.ttf" id="1_8o3hn"]
+[ext_resource type="Script" path="res://Scripts/SettingsTab.gd" id="1_ilod3"]
 
 [node name="SettingsTab" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 2.0
+offset_right = 20.0
+offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_ilod3")
 
 [node name="TabContainer" type="TabContainer" parent="."]
 layout_mode = 1
@@ -26,8 +30,9 @@ grow_vertical = 2
 
 [node name="Geral" type="TabBar" parent="TabContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("1_8o3hn")
 
-[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Geral"]
+[node name="GeralContainer" type="MarginContainer" parent="TabContainer/Geral"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -39,50 +44,57 @@ theme_override_constants/margin_top = 24
 theme_override_constants/margin_right = 24
 theme_override_constants/margin_bottom = 24
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Geral/MarginContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Geral/GeralContainer"]
 layout_mode = 2
 
-[node name="HSeparator" type="HSeparator" parent="TabContainer/Geral/MarginContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Geral/GeralContainer/ScrollContainer"]
 layout_mode = 2
-theme_override_constants/separation = 32
-theme_override_styles/separator = SubResource("StyleBoxEmpty_3343d")
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="TabContainer/Geral/MarginContainer/VBoxContainer"]
+[node name="MouseSensi" type="Label" parent="TabContainer/Geral/GeralContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 6
+size_flags_vertical = 2
+theme_override_fonts/font = ExtResource("1_8o3hn")
 theme_override_font_sizes/font_size = 32
 text = "Sensibilidade"
 vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="TabContainer/Geral/MarginContainer/VBoxContainer"]
+[node name="Gamma" type="Label" parent="TabContainer/Geral/GeralContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 6
+size_flags_vertical = 2
+theme_override_fonts/font = ExtResource("1_8o3hn")
 theme_override_font_sizes/font_size = 32
 text = "Gamma"
 vertical_alignment = 1
 
-[node name="Label3" type="Label" parent="TabContainer/Geral/MarginContainer/VBoxContainer"]
+[node name="Sombras" type="Label" parent="TabContainer/Geral/GeralContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 6
+size_flags_vertical = 2
+theme_override_fonts/font = ExtResource("1_8o3hn")
 theme_override_font_sizes/font_size = 32
-text = "Imagens
+text = "Sombras
 "
 vertical_alignment = 1
 
-[node name="HSeparator2" type="HSeparator" parent="TabContainer/Geral/MarginContainer/VBoxContainer"]
+[node name="VSync" type="Label" parent="TabContainer/Geral/GeralContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 32
-theme_override_styles/separator = SubResource("StyleBoxEmpty_40plp")
+theme_override_fonts/font = ExtResource("1_8o3hn")
+theme_override_font_sizes/font_size = 32
+text = "VSync"
 
-[node name="Som" type="TabBar" parent="TabContainer"]
+[node name="Sound" type="TabBar" parent="TabContainer"]
 visible = false
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Som"]
+[node name="SoundContainer" type="MarginContainer" parent="TabContainer/Sound"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 31.0
+offset_right = 16.0
+offset_bottom = 47.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 24
@@ -90,36 +102,56 @@ theme_override_constants/margin_top = 24
 theme_override_constants/margin_right = 24
 theme_override_constants/margin_bottom = 24
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Som/MarginContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Sound/SoundContainer"]
 layout_mode = 2
 
-[node name="HSeparator3" type="HSeparator" parent="TabContainer/Som/MarginContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Sound/SoundContainer/ScrollContainer"]
 layout_mode = 2
-theme_override_constants/separation = 32
-theme_override_styles/separator = SubResource("StyleBoxEmpty_3343d")
+theme_override_constants/separation = 128
 
-[node name="Label4" type="Label" parent="TabContainer/Som/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Sound/SoundContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
-size_flags_vertical = 6
+size_flags_vertical = 4
+theme_override_constants/separation = 48
+
+[node name="Geral" type="Label" parent="TabContainer/Sound/SoundContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Geral"
-vertical_alignment = 1
 
-[node name="Label5" type="Label" parent="TabContainer/Som/MarginContainer/VBoxContainer"]
+[node name="VSeparator" type="VSeparator" parent="TabContainer/Sound/SoundContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 6
+theme_override_constants/separation = 12
+
+[node name="GeralSlider" type="HSlider" parent="TabContainer/Sound/SoundContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(500, 20)
+layout_mode = 2
+size_flags_vertical = 4
+min_value = 1.0
+value = 100.0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="TabContainer/Sound/SoundContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_constants/separation = 48
+
+[node name="Musica" type="Label" parent="TabContainer/Sound/SoundContainer/ScrollContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Música"
-vertical_alignment = 1
 
-[node name="Label6" type="Label" parent="TabContainer/Som/MarginContainer/VBoxContainer"]
+[node name="VSeparator" type="VSeparator" parent="TabContainer/Sound/SoundContainer/ScrollContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
-size_flags_vertical = 6
-theme_override_font_sizes/font_size = 32
-text = "Sons"
-vertical_alignment = 1
+theme_override_constants/separation = 12
 
-[node name="HSeparator4" type="HSeparator" parent="TabContainer/Som/MarginContainer/VBoxContainer"]
+[node name="MusicSlider" type="HSlider" parent="TabContainer/Sound/SoundContainer/ScrollContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(500, 20)
 layout_mode = 2
-theme_override_constants/separation = 32
-theme_override_styles/separator = SubResource("StyleBoxEmpty_40plp")
+size_flags_vertical = 4
+min_value = 5.0
+value = 5.0
+
+[connection signal="value_changed" from="TabContainer/Sound/SoundContainer/ScrollContainer/VBoxContainer/HBoxContainer/GeralSlider" to="." method="_on_geral_slider_value_changed"]
