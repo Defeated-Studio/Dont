@@ -13,6 +13,8 @@ extends Node3D
 @onready var bedroom_curtain = %House/Bedroom1/Curtain
 @onready var bedroom_door = %House/Bedroom1/Bedroom1Door
 @onready var paper_2 = $"../CleanHouseTask/Paper2"
+@onready var first_soundtrack = $"../../../Soundtrack2/FirstSoundtrack"
+@onready var soundtrack = $"../../../Soundtrack2"
 
 var canPowerOn = false
 var canSleep = false
@@ -29,6 +31,7 @@ func _ready():
 	dialogue_text.queueDialogue("e por que as luzes estão apagadas?")
 	dialogue_text.queueDialogue("não acredito nisso")
 	dialogue_text.showDialogue()
+	soundtrack.fadeInAudio(first_soundtrack, 10)
 
 	await get_tree().create_timer(1.1).timeout
 	livingroomDoor.setState(true)
@@ -61,6 +64,7 @@ func _physics_process(delta):
 			world_environment.volumetric_fog_enabled = false
 			paper_2.show()
 			quest_control.finishQuest()
+			soundtrack.fadeOutAudio(first_soundtrack)
 			self.queue_free()
 		
 	if (Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")) and canPowerOn and IsRayCasting.canInteract:

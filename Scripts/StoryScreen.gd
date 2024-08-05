@@ -6,6 +6,7 @@ extends Node2D
 @onready var label_3 = $Control/Label3
 @onready var timer = $Control/Timer
 @onready var label_6 = $Control/Label6
+@onready var soundtrack_node = $"../Soundtrack"
 @onready var soundtrack = $"../Soundtrack/Soundtrack"
 
 @onready var bus_sound = $BusSound
@@ -47,6 +48,7 @@ func _on_animation_finished(anim_name):
 		fadeInAudio(soundtrack, 10)
 		soundtrack.play()
 		animation_finished.emit()
+		soundtrack_node.canStart = true
 	elif (anim_name == "fade_in_first" || anim_name == "fade_in_sec" || anim_name == "fade_in_third") && timer_flag == 1:
 		timer.start()
 	

@@ -5,9 +5,13 @@ extends Node3D
 @onready var player = %Player
 
 var insideArea = false
+var canStart = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if !soundtrack.playing and canStart:
+		soundtrack.play()
+	
 	if front_door.getState():	# Porta aberta
 		change_volume(10)
 	elif player.ground == "Grass" or insideArea:

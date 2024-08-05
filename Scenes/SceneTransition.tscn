@@ -1,8 +1,8 @@
 [gd_scene load_steps=16 format=3 uid="uid://1ep6mfvvg7as"]
 
 [ext_resource type="Script" path="res://Scripts/SceneTransition.gd" id="1_6l6xo"]
-[ext_resource type="FontFile" uid="uid://dx05xccu4q56q" path="res://Fonts/Cinzel-Bold.ttf" id="2_s3lis"]
-[ext_resource type="AudioStream" uid="uid://cmffsbm46heo1" path="res://House/SFX/PowerDown.ogg" id="3_pvx5a"]
+[ext_resource type="FontFile" uid="uid://cxdcng7dslxny" path="res://Fonts/Cinzel-Bold.ttf" id="2_s3lis"]
+[ext_resource type="AudioStream" uid="uid://y74lxn6pmcl5" path="res://House/SFX/PowerDown.ogg" id="3_pvx5a"]
 
 [sub_resource type="Animation" id="Animation_hi80j"]
 resource_name = "LastKillScreen"

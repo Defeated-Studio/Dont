@@ -17,7 +17,7 @@ func _process(delta):
 		interact_text.text = ""
 		toDo = -1
 		
-	if Input.is_action_just_pressed("Mobile"):
+	if Input.is_action_just_pressed("Mobile") and tutorial_text.text == "[M] Abrir Celular":
 		tutorial_text.hide()
 		
 	if (is_instance_valid(IsRayCasting.collider)) and (IsRayCasting.collider.name == "Door") and (Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")) and canTriggerTask:

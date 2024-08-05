@@ -7,6 +7,8 @@ extends SubViewportContainer
 @onready var quest_control = $SubViewport/World/QuestControl
 
 
+var flag = true
+
 func findByClass(node: Node, className : String, result : Array):
 	if node.is_class(className):
 		if node.name != "MicrowaveLight":
@@ -17,8 +19,9 @@ func findByClass(node: Node, className : String, result : Array):
 		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
-
+	if Input.is_action_just_pressed("flashlight") and tutorial_text.visible and flag:
+		flag = false
+		tutorial_text.hide()
 
 func _on_initial_screen_animation_finished():
 	quest_control.reset()
@@ -36,8 +39,3 @@ func _on_initial_screen_animation_finished():
 	
 	await get_tree().create_timer(2).timeout
 	SaverLoader.save_game(1)
-	
-	await get_tree().create_timer(10).timeout
-	tutorial_text.hide()
-	
-	
