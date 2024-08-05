@@ -4,6 +4,8 @@ extends Control
 var General_volume
 var Music_volume
 var VSyncEnabled : bool
+var Gamma
+var Mouse_sensi
 
 
 func _on_geral_slider_value_changed(value):
@@ -31,8 +33,8 @@ func _on_vsync_box_toggled(toggled_on):
 
 
 func _on_sensi_slider_value_changed(value):
-	pass # Replace with function body.
+	Mouse_sensi = value
 
 
 func _on_gamma_slider_value_changed(value):
-	pass # Replace with function body.
+	Gamma = value / 10
