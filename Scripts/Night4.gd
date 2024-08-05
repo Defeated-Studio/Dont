@@ -19,6 +19,7 @@ func _ready():
 	
 	states.setStates()
 	states.setPapersTaken()
+	states.setMicSensi()
 	
 	messages_app.updateMessages()
 	

@@ -70,3 +70,8 @@ func _on_close_button_pressed():
 		player_dialogue_text.showDialogue()
 
 	self.queue_free()
+
+
+func change_font():
+	var font = load("res://Fonts/BadScript-Regular.ttf")
+	text_ui.add_theme_font_override("font", font)

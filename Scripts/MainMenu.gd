@@ -9,9 +9,10 @@ func _ready():
 	load_game.disabled = !save_exist()
 
 func _on_new_game_pressed():
-	SaverLoader.next_scene = "res://Scenes/Night1.tscn"
-	get_tree().change_scene_to_file("res://Scenes/Screens/LoadingScreen.tscn")
-
+	#SaverLoader.next_scene = "res://Scenes/Night1.tscn"
+	#get_tree().change_scene_to_file("res://Scenes/Screens/LoadingScreen.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Screens/MicScreen.tscn")
+	
 func _on_options_pressed():
 	margin_container.visible = false
 	options_menu.set_process(true)

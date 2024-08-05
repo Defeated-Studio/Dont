@@ -24,16 +24,20 @@ Elas são como sombras vivas, quase impossíveis de enxergar. Quando mudam assum
 ", 
 "SE ESCONDA", "EU DESCOBRI, SÓ PODE SER ISSO, OS EVENTOS NESSA FLORESTA SE REPETEM TODA VEZ. EU NÃO FUI A PRIMEIRA MORADORA DESSA CASA E NÃO VOU SER A ÚLTIMA. TUDO FAZ SENTIDO AGORA, EU TENHO CERT"]
 
+
 func _ready():
 	set_visibility(false)
 	if paper == 0:
 		right_paper.visible = false
 
+
 func toggle_visibility():
 	set_visibility(not visible)
 
+
 func set_visibility(is_visible: bool):
 	visible = is_visible
+
 
 func change_papers(to_paper, papers_taken):
 	paper = to_paper
@@ -51,6 +55,13 @@ func change_papers(to_paper, papers_taken):
 	num_left.text = str((paper*2)+1)
 	num_right.text = str((paper*2)+2)
 	
+	if paper == 1:
+		var font = load("res://Fonts/BadScript-Regular.ttf")
+		right_paper_text.add_theme_font_override("font", font)
+	else:
+		var font = load("res://Fonts/Allura-Regular.ttf")
+		right_paper_text.add_theme_font_override("font", font)
+	
 	if papers_taken[paper*2]:
 		left_paper.visible = true;
 		left_paper_text.text = paper_texts[to_paper*2];
@@ -62,6 +73,7 @@ func change_papers(to_paper, papers_taken):
 		right_paper_text.text = paper_texts[(to_paper*2) + 1];
 	else:
 		right_paper.visible = false;
+
 
 func start_papers(papers_taken):
 	num_left.text = str(1)

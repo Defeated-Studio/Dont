@@ -1,7 +1,8 @@
-extends Control
+extends Node3D
 
 @onready var microfone = $Microfone
 @onready var slider = $HSlider
+@onready var states = $States
 
 var sensi
 
@@ -17,4 +18,6 @@ func _on_h_slider_value_changed(value):
 
 
 func _on_button_pressed():
-	pass
+	states.saveMicSensi()
+	SaverLoader.next_scene = "res://Scenes/Night1.tscn"
+	get_tree().change_scene_to_file("res://Scenes/Screens/LoadingScreen.tscn")

@@ -11,6 +11,7 @@ extends Node3D
 @onready var bedroom_door = %House/Bedroom1/Bedroom1Door
 @onready var sleep_area_col = $SleepArea/CollisionShape3D
 @onready var start_quest_col = $"../WriteDiaryTask/StartQuest/CollisionShape3D"
+@onready var diary = %Diary
 
 @onready var player = %Player
 @onready var world = $".."
@@ -57,6 +58,7 @@ func _process(delta):
 	if (Input.is_action_just_pressed("interact") and canGetUp):
 		canGetUp = false
 		interact_text.hide()
+		diary.toggle_collision_mask(false)
 		SceneTransition.change_scene("", "quickTransition", 0)
 		await get_tree().create_timer(1).timeout
 		player.global_position = prevPosition

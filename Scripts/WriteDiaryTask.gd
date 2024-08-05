@@ -19,6 +19,8 @@ func _process(delta):
 		pen_writing.play()
 		await get_tree().create_timer(1.5).timeout
 		if quest_control.questActive == 9:
+			diary.add_page(2)
+			diary.toggle_collision_mask(true)
 			dialogue_text.timeBetweenText = 3
 			dialogue_text.queueDialogue("acho que agora tô entendendo melhor, mas ainda tá estranho")
 			dialogue_text.queueDialogue("eu tenho que dar um jeito de falar com alguém amanhã")

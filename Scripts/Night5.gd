@@ -8,6 +8,7 @@ extends SubViewportContainer
 @onready var couch_1 = %House/LivingRoom/Couch1
 @onready var knifes = %House/Kitchen/Kitchen2/Knifes
 @onready var messages_app = $MessagesApp
+@onready var paper = $SubViewport/World/FinalTask/Paper
 
 var pages = 4
 
@@ -16,6 +17,8 @@ func _ready():
 	states.setStates()
 	states.setPapersTaken()
 	diary.add_page(pages)
+	
+	#paper.change_font()
 	
 	messages_app.updateMessages()
 	
