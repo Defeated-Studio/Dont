@@ -51,8 +51,14 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_constants/separation = 128
 
-[node name="MouseSensi" type="Label" parent="TabContainer/Geral/GeralContainer/ScrollContainer/VBoxContainer"]
+[node name="MouseCont" type="HBoxContainer" parent="TabContainer/Geral/GeralContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="MouseSensi" type="Label" parent="TabContainer/Geral/GeralContainer/ScrollContainer/VBoxContainer/MouseCont"]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_vertical = 2
 theme_override_fonts/font = ExtResource("1_8o3hn")
@@ -60,7 +66,21 @@ theme_override_font_sizes/font_size = 32
 text = "Sensibilidade"
 vertical_alignment = 1
 
-[node name="Gamma" type="Label" parent="TabContainer/Geral/GeralContainer/ScrollContainer/VBoxContainer"]
+[node name="VSeparator" type="VSeparator" parent="TabContainer/Geral/GeralContainer/ScrollContainer/VBoxContainer/MouseCont"]
+layout_mode = 2
+
+[node name="SensiSlider" type="HSlider" parent="TabContainer/Geral/GeralContainer/ScrollContainer/VBoxContainer/MouseCont"]
+custom_minimum_size = Vector2(600, 20)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="GammaCont" type="HBoxContainer" parent="TabContainer/Geral/GeralContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="Gamma" type="Label" parent="TabContainer/Geral/GeralContainer/ScrollContainer/VBoxContainer/GammaCont"]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_vertical = 2
 theme_override_fonts/font = ExtResource("1_8o3hn")
@@ -68,7 +88,23 @@ theme_override_font_sizes/font_size = 32
 text = "Gamma"
 vertical_alignment = 1
 
-[node name="Sombras" type="Label" parent="TabContainer/Geral/GeralContainer/ScrollContainer/VBoxContainer"]
+[node name="VSeparator" type="VSeparator" parent="TabContainer/Geral/GeralContainer/ScrollContainer/VBoxContainer/GammaCont"]
+layout_mode = 2
+
+[node name="GammaSlider" type="HSlider" parent="TabContainer/Geral/GeralContainer/ScrollContainer/VBoxContainer/GammaCont"]
+custom_minimum_size = Vector2(600, 20)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="ShadowCont" type="HBoxContainer" parent="TabContainer/Geral/GeralContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(1218, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 24
+
+[node name="Sombras" type="Label" parent="TabContainer/Geral/GeralContainer/ScrollContainer/VBoxContainer/ShadowCont"]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_vertical = 2
 theme_override_fonts/font = ExtResource("1_8o3hn")
@@ -77,11 +113,31 @@ text = "Sombras
 "
 vertical_alignment = 1
 
-[node name="VSync" type="Label" parent="TabContainer/Geral/GeralContainer/ScrollContainer/VBoxContainer"]
+[node name="VSeparator" type="VSeparator" parent="TabContainer/Geral/GeralContainer/ScrollContainer/VBoxContainer/ShadowCont"]
+layout_mode = 2
+
+[node name="ShadowBox" type="CheckBox" parent="TabContainer/Geral/GeralContainer/ScrollContainer/VBoxContainer/ShadowCont"]
+layout_mode = 2
+size_flags_horizontal = 6
+
+[node name="VSyncCont" type="HBoxContainer" parent="TabContainer/Geral/GeralContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="VSync" type="Label" parent="TabContainer/Geral/GeralContainer/ScrollContainer/VBoxContainer/VSyncCont"]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_8o3hn")
 theme_override_font_sizes/font_size = 32
 text = "VSync"
+
+[node name="VSeparator" type="VSeparator" parent="TabContainer/Geral/GeralContainer/ScrollContainer/VBoxContainer/VSyncCont"]
+layout_mode = 2
+
+[node name="VsyncBox" type="CheckBox" parent="TabContainer/Geral/GeralContainer/ScrollContainer/VBoxContainer/VSyncCont"]
+layout_mode = 2
+size_flags_horizontal = 6
+button_pressed = true
 
 [node name="Sound" type="TabBar" parent="TabContainer"]
 visible = false
@@ -154,4 +210,9 @@ size_flags_vertical = 4
 min_value = 5.0
 value = 5.0
 
+[connection signal="value_changed" from="TabContainer/Geral/GeralContainer/ScrollContainer/VBoxContainer/MouseCont/SensiSlider" to="." method="_on_sensi_slider_value_changed"]
+[connection signal="value_changed" from="TabContainer/Geral/GeralContainer/ScrollContainer/VBoxContainer/GammaCont/GammaSlider" to="." method="_on_gamma_slider_value_changed"]
+[connection signal="toggled" from="TabContainer/Geral/GeralContainer/ScrollContainer/VBoxContainer/ShadowCont/ShadowBox" to="." method="_on_shadow_box_toggled"]
+[connection signal="toggled" from="TabContainer/Geral/GeralContainer/ScrollContainer/VBoxContainer/VSyncCont/VsyncBox" to="." method="_on_vsync_box_toggled"]
 [connection signal="value_changed" from="TabContainer/Sound/SoundContainer/ScrollContainer/VBoxContainer/HBoxContainer/GeralSlider" to="." method="_on_geral_slider_value_changed"]
+[connection signal="value_changed" from="TabContainer/Sound/SoundContainer/ScrollContainer/VBoxContainer/HBoxContainer2/MusicSlider" to="." method="_on_music_slider_value_changed"]
