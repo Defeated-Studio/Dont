@@ -33,6 +33,10 @@ extends Node3D
 
 @onready var player_head = %Player/Head
 
+@onready var soundtrack = $"../../../Soundtrack5"
+@onready var first_soundtrack = $"../../../Soundtrack5/FirstSoundtrack"
+@onready var main_theme = $"../../../Soundtrack5/mainTheme"
+
 var audioCanPlay = false
 var canPeepHole = false
 var inPeepHole = false
@@ -43,6 +47,8 @@ var dead = false
 var finished = false
 
 func _ready():
+	soundtrack.fadeInAudio(first_soundtrack, 8)
+	
 	front_door.setDoorMonitoring(false)
 	door_knock.play()
 	
@@ -166,4 +172,6 @@ func _on_paper_close():
 	skin_walker_final.show()
 	skin_walker_final_ray.monitoring = true
 	canDie = true
+	first_soundtrack.stop()
+	
 	

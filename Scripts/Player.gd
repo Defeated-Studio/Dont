@@ -17,8 +17,8 @@ var canSprint = true
 var speed
 var gravity = 9.8
 const WALK_SPEED = 2
-const SPRINT_SPEED = 5
-#const SPRINT_SPEED = 25
+#const SPRINT_SPEED = 5
+const SPRINT_SPEED = 25
 const SENSITIVITY = 0.2
 
 #bob variables

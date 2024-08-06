@@ -24,11 +24,20 @@ extends Node3D
 @onready var target_3 = $Target3
 @onready var target_4 = $Target4
 
+@onready var soundtrack = $"../../../Soundtrack4"
+@onready var first_soundtrack = $"../../../Soundtrack4/FirstSoundtrack"
+@onready var second_soundtrack = $"../../../Soundtrack4/SecondSoundtrack"
+
+
 var canFollowPlayer = false
 var canHideWrongSpot = false
 var canHideRightSpot = false
 var hiding = false
 var volume_exceeded = false
+
+
+func _ready():
+	soundtrack.fadeInAudio(first_soundtrack, 8)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -77,8 +86,12 @@ func hideSpot():
 func _on_paper_close():
 	quest_control.finishQuest()
 	quest_control.startQuest()
-	door_break_open.play()
+	#door_break_open.play()
 	await get_tree().create_timer(0.5).timeout
+	soundtrack.playFirst = false
+	soundtrack.playSecond = true
+	first_soundtrack.stop()
+	second_soundtrack.play()
 	dialogue_text.timeBetweenText = 2.5
 	dialogue_text.queueDialogue("O QUE FOI ISSO?")
 	dialogue_text.showDialogue()

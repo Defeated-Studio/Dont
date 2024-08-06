@@ -15,6 +15,7 @@ extends Node3D
 @onready var death = $"../../../Death"
 @onready var skin_walker_door = %SkinWalkerDoor
 @onready var animation_player = %SkinWalkerDoor/AnimationPlayer
+@onready var peep_hole_sfx = $"../../../Soundtrack3/peepHoleSFX"
 
 var audioCanPlay = false
 var canPeepHole = false
@@ -45,6 +46,8 @@ func _process(delta):
 		world.showPeepHole()
 		inPeepHole = true
 		hasSeenPeepHole = true
+		await get_tree().create_timer(1.1).timeout
+		peep_hole_sfx.play(1)
 		
 	elif inPeepHole and hasSeenPeepHole and Input.is_action_just_pressed("PeepHole"):
 		world.hidePeepHole()

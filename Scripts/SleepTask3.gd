@@ -16,6 +16,9 @@ var canSleep = false
 @onready var mom_anim = $"../AnswerDoorTask/Mom/AnimationPlayer"
 @onready var answer_door_task = $"../AnswerDoorTask"
 
+@onready var soundtrack = $"../../../Soundtrack3"
+@onready var second_soundtrack = $"../../../Soundtrack3/SecondSoundtrack"
+@onready var first_soundtrack = $"../../../Soundtrack3/FirstSoundtrack"
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -31,12 +34,18 @@ func _process(delta):
 			quest_control.finishQuest()
 			canSleep = false
 			SceneTransition.change_scene("", "dissolve_night3to333AM", 0)
+			soundtrack.playFirst = false
+			soundtrack.playSecond = true
+			soundtrack.fadeOutAudio(first_soundtrack)
 			mom.show()
 			mom_anim.play("idle")
-			await get_tree().create_timer(7).timeout
+			await get_tree().create_timer(6).timeout
+			soundtrack.fadeInAudio(second_soundtrack, 10)
+			await get_tree().create_timer(1).timeout
 			answer_door_task.audioCanPlay = true
 			answer_door_task.canDie = true
 		else:
+			soundtrack.fadeOutAudio(second_soundtrack)
 			answer_door_task.audioCanPlay = false
 			quest_control.finishQuest()
 			states.saveStates()

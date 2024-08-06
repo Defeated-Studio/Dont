@@ -22,6 +22,11 @@ func _process(delta):
 
 func change_volume(db):
 	soundtrack.volume_db = db
+	
+func fadeOutAudio(audio):
+	var tween = get_tree().create_tween()
+	tween.tween_property(audio, "volume_db", -80, 12)
+	audio.stop()
 
 
 func _on_area_3d_body_entered(body):

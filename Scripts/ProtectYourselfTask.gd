@@ -13,6 +13,11 @@ extends Node3D
 
 @onready var states = $"../../../States"
 
+
+@onready var soundtrack = $"../../../Soundtrack4"
+@onready var second_soundtrack = $"../../../Soundtrack4/SecondSoundtrack"
+
+
 var canMoveSofa = false
 var canGetKnife = false
 var readyinRoom = false
@@ -62,6 +67,7 @@ func _process(delta):
 			SceneTransition.change_scene("res://Scenes/Night5.tscn", "dissolve_night4-5")
 			var tween = get_tree().create_tween()
 			tween.tween_property(rain, "volume_db", -80, 5)
+			soundtrack.fadeOutAudio(second_soundtrack)
 
 func move_sofa():
 	couch_1.position = Vector3(-0.116, 0.738, 3.188)

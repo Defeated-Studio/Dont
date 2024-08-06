@@ -8,6 +8,9 @@ extends Control
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	load_game.disabled = !save_exist()
+	var tween = get_tree().create_tween()
+	tween.tween_property(sound_track, "volume_db", 0, 2)
+	
 
 
 func _process(delta):
@@ -17,7 +20,10 @@ func _process(delta):
 func _on_new_game_pressed():
 	#SaverLoader.next_scene = "res://Scenes/Night1.tscn"
 	#get_tree().change_scene_to_file("res://Scenes/Screens/LoadingScreen.tscn")
-	###### SceneTransition and fadeout soundtrack
+	var tween = get_tree().create_tween()
+	tween.tween_property(sound_track, "volume_db", -80, 4)
+	SceneTransition.change_scene("", "quickTransition", 0)
+	await get_tree().create_timer(2).timeout
 	get_tree().change_scene_to_file("res://Scenes/Screens/MicScreen.tscn")
 	
 func _on_options_pressed():

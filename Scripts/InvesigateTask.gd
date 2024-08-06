@@ -15,6 +15,7 @@ extends Node3D
 @onready var paper_2 = $"../CleanHouseTask/Paper2"
 @onready var first_soundtrack = $"../../../Soundtrack2/FirstSoundtrack"
 @onready var soundtrack = $"../../../Soundtrack2"
+@onready var second_soundtrack = $"../../../Soundtrack2/SecondSoundtrack"
 
 var canPowerOn = false
 var canSleep = false
@@ -31,7 +32,7 @@ func _ready():
 	dialogue_text.queueDialogue("e por que as luzes estão apagadas?")
 	dialogue_text.queueDialogue("não acredito nisso")
 	dialogue_text.showDialogue()
-	soundtrack.fadeInAudio(first_soundtrack, 10)
+	soundtrack.fadeInAudio(first_soundtrack, 8)
 
 	await get_tree().create_timer(1.1).timeout
 	livingroomDoor.setState(true)
@@ -57,6 +58,7 @@ func _physics_process(delta):
 		else:
 			get_node("SleepArea").queue_free()
 			SceneTransition.change_scene("", "night2-day2", 0)
+			soundtrack.fadeOutAudio(first_soundtrack)
 			await get_tree().create_timer(1.1).timeout
 			diary.toggle_visibility()
 			diary.toggle_collision_mask(false)
@@ -64,7 +66,10 @@ func _physics_process(delta):
 			world_environment.volumetric_fog_enabled = false
 			paper_2.show()
 			quest_control.finishQuest()
-			soundtrack.fadeOutAudio(first_soundtrack)
+			soundtrack.playFirst = false
+			soundtrack.playSecond = true
+			await get_tree().create_timer(4).timeout
+			soundtrack.fadeInAudio(second_soundtrack, -10)
 			self.queue_free()
 		
 	if (Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")) and canPowerOn and IsRayCasting.canInteract:

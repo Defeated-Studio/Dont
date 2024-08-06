@@ -30,8 +30,14 @@ extends Node3D
 @onready var notification_sound = $NotificationSound
 @onready var static_body_3d = $StaticBody3D
 
+@onready var soundtrack = $"../../../Soundtrack3"
+@onready var first_soundtrack = $"../../../Soundtrack3/FirstSoundtrack"
 
 var canSendMom = false
+
+
+func _ready():
+	soundtrack.fadeInAudio(first_soundtrack, 8)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

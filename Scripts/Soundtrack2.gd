@@ -5,19 +5,29 @@ extends Node3D
 @onready var first_soundtrack = $FirstSoundtrack
 @onready var second_soundtrack = $SecondSoundtrack
 @onready var third_soundtrack = $ThirdSoundtrack
-@onready var fourth_sound_track = $FourthSoundTrack
+@onready var windowSFX = $FourthSoundTrack
 
 var insideArea = false
+var playFirst = true
+var playSecond = false
+var playThird = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if front_door.getState():	# Porta aberta
-		change_volume(first_soundtrack, 15)
-	elif player.ground == "Grass" or insideArea:
-		change_volume(first_soundtrack, 15)
-	else:
-		change_volume(first_soundtrack, 10)
+	if playFirst:
+		manageAudio(first_soundtrack, 8)
+	elif playSecond:
+		manageAudio(second_soundtrack, -10)
+	elif playThird:
+		manageAudio(third_soundtrack, 0)
 
+func manageAudio(audio, db):
+	if front_door.getState():	# Porta aberta
+		change_volume(audio, db+5)
+	elif player.ground == "Grass" or insideArea:
+		change_volume(audio, db+5)
+	else:
+		change_volume(audio, db)
 
 func change_volume(soundtrack, db):
 	soundtrack.volume_db = db
@@ -25,13 +35,11 @@ func change_volume(soundtrack, db):
 func fadeInAudio(audio, db):
 	audio.play()
 	var tween = get_tree().create_tween()
-	tween.tween_property(audio, "volume_db", db, 5)
+	tween.tween_property(audio, "volume_db", db, 2.5)
 	
 func fadeOutAudio(audio):
 	var tween = get_tree().create_tween()
 	tween.tween_property(audio, "volume_db", -80, 12)
-	await get_tree().create_timer(12).timeout
-	audio.stop()
 
 func _on_area_3d_body_entered(body):
 	insideArea = true

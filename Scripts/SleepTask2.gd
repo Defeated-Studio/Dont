@@ -20,6 +20,9 @@ extends Node3D
 
 @onready var timer_write_diary = $TimerWriteDiary
 
+@onready var soundtrack = $"../../../Soundtrack2"
+@onready var third_soundtrack = $"../../../Soundtrack2/ThirdSoundtrack"
+
 var canSleep = false
 var canGetUp = false
 var questFlag = 0
@@ -49,6 +52,7 @@ func _process(delta):
 				world.canOpenMobile = false
 				timer_write_diary.start()
 			else:
+				soundtrack.fadeOutAudio(third_soundtrack)
 				quest_control.finishQuest()
 				states.saveStates()
 				states.savePapersTaken()

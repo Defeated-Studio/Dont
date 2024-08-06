@@ -40,6 +40,9 @@ extends Node3D
 @onready var hand2_animation_player = $Hand2/AnimationPlayer
 @onready var heartbeat = $Heartbeat
 @onready var appear_animation = $SkinWalker/Appear/AnimationPlayer
+@onready var soundtrack = $"../../../Soundtrack2"
+@onready var fourth_sound_track = $"../../../Soundtrack2/FourthSoundTrack"
+
 
 var canPickUpPizzaBox = false
 var PizzaBox = false
@@ -144,7 +147,9 @@ func _physics_process(delta):
 		dialogue_text.timeBetweenText = 3
 		dialogue_text.showDialogue()
 		
-		await get_tree().create_timer(10).timeout
+		await get_tree().create_timer(5).timeout
+		soundtrack.fadeInAudio(fourth_sound_track, 0)
+		await get_tree().create_timer(5).timeout
 		onWindow = true
 		oven_timer.start()
 		appear_animation.play("appear")

@@ -11,6 +11,9 @@ var canSleep = false
 @onready var bedroom_door = %House/Bedroom1/Bedroom1Door
 @onready var states = $"../../../States"
 
+@onready var soundtrack = $"../../../Soundtrack"
+@onready var first_soundtrack = $"../../../Soundtrack/Soundtrack"
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if (Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")) and canSleep and IsRayCasting.canInteract:
@@ -22,6 +25,7 @@ func _process(delta):
 			dialogue_text.queueDialogue("preciso fechar a porta e as cortinas antes de dormir")
 			dialogue_text.showDialogue()
 		else:
+			soundtrack.fadeOutAudio(first_soundtrack)
 			quest_control.finishQuest()
 			states.saveStates()
 			states.savePapersTaken()

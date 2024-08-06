@@ -6,6 +6,9 @@ extends Node3D
 @onready var player = %Player
 @onready var position_target = $Position
 @onready var bathroom_1_door = %House/Bathroom1/Bathroom1Door
+@onready var third_soundtrack = $"../../../Soundtrack2/ThirdSoundtrack"
+@onready var soundtrack = $"../../../Soundtrack2"
+@onready var second_soundtrack = $"../../../Soundtrack2/SecondSoundtrack"
 
 
 func _on_quest_control_quest_started():
@@ -17,12 +20,16 @@ func _on_quest_control_quest_started():
 		await get_tree().create_timer(1).timeout
 		SceneTransition.change_scene("", "SpendTime", 0)
 		await get_tree().create_timer(3).timeout
+		soundtrack.fadeOutAudio(second_soundtrack)
+		soundtrack.playSecond = false
+		soundtrack.fadeInAudio(third_soundtrack, 0)
 		change_enviroment()
 		teleport_player()
 		if bathroom_1_door.doorOpen:
 			bathroom_1_door.setState(false)
 		player.change_input_flags(false)
 		await get_tree().create_timer(9).timeout
+		soundtrack.playThird = true
 		player.change_input_flags(true)
 		await get_tree().create_timer(1).timeout
 		dialogue_text.timeBetweenText = 3
