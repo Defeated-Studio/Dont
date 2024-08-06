@@ -15,8 +15,7 @@ func _on_geral_slider_value_changed(value):
 
 func _on_music_slider_value_changed(value):
 	Music_volume = linear_to_db(value/100)
-	#AudioServer.set_bus_volume_db(1, Music_volume)
-	#Mudar o numero ali pro bus correspondente às soundtracks
+	AudioServer.set_bus_volume_db(3, Music_volume)
 
 
 func _on_shadow_box_toggled(toggled_on):
