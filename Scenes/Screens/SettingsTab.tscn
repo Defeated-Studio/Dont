@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ca5ctc5o7wdup"]
 
-[ext_resource type="FontFile" uid="uid://bk3n5jgk3dnan" path="res://Fonts/Derringer-Serial Regular.ttf" id="1_8o3hn"]
+[ext_resource type="FontFile" uid="uid://b0avaycv5qa6i" path="res://Fonts/Derringer-Serial Regular.ttf" id="1_8o3hn"]
 [ext_resource type="Script" path="res://Scripts/SettingsTab.gd" id="1_ilod3"]
 
 [node name="SettingsTab" type="Control"]

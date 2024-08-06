@@ -187,10 +187,10 @@ offset_bottom = 416.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("5_me4yl")
 theme_override_font_sizes/font_size = 11
-text = "Meu Deus do céu, o que foi isso? Minha mãe… Eles tentaram me enganar usando minha própria mãe. Se transformaram nela. Essas coisas definitivamente não são humanas, eu não sei o que são, mas nada que seja normal. Não é possível que exista algo assim no reino animal, nem nos meus piores pesadelos eu sonharia com algo assim.
-Aquela criatura é alta e grande, parece forte também. Parece que de todos os lados tinha algo me vigiando. Me senti como uma presa, um brinquedo. Só não fui pego por causa das regras. Se eu não tivesse sido alertado delas, eu provavelmente já taria morto agora. Ela me salvou. A mulher das cartas estava certa, ela não tava louca. Essas criaturas se transformam. Não posso confiar em nada mais que eu vejo ou que escuto.
-A casa parece muito velha, mas parece que pessoas moraram aqui não muito tempo atrás. Quantos já morreram por causa desse monstro? Eu não sei o que fazer, minha mãe vai vir, ela talvez traga ajuda mas eu não sei como vou fazer pra aguentar até lá.
-Dois dias. Só dois dias. Eu tenho que dar um jeito. Nem fodendo que eu saio na rua de novo, ainda mais de noite. Se esse gerador parar de novo eu não sei o que vai acontecer.  
+text = "Cheguei aqui e logo percebi que essa casa não é nada como nas fotos. Talvez ela fosse daquele jeito antes, mas agora parece tão velha. Mas tudo bem, eu que resolvi vir pra cá, precisava de mudanças na minha vida mesmo.
+Ainda bem que eu trouxe esse diário aqui comigo, sem sinal de internet e a TV fora do ar realmente fica sem muito o que fazer. Pelo menos com isso eu posso passar um pouco do tempo, e também não me sinto tão solitário. Vou mostrar esse diário pra minha mãe quando ela vier visitar pra ela ver como eu tô vivendo de boa sozinho.
+Mas sinceramente, tem umas coisas que me deixaram meio desconfiado com esse lugar. Tudo bem não ter sinal de internet ainda e tal, recém me mudei pra cá, essas coisas acontecem, mas e aquele papel que eu achei ontem? Quem é essa tal de Helena e o que foi isso que ela tava dizendo? Ainda tô sem sinal, não vou conseguir falar com o Bob sobre isso.
+Talvez ela só estivesse vendo coisas mesmo. Ontem eu estava bem cansado e estava um pouco assim também, mas era só o cansaço. Até esqueci de fechar a porta direito.
 "
 autowrap_mode = 2
 
@@ -210,7 +210,9 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("5_me4yl")
 theme_override_font_sizes/font_size = 11
-text = "Mas agora eu preciso me manter trancado aqui. Trancar porta e janelas e fechar as cortinas. Só não gosto dessas nuvens que estão se formando, vem chuva por aí…"
+text = "É bom que esse gerador pare logo de se desligar, fica muito escuro aqui de noite, preciso da luz se não não enxergo um palmo na minha frente. Ainda bem que trouxe minha lanterna.
+Hoje vou ter que começar dando um jeito na bagunça que essa casa tá. Impossível viver num lugar assim por muito tempo, vou terminar de escrever aqui e vou dar uma geral em tudo.
+"
 autowrap_mode = 2
 
 [node name="Papers" type="Control" parent="Diary_UI/Diary"]

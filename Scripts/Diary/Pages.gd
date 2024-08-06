@@ -19,7 +19,13 @@ Preciso dar um jeito de falar com alguém amanhã.
 Aquela criatura é alta e grande, parece forte também. Parece que de todos os lados tinha algo me vigiando. Me senti como uma presa, um brinquedo. Só não fui pego por causa das regras. Se eu não tivesse sido alertado delas, eu provavelmente já taria morto agora. Ela me salvou. A mulher das cartas estava certa, ela não tava louca. Essas criaturas se transformam. Não posso confiar em nada mais que eu vejo ou que escuto.
 A casa parece muito velha, mas parece que pessoas moraram aqui não muito tempo atrás. Quantos já morreram por causa desse monstro? Eu não sei o que fazer, minha mãe vai vir, ela talvez traga ajuda mas eu não sei como vou fazer pra aguentar até lá.
 Dois dias. Só dois dias. Eu tenho que dar um jeito. Nem fodendo que eu saio na rua de novo, ainda mais de noite. Se esse gerador parar de novo eu não sei o que vai acontecer.
-", "Mas agora eu preciso me manter trancado aqui. Trancar porta e janelas e fechar as cortinas. Só não gosto dessas nuvens que estão se formando, vem chuva por aí…", "4/1", "4/2"]
+", "Mas agora eu preciso me manter trancado aqui. Trancar porta e janelas e fechar as cortinas. Só não gosto dessas nuvens que estão se formando, vem chuva por aí…", "Vai tudo ficar bem. Já tá acabando. Minha mãe já vai chegar de verdade. Eu fico repetindo isso pra mim por horas a fio, tentando me convencer disso, enquanto fico enrolado na minha cama, com a única coisa pra me defender daquelas coisas é essa faca de cozinha que eu peguei. Como se isso fosse adiantar algo.
+Eu tô escrevendo isso aqui pela última vez, eu espero. Eu espero que amanhã eu esteja na casa da minha mãe e que toda essa merda que tá acontecendo aqui fique no passado. 
+Eu não quebrei nenhuma regra, nenhuma. Tirando a vez que eu saí de casa e consegui voltar com vida. Como esse bicho conseguiu entrar na minha casa? Usando a cara da minha mãe, ainda por cima. Ainda bem que eu consegui me esconder embaixo da cama, se não, teria sido meu fim. Quase não consegui controlar minha voz quando ele chegou pertinho de mim.
+Agora eu botei o sofá na frente da porta, não sei se ele consegue quebrar as janelas. Espero que não. Nas regras não dizia nada sobre as janelas e eu não abri nenhuma delas. Mas também dizia que ele não entraria se eu mantivesse a porta fechada, e ele entrou. Por
+", "quê? Essas coisas ficam me fazendo imaginar várias merdas. Tipo, será que ele consegue entrar por essa janela aqui do segundo andar e me pegar?
+Tenho que parar de pensar nessas coisas. Eu tenho só mais algumas horas até tudo isso acabar, até minha estadia nessa droga de casa e lugar chegarem ao fim. Eu só tenho que esperar e rezar pra que tudo dê certo.
+"]
 
 func _ready():
 	set_visibility(true)
