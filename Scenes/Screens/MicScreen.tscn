@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://Scripts/States.gd" id="1_3jxo7"]
 [ext_resource type="Script" path="res://Scripts/MicScreen.gd" id="1_k0axx"]
 [ext_resource type="PackedScene" uid="uid://yooj0rbpwaci" path="res://Scenes/microfone.tscn" id="1_tr35r"]
-[ext_resource type="FontFile" uid="uid://b0avaycv5qa6i" path="res://Fonts/Derringer-Serial Regular.ttf" id="2_llhgr"]
-[ext_resource type="FontFile" uid="uid://b1vymeh36eknt" path="res://Fonts/Cinzel-Bold.ttf" id="4_eela1"]
+[ext_resource type="FontFile" uid="uid://bk3n5jgk3dnan" path="res://Fonts/Derringer-Serial Regular.ttf" id="2_llhgr"]
+[ext_resource type="FontFile" uid="uid://cxdcng7dslxny" path="res://Fonts/Cinzel-Bold.ttf" id="4_eela1"]
 
 [node name="MicMenu" type="Node3D"]
 script = ExtResource("1_k0axx")

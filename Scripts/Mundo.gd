@@ -14,6 +14,9 @@ extends Node3D
 @onready var fisheye = $"../../Fisheye"
 @onready var pause_menu = $"../../PauseMenu"
 @onready var saved_game_label = $SavedGameLabel
+@onready var world_environment = $WorldEnvironment.environment
+
+
 
 var canOpenMobile = true
 var inPeepHole = false
@@ -26,9 +29,13 @@ func _notification(what):
 	if what == NOTIFICATION_APPLICATION_FOCUS_OUT:
 		pause_menu.inputPrev = Input.mouse_mode
 		pause_menu.pause()
-				
+
+
 func _process(delta):
 	$FPSCounter.set_text("FPS: %d" % Engine.get_frames_per_second())
+	
+	world_environment.adjustment_brightness = OptionsVariables.gamma
+	player.SENSITIVITY = OptionsVariables.camera_sensitivity
 	
 	if Input.is_action_just_pressed("esc"):
 		pause_menu.inputPrev = Input.mouse_mode

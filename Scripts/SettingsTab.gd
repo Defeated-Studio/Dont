@@ -32,8 +32,8 @@ func _on_vsync_box_toggled(toggled_on):
 
 
 func _on_sensi_slider_value_changed(value):
-	Mouse_sensi = value
+	OptionsVariables.camera_sensitivity = (value / 100)
 
 
 func _on_gamma_slider_value_changed(value):
-	Gamma = value / 10
+	OptionsVariables.gamma = (value / 100) * 3

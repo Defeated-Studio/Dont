@@ -50,6 +50,8 @@ volumetric_fog_enabled = true
 volumetric_fog_density = 0.06
 volumetric_fog_albedo = Color(0.494118, 0.494118, 0.494118, 1)
 volumetric_fog_detail_spread = 6.0
+adjustment_enabled = true
+adjustment_brightness = 2.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cyxu8"]
 size = Vector3(123.174, 35.6906, 8.1936)
@@ -66,7 +68,7 @@ vertices = PackedVector3Array(2.03009, 1.50869, -3.55897, 2.03009, 1.50869, -2.8
 polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 7), PackedInt32Array(15, 18, 12), PackedInt32Array(12, 18, 8), PackedInt32Array(8, 16, 9), PackedInt32Array(9, 16, 13), PackedInt32Array(13, 17, 10), PackedInt32Array(10, 17, 11), PackedInt32Array(11, 17, 14), PackedInt32Array(14, 16, 15), PackedInt32Array(15, 16, 18), PackedInt32Array(18, 16, 8), PackedInt32Array(16, 17, 13), PackedInt32Array(17, 16, 14), PackedInt32Array(20, 19, 21), PackedInt32Array(21, 19, 22), PackedInt32Array(26, 32, 27), PackedInt32Array(27, 32, 28), PackedInt32Array(28, 31, 23), PackedInt32Array(23, 31, 24), PackedInt32Array(24, 33, 25), PackedInt32Array(25, 33, 29), PackedInt32Array(29, 31, 30), PackedInt32Array(30, 32, 26), PackedInt32Array(32, 31, 28), PackedInt32Array(31, 33, 24), PackedInt32Array(33, 31, 29), PackedInt32Array(31, 32, 30), PackedInt32Array(36, 35, 34), PackedInt32Array(37, 39, 38), PackedInt32Array(42, 41, 40), PackedInt32Array(47, 46, 43), PackedInt32Array(43, 46, 44), PackedInt32Array(44, 46, 45), PackedInt32Array(50, 49, 51), PackedInt32Array(51, 49, 48), PackedInt32Array(51, 48, 52), PackedInt32Array(57, 56, 53), PackedInt32Array(53, 56, 58), PackedInt32Array(58, 56, 55), PackedInt32Array(58, 55, 54), PackedInt32Array(60, 59, 61), PackedInt32Array(61, 59, 62), PackedInt32Array(65, 64, 63), PackedInt32Array(68, 67, 66), PackedInt32Array(70, 69, 71), PackedInt32Array(71, 69, 72), PackedInt32Array(74, 73, 75), PackedInt32Array(75, 73, 76), PackedInt32Array(79, 78, 77), PackedInt32Array(80, 83, 81), PackedInt32Array(81, 83, 82), PackedInt32Array(85, 84, 86), PackedInt32Array(86, 84, 87), PackedInt32Array(87, 84, 88), PackedInt32Array(90, 89, 91), PackedInt32Array(91, 89, 92), PackedInt32Array(92, 89, 93), PackedInt32Array(95, 94, 96), PackedInt32Array(96, 94, 97), PackedInt32Array(100, 99, 101), PackedInt32Array(101, 99, 98), PackedInt32Array(101, 98, 102), PackedInt32Array(102, 98, 103), PackedInt32Array(107, 106, 104), PackedInt32Array(104, 106, 105), PackedInt32Array(109, 108, 110), PackedInt32Array(110, 108, 111), PackedInt32Array(114, 113, 112), PackedInt32Array(119, 118, 115), PackedInt32Array(115, 118, 116), PackedInt32Array(116, 118, 117), PackedInt32Array(122, 121, 120), PackedInt32Array(128, 127, 123), PackedInt32Array(123, 127, 124), PackedInt32Array(124, 127, 125), PackedInt32Array(125, 127, 126), PackedInt32Array(130, 129, 131), PackedInt32Array(131, 129, 132), PackedInt32Array(132, 129, 133), PackedInt32Array(136, 135, 134), PackedInt32Array(138, 137, 139), PackedInt32Array(139, 137, 140), PackedInt32Array(140, 137, 141), PackedInt32Array(143, 142, 144), PackedInt32Array(144, 142, 145), PackedInt32Array(149, 148, 146), PackedInt32Array(146, 148, 147), PackedInt32Array(153, 152, 150), PackedInt32Array(150, 152, 151), PackedInt32Array(156, 155, 154), PackedInt32Array(158, 161, 162), PackedInt32Array(162, 161, 160), PackedInt32Array(162, 160, 159), PackedInt32Array(159, 160, 157), PackedInt32Array(164, 163, 165), PackedInt32Array(165, 163, 166), PackedInt32Array(170, 169, 167), PackedInt32Array(167, 169, 168), PackedInt32Array(172, 171, 173), PackedInt32Array(173, 171, 174), PackedInt32Array(176, 175, 177), PackedInt32Array(177, 175, 178), PackedInt32Array(180, 179, 181), PackedInt32Array(181, 179, 182), PackedInt32Array(186, 185, 183), PackedInt32Array(183, 185, 184), PackedInt32Array(188, 187, 189), PackedInt32Array(191, 190, 192), PackedInt32Array(192, 190, 193), PackedInt32Array(194, 197, 195), PackedInt32Array(195, 197, 196), PackedInt32Array(199, 198, 200), PackedInt32Array(200, 198, 201), PackedInt32Array(202, 205, 203), PackedInt32Array(203, 205, 204), PackedInt32Array(208, 207, 206), PackedInt32Array(210, 209, 211), PackedInt32Array(211, 209, 212), PackedInt32Array(212, 209, 213), PackedInt32Array(216, 215, 214), PackedInt32Array(219, 218, 217), PackedInt32Array(223, 222, 220), PackedInt32Array(220, 222, 221), PackedInt32Array(224, 228, 225), PackedInt32Array(225, 228, 227), PackedInt32Array(225, 227, 226), PackedInt32Array(230, 229, 231), PackedInt32Array(231, 229, 232), PackedInt32Array(235, 234, 233), PackedInt32Array(239, 238, 236), PackedInt32Array(236, 238, 237), PackedInt32Array(240, 243, 241), PackedInt32Array(241, 243, 242), PackedInt32Array(247, 246, 244), PackedInt32Array(244, 246, 245), PackedInt32Array(251, 250, 248), PackedInt32Array(248, 250, 249), PackedInt32Array(254, 253, 252), PackedInt32Array(255, 257, 256), PackedInt32Array(260, 259, 258), PackedInt32Array(263, 262, 261), PackedInt32Array(265, 264, 266), PackedInt32Array(266, 264, 267), PackedInt32Array(271, 270, 268), PackedInt32Array(268, 270, 269), PackedInt32Array(274, 273, 272), PackedInt32Array(277, 276, 275), PackedInt32Array(283, 282, 278), PackedInt32Array(278, 282, 281), PackedInt32Array(278, 281, 280), PackedInt32Array(278, 280, 279), PackedInt32Array(287, 286, 284), PackedInt32Array(284, 286, 285), PackedInt32Array(290, 289, 291), PackedInt32Array(291, 289, 292), PackedInt32Array(292, 289, 293), PackedInt32Array(293, 289, 288), PackedInt32Array(294, 296, 295), PackedInt32Array(300, 299, 297), PackedInt32Array(297, 299, 298), PackedInt32Array(303, 302, 301), PackedInt32Array(307, 306, 304), PackedInt32Array(304, 306, 305), PackedInt32Array(311, 310, 308), PackedInt32Array(308, 310, 309), PackedInt32Array(315, 314, 316), PackedInt32Array(316, 314, 319), PackedInt32Array(316, 319, 318), PackedInt32Array(316, 318, 317), PackedInt32Array(317, 318, 313), PackedInt32Array(317, 313, 312)]
 agent_radius = 0.1
 
-[sub_resource type="Resource" id="Resource_7p6cl"]
+[sub_resource type="Resource" id="Resource_jyesa"]
 script = ExtResource("11_wxgki")
 amount = 550
 enabled = true
@@ -75,7 +77,7 @@ custom_seed = 9
 restrict_height = true
 reference_frame = 1
 
-[sub_resource type="Resource" id="Resource_udkhc"]
+[sub_resource type="Resource" id="Resource_tq4le"]
 script = ExtResource("12_4lsev")
 position = Vector3(0.15, 0.15, 0.15)
 rotation = Vector3(2, 360, 2)
@@ -86,7 +88,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_6v2el"]
+[sub_resource type="Resource" id="Resource_io3ru"]
 script = ExtResource("13_v755k")
 iterations = 3
 offset_step = 0.2
@@ -98,7 +100,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_0sbvl"]
+[sub_resource type="Resource" id="Resource_0pbu5"]
 script = ExtResource("14_uutcr")
 ray_direction = Vector3(0, -1, 0)
 ray_length = 5.0
@@ -114,7 +116,7 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_8p36r"]
+[sub_resource type="Resource" id="Resource_gwsc2"]
 script = ExtResource("15_hp6mn")
 terrain_node = NodePath("../Terrain3D")
 align_with_collision_normal = false
@@ -124,9 +126,9 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 0
 
-[sub_resource type="Resource" id="Resource_tbhux"]
+[sub_resource type="Resource" id="Resource_vqkl3"]
 script = ExtResource("10_rhs0g")
-stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_7p6cl"), SubResource("Resource_udkhc"), SubResource("Resource_6v2el"), SubResource("Resource_0sbvl"), SubResource("Resource_8p36r")])
+stack = Array[Resource("res://addons/proton_scatter/src/modifiers/base_modifier.gd")]([SubResource("Resource_jyesa"), SubResource("Resource_tq4le"), SubResource("Resource_io3ru"), SubResource("Resource_0pbu5"), SubResource("Resource_gwsc2")])
 
 [sub_resource type="Resource" id="Resource_aogur"]
 script = ExtResource("17_7lvh5")
@@ -241,7 +243,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.865362)
 script = ExtResource("9_we0ft")
 global_seed = 7
 keep_static_colliders = true
-modifier_stack = SubResource("Resource_tbhux")
+modifier_stack = SubResource("Resource_vqkl3")
 Performance/use_chunks = true
 Performance/chunk_dimensions = Vector3(15, 15, 15)
 
