@@ -97,3 +97,10 @@ func triggerTask():
 	await get_tree().create_timer(4).timeout
 	showInteractText()
 	quest_control.startQuest()
+
+
+func _on_turn_on_gen_body_entered(body):
+	if quest_control.questActive == 0:
+		player_dialogue.timeBetweenText = 3
+		player_dialogue.queueDialogue("preciso ligar o gerador")
+		player_dialogue.showDialogue()
