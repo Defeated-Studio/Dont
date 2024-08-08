@@ -54,7 +54,7 @@ grow_horizontal = 2
 grow_vertical = 2
 min_value = 10.0
 max_value = 500.0
-value = 10.0
+value = 100.0
 
 [node name="Button" type="Button" parent="."]
 anchors_preset = 12

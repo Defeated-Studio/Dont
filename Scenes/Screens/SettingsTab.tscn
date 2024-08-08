@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ca5ctc5o7wdup"]
 
-[ext_resource type="FontFile" uid="uid://b0avaycv5qa6i" path="res://Fonts/Derringer-Serial Regular.ttf" id="1_8o3hn"]
+[ext_resource type="FontFile" uid="uid://bk3n5jgk3dnan" path="res://Fonts/Derringer-Serial Regular.ttf" id="1_8o3hn"]
 [ext_resource type="Script" path="res://Scripts/SettingsTab.gd" id="1_ilod3"]
 
 [node name="SettingsTab" type="Control"]
@@ -75,7 +75,7 @@ layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
 min_value = 1.0
-value = 1.0
+value = 20.0
 
 [node name="GammaCont" type="HBoxContainer" parent="TabContainer/Geral/GeralContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
@@ -98,29 +98,7 @@ custom_minimum_size = Vector2(600, 20)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
-
-[node name="ShadowCont" type="HBoxContainer" parent="TabContainer/Geral/GeralContainer/ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(1218, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_constants/separation = 24
-
-[node name="Sombras" type="Label" parent="TabContainer/Geral/GeralContainer/ScrollContainer/VBoxContainer/ShadowCont"]
-custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
-size_flags_vertical = 2
-theme_override_fonts/font = ExtResource("1_8o3hn")
-theme_override_font_sizes/font_size = 32
-text = "Sombras
-"
-vertical_alignment = 1
-
-[node name="VSeparator" type="VSeparator" parent="TabContainer/Geral/GeralContainer/ScrollContainer/VBoxContainer/ShadowCont"]
-layout_mode = 2
-
-[node name="ShadowBox" type="CheckBox" parent="TabContainer/Geral/GeralContainer/ScrollContainer/VBoxContainer/ShadowCont"]
-layout_mode = 2
-size_flags_horizontal = 6
+value = 33.0
 
 [node name="VSyncCont" type="HBoxContainer" parent="TabContainer/Geral/GeralContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
@@ -139,7 +117,6 @@ layout_mode = 2
 [node name="VsyncBox" type="CheckBox" parent="TabContainer/Geral/GeralContainer/ScrollContainer/VBoxContainer/VSyncCont"]
 layout_mode = 2
 size_flags_horizontal = 6
-button_pressed = true
 
 [node name="Sound" type="TabBar" parent="TabContainer"]
 visible = false
@@ -188,7 +165,7 @@ custom_minimum_size = Vector2(500, 20)
 layout_mode = 2
 size_flags_vertical = 4
 min_value = 1.0
-value = 100.0
+value = 50.0
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="TabContainer/Sound/SoundContainer/ScrollContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 100)
@@ -209,12 +186,11 @@ theme_override_constants/separation = 12
 custom_minimum_size = Vector2(500, 20)
 layout_mode = 2
 size_flags_vertical = 4
-min_value = 5.0
-value = 5.0
+min_value = 1.0
+value = 75.0
 
 [connection signal="value_changed" from="TabContainer/Geral/GeralContainer/ScrollContainer/VBoxContainer/MouseCont/SensiSlider" to="." method="_on_sensi_slider_value_changed"]
 [connection signal="value_changed" from="TabContainer/Geral/GeralContainer/ScrollContainer/VBoxContainer/GammaCont/GammaSlider" to="." method="_on_gamma_slider_value_changed"]
-[connection signal="toggled" from="TabContainer/Geral/GeralContainer/ScrollContainer/VBoxContainer/ShadowCont/ShadowBox" to="." method="_on_shadow_box_toggled"]
 [connection signal="toggled" from="TabContainer/Geral/GeralContainer/ScrollContainer/VBoxContainer/VSyncCont/VsyncBox" to="." method="_on_vsync_box_toggled"]
 [connection signal="value_changed" from="TabContainer/Sound/SoundContainer/ScrollContainer/VBoxContainer/HBoxContainer/GeralSlider" to="." method="_on_geral_slider_value_changed"]
 [connection signal="value_changed" from="TabContainer/Sound/SoundContainer/ScrollContainer/VBoxContainer/HBoxContainer2/MusicSlider" to="." method="_on_music_slider_value_changed"]

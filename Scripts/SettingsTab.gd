@@ -9,17 +9,14 @@ var Mouse_sensi
 
 
 func _on_geral_slider_value_changed(value):
-	General_volume = linear_to_db(value/100)
+	General_volume = linear_to_db(value/100) + 6
 	AudioServer.set_bus_volume_db(0, General_volume)
 
 
 func _on_music_slider_value_changed(value):
-	Music_volume = linear_to_db(value/100)
+	Music_volume = linear_to_db(value/100) + 6
+	print(Music_volume)
 	AudioServer.set_bus_volume_db(3, Music_volume)
-
-
-func _on_shadow_box_toggled(toggled_on):
-	pass # Replace with function body.
 
 
 func _on_vsync_box_toggled(toggled_on):

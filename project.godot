@@ -32,7 +32,6 @@ OptionsVariables="*res://Scripts/OptionsVariables.gd"
 
 window/size/viewport_width=1366
 window/size/viewport_height=768
-window/size/mode=4
 window/stretch/mode="canvas_items"
 window/vsync/vsync_mode=0
 
