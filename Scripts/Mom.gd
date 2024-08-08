@@ -5,7 +5,7 @@ extends CharacterBody3D
 @onready var animation_player = $AnimationPlayer
 
 var following = false
-var speed = 1
+var speed = 1.3
 var accel = 1
 var previous_target
 var target
