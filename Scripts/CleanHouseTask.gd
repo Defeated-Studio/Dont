@@ -18,13 +18,19 @@ var canClean = false
 var currentNode
 var toClean = 6
 var canThrowAway = false
+var cleanedToilet = false
 
 func _process(delta):
 	if (Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("LeftMouseButton")) and canClean and IsRayCasting.canInteract:
 		if currentNode == "CleanToilet":
 			toilet.cleanToilet()
+			cleanedToilet = true
 		get_node(currentNode).queue_free()
 		toClean -= 1
+		
+		if toClean == 1 and !cleanedToilet:
+			player_dialogue.queueDialogue("não posso me esquecer do vaso.")
+			player_dialogue.showDialogue()
 		if toClean == 0:
 			await get_tree().create_timer(1.5).timeout
 			player_dialogue.queueDialogue("acho que terminei, preciso jogar isso fora no lixo da cozinha.")

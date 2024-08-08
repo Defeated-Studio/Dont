@@ -18,6 +18,7 @@ func _process(delta):
 		get_node("BedArea").queue_free()
 		dialogue_text.queueDialogue("não consigo dormir depois disso")
 		dialogue_text.queueDialogue("preciso achar algum jeito de me proteger")
+		dialogue_text.queueDialogue("talvez com o sofá da sala")
 		dialogue_text.timeBetweenText = 3
 		dialogue_text.showDialogue()
 		quest_control.finishQuest()

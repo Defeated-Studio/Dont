@@ -33,6 +33,8 @@ extends Node3D
 
 @onready var microwave_sound = $Microwavesound
 
+@onready var timer = $Timer
+
 
 var canPickup = false
 var canMicrowave = false
@@ -115,6 +117,7 @@ func _process(delta):
 			dialogue_text.timeBetweenText = 2
 			dialogue_text.queueDialogue("essa comida tá uma porcaria")
 			dialogue_text.queueDialogue("estou cheio")
+			dialogue_text.queueDialogue("isso vai direto pro lixo")
 			dialogue_text.showDialogue()
 			await get_tree().create_timer(4.2).timeout
 			doneEating = true
@@ -199,15 +202,14 @@ func _process(delta):
 			microwave_col.set_deferred("disabled", false)
 
 
-func _on_trigger_eat_task_body_entered(body):
-	if quest_control.questActive == 2:
-		quest_control.startQuest()
-		activateCollisions()
-		dialogue_text.timeBetweenText = 3
-		dialogue_text.queueDialogue("estou com muita fome depois dessa viagem longa")
-		dialogue_text.queueDialogue("vou comer algo enquanto penso como dar o fora daqui")
-		dialogue_text.showDialogue()
-		get_node("TriggerEatTask").queue_free()
+
+func _on_timer_timeout():
+	quest_control.startQuest()
+	activateCollisions()
+	dialogue_text.timeBetweenText = 3
+	dialogue_text.queueDialogue("estou com muita fome depois dessa viagem longa")
+	dialogue_text.queueDialogue("vou comer algo enquanto penso como dar o fora daqui")
+	dialogue_text.showDialogue()
 
 
 func activateCollisions():
@@ -237,7 +239,7 @@ func _on_microwave_body_exited(body):
 
 
 func _on_tv_area_body_entered(body):
-	interact_text.text = "[E] Ligar"
+	interact_text.text = "[E] Usar"
 	interact_text.show()
 	canTurnTv = true
 

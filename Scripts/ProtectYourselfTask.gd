@@ -40,6 +40,11 @@ func _process(delta):
 		dialogue_text.timeBetweenText = 2
 		dialogue_text.showDialogue()
 		toDo -= 1
+		if toDo == 1:
+			await get_tree().create_timer(2).timeout
+			dialogue_text.timeBetweenText = 3
+			dialogue_text.queueDialogue("deve ter alguma faca na cozinha")
+			dialogue_text.showDialogue()
 
 	if (Input.is_action_just_pressed("interact") and canGetKnife):
 		canGetKnife = false

@@ -18,6 +18,7 @@ extends Node3D
 @onready var death = $"../../../Death"
 @onready var mom_col = $Mom/CollisionShape3D
 
+@onready var mom_view_area = $Mom/MomViewArea
 
 @onready var target_1 = $Target1
 @onready var target_2 = $Target2
@@ -30,6 +31,7 @@ extends Node3D
 
 
 var canFollowPlayer = false
+var hasBeenSeen = false
 var canHideWrongSpot = false
 var canHideRightSpot = false
 var hiding = false
@@ -41,6 +43,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	
 	if canHideWrongSpot and Input.is_action_just_pressed("interact"):
 		dialogue_text.timeBetweenText = 3.5
 		dialogue_text.queueDialogue("não consigo me esconder aqui, preciso achar outro lugar")
@@ -53,8 +56,10 @@ func _process(delta):
 	elif hiding and (Input.is_action_just_pressed("interact")):
 		exitSpot()
 		hiding = false
-	
-	if canFollowPlayer:
+		
+	if hasBeenSeen:
+		mom.target = player
+	elif canFollowPlayer:
 		if !hiding:
 			mom.target = player
 		elif !volume_exceeded:
@@ -84,10 +89,10 @@ func hideSpot():
 	microfone.show()
 
 func _on_paper_close():
+	mom_view_area.monitoring = true
 	quest_control.finishQuest()
 	quest_control.startQuest()
 	#door_break_open.play()
-	await get_tree().create_timer(0.5).timeout
 	soundtrack.playFirst = false
 	soundtrack.playSecond = true
 	first_soundtrack.stop()
@@ -193,3 +198,8 @@ func finishQuestDialogue():
 func setFlags(value):
 	canHideWrongSpot = value
 	canHideRightSpot = value
+
+
+func _on_mom_view_area_body_entered(body):
+	if body.name != "Mom" and !hiding:
+		hasBeenSeen = true

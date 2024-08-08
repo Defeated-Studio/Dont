@@ -4,6 +4,7 @@ extends Node3D
 @onready var player_dialogue = $"../Player/DialogueText"
 @onready var interact_text = $"../InteractText/InteractText"
 @onready var messages_app = $"../../../MessagesApp"
+@onready var timer = $"../EatTask/Timer"
 
 var canShow = true
 
@@ -31,6 +32,7 @@ func _process(delta):
 		player_dialogue.queueDialogue("isso só pode ser um pesadelo")
 		player_dialogue.showDialogue()
 		quest_control.finishQuest()
+		timer.start()
 		self.queue_free()
 			
 	if Input.is_action_just_pressed("Mobile"):

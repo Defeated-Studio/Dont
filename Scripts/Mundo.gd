@@ -101,4 +101,4 @@ func showPeepHole():
 func _on_saver_loader_saved_game_signal():
 	saved_game_label.show()
 	await get_tree().create_timer(5).timeout
-	saved_game_label.hide()	
+	saved_game_label.hide()
