@@ -82,6 +82,8 @@ func _process(delta):
 		player.camera.fov = 45.0
 		car_running.start()
 		player_skin_walker.show()
+		player.flashlight_animation.play(("hide"))
+		player.flashlight.hide()
 		
 	if dead and !car.arrived:
 		player.look_at(car.global_position)

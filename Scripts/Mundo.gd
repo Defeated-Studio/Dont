@@ -20,6 +20,7 @@ extends Node3D
 
 var canOpenMobile = true
 var inPeepHole = false
+var canPause = true
 
 func _ready():
 	var saverloader = get_node("/root/SaverLoader")
@@ -29,17 +30,18 @@ func _notification(what):
 	if what == NOTIFICATION_APPLICATION_FOCUS_OUT:
 		pause_menu.inputPrev = Input.mouse_mode
 		pause_menu.pause()
-
-
+		
+func changePause(value):
+	canPause = value
+	
 func _process(delta):
 	$FPSCounter.set_text("FPS: %d" % Engine.get_frames_per_second())
 	
 	world_environment.adjustment_brightness = OptionsVariables.gamma
 	player.SENSITIVITY = OptionsVariables.camera_sensitivity
 	
-	if Input.is_action_just_pressed("esc"):
+	if Input.is_action_just_pressed("esc") and canPause:
 		pause_menu.inputPrev = Input.mouse_mode
-		
 		pause_menu.move_to_front()
 		pause_menu.pause()
 	
@@ -63,6 +65,7 @@ func _process(delta):
 		
 		
 func hidePeepHole():
+	changePause(true)
 	peephole_text.hide()
 	transition.play("peephole")
 	await get_tree().create_timer(1.1).timeout
@@ -77,6 +80,7 @@ func hidePeepHole():
 	crosshair.show()
 	
 func showPeepHole():
+	changePause(false)
 	player.canMove = false
 	player.canMoveCamera = false
 	player.canUseFlashlight = false
