@@ -28,6 +28,7 @@ extends Node3D
 @onready var soundtrack = $"../../../Soundtrack4"
 @onready var first_soundtrack = $"../../../Soundtrack4/FirstSoundtrack"
 @onready var second_soundtrack = $"../../../Soundtrack4/SecondSoundtrack"
+@onready var scary = $Scary
 
 
 var canFollowPlayer = false
@@ -52,6 +53,7 @@ func _process(delta):
 	if canHideRightSpot and !hiding and Input.is_action_just_pressed("interact"):
 		hideSpot()
 		hiding = true
+		scary.play()
 	
 	elif hiding and (Input.is_action_just_pressed("interact")):
 		exitSpot()

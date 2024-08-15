@@ -20,9 +20,9 @@ func _process(delta):
 
 func manageAudio(audio, db):
 	if front_door.getState():	# Porta aberta
-		change_volume(audio, db+5)
+		change_volume(audio, db+15)
 	elif player.ground == "Grass" or insideArea:
-		change_volume(audio, db+5)
+		change_volume(audio, db+15)
 	else:
 		change_volume(audio, db)
 

@@ -46,10 +46,12 @@ func _process(delta):
 		world.showPeepHole()
 		inPeepHole = true
 		hasSeenPeepHole = true
+		front_door.setDoorMonitoring(false)
 		await get_tree().create_timer(1.1).timeout
 		peep_hole_sfx.play(1)
 		
 	elif inPeepHole and hasSeenPeepHole and Input.is_action_just_pressed("PeepHole"):
+		front_door.setDoorMonitoring(true)
 		world.hidePeepHole()
 		inPeepHole = false
 		peep_hole_text.text = "[Q] Questionar"
