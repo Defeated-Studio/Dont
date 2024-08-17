@@ -1,0 +1,18 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://dcrp31pc6hp8v"]
+
+[ext_resource type="Texture2D" uid="uid://cemjpwpwa8xb5" path="res://House/Models/cereal_box_3.png" id="1_fqrpk"]
+[ext_resource type="Texture2D" uid="uid://1vwa5qrely4" path="res://House/Models/cereal_box_4.png" id="2_oa0ry"]
+[ext_resource type="Texture2D" uid="uid://cg8dq82njb12b" path="res://House/Models/cereal_box_5.png" id="3_0x6l5"]
+
+[resource]
+resource_name = "Inner"
+albedo_texture = ExtResource("1_fqrpk")
+metallic = 1.0
+metallic_texture = ExtResource("2_oa0ry")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_oa0ry")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_0x6l5")
+ao_enabled = true
+ao_texture = ExtResource("2_oa0ry")

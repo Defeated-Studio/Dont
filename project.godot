@@ -13,7 +13,7 @@ config_version=5
 config/name="Don't"
 run/main_scene="res://Scenes/Screens/DefeatedLogo.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://ExportData/defeated_white.png"
 
 [audio]
 
@@ -32,6 +32,7 @@ OptionsVariables="*res://Scripts/OptionsVariables.gd"
 
 window/size/viewport_width=1366
 window/size/viewport_height=768
+window/size/mode=4
 window/stretch/mode="canvas_items"
 window/vsync/vsync_mode=0
 

@@ -1,14 +1,14 @@
 [gd_scene load_steps=20 format=3 uid="uid://d1dii1a71vb20"]
 
 [ext_resource type="Script" path="res://Scripts/Diary/Diary3d.gd" id="1_w6evf"]
-[ext_resource type="PackedScene" uid="uid://dhqlued4hwi2s" path="res://House/Models/Bedroom1/pbr_dark_diary.glb" id="2_wlyje"]
-[ext_resource type="Texture2D" uid="uid://c4ypypgdka1we" path="res://Texture/Diario.png" id="3_iilso"]
+[ext_resource type="PackedScene" uid="uid://b2ujdds2geuni" path="res://House/Models/Bedroom1/pbr_dark_diary.glb" id="2_wlyje"]
+[ext_resource type="Texture2D" uid="uid://bmon2bq03pdt4" path="res://Texture/Diario.png" id="3_iilso"]
 [ext_resource type="Script" path="res://Scripts/Diary/Diary_UI.gd" id="3_u0kww"]
 [ext_resource type="Script" path="res://Scripts/Diary/Pages.gd" id="5_8l2yg"]
-[ext_resource type="FontFile" uid="uid://v6v55nu11kyv" path="res://Fonts/Kalam-Regular.ttf" id="5_me4yl"]
+[ext_resource type="FontFile" uid="uid://cudbfyapbv56x" path="res://Fonts/Kalam-Regular.ttf" id="5_me4yl"]
 [ext_resource type="Script" path="res://Scripts/Diary/Papers.gd" id="6_t3pmu"]
-[ext_resource type="Texture2D" uid="uid://bj6duw5pk5h5l" path="res://Texture/Paper_for_diary.png" id="7_ofe5r"]
-[ext_resource type="FontFile" uid="uid://doktlg8ik1xds" path="res://Fonts/Allura-Regular.ttf" id="9_x54gp"]
+[ext_resource type="Texture2D" uid="uid://dtn5qjgbyue27" path="res://Texture/Paper_for_diary.png" id="7_ofe5r"]
+[ext_resource type="FontFile" uid="uid://dh51om4khihme" path="res://Fonts/Allura-Regular.ttf" id="9_x54gp"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6rr1v"]
 size = Vector3(1.58115, 1, 5.60074)
@@ -114,8 +114,7 @@ theme_override_fonts/font = ExtResource("5_me4yl")
 theme_override_font_sizes/font_size = 15
 theme_override_styles/normal = SubResource("StyleBoxFlat_enn6h")
 theme_override_styles/hover = SubResource("StyleBoxFlat_6wmd5")
-text = "Diário
-"
+text = "Diário"
 
 [node name="next_button" type="Button" parent="Diary_UI/Diary"]
 layout_mode = 0
@@ -190,8 +189,7 @@ theme_override_font_sizes/font_size = 11
 text = "Cheguei aqui e logo percebi que essa casa não é nada como nas fotos. Talvez ela fosse daquele jeito antes, mas agora parece tão velha. Mas tudo bem, eu que resolvi vir pra cá, precisava de mudanças na minha vida mesmo.
 Ainda bem que eu trouxe esse diário aqui comigo, sem sinal de internet e a TV fora do ar realmente fica sem muito o que fazer. Pelo menos com isso eu posso passar um pouco do tempo, e também não me sinto tão solitário. Vou mostrar esse diário pra minha mãe quando ela vier visitar pra ela ver como eu tô vivendo de boa sozinho.
 Mas sinceramente, tem umas coisas que me deixaram meio desconfiado com esse lugar. Tudo bem não ter sinal de internet ainda e tal, recém me mudei pra cá, essas coisas acontecem, mas e aquele papel que eu achei ontem? Quem é essa tal de Helena e o que foi isso que ela tava dizendo? Ainda tô sem sinal, não vou conseguir falar com o Bob sobre isso.
-Talvez ela só estivesse vendo coisas mesmo. Ontem eu estava bem cansado e estava um pouco assim também, mas era só o cansaço. Até esqueci de fechar a porta direito.
-"
+Talvez ela só estivesse vendo coisas mesmo. Ontem eu estava bem cansado e estava um pouco assim também, mas era só o cansaço. Até esqueci de fechar a porta direito."
 autowrap_mode = 2
 
 [node name="right_page" type="Label" parent="Diary_UI/Diary/Pages"]
@@ -211,8 +209,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("5_me4yl")
 theme_override_font_sizes/font_size = 11
 text = "É bom que esse gerador pare logo de se desligar, fica muito escuro aqui de noite, preciso da luz se não não enxergo um palmo na minha frente. Ainda bem que trouxe minha lanterna.
-Hoje vou ter que começar dando um jeito na bagunça que essa casa tá. Impossível viver num lugar assim por muito tempo, vou terminar de escrever aqui e vou dar uma geral em tudo.
-"
+Hoje vou ter que começar dando um jeito na bagunça que essa casa tá. Impossível viver num lugar assim por muito tempo, vou terminar de escrever aqui e vou dar uma geral em tudo."
 autowrap_mode = 2
 
 [node name="Papers" type="Control" parent="Diary_UI/Diary"]
