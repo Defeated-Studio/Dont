@@ -123,6 +123,7 @@ func _on_trigger_task_body_entered(body):
 func _on_navigation_agent_3d_target_reached():
 	skin_walker_animation_player.play("Run")
 	player.look_at(skin_walker.global_position, Vector3.UP)
+	player.head.set_rotation_degrees(Vector3(20, 0, 0))
 	player.camera.fov = 50.0
 	death.appear()
 

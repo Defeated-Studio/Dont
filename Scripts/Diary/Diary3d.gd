@@ -26,40 +26,38 @@ func _process(delta):
 
 
 func _on_interact_area_body_entered(body):
-	canPickUp = true;
-	interact_text.text = "[E] Abrir";
-	interact_text.show();
+	canPickUp = true
+	interact_text.text = "[E] Abrir"
+	interact_text.show()
 
 
 func _on_interact_area_body_exited(body):
-	canPickUp = false;
-	interact_text.hide();
-
+	canPickUp = false
+	interact_text.hide()
 
 func _on_close_button_pressed():
-	diary.hide();
-	player.canMove = true;
-	player.canMoveCamera = true;
-	interact_text.show();
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED);
+	diary.hide()
+	player.canMove = true
+	player.canMoveCamera = true
+	interact_text.show()
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 
 func toggle_visibility():
 	if visible:
-		visible = false;
-		interact_area.collision_mask = 0;
+		visible = false
+		interact_area.collision_mask = 0
 	else:
-		visible = true;
-		interact_area.collision_mask = 2;
+		visible = true
+		interact_area.collision_mask = 2
 
 
 func new_paper_taken(id):
-	diary.papers_taken[id - 1] = 1;
+	diary.papers_taken[id - 1] = 1
 
 
 func add_page(pages):
-	diary.total_pages = pages;
-
+	diary.total_pages = pages
 
 func toggle_collision_mask(flag):
 	if flag == false:
