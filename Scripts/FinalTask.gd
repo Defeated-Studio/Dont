@@ -100,7 +100,7 @@ func _process(delta):
 		await get_tree().create_timer(2).timeout
 		SceneTransition.change_scene("", "Dissolve", 0)
 		SaverLoader.delete_save()
-		get_tree().change_scene_to_file("res://Scenes/Screens/MainMenu.tscn")
+		get_tree().change_scene_to_file("res://Scenes/Screens/CreditScene.tscn")
 		
 	if skin_walker.visible:
 		skin_walker.position.z -= 2.5 * delta
