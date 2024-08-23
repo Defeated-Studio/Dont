@@ -26,6 +26,7 @@ extends Node3D
 @onready var no_signal_2_bob = $"../../../MessagesApp/Bob/ScrollContainer/VBoxContainer/noSignal2"
 
 @onready var skin_walker = %SkinWalker
+@onready var skin_walker_animation_player = $"../../../SkinWalker/AnimationPlayer"
 @onready var death = $"../../../Death"
 @onready var notification_sound = $NotificationSound
 @onready var static_body_3d = $StaticBody3D
@@ -120,9 +121,9 @@ func _on_trigger_task_body_entered(body):
 
 
 func _on_navigation_agent_3d_target_reached():
+	skin_walker_animation_player.play("Run")
 	player.look_at(skin_walker.global_position, Vector3.UP)
-	player.head.set_rotation_degrees(Vector3(40, 0, 0))
-	player.camera.fov = 25.0
+	player.camera.fov = 50.0
 	death.appear()
 
 
