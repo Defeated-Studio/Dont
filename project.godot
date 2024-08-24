@@ -13,7 +13,8 @@ config_version=5
 config/name="Don't"
 run/main_scene="res://Scenes/Screens/DefeatedLogo.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-config/icon="res://ExportData/defeated_white.png"
+boot_splash/show_image=false
+config/icon="res://ExportData/defeated_background.png"
 
 [audio]
 
