@@ -4,6 +4,9 @@
 
 [ROTEIRO](https://docs.google.com/document/d/1KAAZiAtwXJ7PkU8lker7VFluapbexljzHC3KatmE_eU/edit)
 
+# EXE 
+https://drive.google.com/drive/u/1/folders/1q8TEzjH5n0_gOctTGqHzP49GYMMJAY-1
+
 # 👥 Integrantes 👥
 
 1 - João Vitor Farias
