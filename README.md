@@ -1,4 +1,4 @@
-# 🎮 Defeated — Horror Game (Godot)
+# 🎮 Don't — Horror Game (Godot)
 
 Defeated is a horror game developed using the Godot Engine, focusing on atmosphere, tension, and narrative-driven gameplay.
 The project was created as a collaborative effort, covering game design, scripting, level design, and storytelling.
